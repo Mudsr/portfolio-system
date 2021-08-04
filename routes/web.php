@@ -13,14 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/dashboard', function () {
-    return view('layouts.main');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/dashboard', function () {
+//     return view('layouts.main');
+// });
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/', function () {
+        return view('layouts.main');
+    });
+
+    Route::get('/dashboard', function () {
+                return view('layouts.main');
+    })->name('dashboard');
+
 });
 
-// Route::get('/dashboard', function () {
+// Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
