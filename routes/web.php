@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('layouts.main');
     });
+
+    Route::resource('portfolio', PortfolioController::class);
 
     Route::get('/dashboard', function () {
                 return view('layouts.main');
