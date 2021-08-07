@@ -14,18 +14,9 @@ use App\Http\Controllers\PortfolioController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/dashboard', function () {
-//     return view('layouts.main');
-// });
-
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', function () {
-        return view('layouts.main');
-    });
+    Route::get('/', [PortfolioController::class, 'index']);
 
     Route::resource('portfolio', PortfolioController::class);
 
@@ -35,8 +26,5 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

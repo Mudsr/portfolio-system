@@ -1,4 +1,4 @@
-<div id="kt_quick_user" class="offcanvas offcanvas-right p-10 offcanvas-on">
+<div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
     <!--begin::Header-->
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5" kt-hidden-height="40" style="">
         <h3 class="font-weight-bold m-0">User Profile
@@ -8,6 +8,7 @@
         </a>
     </div>
     <!--end::Header-->
+
     <!--begin::Content-->
     <div class="offcanvas-content pr-5 mr-n5 scroll ps ps--active-y" style="height: 648px; overflow: hidden;">
         <!--begin::Header-->
@@ -51,6 +52,7 @@
             </div>
         </div>
         <!--end::Header-->
+        
         <!--begin::Separator-->
         <div class="separator separator-dashed mt-8 mb-5"></div>
         <!--end::Separator-->
