@@ -58,7 +58,7 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pages.portfolio.edit');
     }
 
     /**
@@ -79,8 +79,10 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Portfolio $portfolio)
     {
-        //
+        $portfolio->delete();
+
+        return redirect()->back();
     }
 }
