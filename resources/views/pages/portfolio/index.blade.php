@@ -32,57 +32,31 @@
                 <table class="table tale-responsive">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-muted">#</th>
-                            <th scope="col" class="text-muted">First</th>
-                            <th scope="col" class="text-muted">Last</th>
-                            <th scope="col" class="text-muted">Handle</th>
+                            <th scope="col" class="text-muted">Name</th>
+                            <th scope="col" class="text-muted">Management Fee</th>
+                            <th scope="col" class="text-muted">Fee Per Quarter</th>
+                            <th scope="col" class="text-muted">Fee Calculation method</th>
+                            <th scope="col" class="text-muted">Contact Person</th>
+                            <th scope="col" class="text-muted">Contact Email</th>
+                            <th scope="col" class="text-muted">Agreement Date</th>
+                            <th scope="col" class="text-muted">Agreement Expiry</th>
                             <th scope="col" class="text-muted">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <th scope="row">{{ $portfolio->name }}</th>
+                            <td>{{ $portfolio->managment_fee }}</td>
+                            <td>{{ $portfolio->minimum_fee_per_quarter }}</td>
+                            <td>{{ $portfolio->fee_calculation_method }}</td>
+                            <td>{{ $portfolio->contact_person }}</td>
+                            <td>{{ $portfolio->contact_email }}</td>
+                            <td>{{ $portfolio->agreement_date }}</td>
+                            <td>{{ $portfolio->agreement_expiry }}</td>
                             <td>
                                 <span style="overflow: visible; position: relative; width: 125px;">
-                                    <div class="dropdown dropdown-inline"> <a href="javascript:;"
-                                            class="btn btn-sm btn-clean btn-icon mr-2" data-toggle="dropdown"
-                                            aria-expanded="false"> <span class="svg-icon svg-icon-md"> <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                    viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24" height="24"></rect>
-                                                        <path
-                                                            d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z"
-                                                            fill="#000000"></path>
-                                                    </g>
-                                                </svg> </span> </a>
-                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="display: none;">
-                                            <ul class="navi flex-column navi-hover py-2">
-                                                <li
-                                                    class="navi-header font-weight-bolder text-uppercase font-size-xs text-primary pb-2">
-                                                    Choose an action: </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-print"></i></span> <span
-                                                            class="navi-text">Print</span> </a> </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-copy"></i></span> <span
-                                                            class="navi-text">Copy</span> </a> </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-file-excel-o"></i></span> <span
-                                                            class="navi-text">Excel</span> </a> </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-file-text-o"></i></span> <span
-                                                            class="navi-text">CSV</span> </a> </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-file-pdf-o"></i></span> <span
-                                                            class="navi-text">PDF</span> </a> </li>
-                                            </ul>
-                                        </div>
-                                    </div> <a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2"
+
+                                    <a href="{{ route('portfolio.edit', $portfolio->id) }}" class="btn btn-sm btn-clean btn-icon mr-2"
                                         title="Edit details"> <span class="svg-icon svg-icon-md"> <svg
                                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

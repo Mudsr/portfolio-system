@@ -36,7 +36,9 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $portfolio = Portfolio::create($request->except('_token'));
+        return redirect()->route('portfolio.index');
     }
 
     /**
@@ -56,9 +58,9 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Portfolio $portfolio)
     {
-        return view('pages.portfolio.edit');
+        return view('pages.portfolio.edit', compact('portfolio'));
     }
 
     /**
@@ -68,9 +70,11 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Portfolio $portfolio)
     {
-        //
+        $portfolio->update($request->all());
+
+        return redirect()->route('portfolio.index');
     }
 
     /**

@@ -25,11 +25,11 @@ class CreatePortfoliosTable extends Migration
             $table->string('contact_email');
             $table->date('agreement_date');
             $table->date('agreement_expiry');
-            $table->date('update_effective_from');
-            $table->date('closing_date');
-            $table->string('closing_reason');
-            $table->string('closing_remarks');
-            $table->date('management_fee_last_calculated_at');
+            $table->date('update_effective_from')->nullable();
+            $table->date('closing_date')->nullable();
+            $table->string('closing_reason')->nullable();
+            $table->string('closing_remarks')->nullable();
+            $table->date('management_fee_last_calculated_at')->nullable();
 
             $table->timestamps();
         });
