@@ -47,8 +47,8 @@
                     </a>
                 </li>
 
-                <li class="menu-item menu-item-active" aria-haspopup="true">
-                    <a href="index.html" class="menu-link">
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{ route('clients.index') }}" class="menu-link">
                          <span class="svg-icon menu-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -61,8 +61,8 @@
                     </a>
                 </li>
 
-                <li class="menu-item menu-item-active" aria-haspopup="true">
-                    <a href="index.html" class="menu-link">
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{ route('documents.index') }}" class="menu-link">
                          <span class="svg-icon menu-icon"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\File.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

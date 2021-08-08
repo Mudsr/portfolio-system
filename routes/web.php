@@ -19,6 +19,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [PortfolioController::class, 'index']);
 
     Route::resource('portfolio', PortfolioController::class);
+    Route::resource('clients', PortfolioController::class);
+    Route::resource('documents', PortfolioController::class);
 
     Route::get('/dashboard', function () {
                 return view('layouts.main');
