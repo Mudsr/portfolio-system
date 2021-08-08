@@ -5,11 +5,11 @@
     <div class="card card-custom">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title">
-                <h3 class="card-label">Portfolios</h3>
+                <h3 class="card-label">Clients</h3>
             </div>
             <div class="card-toolbar">
 
-                <a href="{{ route('portfolio.create') }}" class="btn btn-primary font-weight-bolder">
+                <a href="{{ route('clients.create') }}" class="btn btn-primary font-weight-bolder">
                     <span class="svg-icon svg-icon-md">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                             height="24px" viewBox="0 0 24 24" version="1.1">
@@ -22,68 +22,39 @@
                             </g>
                         </svg>
                     </span>
-                    Create Portfolio
+                    Create Client
                 </a>
             </div>
         </div>
         <div class="card-body">
 
-            @forelse ($portfolios as $portfolio)
+            @forelse ($clients as $client)
                 <table class="table tale-responsive">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-muted">#</th>
-                            <th scope="col" class="text-muted">First</th>
-                            <th scope="col" class="text-muted">Last</th>
-                            <th scope="col" class="text-muted">Handle</th>
-                            <th scope="col" class="text-muted">Actions</th>
+                            <th scope="col" class="text-muted">Addres</th>
+                            <th scope="col" class="text-muted">Telephone</th>
+                            <th scope="col" class="text-muted">Email</th>
+                            <th scope="col" class="text-muted">ID Type</th>
+                            <th scope="col" class="text-muted">ID No</th>
+                            <th scope="col" class="text-muted">ID Expiry</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <th scope="row">{{ $client->address }}</th>
+                            <td>{{ $client->telephone }}</td>
+                            <td>{{ $client->email }}</td>
+                            <td>{{ $client->id_type }}</td>
+                            <td>{{ $client->id_no }}</td>
+                            <td>{{ $client->id_expiry }}</td>
                             <td>
                                 <span style="overflow: visible; position: relative; width: 125px;">
-                                    <div class="dropdown dropdown-inline"> <a href="javascript:;"
-                                            class="btn btn-sm btn-clean btn-icon mr-2" data-toggle="dropdown"
-                                            aria-expanded="false"> <span class="svg-icon svg-icon-md"> <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                    viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24" height="24"></rect>
-                                                        <path
-                                                            d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z"
-                                                            fill="#000000"></path>
-                                                    </g>
-                                                </svg> </span> </a>
-                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="display: none;">
-                                            <ul class="navi flex-column navi-hover py-2">
-                                                <li
-                                                    class="navi-header font-weight-bolder text-uppercase font-size-xs text-primary pb-2">
-                                                    Choose an action: </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-print"></i></span> <span
-                                                            class="navi-text">Print</span> </a> </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-copy"></i></span> <span
-                                                            class="navi-text">Copy</span> </a> </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-file-excel-o"></i></span> <span
-                                                            class="navi-text">Excel</span> </a> </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-file-text-o"></i></span> <span
-                                                            class="navi-text">CSV</span> </a> </li>
-                                                <li class="navi-item"> <a href="#" class="navi-link"> <span class="navi-icon"><i
-                                                                class="la la-file-pdf-o"></i></span> <span
-                                                            class="navi-text">PDF</span> </a> </li>
-                                            </ul>
-                                        </div>
-                                    </div> <a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2"
-                                        title="Edit details"> <span class="svg-icon svg-icon-md"> <svg
+
+                                    <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-sm btn-clean btn-icon mr-2"
+                                        title="Edit details">
+                                        <span class="svg-icon svg-icon-md">
+                                            <svg
                                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -96,8 +67,13 @@
                                                     <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
                                                         rx="1"></rect>
                                                 </g>
-                                            </svg> </span> </a> <a href="javascript:;" class="btn btn-sm btn-clean btn-icon"
-                                        title="Delete"> <span class="svg-icon svg-icon-md"> <svg
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon"
+                                        title="Delete">
+                                        <span class="svg-icon svg-icon-md">
+                                            <svg
                                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -107,16 +83,18 @@
                                                         fill="#000000" fill-rule="nonzero"></path>
                                                     <path
                                                         d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
-                                                        fill="#000000" opacity="0.3"></path>
+                                                    fill="#000000" opacity="0.3"></path>
                                                 </g>
-                                            </svg> </span> </a>
+                                            </svg>
+                                        </span>
+                                    </a>
                                 </span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             @empty
-                <h3 class="text-muted text-center">No portfolio Exist</h3>
+                <h3 class="text-muted text-center">No Client Exists</h3>
             @endforelse
         </div>
     </div>

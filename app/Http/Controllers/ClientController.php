@@ -26,7 +26,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('pages.client.create');
+        return view('pages.clients.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $portfolio = Client::create($request->except('_token'));
-        return redirect()->route('Client.index');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -60,7 +60,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('pages.client.edit', compact('portfolio'));
+        return view('pages.clients.edit', compact('client'));
     }
 
     /**
@@ -73,7 +73,7 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->all());
-        return redirect()->route('portfolio.index');
+        return redirect()->route('clients.index');
     }
 
     /**

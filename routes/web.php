@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PortfolioController;
 
@@ -19,8 +21,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [PortfolioController::class, 'index']);
 
     Route::resource('portfolio', PortfolioController::class);
-    Route::resource('clients', PortfolioController::class);
-    Route::resource('documents', PortfolioController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('documents', DocumentController::class);
 
     Route::get('/dashboard', function () {
                 return view('layouts.main');

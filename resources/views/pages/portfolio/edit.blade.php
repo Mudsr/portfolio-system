@@ -3,7 +3,7 @@
 @section('content')
     <div class="card card-custom gutter-b example example-compact">
         <div class="card-header">
-            <h3 class="card-title">Create Prtfolio</h3>
+            <h3 class="card-title">Update Prtfolio</h3>
         </div>
 
         <form action="{{ route('portfolio.update', $portfolio->id) }}" method="POST" enctype="multipart/form-data">

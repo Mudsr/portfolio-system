@@ -70,8 +70,11 @@
                                                     <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
                                                         rx="1"></rect>
                                                 </g>
-                                            </svg> </span> </a> <a href="javascript:;" class="btn btn-sm btn-clean btn-icon"
-                                        title="Delete"> <span class="svg-icon svg-icon-md"> <svg
+                                            </svg> </span> </a>
+                                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon"
+                                        title="Delete">
+                                        <span class="svg-icon svg-icon-md">
+                                            <svg
                                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -83,14 +86,16 @@
                                                         d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
                                                         fill="#000000" opacity="0.3"></path>
                                                 </g>
-                                            </svg> </span> </a>
+                                            </svg>
+                                        </span>
+                                    </a>
                                 </span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             @empty
-                <h3 class="text-muted text-center">No portfolio Exist</h3>
+                <h3 class="text-muted text-center">No portfolio Exists</h3>
             @endforelse
         </div>
     </div>
