@@ -15,6 +15,13 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+
+            // $table->foreignId('portfolio_id')->nullable()->constrained()->onDelete('cascade');
+
+            $table->string('name');
+            $table->string('related_to');
+            $table->string('department');
+
             $table->timestamps();
         });
     }

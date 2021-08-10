@@ -5,7 +5,6 @@
         <div class="card-header">
             <h3 class="card-title">Create Client</h3>
         </div>
-
         <form action="{{ route('clients.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">

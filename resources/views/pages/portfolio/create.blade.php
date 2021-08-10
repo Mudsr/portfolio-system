@@ -22,7 +22,7 @@
                         Management Fee
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="number" class="form-control col-md-8" placeholder="Management Fee" name="managment_fee" min="0" required/>
+                    <input type="number" class="form-control col-md-8" placeholder="Management Fee" name="management_fee" min="0" required/>
                 </div>
 
                 <div class="form-group row">

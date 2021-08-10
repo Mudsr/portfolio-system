@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -13,7 +14,9 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        //
+        $documents = Document::all();
+
+        return view('pages.documents.index', compact('documents'));
     }
 
     /**
@@ -23,7 +26,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.documents.create');
     }
 
     /**
@@ -34,7 +37,8 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $portfolio = Document::create($request->except('_token'));
+        return redirect()->route('documents.index');
     }
 
     /**
@@ -54,9 +58,9 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Document $document)
     {
-        //
+        return view('pages.documents.edit', compact('document'));
     }
 
     /**
@@ -66,9 +70,10 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Document $document)
     {
-        //
+        $document->update($request->all());
+        return redirect()->route('documents.index');
     }
 
     /**
@@ -77,8 +82,10 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Document $document)
     {
-        //
+        $document->delete();
+
+        return redirect()->route('documents.index');
     }
 }

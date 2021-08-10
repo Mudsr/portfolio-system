@@ -16,6 +16,8 @@ class CreateClientsTable extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
 
+            // $table->foreignId('portfolio_id')->nullable()->constrained()->onDelete('cascade');
+
             $table->string('address');
             $table->string('telephone');
             $table->string('email');

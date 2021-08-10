@@ -30,6 +30,7 @@ class CreatePortfoliosTable extends Migration
             $table->string('closing_reason')->nullable();
             $table->string('closing_remarks')->nullable();
             $table->date('management_fee_last_calculated_at')->nullable();
+            $table->boolean('is_current')->nullable();
 
             $table->timestamps();
         });
