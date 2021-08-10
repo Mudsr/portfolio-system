@@ -100,6 +100,7 @@ class PortfolioController extends Controller
             $currentPortfolio->update([
                 'is_current' => false
             ]);
+
             $portfolio->update([
                 'is_current' => true
             ]);

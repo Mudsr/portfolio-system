@@ -25,6 +25,7 @@ class Portfolio extends Model
         'closing_reason',
         'closing_remarks',
         'management_fee_last_calculated_at',
+        'is_current'
     ];
 
 
