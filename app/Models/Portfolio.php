@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Facade\Ignition\QueryRecorder\Query;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,4 +32,13 @@ class Portfolio extends Model
         'created_at',
         'updated_at'
     ];
+
+    public static function getCurrentPortfolio()
+    {
+        $currentPortfolio = self::where('is_current', true)->first();
+        if(!$currentPortfolio){
+            return self::first();
+        }
+        return $currentPortfolio;
+    }
 }

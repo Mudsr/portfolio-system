@@ -21,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [PortfolioController::class, 'index']);
 
     Route::resource('portfolio', PortfolioController::class);
+    Route::post('portfolios/switch', [PortfolioController::class, 'switchPortfolio'])->name('switch.portfolio');
     Route::resource('clients', ClientController::class);
     Route::resource('documents', DocumentController::class);
 

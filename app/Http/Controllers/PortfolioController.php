@@ -89,4 +89,22 @@ class PortfolioController extends Controller
 
         return redirect()->back();
     }
+
+    public function switchPortfolio(Request $request)
+    {
+        $currentPortfolio = Portfolio::getCurrentPortfolio();
+
+        if($request->filled('portfolio') && $request->portfolio != $currentPortfolio->id ) {
+            $portfolio = Portfolio::findorFail($request->portfolio);
+
+            $currentPortfolio->update([
+                'is_current' => false
+            ]);
+            $portfolio->update([
+                'is_current' => true
+            ]);
+        }
+
+        return redirect()->back();
+    }
 }
