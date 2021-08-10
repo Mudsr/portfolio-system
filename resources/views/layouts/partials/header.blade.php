@@ -644,7 +644,7 @@
         <!--end::Header Menu Wrapper-->
         <!--begin::Topbar-->
         <div class="topbar">
-           
+
 
             <!--begin::User-->
             <div class="topbar-item">
@@ -656,6 +656,7 @@
                     </span>
                 </div>
             </div>
+            
             <!--end::User-->
         </div>
         <!--end::Topbar-->

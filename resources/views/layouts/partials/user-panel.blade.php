@@ -2,9 +2,9 @@
     <!--begin::Header-->
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5" kt-hidden-height="40" style="">
         <h3 class="font-weight-bold m-0">User Profile
-        <small class="text-muted font-size-sm ml-2">12 messages</small></h3>
+        {{-- <small class="text-muted font-size-sm ml-2">12 messages</small></h3> --}}
         <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
-            <i class="ki ki-close icon-xs text-muted"></i>
+            <i class="ki ki-close icon-xs text-muted float-right"></i>
         </a>
     </div>
     <!--end::Header-->
@@ -52,7 +52,7 @@
             </div>
         </div>
         <!--end::Header-->
-        
+
         <!--begin::Separator-->
         <div class="separator separator-dashed mt-8 mb-5"></div>
         <!--end::Separator-->
@@ -166,7 +166,7 @@
         <!--begin::Separator-->
         <div class="separator separator-dashed my-7"></div>
         <!--end::Separator-->
-        <!--begin::Notifications-->
+        {{-- <!--begin::Notifications-->
         <div>
             <!--begin:Heading-->
             <h5 class="mb-5">Recent Notifications</h5>
@@ -262,7 +262,7 @@
             </div>
             <!--end::Item-->
         </div>
-        <!--end::Notifications-->
+        <!--end::Notifications--> --}}
     <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 648px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 300px;"></div></div></div>
     <!--end::Content-->
 </div>

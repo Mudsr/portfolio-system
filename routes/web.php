@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('documents', DocumentController::class);
 
     Route::get('/dashboard', function () {
-                return view('layouts.main');
+                return view('dashboard');
     })->name('dashboard');
 
 });
