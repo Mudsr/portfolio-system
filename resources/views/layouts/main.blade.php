@@ -37,6 +37,8 @@
 						<div class="d-flex flex-column-fluid">
 							<!--begin::Container-->
 							<div class="container">
+
+                                @include('layouts.partials.flash-notifications')
                                 @yield('content')
 							</div>
 							<!--end::Container-->
