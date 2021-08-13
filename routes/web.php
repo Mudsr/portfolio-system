@@ -18,18 +18,15 @@ use App\Http\Controllers\PortfolioController;
 
 Route::middleware(['auth'])->group(function () {
 
+    //portfolios routes
     Route::get('/', [PortfolioController::class, 'index']);
-
-    Route::resource('portfolio', PortfolioController::class);
+    Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::post('portfolios/switch', [PortfolioController::class, 'switchPortfolio'])->name('switch.portfolio');
-    Route::post('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolio'])->name('close.portfolio');
+    Route::get('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolio'])->name('close.portfolio');
+    //clients routes
     Route::resource('clients', ClientController::class);
+    //documents routes
     Route::resource('documents', DocumentController::class);
-
-    Route::get('/dashboard', function () {
-                return view('dashboard');
-    })->name('dashboard');
-
 });
 
 

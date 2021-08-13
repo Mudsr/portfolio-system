@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-use Facade\Ignition\QueryRecorder\Query;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
+use Facade\Ignition\QueryRecorder\Query;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Portfolio extends Model
+class Portfolio extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable  = [
         'name',
@@ -42,5 +44,14 @@ class Portfolio extends Model
             return self::first();
         }
         return $currentPortfolio;
+    }
+
+    public function isClosed()
+    {
+        if (isset($this->closing_date)) {
+            return true;
+        }
+
+        return false;
     }
 }

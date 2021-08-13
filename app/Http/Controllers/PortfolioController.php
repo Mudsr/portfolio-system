@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PortfolioRequest;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 
@@ -34,11 +35,12 @@ class PortfolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PortfolioRequest $request)
     {
-        // dd($request->all());
         $portfolio = Portfolio::create($request->except('_token'));
-        return redirect()->route('portfolio.index');
+        $portfolio->addMediaFromRequest('agreement_document')->toMediaCollection('portfolios');
+
+        return redirect()->route('portfolio.index')->with('success', 'Portfolio created Successfully');
     }
 
     /**
@@ -47,7 +49,7 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Portfolio $portfolio)
     {
         //
     }
@@ -70,11 +72,14 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Portfolio $portfolio)
+    public function update(PortfolioRequest $request, Portfolio $portfolio)
     {
         $portfolio->update($request->all());
 
-        return redirect()->route('portfolio.index');
+        $portfolio->clearMediaCollection('portfolios');
+        $portfolio->addMediaFromRequest('agreement_document')->toMediaCollection('portfolios');
+
+        return redirect()->route('portfolio.index')->with('success', 'Portfolio updated Successfully');
     }
 
     /**
@@ -87,7 +92,7 @@ class PortfolioController extends Controller
     {
         $portfolio->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Portfolio Deleted Successfully');
     }
 
     public function switchPortfolio(Request $request)
@@ -109,12 +114,12 @@ class PortfolioController extends Controller
         return redirect()->back();
     }
 
-    public function closePortfolio(Request $portfolio)
+    public function closePortfolio(Portfolio $portfolio)
     {
         $portfolio->update([
-            'closed_at' => now(),
+            'closing_date' => now(),
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Portfolio Closed Successfully');
     }
 }
