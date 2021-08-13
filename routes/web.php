@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('portfolio', PortfolioController::class);
     Route::post('portfolios/switch', [PortfolioController::class, 'switchPortfolio'])->name('switch.portfolio');
+    Route::post('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolio'])->name('close.portfolio');
     Route::resource('clients', ClientController::class);
     Route::resource('documents', DocumentController::class);
 

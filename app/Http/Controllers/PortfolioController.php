@@ -108,4 +108,13 @@ class PortfolioController extends Controller
 
         return redirect()->back();
     }
+
+    public function closePortfolio(Request $portfolio)
+    {
+        $portfolio->update([
+            'closed_at' => now(),
+        ]);
+
+        return redirect()->back();
+    }
 }

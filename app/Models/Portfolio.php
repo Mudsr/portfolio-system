@@ -5,10 +5,11 @@ namespace App\Models;
 use Facade\Ignition\QueryRecorder\Query;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Portfolio extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable  = [
         'name',
@@ -25,7 +26,7 @@ class Portfolio extends Model
         'closing_reason',
         'closing_remarks',
         'management_fee_last_calculated_at',
-        'is_current'
+        // 'is_current'
     ];
 
 

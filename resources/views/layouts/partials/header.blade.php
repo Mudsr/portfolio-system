@@ -701,7 +701,7 @@
                 <!--end::Dropdown-->
             </div> --}}
 
-            <div>
+            {{-- <div>
                 <div  class="topbar-item">
                     <div class="d-flex mt-4 mr-5">
                         <form action="{{ route('switch.portfolio') }}" method="post" id="switch_portfolio">
@@ -718,7 +718,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--begin::User-->
             <div class="topbar-item">
                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">

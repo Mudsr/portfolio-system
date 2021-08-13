@@ -25,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $portfolio = Portfolio::getCurrentPortfolio();
-        $portfolios = Portfolio::all();
-        View::share('currentPortfolio',$portfolio);
-        View::share('portfolios',$portfolios);
+        // $portfolio = Portfolio::getCurrentPortfolio();
+        // $portfolios = Portfolio::all();
+        // View::share('currentPortfolio',$portfolio);
+        // View::share('portfolios',$portfolios);
     }
 }
