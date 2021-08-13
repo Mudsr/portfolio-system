@@ -14,3 +14,4 @@
 <!--begin::Page Scripts(used by this page)-->
 <script src="{{ asset('metronic/assets/js/pages/widgets.js') }}"></script>
 <!--end::Page Scripts-->
+
