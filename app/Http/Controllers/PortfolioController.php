@@ -114,12 +114,21 @@ class PortfolioController extends Controller
         return redirect()->back();
     }
 
-    public function closePortfolio(Portfolio $portfolio)
+    public function closePortfolioForm(Portfolio $portfolio)
+    {
+        return view('pages.portfolio.close', compact('portfolio'));
+    }
+
+    public function closePortfolio(PortfolioRequest $request, Portfolio $portfolio)
     {
         $portfolio->update([
-            'closing_date' => now(),
+            'closing_date' => $request->closing_date,
+            'closing_reason' => $request->closing_reason,
+            'closing_remarks' => $request->closing_remarks,
+            'management_fee_last_calculated_at' => $request->management_fee_last_calculated_at,
+
         ]);
 
-        return redirect()->back()->with('success', 'Portfolio Closed Successfully');
+        return redirect()->route('portfolio.index')->with('success', 'Portfolio Closed Successfully');
     }
 }

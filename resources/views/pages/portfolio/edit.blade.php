@@ -5,7 +5,6 @@
         <div class="card-header">
             <h3 class="card-title">Update Prtfolio</h3>
         </div>
-
         <form action="{{ route('portfolio.update', $portfolio->id) }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -16,7 +15,16 @@
                         Update Effective From
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="date" class="form-control col-md-8" name="update_effective_from" placeholder="Password" required/>
+                    <div class="col-md-8">
+                        <input type="date" class="form-control @error('update_effective_from') is-invalid @enderror"
+                            value="{{ old('update_effective_from', $portfolio->update_effective_from) }}"
+                            name="update_effective_from"
+                            required />
+                        @error('management_fee')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                 </div>
 
                 <div class="form-group row">
@@ -24,7 +32,14 @@
                         New Management Fee
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="number" class="form-control col-md-8" placeholder="Management Fee" min="0"/>
+                    <div class="col-md-8">
+                        <input type="number" class="form-control @error('management_fee') is-invalid @enderror"
+                            placeholder="Management Fee" value="{{ old('management_fee', $portfolio->management_fee) }}"
+                            name="management_fee" min="0" required />
+                        @error('management_fee')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -32,7 +47,15 @@
                         New Minimum Fee Per Quarter
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="number" class="form-control col-md-8" placeholder="Management Fee" min="0"/>
+                    <div class="col-md-8">
+                        <input type="number" class="form-control @error('minimum_fee_per_quarter') is-invalid @enderror"
+                            placeholder="Minimum Fee Per Quarter"
+                            value="{{ old('minimum_fee_per_quarter', $portfolio->minimum_fee_per_quarter) }}"
+                            name="minimum_fee_per_quarter" min="0" required />
+                        @error('minimum_fee_per_quarter')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
 
@@ -41,7 +64,15 @@
                         Contact Person
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control col-md-8" placeholder="Contact Person Name" />
+                    <div class="col-md-8">
+                        <input type="text" class="form-control @error('contact_person') is-invalid @enderror"
+                            placeholder="Contact Person Name"
+                            value="{{ old('contact_person', $portfolio->contact_person) }}" name="contact_person"
+                            required />
+                        @error('contact_person')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -49,7 +80,15 @@
                         Contact Number
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="tel" class="form-control col-md-8" placeholder="Contact Person Number" />
+                    <div class="col-md-8">
+                        <input type="tel" class="form-control @error('contact_number') is-invalid @enderror"
+                            placeholder="Contact Person Number"
+                            value="{{ old('contact_number', $portfolio->contact_number) }}" name="contact_number"
+                            required />
+                        @error('contact_number')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -57,7 +96,14 @@
                         Contact Email
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="email" class="form-control col-md-8" placeholder="Enter email" />
+                    <div class="col-md-8">
+                        <input type="email" class="form-control @error('contact_email') is-invalid @enderror"
+                            placeholder="Enter email" value="{{ old('contact_email', $portfolio->contact_email) }}"
+                            name="contact_email" required />
+                        @error('contact_person')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -65,7 +111,15 @@
                         New Portfolio Agreement Date
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="date" class="form-control col-md-8" name="agreement_date" placeholder="Password" required/>
+                    <div class="col-md-8">
+                        <input type="date"
+                            class="form-control @error('agreement_date') is-invalid @enderror"
+                            value="{{ old('agreement_date', $portfolio->agreement_date) }}"
+                            name="agreement_date" placeholder="Password" required />
+                        @error('agreement_date')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -73,17 +127,30 @@
                         New Portfolio Agreement Expiry
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="date" class="form-control col-md-8" name="agreement_expiry" placeholder="Password" required/>
+                    <div class="col-md-8">
+                        <input type="date"
+                            class="form-control @error('agreement_expiry') is-invalid @enderror"
+                            value="{{ old('agreement_expiry', $portfolio->agreement_expiry) }}"
+                            name="agreement_expiry" required />
+                        @error('agreement_expiry')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
-                        Portfolio Agreement Expiry
+                        Agreement Documnet
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="file" class="form-control col-md-8" id="exampleInputPassword1" placeholder="Password" />
+                    <div class="col-md-8">
+                        <input type="file" class="form-control @error('agreement_document') is-invalid @enderror"
+                            name="agreement_document" required />
+                        @error('agreement_document')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
-
 
             </div>
             <div class="card-footer">

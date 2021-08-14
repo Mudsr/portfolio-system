@@ -22,7 +22,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [PortfolioController::class, 'index']);
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::post('portfolios/switch', [PortfolioController::class, 'switchPortfolio'])->name('switch.portfolio');
-    Route::get('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolio'])->name('close.portfolio');
+    Route::get('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolioForm'])->name('close.portfolio.form');
+    Route::post('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolio'])->name('close.portfolio');
     //clients routes
     Route::resource('clients', ClientController::class);
     //documents routes
