@@ -116,7 +116,7 @@
                     </tbody>
                 </table>
             @empty
-                <h3 class="text-muted text-center">No portfolio Exists</h3>
+                <h3 class="text-muted text-center">No Portfolio Exists</h3>
             @endforelse
         </div>
     </div>

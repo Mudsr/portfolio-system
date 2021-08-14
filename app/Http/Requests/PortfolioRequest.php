@@ -34,7 +34,7 @@ class PortfolioRequest extends FormRequest
                 'agreement_date' => ['required', 'date'],
                 'agreement_expiry' => ['required', 'date'],
                 'update_effective_from' => ['required', 'date'],
-
+                'agreement_document' => ['required', 'file', 'mimes:pdf,docx']
             ];
         }
 
@@ -57,6 +57,7 @@ class PortfolioRequest extends FormRequest
             'contact_email' => ['required', 'string', 'email'],
             'agreement_date' => ['required', 'date'],
             'agreement_expiry' => ['required', 'date'],
+            'agreement_document' => ['required', 'file', 'mimes:pdf,docx']
         ];
     }
 }

@@ -38,6 +38,7 @@
                             <th scope="col" class="text-muted">ID Type</th>
                             <th scope="col" class="text-muted">ID No</th>
                             <th scope="col" class="text-muted">ID Expiry</th>
+                            <th scope="col" class="text-muted">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
