@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolioForm'])->name('close.portfolio.form');
     Route::post('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolio'])->name('close.portfolio');
     //clients routes
-    Route::resource('clients', ClientController::class);
+    Route::resource('clients', ClientController::class)->except('show');
     //documents routes
     Route::resource('documents', DocumentController::class);
 });

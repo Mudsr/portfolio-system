@@ -97,6 +97,8 @@
             @empty
                 <h3 class="text-muted text-center">No Client Exists</h3>
             @endforelse
+
+            {{ $clients->render() }}
         </div>
     </div>
 @endsection

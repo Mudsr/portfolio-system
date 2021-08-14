@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::paginate(15);
 
         return view('pages.clients.index', compact('clients'));
     }
@@ -35,10 +36,10 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
         $portfolio = Client::create($request->except('_token'));
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('success', 'Client created successfully');
     }
 
     /**
@@ -73,7 +74,7 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->all());
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('success', 'client updated successfully');
     }
 
     /**

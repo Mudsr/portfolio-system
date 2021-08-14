@@ -54,7 +54,14 @@
                         ID Expiry Date
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="date" class="form-control col-md-8" name="id_expiry" placeholder="Password" required/>
+                    <input type="date" class="form-control col-md-8" name="id_expiry" required/>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputPassword1" class="col-md-3 col-form-label">
+                        ID Copy Attachment
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="file" class="form-control col-md-8" name="id_attachment" required/>
                 </div>
 
             </div>

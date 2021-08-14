@@ -37,9 +37,9 @@
                         <select class="form-control @error('closing_reason') is-invalid @enderror"
                             name="closing_reason">
                             <option value="" class="text-muted">---Select---</option>
-                            <option value="flat" {{ old('fee_calculation_method') == 'flat' ? selected : '' }}>Reason-1</option>
-                            <option value="proportioate" {{ old('fee_calculation_method') == 'proportioate' ? selected : '' }}>
-                                reason2</option>
+                            <option value="flat" {{ old('closing_reason') == 'expired' ? selected : '' }}>Expired</option>
+                            <option value="proportioate" {{ old('closing_reason') == 'canceled' ? selected : '' }}>
+                                Canceled</option>
                         </select>
 
                         @error('closing_reason')
