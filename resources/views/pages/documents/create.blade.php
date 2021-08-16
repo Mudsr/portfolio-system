@@ -15,7 +15,12 @@
                         Name
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control col-md-8" placeholder="Document Name" name="name" required/>
+                    <div class="col-md-8">
+                        <input type="text"  class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Document Name" name="name" required/>
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -23,15 +28,21 @@
                         Related To
                         <span class="text-danger">*</span>
                     </label>
-                    <select class="form-control col-md-8" name="related_to">
-                        <option value="" class="text-muted">---Select---</option>
-                        <option value="client">Client</option>
-                        <option value="building">Building</option>
-                        <option value="contract">Contract</option>
-                    </select>
+                    <div class="col-md-8">
+                        <select class="form-control @error('related_to') is-invalid @enderror" name="related_to">
+                            <option value="" class="text-muted">---Select---</option>
+                            <option value="client" {{ old('related_to')=='client' ? 'selected' :'' }} >Client</option>
+                            <option value="building" {{ old('related_to')=='building' ? 'selected' :'' }} >Building</option>
+                            <option value="contract" {{ old('related_to')=='contract' ? 'selected' :'' }} >Contract</option>
+                        </select>
+                        @error('related_to')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                 </div>
 
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                     <label for="exampleSelect1" class="col-md-3 col-form-label">
                         Department
                         <span class="text-danger">*</span>
@@ -42,17 +53,20 @@
                         <option value="building">Department2</option>
                         <option value="contract">Department2</option>
                     </select>
-                </div>
+                </div> --}}
 
                 <div class="form-group row">
-                    <label for="exampleInputPassword1" class="col-md-3 col-form-label">
+                    <label class="col-md-3 col-form-label">
                         Documnet
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="file" class="form-control col-md-8" name="document" required/>
+                    <div class="col-md-8">
+                        <input type="file" class="form-control @error('document') is-invalid @enderror" name="document" required/>
+                        @error('document')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
-
-
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>

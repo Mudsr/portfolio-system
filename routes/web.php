@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
     //clients routes
     Route::resource('clients', ClientController::class)->except('show');
     //documents routes
-    Route::resource('documents', DocumentController::class);
+    Route::resource('documents', DocumentController::class)->except('show','edit','update');
 });
 
 

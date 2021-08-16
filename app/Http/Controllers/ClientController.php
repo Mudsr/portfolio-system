@@ -95,6 +95,6 @@ class ClientController extends Controller
     {
         $client->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'client deleted successfully');;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DocumentRequest;
 use App\Models\Document;
 use Illuminate\Http\Request;
 
@@ -35,10 +36,13 @@ class DocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DocumentRequest $request)
     {
-        $portfolio = Document::create($request->except('_token'));
-        return redirect()->route('documents.index');
+        $document = Document::create($request->except('_token'));
+
+        $document->addMediaFromRequest('document')->toMediaCollection('documents');
+
+        return redirect()->route('documents.index')->with('success', 'document created successfully');
     }
 
     /**
@@ -73,7 +77,7 @@ class DocumentController extends Controller
     public function update(Request $request, Document $document)
     {
         $document->update($request->all());
-        return redirect()->route('documents.index');
+        return redirect()->route('documents.index')->with('success', 'document updated successfully');;
     }
 
     /**
@@ -86,6 +90,6 @@ class DocumentController extends Controller
     {
         $document->delete();
 
-        return redirect()->route('documents.index');
+        return redirect()->route('documents.index')->with('success', 'document deleted successfully');
     }
 }
