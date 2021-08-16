@@ -23,13 +23,31 @@ class ClientRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->isMethod('put')) {
+            return $this->validatePutRequest();
+        }
+
         return [
             'address'=> ['required'],
             'telephone' => ['required'],
-            'email' => ['required', 'users'],
-            'id_type' => 'required',
-            'id_no' => ['id_no'],
-            'id_expiry' => ['id_expiry'],
+            'email' => ['required'],
+            'id_type' => ['required'],
+            'id_no' => ['required'],
+            'id_expiry' => ['required', 'date'],
+            'id_attachment' => ['required', 'file', 'mimes:pdf,docx']
+        ];
+    }
+
+    private function validatePutRequest()
+    {
+        return [
+            'address'=> ['required'],
+            'telephone' => ['required'],
+            'email' => ['required'],
+            'id_type' => ['required'],
+            'id_no' => ['required'],
+            'id_expiry' => ['required', 'date'],
+            'id_attachment' => ['file', 'mimes:pdf,docx']
         ];
     }
 }

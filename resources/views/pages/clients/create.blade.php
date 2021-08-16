@@ -14,7 +14,12 @@
                         Email
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="email" class="form-control col-md-8" placeholder="someone@example.com" name="email" required/>
+                    <div class="col-md-8">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="someone@example.com" name="email" required/>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -22,7 +27,12 @@
                         Address:
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control col-md-8" placeholder="Address" name="address" required/>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Address" value="{{ old('address') }}" name="address" required/>
+                        @error('address')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -30,7 +40,12 @@
                         Telephone
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="tel" class="form-control col-md-8" placeholder="Telephone" name="telephone" required/>
+                    <div class="col-md-8">
+                        <input type="tel" class="form-control @error('telephone') is-invalid @enderror" placeholder="Telephone" value="{{ old('telephone') }}" name="telephone" required/>
+                        @error('telephone')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -38,7 +53,12 @@
                         ID Type
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control col-md-8" placeholder="ID Type" name="id_type" min="0" required/>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control @error('id_type') is-invalid @enderror" placeholder="ID Type" value="{{ old('id_type') }}" name="id_type" min="0" required/>
+                        @error('id_type')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -46,7 +66,12 @@
                         ID No
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control col-md-8" placeholder="ID No" name="id_no" min="0" required/>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control @error('id_no') is-invalid @enderror" placeholder="ID No" value="{{ old('id_no') }}" name="id_no" min="0" required/>
+                        @error('id_no')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -54,14 +79,24 @@
                         ID Expiry Date
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="date" class="form-control col-md-8" name="id_expiry" required/>
+                    <div class="col-md-8">
+                        <input type="date" class="form-control @error('id_expiry') is-invalid @enderror" value="{{ old('id_expiry') }}" name="id_expiry" required/>
+                        @error('id_expiry')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
                         ID Copy Attachment
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="file" class="form-control col-md-8" name="id_attachment" required/>
+                    <div class="col-md-8">
+                        <input type="file" class="form-control @error('id_attachment') is-invalid @enderror"  name="id_attachment" required/>
+                        @error('id_attachment')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
             </div>

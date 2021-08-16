@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ClientRequest;
+use App\Models\User;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientRequest;
 
 class ClientController extends Controller
 {
@@ -15,7 +16,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::paginate(15);
+        $clients = User::clients()->paginate(15);
 
         return view('pages.clients.index', compact('clients'));
     }
@@ -38,7 +39,10 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
-        $portfolio = Client::create($request->except('_token'));
+        $client = User::create($request->except('_token'));
+        $client->addMediaFromRequest('id_attachment')->toMediaCollection('clients');
+        $client->assignRole('client');
+
         return redirect()->route('clients.index')->with('success', 'Client created successfully');
     }
 
@@ -48,7 +52,7 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(User $client)
     {
         //
     }
@@ -59,7 +63,7 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit(User $client)
     {
         return view('pages.clients.edit', compact('client'));
     }
@@ -71,9 +75,13 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientRequest $request, User $client)
     {
         $client->update($request->all());
+        if($request->filled('id_attachment')){
+            $client->clearMediaCollection('portfolios');
+            $client->addMediaFromRequest('id_attachment')->toMediaCollection('clients');
+        }
         return redirect()->route('clients.index')->with('success', 'client updated successfully');
     }
 
@@ -83,7 +91,7 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(User $client)
     {
         $client->delete();
 
