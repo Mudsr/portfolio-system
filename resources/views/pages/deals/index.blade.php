@@ -28,27 +28,21 @@
         </div>
         <div class="card-body">
 
-            @forelse ($portfolios as $portfolio)
+            @forelse ($deals as $deal)
                 <table class="table tale-responsive">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-muted">Name</th>
-                            <th scope="col" class="text-muted">Management Fee</th>
-                            <th scope="col" class="text-muted">Fee Per Quarter</th>
-                            <th scope="col" class="text-muted">Fee Calculation method</th>
-                            <th scope="col" class="text-muted">Contact Person</th>
-                            <th scope="col" class="text-muted">Contact Email</th>
-                            <th scope="col" class="text-muted">Agreement Date</th>
-                            <th scope="col" class="text-muted">Agreement Expiry</th>
-                            <th scope="col" class="text-muted">Status</th>
+                            <th scope="col" class="text-muted">Deal No</th>
+                            <th scope="col" class="text-muted">Portfolio</th>
+                            <th scope="col" class="text-muted">Client</th>
                             <th scope="col" class="text-muted">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">{{ $portfolio->name }}</th>
-                            <td>{{ $portfolio->managment_fee }}</td>
-                            <td>{{ $portfolio->minimum_fee_per_quarter }}</td>
+                            <th scope="row">{{ $deal->id }}</th>
+                            <td>{{ $deal->client->name }}</td>
+                            <td>{{ $portfolio->portolio->name }}</td>
                             <td>{{ $portfolio->fee_calculation_method }}</td>
                             <td>{{ $portfolio->contact_person }}</td>
                             <td>{{ $portfolio->contact_email }}</td>

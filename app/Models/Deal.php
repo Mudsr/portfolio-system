@@ -23,4 +23,15 @@ class Deal extends Model
     {
         return $this->hasOne(Plot::class);
     }
+
+    public function portfolio()
+    {
+        return $this->belongsTo(Portfolio::class);
+    }
+
+
+    function client()
+    {
+        return $this->belongsTo(User::class, 'client_id');
+    }
 }
