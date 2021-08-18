@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DealController;
+use App\Http\Controllers\PlotController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DocumentController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PortfolioController;
 
 /*
@@ -28,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('clients', ClientController::class)->except('show');
     //documents routes
     Route::resource('documents', DocumentController::class)->except('show','edit','update');
+    //plots routes
+    Route::resource('deals', DealController::class);
 });
 
 
