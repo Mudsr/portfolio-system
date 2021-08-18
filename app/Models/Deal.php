@@ -9,10 +9,7 @@ class Deal extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'deal_no',
-        'plot_no',
-    ];
+    protected $fillable = [];
 
     protected $dates = [
         'created_at',

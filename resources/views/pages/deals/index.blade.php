@@ -22,7 +22,7 @@
                             </g>
                         </svg>
                     </span>
-                    Create Portfolio
+                    Create Deal
                 </a>
             </div>
         </div>
@@ -110,7 +110,7 @@
                     </tbody>
                 </table>
             @empty
-                <h3 class="text-muted text-center">No Portfolio Exists</h3>
+                <h3 class="text-muted text-center">No Deal Exists</h3>
             @endforelse
         </div>
     </div>

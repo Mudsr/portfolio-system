@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deal;
+use App\Models\Portfolio;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DealController extends Controller
@@ -26,7 +28,10 @@ class DealController extends Controller
      */
     public function create()
     {
-        //
+        $clients = User::clients()->get();
+        $portfolios = Portfolio::all();
+
+        return view('pages.deals.create', compact('clients', 'portfolios'));
     }
 
     /**
