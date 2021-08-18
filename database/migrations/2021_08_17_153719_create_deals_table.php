@@ -15,6 +15,13 @@ class CreateDealsTable extends Migration
     {
         Schema::create('deals', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
+            $table->foreignId('client_id')->constrained('users')->onDelete('cascade');
+
+            $table->string('deal_no');
+            $table->string('plot_no');
+
             $table->timestamps();
         });
     }

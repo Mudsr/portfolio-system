@@ -15,6 +15,18 @@ class CreatePlotsTable extends Migration
     {
         Schema::create('plots', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('deal_id')->constrained()->onDelete('cascade');
+
+            $table->string('area_name');
+            $table->string('block');
+            $table->string('property_value');
+            $table->string('finance_amount');
+            $table->string('pai_rent');
+            $table->string('licensed_purpose');
+            $table->string('application_no');
+            $table->string('plot_area_size');
+
             $table->timestamps();
         });
     }
