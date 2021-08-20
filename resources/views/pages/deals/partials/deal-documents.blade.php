@@ -156,37 +156,8 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label">
-                        Email Attachment For new Deal
-                        <span class="text-danger">*</span>
-                    </label>
 
-                    <div class="col-md-8">
-                        <input type="file" class="form-control @error('new_deal_email_attachment') is-invalid @enderror"
-                            name="new_deal_email_attachment" required />
-
-                        @error('new_deal_email_attachment')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label">
-                        Email attachment for POA
-                        <span class="text-danger">*</span>
-                    </label>
-
-                    <div class="col-md-8">
-                        <input type="file" class="form-control @error('poa_email_attachment') is-invalid @enderror"
-                            name="poa_email_attachment" required />
-
-                        @error('poa_email_attachment')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
+               
             </div>
 
 

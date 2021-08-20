@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <form action="{{ route('portfolio.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('deals.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             @include('pages.deals.partials.deal-form')

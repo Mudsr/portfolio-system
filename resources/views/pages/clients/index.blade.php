@@ -29,7 +29,7 @@
         <div class="card-body">
 
             @forelse ($clients as $client)
-                <table class="table tale-responsive">
+                <table class="table table-responsive">
                     <thead>
                         <tr>
                             <th scope="col" class="text-muted">Addres</th>
