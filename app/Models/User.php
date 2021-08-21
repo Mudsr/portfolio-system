@@ -53,4 +53,9 @@ class User extends Authenticatable implements HasMedia
     {
        return $query->role('client');
     }
+
+    public function deals()
+    {
+        return $this->hasMany(Deal::class, 'client_id');
+    }
 }

@@ -13,15 +13,16 @@ class CreateRenewalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('renewals', function (Blueprint $table) {
-            $table->id();
+        // Schema::create('renewals', function (Blueprint $table) {
+        //     $table->id();
 
-            $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
-            $table->foreignId('client_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('plot_id')->constrained()->onDelete('cascade');
+        //     $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
+        //     $table->foreignId('client_id')->constrained('users')->onDelete('cascade');
+        //     $table->foreignId('plot_id')->constrained()->onDelete('cascade');
+        //     $table->date('renewed_at')->nullable();
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -31,6 +32,6 @@ class CreateRenewalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('renewals');
+        // Schema::dropIfExists('renewals');
     }
 }

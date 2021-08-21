@@ -12,11 +12,13 @@ class Deal extends Model
     protected $fillable = [
         'portfolio_id',
         'client_id',
+        'plot_no'
     ];
 
     protected $dates = [
         'created_at',
         'updated_at',
+        'renewed_at',
     ];
 
     public function plot()
@@ -33,5 +35,10 @@ class Deal extends Model
     function client()
     {
         return $this->belongsTo(User::class, 'client_id');
+    }
+
+    public function scopeRenewals($query)
+    {
+        $query->where('renewed_at', '!=',null);
     }
 }

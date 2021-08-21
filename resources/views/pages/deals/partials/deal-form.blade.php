@@ -19,7 +19,7 @@
                         name="portfolio_id">
                         <option value="" class="text-muted">---Select---</option>
                         @foreach ($portfolios as $portfolio)
-                            <option value="{{ $portfolio->id }}" {{ old('portfolio_id') == $portfolio->id ? selected : '' }}>{{ $portfolio->name }}</option>
+                            <option value="{{ $portfolio->id }}" {{ old('portfolio_id') == $portfolio->id ? 'selected' : '' }}>{{ $portfolio->name }}</option>
                         @endforeach
 
                     </select>
@@ -42,12 +42,27 @@
                         name="client_id">
                         <option value="" class="text-muted">---Select---</option>
                         @foreach ($clients as $client)
-                            <option value="{{ $client->id }}" {{ old('portfolio_id') == $client->id ? selected : '' }}>{{ $client->name }}</option>
+                            <option value="{{ $client->id }}" {{ old('portfolio_id') == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
                         @endforeach
 
                     </select>
 
                     @error('client_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">
+                    Plot No:
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control @error('plot_no') is-invalid @enderror"
+                        placeholder="Plot No" value="{{ old('plot_no') }}" name="plot_no" required />
+                    @error('plot_no')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -184,23 +199,6 @@
                         name="new_deal_email_attachment" required />
 
                     @error('new_deal_email_attachment')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-
-            <p class="text-muted">Email attachment for POA</p>
-            <div class="form-group row">
-                <label class="col-md-3 col-form-label">
-                   Attachment
-                    <span class="text-danger">*</span>
-                </label>
-
-                <div class="col-md-8">
-                    <input type="file" class="form-control @error('poa_email_attachment') is-invalid @enderror"
-                        name="poa_email_attachment" required />
-
-                    @error('poa_email_attachment')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

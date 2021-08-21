@@ -46,6 +46,7 @@ class DealController extends Controller
         $deal = Deal::create([
             'portfolio_id' => $request->portfolio_id,
             'client_id' => $request->client_id,
+            'plot_no' => $request->plot_no,
         ]);
 
         $plot = $deal->plot()->create([
@@ -119,9 +120,62 @@ class DealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Deal $deal)
     {
-        //
+        $deal->update([
+            'portfolio_id' => $request->portfolio_id,
+            'client_id' => $request->client_id,
+            'plot_no' => $request->plot_no,
+        ]);
+
+        $plot = $deal->plot;
+
+        if($request->file('pai_leasing_contract')) {
+            $plot->clearMediaCollection('pai');
+            $plot->addMediaFromRequest('pai_leasing_contract')
+            ->withCustomProperties(
+                [
+                    'pai_issue_date' => $request->pai_issue_date,
+                    'pai_expiry_Date' => $request->pai_expiry_Date,
+                ]
+            )->toMediaCollection('pai');
+        }
+
+        if($request->file('fire_insurance_copy')) {
+            $plot->clearMediaCollection('fire_insurance');
+            $plot->addMediaFromRequest('fire_insurance_copy')
+            ->withCustomProperties(
+            [
+                'fire_insurance_issue_date' => $request->fire_insurance_issue_date,
+                'fire_insurance_expiry_Date' => $request->fire_insurance_expiry_Date,
+            ]
+            )->toMediaCollection('fire_insurance');
+        }
+
+        if($request->file('power_of_attorney_copy')) {
+            $plot->clearMediaCollection('power_of_attorney');
+            $plot->addMediaFromRequest('power_of_attorney_copy')
+            ->withCustomProperties(
+                [
+                    'power_of_attorney_issue_date' => $request->power_of_attorney_issue_date,
+                    'power_of_attorney_expiry_Date' => $request->power_of_attorney_expiry_Date,
+                    'power_of_attorney_issue_to' => $request->power_of_attorney_issue_to,
+                ]
+            )->toMediaCollection('power_of_attorney');
+        }
+
+        if($request->file('new_deal_email_attachment')) {
+            $plot->clearMediaCollection('new_deal_email');
+            $plot->addMediaFromRequest('new_deal_email_attachment')->toMediaCollection('new_deal_email');
+        }
+
+        if($request->file('poa_email_attachment')) {
+            $plot->clearMediaCollection('poa_email_attachment');
+            $plot->addMediaFromRequest('poa_email_attachment')->toMediaCollection('poa_email_attachment');
+        }
+
+
+        return redirect()->route('deals.index')->with('success','Deal updated successfully');
     }
 
     /**
@@ -135,5 +189,21 @@ class DealController extends Controller
         $deal->delete();
 
         return redirect()->route('deals.index')->with('success', 'Deal deleted successfully');
+    }
+
+    public function renewForm(Deal $deal)
+    {
+        $clients = User::clients()->get();
+        $portfolios = Portfolio::all();
+
+        return View('pages.deals.renewal', compact('deal', 'portfolios', 'clients'));
+    }
+
+    public function renew(Deal $deal)
+    {
+        $clients = User::clients()->get();
+        $portfolios = Portfolio::all();
+
+        return View('pages.renewal', compact('deal', 'portfolios', 'clients'));
     }
 }

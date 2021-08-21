@@ -66,7 +66,8 @@
                                     <span style="overflow: visible; position: relative">
 
                                         <a href="{{ route('portfolio.edit', $portfolio->id) }}" class="btn btn-sm btn-clean btn-icon mr-2"
-                                            title="Edit details"> <span class="svg-icon svg-icon-md">
+                                            title="Edit details">
+                                            <span class="svg-icon svg-icon-md">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                                     width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -80,7 +81,9 @@
                                                         <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
                                                             rx="1"></rect>
                                                     </g>
-                                                </svg> </span> </a>
+                                                </svg>
+                                            </span>
+                                        </a>
                                         <a href="javascript:;" class="btn btn-sm btn-clean btn-icon"
                                             title="Delete">
                                             <span class="svg-icon svg-icon-md ">

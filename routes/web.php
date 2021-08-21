@@ -1,14 +1,15 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\PlotController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DocumentController;
-use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\RenewalController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PortfolioController;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,13 +38,18 @@ Route::middleware(['auth'])->group(function () {
     //documents routes
     Route::resource('documents', DocumentController::class)->except('show','edit','update');
     //plots routes
-    Route::resource('deals', DealController::class)->except('edit', 'update', 'show');
+    Route::resource('deals', DealController::class)->except('edit', 'show');
+    Route::get('deals/{deal}/renew', [DealController::class, 'renewForm'])->name('deal.renew');
     //Renewals
-    Route::resource('renewals', RenewalController::class)->except('edit', 'update', 'show');
+    // Route::resource('renewals', RenewalController::class)->except('edit', 'update', 'show');
     //Merge & Split
     Route::resource('merge-split', DealController::class)->except('edit', 'update', 'show');
     //Transfer
     Route::resource('transfers', DealController::class)->except('edit', 'update', 'show');
+
+    Route::get('media/{media}', function (Media $media) {
+        return $media;
+    })->name('media.download');
 });
 
 

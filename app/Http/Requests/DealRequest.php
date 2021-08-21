@@ -23,9 +23,14 @@ class DealRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->isMethod('put')) {
+            return $this->validatePutRequest();
+        }
+
         return [
             'portfolio_id' => ['required','integer'],
             'client_id' => ['required','integer'],
+            'plot_no' => ['required','unique:deals,plot_no'],
             'area_name' => ['required', 'string'],
             'block' => ['required', 'string'],
             'property_value' => ['required', 'string'],
@@ -47,5 +52,18 @@ class DealRequest extends FormRequest
             'new_deal_email_attachment' => ['required', 'file', 'mimes:pdf,docx'],
             'poa_email_attachment' => ['required', 'file', 'mimes:pdf,docx'],
         ];
+    }
+
+    public function validatePutRequest()
+    {
+        $rules = [
+            'portfolio_id' => ['required','integer'],
+            'client_id' => ['required','integer'],
+            'plot_no' => ['required','unique:deals,plot_no'],
+            'renewed_at' => ['required','date']
+        ];
+
+        return $rules;
+
     }
 }
