@@ -101,7 +101,7 @@
                                 </a>
                             </li>
 
-                            <li class="menu-item {{ (request()->is('renewals*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                            {{-- <li class="menu-item {{ (request()->is('renewals*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
                                 <a href="{{ route('renewals.index') }}" class="menu-link">
                                     <span class="svg-icon menu-icon svg-icon-primary">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -117,7 +117,7 @@
                                     <span class="menu-text">Renewals</span>
                                 </a>
                             </li>
-                            
+                             --}}
                             <li class="menu-item {{ (request()->is('merge-split*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
                                 <a href="{{ route('merge-split.index') }}" class="menu-link">
                                     <span class="svg-icon menu-icon svg-icon-primary">
