@@ -43,8 +43,6 @@ class DealController extends Controller
      */
     public function store(DealRequest $request)
     {
-        // dd($request->all());
-
         $deal = Deal::create([
             'portfolio_id' => $request->portfolio_id,
             'client_id' => $request->client_id,

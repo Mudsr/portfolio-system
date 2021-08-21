@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\PlotController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PortfolioController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,10 @@ use App\Http\Controllers\PortfolioController;
 Route::middleware(['auth'])->group(function () {
 
     //portfolios routes
-    Route::get('/', [PortfolioController::class, 'index']);
+    Route::get('/', function(Request $request){
+        return redirect()->route('dashboard');
+    });
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::post('portfolios/switch', [PortfolioController::class, 'switchPortfolio'])->name('switch.portfolio');
     Route::get('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolioForm'])->name('close.portfolio.form');
