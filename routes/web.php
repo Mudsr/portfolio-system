@@ -7,6 +7,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\RenewalController;
 use Illuminate\Http\Request;
 
 /*
@@ -38,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
     //plots routes
     Route::resource('deals', DealController::class)->except('edit', 'update', 'show');
     //Renewals
-    Route::resource('renewals', DealController::class)->except('edit', 'update', 'show');
+    Route::resource('renewals', RenewalController::class)->except('edit', 'update', 'show');
     //Merge & Split
     Route::resource('merge-split', DealController::class)->except('edit', 'update', 'show');
     //Transfer

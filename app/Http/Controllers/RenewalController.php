@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Renewal;
 use Illuminate\Http\Request;
 
 class RenewalController extends Controller
@@ -13,7 +14,9 @@ class RenewalController extends Controller
      */
     public function index()
     {
-        //
+        $renewals = Renewal::all();
+
+        return view('pages.renewals.index', compact('renewals'));
     }
 
     /**
