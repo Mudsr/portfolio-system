@@ -36,7 +36,13 @@ Route::middleware(['auth'])->group(function () {
     //documents routes
     Route::resource('documents', DocumentController::class)->except('show','edit','update');
     //plots routes
-    Route::resource('deals', DealController::class);
+    Route::resource('deals', DealController::class)->except('edit', 'update', 'show');
+    //Renewals
+    Route::resource('renewals', DealController::class)->except('edit', 'update', 'show');
+    //Merge & Split
+    Route::resource('merge-split', DealController::class)->except('edit', 'update', 'show');
+    //Transfer
+    Route::resource('transfers', DealController::class)->except('edit', 'update', 'show');
 });
 
 
