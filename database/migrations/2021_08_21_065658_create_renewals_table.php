@@ -15,6 +15,11 @@ class CreateRenewalsTable extends Migration
     {
         Schema::create('renewals', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
+            $table->foreignId('plot_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }

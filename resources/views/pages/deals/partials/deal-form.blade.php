@@ -15,7 +15,7 @@
                 </label>
 
                 <div class="col-md-8">
-                    <select class="form-control @error('portfolio_id') is-invalid @enderror"
+                    <select class="form-control selectpicker @error('portfolio_id') is-invalid @enderror"
                         name="portfolio_id">
                         <option value="" class="text-muted">---Select---</option>
                         @foreach ($portfolios as $portfolio)
@@ -37,7 +37,8 @@
                 </label>
 
                 <div class="col-md-8">
-                    <select class="form-control @error('client_id') is-invalid @enderror"
+                    <select class="form-control selectpicker @error('client_id') is-invalid @enderror"
+                        data-size="7" data-live-search="true"
                         name="client_id">
                         <option value="" class="text-muted">---Select---</option>
                         @foreach ($clients as $client)
