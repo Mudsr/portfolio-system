@@ -5,8 +5,8 @@
 <!--end::Global Config-->
 <!--begin::Global Theme Bundle(used by all pages)-->
 <script src="{{ asset('metronic/assets/plugins/global/plugins.bundle.js') }}"></script>
-{{-- <script src="{{ asset('metronic/assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script> --}}
-{{-- <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script> --}}
+<script src="{{ asset('metronic/assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
+<script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
 <!--end::Global Theme Bundle-->
 <!--begin::Page Vendors(used by this page)-->
 <script src="{{ asset('metronic/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>

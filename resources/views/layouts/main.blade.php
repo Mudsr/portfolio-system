@@ -59,7 +59,9 @@
         @include('layouts.partials.user-panel')
 
         @include('layouts.partials.scripts')
+
         @livewireScripts
+
         @yield('scripts')
 
 	</body>

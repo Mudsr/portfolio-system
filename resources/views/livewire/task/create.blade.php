@@ -1,7 +1,7 @@
 <div>
     <div class="card card-custom gutter-b example example-compact">
         <div class="card-header">
-            <h3 class="card-title">Create Client</h3>
+            <h3 class="card-title">Create Task</h3>
         </div>
         <form wire:submit.prevent="submit" method="POST" enctype="multipart/form-data">
             @csrf
@@ -14,7 +14,7 @@
                     </label>
 
                     <div class="col-md-8">
-                        <select class="form-control selectpicker2    @error('portfolio_id') is-invalid @enderror"
+                        <select class="form-control selectpicker2 @error('portfolio_id') is-invalid @enderror"
                            wire:model="portfolio_id">
                             <option value="" class="text-muted">---Select---</option>
                             @foreach ($portfolios as $portfolio)
@@ -111,7 +111,7 @@
                     </label>
 
                     <div class="col-md-8">
-                        <select class="form-control selectpicker2    @error('document_type') is-invalid @enderror"
+                        <select class="form-control selectpicker2 @error('document_type') is-invalid @enderror"
                            wire:model="document_type">
                             <option value="" class="text-muted">---Select---</option>
                             <option value="client" {{ old('related_to')=='client' ? 'selected' :'' }} >Client</option>
@@ -135,7 +135,7 @@
         </form>
     </div>
 </div>
-@push('scripts')
+@section('scripts')
 <script>
     $('.selectpicker2').
         selectpicker().
@@ -146,4 +146,4 @@
         siblings('.dropdown-toggle').
         attr('title', Plugin.getOption('translate.toolbar.pagination.items.default.select'));
 </script>
-@endpush
+@endsection
