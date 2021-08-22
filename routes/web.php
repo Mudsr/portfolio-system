@@ -4,11 +4,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\PlotController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RenewalController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Livewire\Task\Create;
+use App\Http\Livewire\Task\Index;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /*
@@ -46,6 +49,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('merge-split', DealController::class)->except('edit', 'update', 'show');
     //Transfer
     Route::resource('transfers', DealController::class)->except('edit', 'update', 'show');
+    //Tasks
+    Route::get('tasks', Index::class)->name('tasks.index');
+    Route::get('tasks/create', Create::class)->name('tasks.create');
 
     Route::get('media/{media}', function (Media $media) {
         return $media;

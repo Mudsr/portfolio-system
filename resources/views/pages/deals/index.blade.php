@@ -83,7 +83,7 @@
                                             </span>
                                         </a>
                                         <a href="{{ route('deal.renew', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
-                                            title="Delete">
+                                            title="Renew">
                                             <span class="svg-icon svg-icon-md">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

@@ -131,7 +131,7 @@ class DealController extends Controller
         $plot = $deal->plot;
 
         if($request->file('pai_leasing_contract')) {
-            $plot->clearMediaCollection('pai');
+            // $plot->clearMediaCollection('pai');
             $plot->addMediaFromRequest('pai_leasing_contract')
             ->withCustomProperties(
                 [
@@ -142,7 +142,7 @@ class DealController extends Controller
         }
 
         if($request->file('fire_insurance_copy')) {
-            $plot->clearMediaCollection('fire_insurance');
+            // $plot->clearMediaCollection('fire_insurance');
             $plot->addMediaFromRequest('fire_insurance_copy')
             ->withCustomProperties(
             [
@@ -153,7 +153,7 @@ class DealController extends Controller
         }
 
         if($request->file('power_of_attorney_copy')) {
-            $plot->clearMediaCollection('power_of_attorney');
+            // $plot->clearMediaCollection('power_of_attorney');
             $plot->addMediaFromRequest('power_of_attorney_copy')
             ->withCustomProperties(
                 [

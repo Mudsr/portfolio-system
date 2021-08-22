@@ -11,6 +11,8 @@
 
         @include('layouts.partials.styles')
 
+        @livewireStyles
+
         @yield('styles')
 	</head>
 	<!--end::Head-->
@@ -57,7 +59,7 @@
         @include('layouts.partials.user-panel')
 
         @include('layouts.partials.scripts')
-
+        @livewireScripts
         @yield('scripts')
 
 	</body>
