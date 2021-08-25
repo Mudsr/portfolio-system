@@ -38,9 +38,8 @@
                     </label>
 
                     <div class="col-md-8">
-                        <div wire:ignore id="plot_id">
-                            <select class="form-control selectpicker2 @error('plot_id') is-invalid @enderror"
-                                data-size="7" data-live-search="true" data-container="#plot_id"
+                            <select class="form-control @error('plot_id') is-invalid @enderror"
+                                data-size="7" data-live-search="true"
                                 wire:model="plot_id" >
                                 <option value="" class="text-muted">---Select---</option>
                                 @foreach ($plots as $plot)
@@ -51,7 +50,6 @@
                             @error("plot_id")
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
                     </div>
                 </div>
 
@@ -63,20 +61,20 @@
                     </label>
 
                     <div class="col-md-8">
-                        <div wire:ignore id="old_client_id">
+                        {{-- <div wire:ignore id="old_client_id"> --}}
                             <select class="form-control selectpicker2 @error("old_client_id") is-invalid @enderror"
-                                data-size="7" data-live-search="true" data-container="#old_client_id"
-                                wire:model="old_client_id">
+                                data-size="7" data-live-search="true"
+                                wire:model="old_client_id" disabled>
                                 <option value="" class="text-muted">---Select---</option>
                                 @foreach ($clients as $client)
-                                    <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                    <option value="{{ $client->id }}" {{ $old_client_id == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
                                 @endforeach
                             </select>
 
                             @error("old_client_id")
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
+                        {{-- </div> --}}
                     </div>
                 </div>
 
@@ -87,13 +85,13 @@
                     </label>
 
                     <div class="col-md-8">
-                        <div wire:ignore id="new_client_id">
+                        {{-- <div wire:ignore id="new_client_id"> --}}
 
                             <select class="form-control selectpicker2 @error("new_client_id") is-invalid @enderror"
                                 data-size="7" data-live-search="true" data-container="#new_client_id"
                                 wire:model="new_client_id">
                                 <option value="" class="text-muted">---Select---</option>
-                                @foreach ($clients as $client)
+                                @foreach ($newClients as $client)
                                     <option value="{{ $client->id }}">{{ $client->name }}</option>
                                 @endforeach
                             </select>
@@ -101,7 +99,7 @@
                             @error("new_client_id")
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
+                        {{-- </div> --}}
                     </div>
                 </div>
                 </div>

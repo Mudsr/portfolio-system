@@ -64,9 +64,8 @@
                         </label>
 
                         <div class="col-md-8">
-                            <div wire:ignore id="plot_id">
-                                <select class="form-control selectpicker2 @error('plot_id') is-invalid @enderror"
-                                    data-size="7" data-live-search="true" data-container="#plot_id"
+                                <select class="form-control @error('plot_id') is-invalid @enderror"
+                                    data-size="7" data-live-search="true"
                                     wire:model="plot_id">
                                     <option value="" class="text-muted">---Select---</option>
                                     @foreach ($plots as $plot)
@@ -77,7 +76,6 @@
                                 @error("plot_id")
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                            </div>
                         </div>
                     </div>
                 {{-- @endif --}}
@@ -117,17 +115,19 @@
                     </label>
 
                     <div class="col-md-8">
-                        <select class="form-control selectpicker2 @error('document_type') is-invalid @enderror"
-                           wire:model="document_type">
-                            <option value="" class="text-muted">---Select---</option>
-                            <option value="client" {{ old('related_to')=='client' ? 'selected' :'' }} >Client</option>
-                            <option value="building" {{ old('related_to')=='building' ? 'selected' :'' }} >Building</option>
-                            <option value="contract" {{ old('related_to')=='contract' ? 'selected' :'' }} >Contract</option>
-                        </select>
+                        <div wire:ignore id="document_type">
+                            <select class="form-control selectpicker2 @error('document_type') is-invalid @enderror"
+                            wire:model="document_type" data-container="#document_type">
+                                <option value="" class="text-muted">---Select---</option>
+                                <option value="client" {{ old('related_to')=='client' ? 'selected' :'' }} >Client</option>
+                                <option value="building" {{ old('related_to')=='building' ? 'selected' :'' }} >Building</option>
+                                <option value="contract" {{ old('related_to')=='contract' ? 'selected' :'' }} >Contract</option>
+                            </select>
 
-                        @error('document_type')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                            @error('document_type')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 

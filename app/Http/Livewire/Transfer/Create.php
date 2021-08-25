@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Transfer;
 use App\Models\Plot;
 use App\Models\User;
 use Livewire\Component;
+use App\Models\Transfer;
 use App\Models\Portfolio;
 
 class Create extends Component
@@ -18,6 +19,7 @@ class Create extends Component
     public $plots;
     public $portfolios;
     public $clients;
+    public $newClients;
 
     protected $rules = [
         'portfolio_id' => 'required|integer',
@@ -30,6 +32,7 @@ class Create extends Component
     {
         $this->portfolios = Portfolio::all();
         $this->clients = User::clients()->get();
+        $this->newClients = User::clients()->where('id', '!=', $this->old_client_id)->get();
         $this->plots = collect();
     }
 
@@ -50,21 +53,20 @@ class Create extends Component
     {
         $plot = Plot::findOrFail($id);
         $this->old_client_id = $plot->deal->client_id;
+        $this->newClients = User::clients()->where('id', '!=', $this->old_client_id)->get();
     }
 
     public function submit()
     {
         $this->validate();
 
-        // $task = Task::create([
-        //     'portfolio_id' => $this->portfolio_id,
-        //     'client_id' => $this->client_id,
-        //     'plot_id' => $this->plot_id,
-        //     'description' => $this->description,
-        //     'due_date' => $this->due_date,
-        //     'document_type' => $this->document_type,
-        // ]);
+        $task = Transfer::create([
+            'portfolio_id' => $this->portfolio_id,
+            'old_client_id' => $this->old_client_id,
+            'new_client_id' => $this->new_client_id,
+            'plot_id' => $this->plot_id,
+        ]);
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('transfers.index');
     }
 }

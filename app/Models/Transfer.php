@@ -12,7 +12,7 @@ class Transfer extends Model
     protected $fillable  = [
         'portfolio_id',
         'old_client_id',
-        'old_client_id',
+        'new_client_id',
         'plot_id',
     ];
 
