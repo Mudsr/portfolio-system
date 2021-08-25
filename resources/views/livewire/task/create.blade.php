@@ -14,18 +14,20 @@
                     </label>
 
                     <div class="col-md-8">
-                        <select class="form-control selectpicker2 @error('portfolio_id') is-invalid @enderror"
-                           wire:model="portfolio_id">
-                            <option value="" class="text-muted">---Select---</option>
-                            @foreach ($portfolios as $portfolio)
-                                <option value="{{ $portfolio->id }}">{{ $portfolio->name }}</option>
-                            @endforeach
+                        <div wire:ignore id="portfolio_id">
+                            <select class="form-control selectpicker2 @error('portfolio_id') is-invalid @enderror"
+                            wire:model="portfolio_id" data-container="#portfolio_id">
+                                <option value="" class="text-muted">---Select---</option>
+                                @foreach ($portfolios as $portfolio)
+                                    <option value="{{ $portfolio->id }}">{{ $portfolio->name }}</option>
+                                @endforeach
 
-                        </select>
+                            </select>
 
-                        @error('portfolio_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                            @error('portfolio_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 
@@ -37,22 +39,24 @@
                     </label>
 
                     <div class="col-md-8">
-                        <select class="form-control selectpicker2 @error("client_id") is-invalid @enderror"
-                            data-size="7" data-live-search="true"
-                            wire:model="client_id">
-                            <option value="" class="text-muted">---Select---</option>
-                            @foreach ($clients as $client)
-                                <option value="{{ $client->id }}">{{ $client->name }}</option>
-                            @endforeach
-                        </select>
+                        <div wire:ignore id="client_id">
+                            <select class="form-control selectpicker2 @error("client_id") is-invalid @enderror"
+                                data-size="7" data-live-search="true" data-container="#client_id"
+                                wire:model="client_id">
+                                <option value="" class="text-muted">---Select---</option>
+                                @foreach ($clients as $client)
+                                    <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                @endforeach
+                            </select>
 
-                        @error("client_id")
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                            @error("client_id")
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 
-                @if ($client_id)
+                {{-- @if ($client_id) --}}
                     <div class="form-group row">
                         <label for="exampleSelect1" class="col-md-3 col-form-label">
                             Plot
@@ -60,21 +64,23 @@
                         </label>
 
                         <div class="col-md-8">
-                            <select class="form-control selectpicker2 @error('plot_id') is-invalid @enderror"
-                                data-size="7" data-live-search="true"
-                                wire:model="plot_id">
-                                <option value="" class="text-muted">---Select---</option>
-                                @foreach ($plots as $plot)
-                                    <option value="{{ $plot['id'] }}">{{ $plot['area_name'] }}</option>
-                                @endforeach
-                            </select>
+                            <div wire:ignore id="plot_id">
+                                <select class="form-control selectpicker2 @error('plot_id') is-invalid @enderror"
+                                    data-size="7" data-live-search="true" data-container="#plot_id"
+                                    wire:model="plot_id">
+                                    <option value="" class="text-muted">---Select---</option>
+                                    @foreach ($plots as $plot)
+                                        <option value="{{ $plot['id'] }}">{{ $plot['area_name'] }}</option>
+                                    @endforeach
+                                </select>
 
-                            @error("plot_id")
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                                @error("plot_id")
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
-                @endif
+                {{-- @endif --}}
 
 
                 <div class="form-group row">
