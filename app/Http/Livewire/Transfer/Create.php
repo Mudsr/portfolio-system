@@ -60,12 +60,17 @@ class Create extends Component
     {
         $this->validate();
 
-        $task = Transfer::create([
+        $transfer = Transfer::create([
             'portfolio_id' => $this->portfolio_id,
             'old_client_id' => $this->old_client_id,
             'new_client_id' => $this->new_client_id,
             'plot_id' => $this->plot_id,
         ]);
+
+        $plot = Plot::find($this->plot_id);
+        $deal = $plot->deal;
+        $deal->client_id = $this->new_client_id;
+        $deal->save();
 
         return redirect()->route('transfers.index');
     }

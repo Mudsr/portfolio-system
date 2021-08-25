@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMergeAndSplitsTable extends Migration
+class CreateSplitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateMergeAndSplitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('merge_and_splits', function (Blueprint $table) {
+        Schema::create('splits', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
-            $table->foreignId('deal_id')->constrained()->onDelete('cascade');
-            $table->foreignId('old_plot_id')->constrained('plots')->onDelete('cascade');
-            $table->json('old_deal_ids');
-            $table->json('new_plot_ids');
-            $table->string('action_type');
+            $table->foreignId('plot_id')->constrained()->onDelete('cascade');
+            $table->json('new_plots_ids');
 
             $table->timestamps();
         });
@@ -34,6 +31,6 @@ class CreateMergeAndSplitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('merge_and_splits');
+        Schema::dropIfExists('splits');
     }
 }
