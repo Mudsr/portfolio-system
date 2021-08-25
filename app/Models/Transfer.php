@@ -8,4 +8,32 @@ use Illuminate\Database\Eloquent\Model;
 class Transfer extends Model
 {
     use HasFactory;
+
+    protected $fillable  = [
+        'portfolio_id',
+        'old_client_id',
+        'old_client_id',
+        'plot_id',
+    ];
+
+    public function portfolio()
+    {
+        return $this->belongsTo(Portfolio::class);
+    }
+
+    public function plot()
+    {
+        return $this->belongsTo(Plot::class);
+    }
+
+    public function oldClient()
+    {
+        return $this->belongsTo(User::class, 'old_client_id');
+    }
+
+    public function newClient()
+    {
+        return $this->belongsTo(User::class, 'new_client_id');
+    }
+
 }

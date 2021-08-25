@@ -55,7 +55,7 @@ class Create extends Component
     public function submit()
     {
         $this->validate();
-        
+
         $task = Task::create([
             'portfolio_id' => $this->portfolio_id,
             'client_id' => $this->client_id,

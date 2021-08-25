@@ -52,6 +52,9 @@ Route::middleware(['auth'])->group(function () {
     //Tasks
     Route::get('tasks', Index::class)->name('tasks.index');
     Route::get('tasks/create', Create::class)->name('tasks.create');
+    //Transfers
+    Route::get('transfers', App\Http\Livewire\Transfer\Index::class)->name('transfers.index');
+    Route::get('transfers/create', App\Http\Livewire\Transfer\Create::class)->name('transfers.create');
 
     Route::get('media/{media}', function (Media $media) {
         return $media;

@@ -28,6 +28,7 @@ class ClientRequest extends FormRequest
         }
 
         return [
+            'name'=> ['required'],
             'address'=> ['required'],
             'telephone' => ['required'],
             'email' => ['required'],
@@ -41,7 +42,7 @@ class ClientRequest extends FormRequest
     private function validatePutRequest()
     {
         return [
-            'address'=> ['required'],
+            'name'=> ['required'],
             'telephone' => ['required'],
             'email' => ['required'],
             'id_type' => ['required'],

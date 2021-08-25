@@ -11,6 +11,18 @@
 
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
+                        Name
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-8">
+                        <input type="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="someone@example.com" name="name" required/>
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
                         Email
                         <span class="text-danger">*</span>
                     </label>

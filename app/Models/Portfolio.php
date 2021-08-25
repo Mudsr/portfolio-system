@@ -54,4 +54,9 @@ class Portfolio extends Model implements HasMedia
 
         return false;
     }
+
+    public function deals()
+    {
+        return $this->hasMany(Deal::class);
+    }
 }
