@@ -15,6 +15,12 @@ class CreateMergeAndSplitsTable extends Migration
     {
         Schema::create('merge_and_splits', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
+            $table->foreignId('deal_id')->constrained()->onDelete('cascade');
+            $table->json('old_deal_ids');
+            $table->string('action_type');
+
             $table->timestamps();
         });
     }

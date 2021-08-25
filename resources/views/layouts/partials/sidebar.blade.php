@@ -4,6 +4,7 @@
     <div class="brand flex-column-auto" id="kt_brand">
         <!--begin::Logo-->
         <a href="{{ url('/') }}" class="brand-logo">
+            <h5>Portfolio System</h5>
             {{-- <img alt="Logo" src="assets/media/logos/logo-light.png" /> --}}
         </a>
         <!--end::Logo-->

@@ -46,15 +46,18 @@ Route::middleware(['auth'])->group(function () {
     //Renewals
     // Route::resource('renewals', RenewalController::class)->except('edit', 'update', 'show');
     //Merge & Split
-    Route::resource('merge-split', DealController::class)->except('edit', 'update', 'show');
+    // Route::resource('merge-split', DealController::class)->except('edit', 'update', 'show');
     //Transfer
-    Route::resource('transfers', DealController::class)->except('edit', 'update', 'show');
+    // Route::resource('transfers', DealController::class)->except('edit', 'update', 'show');
     //Tasks
     Route::get('tasks', Index::class)->name('tasks.index');
     Route::get('tasks/create', Create::class)->name('tasks.create');
     //Transfers
     Route::get('transfers', App\Http\Livewire\Transfer\Index::class)->name('transfers.index');
     Route::get('transfers/create', App\Http\Livewire\Transfer\Create::class)->name('transfers.create');
+    //Transfers
+    Route::get('merge-split', App\Http\Livewire\MergeAndSplit\Index::class)->name('merge-split.index');
+    Route::get('merge-split/create', App\Http\Livewire\MergeAndSplit\Create::class)->name('merge-split.create');
 
     Route::get('media/{media}', function (Media $media) {
         return $media;
