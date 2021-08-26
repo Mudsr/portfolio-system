@@ -24,7 +24,7 @@
                     </span>
                     Transfer
                 </a>
-                <a href="{{ route('merges.create') }}" class="btn btn-primary font-weight-bolder mr-2">
+                <a href="{{ route('merge.create') }}" class="btn btn-primary font-weight-bolder mr-2">
                     <span class="svg-icon svg-icon-md">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                             height="24px" viewBox="0 0 24 24" version="1.1">
@@ -39,7 +39,7 @@
                     </span>
                     Merge
                 </a>
-                <a href="{{ route('splits.create') }}" class="btn btn-primary font-weight-bolder mr-2">
+                <a href="{{ route('split.create') }}" class="btn btn-primary font-weight-bolder mr-2">
                     <span class="svg-icon svg-icon-md">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                             height="24px" viewBox="0 0 24 24" version="1.1">

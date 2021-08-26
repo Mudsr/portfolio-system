@@ -20,6 +20,7 @@ class CreateDealsTable extends Migration
             $table->foreignId('client_id')->constrained('users')->onDelete('cascade');
 
             $table->string('plot_no')->unique();
+            $table->string('status')->default('active');
             $table->date('renewed_at')->nullable();
 
             $table->timestamps();

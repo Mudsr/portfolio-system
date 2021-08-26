@@ -64,7 +64,7 @@
                     </a>
                 </li>
 
-                <li class="menu-item menu-item-submenu {{ (request()->is('plots*') || request()->is('deals*') || request()->is('merge-split*') || request()->is('transfer*') || request()->is('renewals*')) ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                <li class="menu-item menu-item-submenu {{ (request()->is('plots*') || request()->is('deals*') || request()->is('merge*') || request()->is('transfer*') || request()->is('renewals*') || request()->is('split*') ) ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         {{-- <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
@@ -136,7 +136,7 @@
                             </li>
                              --}}
                             <li class="menu-item {{ (request()->is('merge*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
-                                <a href="{{ route('merges.index') }}" class="menu-link">
+                                <a href="{{ route('merge.index') }}" class="menu-link">
                                     <span class="svg-icon menu-icon svg-icon-primary">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -152,7 +152,7 @@
                                 </a>
                             </li>
                             <li class="menu-item {{ (request()->is('split*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
-                                <a href="{{ route('splits.index') }}" class="menu-link">
+                                <a href="{{ route('split.index') }}" class="menu-link">
                                     <span class="svg-icon menu-icon svg-icon-primary">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

@@ -56,11 +56,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('transfers', App\Http\Livewire\Transfer\Index::class)->name('transfers.index');
     Route::get('transfers/create', App\Http\Livewire\Transfer\Create::class)->name('transfers.create');
     //Merges
-    Route::get('merge', App\Http\Livewire\Merge\Index::class)->name('merges.index');
-    Route::get('merge/create', App\Http\Livewire\Merge\Create::class)->name('merges.create');
+    Route::get('merge', App\Http\Livewire\Merge\Index::class)->name('merge.index');
+    Route::get('merge/create', App\Http\Livewire\Merge\Create::class)->name('merge.create');
     //Splits
-    Route::get('split', App\Http\Livewire\Split\Index::class)->name('splits.index');
-    Route::get('split/create', App\Http\Livewire\Split\Create::class)->name('splits.create');
+    Route::get('split', App\Http\Livewire\Split\Index::class)->name('split.index');
+    Route::get('split/create', App\Http\Livewire\Split\Create::class)->name('split.create');
 
     Route::get('media/{media}', function (Media $media) {
         return $media;
