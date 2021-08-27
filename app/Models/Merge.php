@@ -11,7 +11,7 @@ class Merge extends Model
 
     protected $fillable = [
         'portfolio_id',
-        'deal_id',
+        'new_deal_id',
         'old_deal_ids',
      ];
 
@@ -19,12 +19,12 @@ class Merge extends Model
          'old_deal_ids' => 'array'
      ];
 
-     public function portfolio()
+     public function portfolio(): \Illuminate\Database\Eloquent\Relations\BelongsTo
      {
          return $this->belongsTo(Portfolio::class);
      }
 
-     public function mergedDeal()
+     public function mergedDeal(): \Illuminate\Database\Eloquent\Relations\BelongsTo
      {
          return $this->belongsTo(Deal::class, 'new_deal_id');
      }

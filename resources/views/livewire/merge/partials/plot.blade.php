@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-6 mt-4">
 
     <div class="card card-custom gutter-b example example-compact">
         <div class="card-header">
@@ -124,7 +124,7 @@
                 </div>
             </div>
 
-            <p class="text-muted">Email Attachment For new Deal</p>
+            {{-- <p class="text-muted">Email Attachment For new Deal</p>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label">
                     Attachment
@@ -139,7 +139,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>

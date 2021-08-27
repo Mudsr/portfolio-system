@@ -9,6 +9,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RenewalController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MergeController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Livewire\Task\Create;
 use App\Http\Livewire\Task\Index;
@@ -58,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
     //Merges
     Route::get('merge', App\Http\Livewire\Merge\Index::class)->name('merge.index');
     Route::get('merge/create', App\Http\Livewire\Merge\Create::class)->name('merge.create');
+    Route::post('merge/save', [MergeController::class, 'save'])->name('merge.save');
     //Splits
     Route::get('split', App\Http\Livewire\Split\Index::class)->name('split.index');
     Route::get('split/create', App\Http\Livewire\Split\Create::class)->name('split.create');

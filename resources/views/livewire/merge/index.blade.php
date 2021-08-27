@@ -38,8 +38,8 @@
                         @foreach ($merges as $merge)
                         <tr>
                             <td>{{ $merge->portfolio->name }}</td>
-                            {{-- <td>{{ $merge->client->name }}</td>
-                            <td>{{ $merge->plot->area_name }}</td> --}}
+                            <td>{{ $merge->mergedDeal->client->name }}</td>
+                            <td>{{ $merge->mergedDeal->plot->area_name }}</td>
                             <td>
                                 <span style="overflow: visible; position: relative">
                                     <a href="javascript:;" class="btn btn-sm btn-clean btn-icon"

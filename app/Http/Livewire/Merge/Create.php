@@ -6,12 +6,17 @@ use App\Models\Deal;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\Portfolio;
+use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Create extends Component
 {
+    use WithPagination, WithFileUploads;
+
     public $portfolio_id;
     public $deal1;
     public $deal2;
+
     public $plot1;
     public $plot2;
 
@@ -19,12 +24,8 @@ class Create extends Component
     public $portfolios;
     public $dealsFiltered;
     public $portfolio=null;
+    public $step = 1;
 
-    protected $rules = [
-        'portfolio_id' => 'required|integer',
-        'deal1' => 'required|integer',
-        'deal2' => 'required|integer',
-    ];
 
     public function mount()
     {
@@ -37,6 +38,7 @@ class Create extends Component
     {
         return view('livewire.merge.create')->extends('layouts.main');
     }
+
 
     public function updatedPortfolioId($id)
     {
@@ -57,5 +59,17 @@ class Create extends Component
     {
         $deal = Deal::findOrFail($id);
         $this->plot2 = $deal->plot;
+    }
+
+    public function changeStep($type)
+    {
+        if($type == 'next' && $this->step < 3) {
+            $this->step++;
+        }
+
+        if($type == 'previous' && $this->step > 1) {
+            $this->step--;
+        }
+
     }
 }
