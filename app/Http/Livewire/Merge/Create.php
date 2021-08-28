@@ -24,7 +24,6 @@ class Create extends Component
     public $portfolios;
     public $dealsFiltered;
     public $portfolio=null;
-    public $step = 1;
 
 
     public function mount()
@@ -61,15 +60,4 @@ class Create extends Component
         $this->plot2 = $deal->plot;
     }
 
-    public function changeStep($type)
-    {
-        if($type == 'next' && $this->step < 3) {
-            $this->step++;
-        }
-
-        if($type == 'previous' && $this->step > 1) {
-            $this->step--;
-        }
-
-    }
 }

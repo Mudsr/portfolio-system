@@ -11,12 +11,12 @@ class Split extends Model
 
     protected $fillable = [
         'portfolio_id',
-        'deal_id',
-        'old_deal_ids',
+        'plot_id',
+        'new_plots_ids',
      ];
 
      protected $casts=[
-         'old_deal_ids' => 'array'
+         'new_plots_ids' => 'array'
      ];
 
      public function portfolio()
@@ -24,9 +24,14 @@ class Split extends Model
          return $this->belongsTo(Portfolio::class);
      }
 
-     public function mergedDeal()
+     public function oldPlot()
      {
-         return $this->belongsTo(Deal::class, 'new_deal_id');
+         return $this->belongsTo(Plot::class, 'plot_id');
+     }
+
+     public function newPlots()
+     {
+         return Plot::whereIn('id', $this->new_plots_ids)->get();
      }
 
 }

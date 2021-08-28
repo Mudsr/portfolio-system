@@ -24,46 +24,22 @@
 
 <div class="form-group row">
     <label for="exampleSelect1" class="col-md-3 col-form-label">
-        Deal 1
+        Plot No
         <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
-            <select class="form-control @error('deal1') is-invalid @enderror"
+            <select class="form-control @error('deal_id') is-invalid @enderror"
                 data-size="7" data-live-search="true"
-                wire:model="deal1" name="deal1">
+                wire:model="deal_id" name="deal_id">
                 <option value="" class="text-muted">---Select---</option>
                 @foreach ($deals as $deal)
                     <option value="{{ $deal->id }}">{{ $deal->plot_no }}</option>
                 @endforeach
             </select>
 
-            @error("deal1")
+            @error("deal_id")
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
     </div>
 </div>
-
-@if ($deal1)
-    <div class="form-group row">
-        <label for="exampleSelect1" class="col-md-3 col-form-label">
-            Deal 2
-            <span class="text-danger">*</span>
-        </label>
-
-        <div class="col-md-8">
-                <select class="form-control @error('deal2') is-invalid @enderror"
-                    data-size="7" data-live-search="true"
-                    wire:model="deal2" name="deal2">
-                    <option value="" class="text-muted">---Select---</option>
-                    @foreach ($dealsFiltered as $deal)
-                        <option value="{{ $deal->id }}">{{ $deal->id }}</option>
-                    @endforeach
-                </select>
-
-                @error("deal2")
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-        </div>
-    </div>
-@endif

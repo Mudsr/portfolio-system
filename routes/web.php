@@ -11,6 +11,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MergeController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\SplitController;
 use App\Http\Livewire\Task\Create;
 use App\Http\Livewire\Task\Index;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -63,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
     //Splits
     Route::get('split', App\Http\Livewire\Split\Index::class)->name('split.index');
     Route::get('split/create', App\Http\Livewire\Split\Create::class)->name('split.create');
+    Route::post('split/save', [SplitController::class, 'save'])->name('split.save');
 
     Route::get('media/{media}', function (Media $media) {
         return $media;
