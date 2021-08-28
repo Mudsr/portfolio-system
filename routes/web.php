@@ -29,11 +29,12 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 Route::middleware(['auth'])->group(function () {
 
-    //portfolios routes
     Route::get('/', function(Request $request){
         return redirect()->route('dashboard');
     });
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/dashboard',App\Http\Livewire\Dashboard\Index::class)->name('dashboard');
+
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::post('portfolios/switch', [PortfolioController::class, 'switchPortfolio'])->name('switch.portfolio');
     Route::get('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolioForm'])->name('close.portfolio.form');
@@ -45,13 +46,7 @@ Route::middleware(['auth'])->group(function () {
     //plots routes
     Route::resource('deals', DealController::class)->except('edit', 'show');
     Route::get('deals/{deal}/renew', [DealController::class, 'renewForm'])->name('deal.renew');
-    //Renewals
-    // Route::resource('renewals', RenewalController::class)->except('edit', 'update', 'show');
-    //Merge & Split
-    // Route::resource('merge-split', DealController::class)->except('edit', 'update', 'show');
-    //Transfer
-    // Route::resource('transfers', DealController::class)->except('edit', 'update', 'show');
-    //Tasks
+
     Route::get('tasks', Index::class)->name('tasks.index');
     Route::get('tasks/create', Create::class)->name('tasks.create');
     //Transfers
@@ -65,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('split', App\Http\Livewire\Split\Index::class)->name('split.index');
     Route::get('split/create', App\Http\Livewire\Split\Create::class)->name('split.create');
     Route::post('split/save', [SplitController::class, 'save'])->name('split.save');
+
+    Route::get('report', App\Http\Livewire\Report\Index::class)->name('report.index');
 
     Route::get('media/{media}', function (Media $media) {
         return $media;
