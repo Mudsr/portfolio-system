@@ -13,15 +13,15 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
-            $table->id();
+        // Schema::create('documents', function (Blueprint $table) {
+        //     $table->id();
 
-            $table->string('name');
-            $table->string('related_to');
-            $table->string('department');
+        //     $table->string('name');
+        //     $table->string('related_to');
+        //     $table->string('department');
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -31,6 +31,6 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        // Schema::dropIfExists('documents');
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DealRequest;
 use App\Models\Deal;
-use App\Models\Portfolio;
 use App\Models\User;
+use App\Models\Client;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use App\Http\Requests\DealRequest;
 
 class DealController extends Controller
 {
@@ -29,7 +30,7 @@ class DealController extends Controller
      */
     public function create()
     {
-        $clients = User::clients()->get();
+        $clients = Client::get();
         $portfolios = Portfolio::all();
 
         return view('pages.deals.create', compact('clients', 'portfolios'));
@@ -193,7 +194,7 @@ class DealController extends Controller
 
     public function renewForm(Deal $deal)
     {
-        $clients = User::clients()->get();
+        $clients =Client::get();
         $portfolios = Portfolio::all();
 
         return View('pages.deals.renewal', compact('deal', 'portfolios', 'clients'));
@@ -201,7 +202,7 @@ class DealController extends Controller
 
     public function renew(Deal $deal)
     {
-        $clients = User::clients()->get();
+        $clients =Client::get();
         $portfolios = Portfolio::all();
 
         return View('pages.renewal', compact('deal', 'portfolios', 'clients'));

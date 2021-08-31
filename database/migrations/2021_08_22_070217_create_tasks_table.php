@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->id();
 
             $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
-            $table->foreignId('client_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->foreignId('plot_id')->constrained()->onDelete('cascade');
 
             $table->text('description');

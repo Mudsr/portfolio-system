@@ -28,12 +28,12 @@ class Transfer extends Model
 
     public function oldClient()
     {
-        return $this->belongsTo(User::class, 'old_client_id');
+        return $this->belongsTo(Client::class, 'old_client_id');
     }
 
     public function newClient()
     {
-        return $this->belongsTo(User::class, 'new_client_id');
+        return $this->belongsTo(Client::class, 'new_client_id');
     }
 
 }

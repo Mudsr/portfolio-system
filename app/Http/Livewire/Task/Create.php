@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Task;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Models\Client;
 use Livewire\Component;
 use App\Models\Portfolio;
 
@@ -31,7 +32,7 @@ class Create extends Component
     public function mount()
     {
         $this->portfolios = Portfolio::all();
-        $this->clients = User::clients()->get();
+        $this->clients = Client::get();
         $this->plots = collect();
     }
 

@@ -22,12 +22,12 @@ class UserSeeder extends Seeder
 
         $admin->assignRole('admin');
 
-        $client = User::create([
-            'name'=>'client',
-            'email'=> 'client@portfolio.com',
-            'password' => bcrypt('password'),
-        ]);
+        // $client = User::create([
+        //     'name'=>'client',
+        //     'email'=> 'client@portfolio.com',
+        //     'password' => bcrypt('password'),
+        // ]);
 
-        $client->assignRole('client');
+        // $client->assignRole('client');
     }
 }

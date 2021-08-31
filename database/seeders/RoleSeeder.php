@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
     {
         $data = [
             ['name'=>'admin', 'guard_name'=> config('auth.defaults.guard')],
-            ['name'=>'client', 'guard_name'=> config('auth.defaults.guard')],
+            // ['name'=>'client', 'guard_name'=> config('auth.defaults.guard')],
         ];
         Role::insert($data);
     }

@@ -71,7 +71,7 @@
                                             </svg>
                                         </span>
                                     </a>
-                                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon"
+                                    {{-- <a href="javascript:;" class="btn btn-sm btn-clean btn-icon"
                                         title="Delete">
                                         <span class="svg-icon svg-icon-md">
                                             <svg
@@ -88,7 +88,7 @@
                                                 </g>
                                             </svg>
                                         </span>
-                                    </a>
+                                    </a> --}}
                                 </span>
                             </td>
                         </tr>

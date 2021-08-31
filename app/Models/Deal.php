@@ -34,7 +34,7 @@ class Deal extends Model
 
     function client()
     {
-        return $this->belongsTo(User::class, 'client_id');
+        return $this->belongsTo(Client::class);
     }
 
     public function scopeRenewals($query)

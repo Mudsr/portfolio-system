@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Deal;
 use App\Models\User;
+use App\Models\Client;
 use App\Models\Renewal;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class RenewalController extends Controller
     public function create()
     {
         $portfolios = Portfolio::all();
-        $clients = User::clients()->with('deals', 'deals.plots')->get();
+        $clients = Client::with('deals', 'deals.plots')->get();
         // $deals = $clients->deals()->with('plots')->get();
 
         return view('pages.renewals.create', compact('portfolios', 'clients'));

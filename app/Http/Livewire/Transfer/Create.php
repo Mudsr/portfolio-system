@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Transfer;
 
+use App\Models\Client;
 use App\Models\Plot;
 use App\Models\User;
 use Livewire\Component;
@@ -31,8 +32,8 @@ class Create extends Component
     public function mount()
     {
         $this->portfolios = Portfolio::all();
-        $this->clients = User::clients()->get();
-        $this->newClients = User::clients()->where('id', '!=', $this->old_client_id)->get();
+        $this->clients = Client::get();
+        $this->newClients = Client::where('id', '!=', $this->old_client_id)->get();
         $this->plots = collect();
     }
 

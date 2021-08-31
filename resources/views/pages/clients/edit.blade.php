@@ -17,8 +17,7 @@
                     </label>
                     <div class="col-md-8">
                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                            value="{{ old('email', $client->email) }}" placeholder="someone@example.com" name="email"
-                            required />
+                            value="{{ old('email', $client->email) }}" placeholder="someone@example.com" name="email" />
                         @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -98,11 +97,11 @@
                 <div class="form-group row">
                     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
                         ID Copy Attachment
-                        <span class="text-danger">*</span>  
+                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
                         <input type="file" class="form-control @error('id_attachment') is-invalid @enderror"
-                            name="id_attachment" required />
+                            name="id_attachment" />
                         @error('id_attachment')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

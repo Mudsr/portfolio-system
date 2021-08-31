@@ -18,8 +18,8 @@ class CreateTransfersTable extends Migration
 
             $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
             $table->foreignId('plot_id')->constrained()->onDelete('cascade');
-            $table->foreignId('old_client_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('new_client_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('old_client_id')->constrained('clients')->onDelete('cascade');
+            $table->foreignId('new_client_id')->constrained('clients')->onDelete('cascade');
 
             $table->timestamps();
         });

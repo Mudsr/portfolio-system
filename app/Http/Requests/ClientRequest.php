@@ -31,11 +31,11 @@ class ClientRequest extends FormRequest
             'name'=> ['required'],
             'address'=> ['required'],
             'telephone' => ['required'],
-            'email' => ['required'],
+            'email' => ['nullable', 'email'],
             'id_type' => ['required'],
             'id_no' => ['required'],
             'id_expiry' => ['required', 'date'],
-            'id_attachment' => ['required', 'file', 'mimes:pdf,docx']
+            'id_attachment' => ['nullable', 'file', 'mimes:pdf,docx']
         ];
     }
 
@@ -44,11 +44,11 @@ class ClientRequest extends FormRequest
         return [
             'name'=> ['required'],
             'telephone' => ['required'],
-            'email' => ['required'],
+            'email' => ['required', 'email'],
             'id_type' => ['required'],
             'id_no' => ['required'],
             'id_expiry' => ['required', 'date'],
-            'id_attachment' => ['file', 'mimes:pdf,docx']
+            'id_attachment' => ['nullable','file', 'mimes:pdf,docx']
         ];
     }
 }
