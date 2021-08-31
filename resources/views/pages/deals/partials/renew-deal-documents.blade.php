@@ -5,8 +5,6 @@
             <h3 class="card-title">Deal Documents</h3>
         </div>
 
-
-
             <div class="card-body">
                 <p class="text-muted">Email Attachment For new Deal</p>
                 <div class="form-group row">

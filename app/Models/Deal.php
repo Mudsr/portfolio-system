@@ -31,13 +31,17 @@ class Deal extends Model
         return $this->belongsTo(Portfolio::class);
     }
 
-
-    function client()
+    public function client()
     {
         return $this->belongsTo(Client::class);
     }
 
     public function scopeRenewals($query)
+    {
+        $query->where('renewed_at', '!=',null);
+    }
+
+    public function scopeActive($query)
     {
         $query->where('renewed_at', '!=',null);
     }
