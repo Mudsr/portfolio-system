@@ -205,7 +205,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="menu-item menu-item-submenu {{ (request()->is('portfolio*') || request()->is('clients*') || request()->is('documents*')) ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                <li class="menu-item menu-item-submenu {{ (request()->is('portfolio*') || request()->is('clients*') ) ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         {{-- <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
@@ -269,7 +269,7 @@
                                 </a>
                             </li>
 
-                            <li class="menu-item {{ (request()->is('documents*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                            {{-- <li class="menu-item {{ (request()->is('documents*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
                                 <a href="{{ route('documents.index') }}" class="menu-link">
                                      <span class="svg-icon menu-icon svg-icon-primary"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\File.svg-->
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -282,7 +282,7 @@
                                     </svg><!--end::Svg Icon--></span>
                                     <span class="menu-text">Documents</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             {{-- <li class="menu-item" aria-haspopup="true">
                                 <a href="layout/themes/aside-light.html" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">

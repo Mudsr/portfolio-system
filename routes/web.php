@@ -41,8 +41,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('portfolios/{portfolio}/close', [PortfolioController::class, 'closePortfolio'])->name('close.portfolio');
     //clients routes
     Route::resource('clients', ClientController::class)->except('show');
-    //documents routes
-    Route::resource('documents', DocumentController::class)->except('show','edit','update');
+    // //documents routes
+    // Route::resource('documents', DocumentController::class)->except('show','edit','update');
     //plots routes
     Route::resource('deals', DealController::class)->except('edit', 'show');
     Route::get('deals/{deal}/renew', [DealController::class, 'renewForm'])->name('deal.renew');
