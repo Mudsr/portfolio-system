@@ -36,12 +36,12 @@ class PortfolioRequest extends FormRequest
             'management_fee' => ['required', 'numeric'],
             'minimum_fee_per_quarter' => ['required', 'numeric'],
             'fee_calculation_method' => ['required', 'string'],
-            'contact_person' => ['required', 'string'],
-            'contact_number' => ['required', 'string'],
-            'contact_email' => ['required', 'string', 'email'],
-            'agreement_date' => ['required', 'date'],
-            'agreement_expiry' => ['required', 'date'],
-            'agreement_document' => ['required', 'file', 'mimes:pdf,docx']
+            'contact_person' => ['nullable', 'string'],
+            'contact_number' => ['nullable', 'string'],
+            'contact_email' => ['nullable', 'email'],
+            'agreement_date' => ['nullable', 'date'],
+            'agreement_expiry' => ['nullable', 'date'],
+            'agreement_document' => ['nullable', 'file', 'mimes:pdf,docx']
         ];
     }
 
@@ -50,13 +50,13 @@ class PortfolioRequest extends FormRequest
         return [
             'management_fee' => ['required', 'numeric'],
             'minimum_fee_per_quarter' => ['required', 'numeric'],
-            'contact_person' => ['required', 'string'],
-            'contact_number' => ['required', 'string'],
-            'contact_email' => ['required', 'string', 'email'],
-            'agreement_date' => ['required', 'date'],
-            'agreement_expiry' => ['required', 'date'],
+            'contact_person' => ['nullable', 'string'],
+            'contact_number' => ['nullable', 'string'],
+            'contact_email' => ['nullable', 'email'],
+            'agreement_date' => ['nullable', 'date'],
+            'agreement_expiry' => ['nullable', 'date'],
             'update_effective_from' => ['required', 'date'],
-            'agreement_document' => ['required', 'file', 'mimes:pdf,docx']
+            'agreement_document' => ['nullable', 'file', 'mimes:pdf,docx']
         ];
     }
 

@@ -17,14 +17,14 @@ class CreatePortfoliosTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('management_fee');
-            $table->string('minimum_fee_per_quarter');
+            $table->double('management_fee');
+            $table->float('minimum_fee_per_quarter');
             $table->string('fee_calculation_method');
-            $table->string('contact_person');
-            $table->string('contact_number');
-            $table->string('contact_email');
-            $table->date('agreement_date');
-            $table->date('agreement_expiry');
+            $table->string('contact_person')->nullable();
+            $table->string('contact_number')->nullable();
+            $table->string('contact_email')->nullable();
+            $table->date('agreement_date')->nullable();
+            $table->date('agreement_expiry')->nullable();
             $table->date('update_effective_from')->nullable();
             $table->date('closing_date')->nullable();
             $table->string('closing_reason')->nullable();

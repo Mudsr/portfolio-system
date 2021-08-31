@@ -31,7 +31,7 @@
                     <div class="col-md-8">
                         <input type="number" class="form-control @error('management_fee') is-invalid @enderror"
                             placeholder="Management Fee" value="{{ old('management_fee') }}" name="management_fee" min="0"
-                            required />
+                            step="0.0001" required />
                         @error('management_fee')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -63,8 +63,8 @@
                         <select class="form-control @error('fee_calculation_method') is-invalid @enderror"
                             name="fee_calculation_method">
                             <option value="" class="text-muted">---Select---</option>
-                            <option value="flat" {{ old('fee_calculation_method') == 'flat' ? selected : '' }}>Flat</option>
-                            <option value="proportioate" {{ old('fee_calculation_method') == 'proportioate' ? selected : '' }}>
+                            <option value="flat" {{ old('fee_calculation_method') == 'flat' ? 'selected' : '' }}>Flat</option>
+                            <option value="proportioate" {{ old('fee_calculation_method') == 'proportioate' ? 'selected' : '' }}>
                                 Proportionate</option>
                         </select>
 
@@ -77,12 +77,11 @@
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
                         Contact Person
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
                         <input type="text" class="form-control @error('contact_person') is-invalid @enderror"
                             placeholder="Contact Person Name" value="{{ old('contact_person') }}" name="contact_person"
-                            required />
+                         />
                         @error('contact_person')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -92,12 +91,11 @@
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
                         Contact Number
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
                         <input type="tel" class="form-control @error('contact_number') is-invalid @enderror"
                             placeholder="Contact Person Number" value="{{ old('contact_number') }}" name="contact_number"
-                            required />
+                         />
                         @error('contact_number')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -107,11 +105,10 @@
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
                         Contact Email
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
                         <input type="email" class="form-control @error('contact_email') is-invalid @enderror"
-                            placeholder="Enter email" value="{{ old('contact_email') }}" name="contact_email" required />
+                            placeholder="Enter email" value="{{ old('contact_email') }}" name="contact_email" />
                         @error('contact_email')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -121,11 +118,10 @@
                 <div class="form-group row">
                     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
                         Portfolio Agreement Date
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
                         <input type="date" class="form-control @error('agreement_date') is-invalid @enderror"
-                            value="{{ old('agreement_date') }}" name="agreement_date" required />
+                            value="{{ old('agreement_date') }}" name="agreement_date" />
                         @error('agreement_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -134,11 +130,10 @@
                 <div class="form-group row">
                     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
                         Portfolio Agreement Expiry
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
                         <input type="date" class="form-control @error('agreement_expiry') is-invalid @enderror"
-                            value="{{ old('agreement_expiry') }}" name="agreement_expiry" required />
+                            value="{{ old('agreement_expiry') }}" name="agreement_expiry" />
                         @error('agreement_expiry')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -147,11 +142,10 @@
                 <div class="form-group row">
                     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
                         Agreement Documnet
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
                         <input type="file" class="form-control @error('agreement_document') is-invalid @enderror"
-                            name="agreement_document" required />
+                            name="agreement_document" />
                         @error('agreement_document')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

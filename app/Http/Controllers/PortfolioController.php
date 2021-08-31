@@ -37,8 +37,11 @@ class PortfolioController extends Controller
      */
     public function store(PortfolioRequest $request)
     {
+        // dd($request->all());
         $portfolio = Portfolio::create($request->except('_token'));
-        $portfolio->addMediaFromRequest('agreement_document')->toMediaCollection('portfolios');
+        if($request->hasFile('agreement_document')) {
+            $portfolio->addMediaFromRequest('agreement_document')->toMediaCollection('portfolios');
+        }
 
         return redirect()->route('portfolio.index')->with('success', 'Portfolio created Successfully');
     }
@@ -76,8 +79,10 @@ class PortfolioController extends Controller
     {
         $portfolio->update($request->all());
 
-        $portfolio->clearMediaCollection('portfolios');
-        $portfolio->addMediaFromRequest('agreement_document')->toMediaCollection('portfolios');
+        if($request->hasFile('agreement_document')) {
+            $portfolio->clearMediaCollection('portfolios');
+            $portfolio->addMediaFromRequest('agreement_document')->toMediaCollection('portfolios');
+        }
 
         return redirect()->route('portfolio.index')->with('success', 'Portfolio updated Successfully');
     }
