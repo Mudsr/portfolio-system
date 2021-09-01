@@ -42,7 +42,11 @@
                         name="client_id">
                         <option value="" class="text-muted">---Select---</option>
                         @foreach ($clients as $client)
-                            <option value="{{ $client->id }}" {{ old('portfolio_id') == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
+                            <option value="{{ $client->id }}" {{ old('portfolio_id') == $client->id ? 'selected' : '' }}>
+
+                                ID: {{ $client->id }}&nbsp;&nbsp;&nbsp; Name: {{ $client->name }} &nbsp;&nbsp;&nbsp;
+                                ID No: {{ $client->id_no }} &nbsp;&nbsp;&nbsp; Telephone: {{ $client->telephone }}
+                            </option>
                         @endforeach
 
                     </select>
@@ -132,12 +136,11 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label">
                     PAI Rent
-                    <span class="text-danger">*</span>
                 </label>
                 <div class="col-md-8">
                     <input type="text" class="form-control @error('pai_rent') is-invalid @enderror"
                         placeholder="PAI Rent" value="{{ old('pai_rent') }}"
-                        name="pai_rent" required />
+                        name="pai_rent" />
                     @error('pai_rent')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -146,12 +149,11 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label">
                     Licensed Purpose
-                    <span class="text-danger">*</span>
                 </label>
                 <div class="col-md-8">
                     <input type="text" class="form-control @error('licensed_purpose') is-invalid @enderror"
                         placeholder="Licensed Purpose" value="{{ old('licensed_purpose') }}"
-                        name="licensed_purpose" required />
+                        name="licensed_purpose" />
                     @error('licensed_purpose')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -161,12 +163,11 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label">
                     Application No
-                    <span class="text-danger">*</span>
                 </label>
                 <div class="col-md-8">
                     <input type="text" class="form-control @error('application_no') is-invalid @enderror"
                         placeholder="Application No" value="{{ old('application_no') }}"
-                        name="application_no" required />
+                        name="application_no" />
                     @error('application_no')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -175,12 +176,11 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label">
                     Plot Area Size
-                    <span class="text-danger">*</span>
                 </label>
                 <div class="col-md-8">
                     <input type="text" class="form-control @error('plot_area_size') is-invalid @enderror"
                         placeholder="Application No" value="{{ old('plot_area_size') }}"
-                        name="plot_area_size" required />
+                        name="plot_area_size" />
                     @error('plot_area_size')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -191,12 +191,11 @@
             <div class="form-group row">
                 <label class="col-md-3 col-form-label">
                     Attachment
-                    <span class="text-danger">*</span>
                 </label>
 
                 <div class="col-md-8">
                     <input type="file" class="form-control @error('new_deal_email_attachment') is-invalid @enderror"
-                        name="new_deal_email_attachment" required />
+                        name="new_deal_email_attachment" />
 
                     @error('new_deal_email_attachment')
                         <div class="invalid-feedback">{{ $message }}</div>

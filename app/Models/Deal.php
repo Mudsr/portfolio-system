@@ -15,6 +15,7 @@ class Deal extends Model
         'plot_no',
         'closed_at',
         'renewed_at',
+        'type'
     ];
 
     protected $dates = [

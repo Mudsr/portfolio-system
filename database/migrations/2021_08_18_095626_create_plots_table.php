@@ -22,10 +22,10 @@ class CreatePlotsTable extends Migration
             $table->string('block');
             $table->string('property_value');
             $table->string('finance_amount');
-            $table->string('pai_rent');
-            $table->string('licensed_purpose');
-            $table->string('application_no');
-            $table->string('plot_area_size');
+            $table->string('pai_rent')->nullable();
+            $table->string('licensed_purpose')->nullable();
+            $table->string('application_no')->nullable();
+            $table->string('plot_area_size')->nullable();
 
             $table->timestamps();
         });
