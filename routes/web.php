@@ -64,7 +64,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('report', App\Http\Livewire\Report\Index::class)->name('report.index');
 
     Route::get('media/{media}', function (Media $media) {
-        return $media;
+        return response()->file($media->getPath());
     })->name('media.download');
 });
 

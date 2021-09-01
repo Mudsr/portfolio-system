@@ -91,7 +91,10 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                        <button type="reset" class="btn btn-secondary">
+                            <a href="{{ route('deals.index') }}">Cancel</a>
+
+                        </button>
                     </div>
                 </div>
             </div>

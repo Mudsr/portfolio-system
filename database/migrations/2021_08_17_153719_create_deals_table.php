@@ -19,7 +19,7 @@ class CreateDealsTable extends Migration
             $table->foreignId('portfolio_id')->constrained()->onDelete('cascade');
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
 
-            $table->string('plot_no')->unique();
+            $table->string('plot_no');
             $table->string('type')->nullable();
             $table->date('renewed_at')->nullable();
             $table->date('closed_at')->nullable();

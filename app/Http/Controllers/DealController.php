@@ -18,9 +18,10 @@ class DealController extends Controller
      */
     public function index()
     {
-        $deals = Deal::all();
+        $activeDeals = Deal::active()->get();
+        $inActiveDeals = Deal::inActive()->get();
 
-        return view('pages.deals.index', compact('deals'));
+        return view('pages.deals.index', compact('activeDeals', 'inActiveDeals'));
     }
 
     /**

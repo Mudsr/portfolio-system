@@ -14,38 +14,11 @@
                     </label>
 
                     <div class="col-md-8">
-                        <a href="{{ route('media.download', $deal->plot->getMedia('new_deal_email')->first()->id)}}">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('new_deal_email')->first()->id)}}" target="_blank">View Old Attachment</a>
                         <input type="file" class="form-control @error('new_deal_email_attachment') is-invalid @enderror"
                             name="new_deal_email_attachment"  />
 
                         @error('new_deal_email_attachment')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-                <p class="text-muted">Email attachment for POA</p>
-                <div class="form-group row">
-                    <label class="col-md-3 ">
-                    Old Attachment
-                        <span class="text-danger">*</span>
-                    </label>
-
-                    <div class="col-md-8">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label">
-                    Attachment
-                        <span class="text-danger">*</span>
-                    </label>
-
-                    <div class="col-md-8">
-                        <a href="{{ route('media.download', $deal->plot->getMedia('poa_email_attachment')->first()->id)}}">View Old Attachment</a>
-
-                        <input type="file" class="form-control @error('poa_email_attachment') is-invalid @enderror"
-                            name="poa_email_attachment"  />
-
-                        @error('poa_email_attachment')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -87,7 +60,7 @@
                         <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
-                        <a href="{{ route('media.download', $deal->plot->getMedia('pai')->first()->id)}}">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('pai')->first()->id)}}" target="_blank">View Old Attachment</a>
 
                         <input type="file" class="form-control @error('pai_leasing_contract') is-invalid @enderror"
                             name="pai_leasing_contract"  />
@@ -133,7 +106,7 @@
                         <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
-                        <a href="{{ route('media.download', $deal->plot->getMedia('fire_insurance')->first()->id)}}">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('fire_insurance')->first()->id)}}" target="_blank">View Old Attachment</a>
                         <input type="file" class="form-control @error('fire_insurance_copy') is-invalid @enderror"
                             name="fire_insurance_copy"  />
                         @error('fire_insurance_copy')
@@ -178,7 +151,7 @@
                     </label>
 
                     <div class="col-md-8">
-                        <input type="date" class="form-control @error('power_of_attorney_issue_to') is-invalid @enderror"
+                        <input type="text" class="form-control @error('power_of_attorney_issue_to') is-invalid @enderror"
                             value="{{ old('power_of_attorney_issue_to', $deal->plot->getMedia('power_of_attorney')->first()->getCustomProperty('power_of_attorney_issue_to')) }}" name="power_of_attorney_issue_to"  />
                         @error('power_of_attorney_issue_to')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -188,16 +161,34 @@
 
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
-                        Attachment
+                        POA Copy
                         <span class="text-danger">*</span>
                     </label>
 
                     <div class="col-md-8">
-                        <a href="{{ route('media.download', $deal->plot->getMedia('power_of_attorney')->first()->id)}}">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('power_of_attorney')->first()->id)}}" target="_blank">View Old Attachment</a>
                         <input type="file" class="form-control @error('power_of_attorney_copy') is-invalid @enderror"
                             name="power_of_attorney_copy"  />
 
                         @error('power_of_attorney_copy')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
+                    POA Email
+                        <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="col-md-8">
+                        <a href="{{ route('media.download', $deal->plot->getMedia('poa_email_attachment')->first()->id)}}" target="_blank">View Old Attachment</a>
+
+                        <input type="file" class="form-control @error('poa_email_attachment') is-invalid @enderror"
+                            name="poa_email_attachment"  />
+
+                        @error('poa_email_attachment')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

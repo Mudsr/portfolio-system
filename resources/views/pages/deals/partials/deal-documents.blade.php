@@ -9,23 +9,6 @@
 
             <div class="card-body">
 
-                <p class="text-muted">Email attachment for POA</p>
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label">
-                    Attachment
-                        <span class="text-danger">*</span>
-                    </label>
-
-                    <div class="col-md-8">
-                        <input type="file" class="form-control @error('poa_email_attachment') is-invalid @enderror"
-                            name="poa_email_attachment" required />
-
-                        @error('poa_email_attachment')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-
                 <p class="text-muted">PAI Leasing Contract Document</p>
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
@@ -150,7 +133,7 @@
                     </label>
 
                     <div class="col-md-8">
-                        <input type="date" class="form-control @error('power_of_attorney_issue_to') is-invalid @enderror"
+                        <input type="text" class="form-control @error('power_of_attorney_issue_to') is-invalid @enderror"
                             value="{{ old('power_of_attorney_issue_to') }}" name="power_of_attorney_issue_to" required />
                         @error('power_of_attorney_issue_to')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -160,7 +143,7 @@
 
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
-                        Attachment
+                        POA Copy
                         <span class="text-danger">*</span>
                     </label>
 
@@ -169,6 +152,22 @@
                             name="power_of_attorney_copy" required />
 
                         @error('power_of_attorney_copy')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
+                    POA Email
+                        <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="col-md-8">
+                        <input type="file" class="form-control @error('poa_email_attachment') is-invalid @enderror"
+                            name="poa_email_attachment" required />
+
+                        @error('poa_email_attachment')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

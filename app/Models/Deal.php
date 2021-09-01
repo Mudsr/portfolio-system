@@ -43,6 +43,11 @@ class Deal extends Model
 
     public function scopeActive($query)
     {
-        $query->where('renewed_at', '!=',null);
+        $query->where('closed_at',null);
+    }
+
+    public function scopeInActive($query)
+    {
+        $query->where('closed_at', '!=',null);
     }
 }
