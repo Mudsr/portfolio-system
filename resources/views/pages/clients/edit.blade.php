@@ -12,8 +12,20 @@
             <div class="card-body">
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
-                        Email
+                        Name
                         <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-8">
+                        <input type="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $client->name) }}" placeholder="Name" name="name" required/>
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
+                        Email
                     </label>
                     <div class="col-md-8">
                         <input type="email" class="form-control @error('email') is-invalid @enderror"
@@ -97,7 +109,6 @@
                 <div class="form-group row">
                     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
                         ID Copy Attachment
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
                         <input type="file" class="form-control @error('id_attachment') is-invalid @enderror"

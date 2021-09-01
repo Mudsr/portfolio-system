@@ -44,7 +44,7 @@ class ClientRequest extends FormRequest
         return [
             'name'=> ['required'],
             'telephone' => ['required'],
-            'email' => ['required', 'email'],
+            'email' => ['nullable', 'email'],
             'id_type' => ['required'],
             'id_no' => ['required'],
             'id_expiry' => ['required', 'date'],
