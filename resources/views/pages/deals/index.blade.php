@@ -10,13 +10,13 @@
             <div class="card-toolbar">
                 <ul class="nav nav-light-primary nav-bold nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#active">
+                        <a class="nav-link @if($tab=='active') active @endif" data-toggle="tab" href="#active">
                             {{-- <span class="nav-icon"><i class="flaticon2-chat-1"></i></span> --}}
                             <span class="nav-text">Active</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#in-active">
+                        <a class="nav-link @if($tab=='in-active') active @endif" data-toggle="tab" href="#in-active">
                             {{-- <span class="nav-icon"><i class="flaticon2-drop"></i></span> --}}
                             <span class="nav-text">In-Active</span>
                         </a>
@@ -100,5 +100,31 @@
 
         </div>
     </div>
+
+@endsection
+
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+
+            $('#active_deal_search_btn').click(function(){
+                if(query = $('#active_deals_search_query').val()) {
+                    window.location = '/deals?q=' + query+'&t=a';
+                } else {
+                    window.location = '/deals';
+                }
+
+            });
+
+            $('#inActive_deal_search_btn').click(function(){
+                if(query = $('#inActive_deals_search_query').val()) {
+                    window.location = '/deals?q=' + query+'&t=!a';
+                } else {
+                    window.location = '/deals';
+                }
+            });
+        });
+    </script>
 
 @endsection

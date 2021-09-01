@@ -16,12 +16,54 @@ class DealController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $tab = 'active';
+
         $activeDeals = Deal::active()->get();
         $inActiveDeals = Deal::inActive()->get();
 
-        return view('pages.deals.index', compact('activeDeals', 'inActiveDeals'));
+        if($request->filled('q') && $request->filled('t')) {
+            if($request->t == 'a'){
+                $activeDeals = Deal::active()
+                    ->where(
+                        fn($query) =>
+                            $query->where('id', 'LIKE', "%{$request->q}%")
+                            ->orWhere('plot_no', 'LIKE', "%{$request->q}%")
+                            ->orWhereHas(
+                                'client', fn($query) =>
+                                    $query->where('id',  'LIKE', "%{$request->q}%")
+                                        ->orWhere('name',  'LIKE', "%{$request->q}%")
+                                        ->orWhere('telephone',  'LIKE', "%{$request->q}%")
+                                        ->orWhere('id_no',  'LIKE', "%{$request->q}%")
+                            )
+                    )
+                    ->get();
+            }
+
+            if($request->t == '!a') {
+                $inActiveDeals = Deal::inActive()
+                ->where(
+                    fn($query) =>
+                        $query->where('id', 'LIKE', "%{$request->q}%")
+                        ->orWhere('plot_no','LIKE', "%{$request->q}%")
+                        ->orWhereHas(
+                            'client', fn($query) =>
+                                $query->where('id',  'LIKE', "%{$request->q}%")
+                                    ->orWhere('name',  'LIKE', "%{$request->q}%")
+                                    ->orWhere('telephone',  'LIKE', "%{$request->q}%")
+                                    ->orWhere('id_no',  'LIKE', "%{$request->q}%")
+                        )
+                )
+                ->get();
+
+                $tab = 'in-active';
+            }
+        }
+
+
+
+        return view('pages.deals.index', compact('activeDeals', 'inActiveDeals', 'tab'));
     }
 
     /**
@@ -246,5 +288,22 @@ class DealController extends Controller
         ]);
 
         return redirect()->route('deals.index')->with('success', 'Deal closed successfully');
+    }
+
+    // public function activeDeals(Request $request)
+    // {
+    //     if($request->ajax()) {
+    //         $activeDeals = Deal::with('plot', 'portfolio', 'client')->active()->get();
+    //         // $inActiveDeals = Deal::with('plot', 'portfolio', 'client')->inActive()->get();
+
+    //         return response()->json([
+    //             'data' => $activeDeals,
+    //         ]);
+    //     }
+    // }
+
+    public function searchDeals(Request $request)
+    {
+
     }
 }
