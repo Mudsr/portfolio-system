@@ -177,7 +177,7 @@ class DealController extends Controller
         }
 
 
-        return redirect()->route('deals.index')->with('success','Deal updated successfully');
+        return redirect()->route('deals.index')->with('success','Deal Renewed Successfully');
     }
 
     /**
@@ -193,6 +193,12 @@ class DealController extends Controller
         return redirect()->route('deals.index')->with('success', 'Deal deleted successfully');
     }
 
+    /**
+     * get renew form
+     *
+     * @param Deal $deal
+     * @return void
+     */
     public function renewForm(Deal $deal)
     {
         $clients =Client::get();
@@ -201,11 +207,43 @@ class DealController extends Controller
         return View('pages.deals.renewal', compact('deal', 'portfolios', 'clients'));
     }
 
+    /**
+     * process renewal of deal
+     *
+     * @param Deal $deal
+     * @return void
+     */
     public function renew(Deal $deal)
     {
         $clients =Client::get();
         $portfolios = Portfolio::all();
 
         return View('pages.renewal', compact('deal', 'portfolios', 'clients'));
+    }
+
+    /**
+     * get closing form
+     *
+     * @param Deal $deal
+     * @return void
+     */
+    public function closeForm(Deal $deal)
+    {
+        return view('pages.deals.close',compact('deal'));
+    }
+
+    /**
+     * process closing of deal
+     *
+     * @param Deal $deal
+     * @return void
+     */
+    public function closeDeal(DealRequest $request,Deal $deal)
+    {
+        $deal->update([
+            'closed_at' => $request->closing_date,
+        ]);
+
+        return redirect()->route('deals.index')->with('success', 'Deal closed successfully');
     }
 }

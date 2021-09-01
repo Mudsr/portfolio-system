@@ -46,6 +46,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //plots routes
     Route::resource('deals', DealController::class)->except('edit', 'show');
     Route::get('deals/{deal}/renew', [DealController::class, 'renewForm'])->name('deal.renew');
+    Route::get('deals/{deal}/close', [DealController::class, 'closeForm'])->name('deal.close.form');
+    Route::post('deals/{deal}/close', [DealController::class, 'closeDeal'])->name('deal.close');
 
     Route::get('tasks', Index::class)->name('tasks.index');
     Route::get('tasks/create', Create::class)->name('tasks.create');

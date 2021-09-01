@@ -23,6 +23,10 @@ class DealRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->routeIs('deal.close')) {
+            return $this->validateCloseRequest();
+        }
+
         if ($this->isMethod('put')) {
             return $this->validatePutRequest();
         }
@@ -56,7 +60,7 @@ class DealRequest extends FormRequest
 
     public function validatePutRequest()
     {
-        $rules = [
+        return [
             'portfolio_id' => ['required','integer'],
             'client_id' => ['required','integer'],
             'plot_no' => ['required','string'],
@@ -69,8 +73,12 @@ class DealRequest extends FormRequest
             'power_of_attorney_expiry_Date' => ['required', 'date', 'after:power_of_attorney_issue_date'],
             'power_of_attorney_issue_to' => ['required', 'string'],
         ];
+    }
 
-        return $rules;
-
+    public function validateCloseRequest()
+    {
+        return [
+            'closing_date' => ['required', 'date'],
+        ];
     }
 }

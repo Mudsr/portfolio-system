@@ -45,7 +45,7 @@
 
                                 </a>
 
-                                <a href="{{ route('close.portfolio.form', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
+                                <a href="{{ route('deal.close.form', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
                                     title="Close Deal">
                                     <i class="fas fa-times text-warning"></i>
                                 </a>

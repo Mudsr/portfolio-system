@@ -12,7 +12,9 @@ class Deal extends Model
     protected $fillable = [
         'portfolio_id',
         'client_id',
-        'plot_no'
+        'plot_no',
+        'closed_at',
+        'renewed_at',
     ];
 
     protected $dates = [
