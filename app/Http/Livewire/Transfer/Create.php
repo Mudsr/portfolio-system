@@ -71,6 +71,7 @@ class Create extends Component
         $plot = Plot::find($this->plot_id);
         $deal = $plot->deal;
         $deal->client_id = $this->new_client_id;
+        $deal->type = 'transfer';
         $deal->save();
 
         return redirect()->route('transfers.index');

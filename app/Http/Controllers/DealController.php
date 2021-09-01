@@ -128,6 +128,7 @@ class DealController extends Controller
             'portfolio_id' => $request->portfolio_id,
             'client_id' => $request->client_id,
             'plot_no' => $request->plot_no,
+            'type' => 'renewal',
         ]);
 
         $plot = $deal->plot;

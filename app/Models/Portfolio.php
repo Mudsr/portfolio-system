@@ -31,11 +31,15 @@ class Portfolio extends Model implements HasMedia
         // 'is_current'
     ];
 
-
     protected $dates = [
         'created_at',
         'updated_at'
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('closing_date', null);
+    }
 
     public static function getCurrentPortfolio()
     {

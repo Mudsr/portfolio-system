@@ -18,8 +18,6 @@ class MergeController extends Controller
 
     private function mergeDeal($request)
     {
-        Deal::whereIn('id', [$request->deal1, $request->deal2])->update(['status' => 'close']);
-
         $deal1 = Deal::find($request->deal1);
         $deal = Deal::create([
             'portfolio_id' => $deal1->portfolio_id,
@@ -34,6 +32,16 @@ class MergeController extends Controller
         ]);
 
         $this->createNewPlot($deal, $request);
+
+        $this->closeOldDeals($request);
+    }
+
+    public function closeOldDeals($request)
+    {
+        Deal::whereIn('id', [$request->deal1, $request->deal2])->update([
+            'type' => 'merge',
+            'closed_at' => now(),
+        ]);
     }
 
     private function createNewPlot($deal, $request)

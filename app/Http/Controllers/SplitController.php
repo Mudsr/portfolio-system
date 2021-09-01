@@ -18,8 +18,7 @@ class SplitController extends Controller
 
     private function splitDeal($request)
     {
-        $oldDeal = Deal::find($request->deal_id);
-        $oldDeal->update(['status' => 'close']);
+        $oldDeal = Deal::findOrFail($request->deal_id);
 
         $deal = Deal::create([
             'portfolio_id' => $oldDeal->portfolio_id,
@@ -45,6 +44,16 @@ class SplitController extends Controller
             'new_plots_ids' => [$plot1->id, $plot2->id],
         ]);
 
+        $this->closeOldDeal($oldDeal);
+
+    }
+
+    public function closeOldDeal($oldDeal)
+    {
+        $oldDeal->update([
+            'type' => 'split',
+            'closed_at' => now(),
+        ]);
     }
 
     private function createNewPlot($deal, $data)
