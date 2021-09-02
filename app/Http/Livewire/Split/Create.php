@@ -42,8 +42,6 @@ class Create extends Component
     {
         $deal = Deal::findOrFail($id);
         $this->plotDetail = $deal->plot;
-
-        // dd($this->plotDetail);
     }
 
 }
