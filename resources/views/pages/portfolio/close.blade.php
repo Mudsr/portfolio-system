@@ -3,7 +3,7 @@
 @section('content')
     <div class="card card-custom gutter-b example example-compact">
         <div class="card-header">
-            <h3 class="card-title">Close Prtfolio</h3>
+            <h3 class="card-title">Close Portfolio</h3>
         </div>
         <form action="{{ route('close.portfolio', $portfolio->id) }}" method="POST" enctype="multipart/form-data">
             @csrf

@@ -18,3 +18,8 @@ php artisan migrate --seed
 
 php artisan serve
 
+## Portfolio system
+Developer: Mudassar Ali
+
+Email: mudsr3@gmail.com
+
