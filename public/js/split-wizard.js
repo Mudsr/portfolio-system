@@ -172,7 +172,7 @@ var KTWizard3 = function () {
 	return {
 		// public functions
 		init: function () {
-			_wizardEl = KTUtil.getById('kt_wizard_v3');
+			_wizardEl = KTUtil.getById('split_wizard');
 			_formEl = KTUtil.getById('kt_form');
 
 			initWizard();

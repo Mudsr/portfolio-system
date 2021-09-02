@@ -7,7 +7,7 @@
             <div class="card card-custom">
                 <div class="card-body p-0">
 
-                    <div class="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first" data-wizard-clickable="true">
+                    <div class="wizard wizard-3" id="split_wizard" data-wizard-state="step-first" data-wizard-clickable="true">
                         <!--begin: Wizard Nav-->
                         <div class="wizard-nav">
                             <div class="wizard-steps px-8 py-8 px-lg-15 py-lg-3">
@@ -41,7 +41,7 @@
                                 </div>
                                 <!--end::Wizard Step 3 Nav-->
 
-                                {{-- <!--begin::Wizard Step 4 Nav-->
+                                <!--begin::Wizard Step 4 Nav-->
                                 <div class="wizard-step" data-wizard-type="step">
                                     <div class="wizard-label">
                                         <h3 class="wizard-title">
@@ -59,7 +59,7 @@
                                         <div class="wizard-bar"></div>
                                     </div>
                                 </div>
-                                <!--end::Wizard Step 5 Nav--> --}}
+                                <!--end::Wizard Step 5 Nav-->
 
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                     </div>
                                     <!--end: Wizard Step 3-->
 
-                                    {{-- <!--begin: Wizard Step 4-->
+                                    <!--begin: Wizard Step 4-->
                                     <div class="pb-5" data-wizard-type="step-content">
                                         @include('livewire.split.wizard.new-plot', ['name' => 'plot2'])
                                     </div>
@@ -98,7 +98,7 @@
                                     <div class="pb-5" data-wizard-type="step-content">
                                         @include('livewire.split.wizard.new-plot-documents', ['name' => 'plot2'])
                                     </div>
-                                    <!--end: Wizard Step 5--> --}}
+                                    <!--end: Wizard Step 5-->
 
                                     <!--begin: Wizard Actions-->
                                     <div class="d-flex justify-content-between border-top mt-5 pt-10">
@@ -132,7 +132,7 @@
         @endif
     </div>
 </div>
-@push('scripts')
+@section('scripts')
     <script src="{{ asset('js/split-wizard.js') }}"></script>
 
     <script>
@@ -157,5 +157,5 @@
         }
 
     </script>
-@endpush
+@endsection
 
