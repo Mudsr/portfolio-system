@@ -68,20 +68,13 @@ var KTWizard3 = function () {
 							}
 						}
 					},
-					deal1: {
+					deal_id: {
 						validators: {
 							notEmpty: {
-								message: 'Please select first deal.'
+								message: 'Deal is required.'
 							}
 						}
-					},
-					deal2: {
-						validators: {
-							notEmpty: {
-								message: 'Please select second deal.'
-							}
-						}
-					},
+					}
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),

@@ -32,16 +32,18 @@ class Create extends Component
 
     public function updatedPortfolioId($id)
     {
-        $this->portfolio = Portfolio::findOrFail($id);
-        if( $this->portfolio->deals->count() > 0) {
-            $this->deals = $this->portfolio->deals;
+        $this->portfolio = Portfolio::find($id);
+        if( isset( $this->portfolio) && $this->portfolio->deals->count() > 0) {
+            $this->deals = $this->portfolio->deals()->with('plot', 'client')->get();
         }
     }
 
     public function updatedDealId($id)
     {
-        $deal = Deal::findOrFail($id);
-        $this->plotDetail = $deal->plot;
+        $deal = Deal::find($id);
+        if($deal) {
+            $this->plotDetail = $deal->plot;
+        }
     }
 
 }

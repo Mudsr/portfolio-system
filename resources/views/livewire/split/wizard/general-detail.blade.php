@@ -24,22 +24,28 @@
 
 <div class="form-group row">
     <label for="exampleSelect1" class="col-md-3 col-form-label">
-        Plot No
+        Deal
         <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
-            <select class="form-control @error('deal_id') is-invalid @enderror"
-                data-size="7" data-live-search="true"
-                wire:model="deal_id" name="deal_id">
-                <option value="" class="text-muted">---Select---</option>
-                @foreach ($deals as $deal)
-                    <option value="{{ $deal->id }}">{{ $deal->plot_no }}</option>
-                @endforeach
-            </select>
+        <select class="form-control selectpicker2 @error('deal_id') is-invalid @enderror"
+            data-size="7" data-live-search="true"
+            wire:model="deal_id" name="deal_id">
+            <option value="" class="text-muted">---Select---</option>
+            @foreach ($deals as $deal)
+                <option value="{{ $deal->id }}">
+                    DEAL ID: {{ $deal->id }} &nbsp;&nbsp;&nbsp;&nbsp;
+                    CLIENT NAME: {{ $deal->client->name }} &nbsp;&nbsp;&nbsp;&nbsp;
+                    CLIENT ID: {{ $deal->client->id }} &nbsp;&nbsp;&nbsp;&nbsp;
+                    AREA: {{ $deal->plot->area_name }} &nbsp;&nbsp;&nbsp;&nbsp;
+                    PLOT ID: {{ $deal->plot->id }}
+                </option>
+            @endforeach
+        </select>
 
-            @error("deal_id")
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+        @error("deal_id")
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
     </div>
 </div>
