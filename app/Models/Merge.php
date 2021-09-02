@@ -13,6 +13,7 @@ class Merge extends Model
         'portfolio_id',
         'new_deal_id',
         'old_deal_ids',
+        'entry_Date'
      ];
 
      protected $casts=[

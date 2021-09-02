@@ -29,6 +29,7 @@ class MergeController extends Controller
             'portfolio_id' => $deal1->portfolio_id,
             'new_deal_id' => $deal->id,
             'old_deal_ids' => [$request->deal1, $request->deal2],
+            'entry_Date' => $request->entry_date
         ]);
 
         $this->createNewPlot($deal, $request);

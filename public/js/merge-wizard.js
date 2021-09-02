@@ -82,6 +82,13 @@ var KTWizard3 = function () {
 							}
 						}
 					},
+					entry_date: {
+						validators: {
+							notEmpty: {
+								message: 'Entry Date is required'
+							}
+						}
+					},
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),

@@ -20,6 +20,8 @@ class CreateSplitsTable extends Migration
             $table->foreignId('plot_id')->constrained()->onDelete('cascade');
             $table->json('new_plots_ids');
 
+            $table->date('entry_date');
+
             $table->timestamps();
         });
     }

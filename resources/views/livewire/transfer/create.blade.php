@@ -38,12 +38,18 @@
                     </label>
 
                     <div class="col-md-8">
-                            <select class="form-control @error('plot_id') is-invalid @enderror"
+                            <select class="form-control selectpicker2 @error('plot_id') is-invalid @enderror"
                                 data-size="7" data-live-search="true"
                                 wire:model="plot_id" >
                                 <option value="" class="text-muted">---Select---</option>
-                                @foreach ($plots as $plot)
-                                    <option value="{{ $plot['id'] }}">{{ $plot['area_name'] }}</option>
+                                @foreach ($plots as $deal)
+                                    <option value="{{ $deal->id }}">
+                                        DEAL ID: {{ $deal->id }} &nbsp;&nbsp;&nbsp;&nbsp;
+                                        CLIENT NAME: {{ $deal->client->name }} &nbsp;&nbsp;&nbsp;&nbsp;
+                                        CLIENT ID: {{ $deal->client->id }} &nbsp;&nbsp;&nbsp;&nbsp;
+                                        AREA: {{ $deal->plot->area_name }} &nbsp;&nbsp;&nbsp;&nbsp;
+                                        PLOT ID: {{ $deal->plot->id }}
+                                    </option>
                                 @endforeach
                             </select>
 
@@ -62,7 +68,7 @@
 
                     <div class="col-md-8">
                         {{-- <div wire:ignore id="old_client_id"> --}}
-                            <select class="form-control selectpicker2 @error("old_client_id") is-invalid @enderror"
+                            <select class="form-control  @error("old_client_id") is-invalid @enderror"
                                 data-size="7" data-live-search="true"
                                 wire:model="old_client_id" disabled>
                                 <option value="" class="text-muted">---Select---</option>
@@ -102,7 +108,21 @@
                         {{-- </div> --}}
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
+                        Entry Date
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-8">
+                        <input type="date" class="form-control  @error('entry_date') is-invalid @enderror"
+                            value="{{ old('entry_date') }}" name="entry_date" wire:model="entry_date" required />
+                        @error('entry_date')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
+            </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button type="reset" class="btn btn-secondary">Cancel</button>
@@ -112,14 +132,25 @@
     </div>
 </div>
 @section('scripts')
-<script>
-    $('.selectpicker2').
-        selectpicker().
-        on('hide.bs.select', function() {
-            // fix dropup arrow icon on hide
-            $(this).closest('.bootstrap-select').removeClass('dropup');
-        }).
-        siblings('.dropdown-toggle').
-        attr('title', Plugin.getOption('translate.toolbar.pagination.items.default.select'));
-</script>
+    <script>
+        intializeSelectPicker()
+
+        document.addEventListener("DOMContentLoaded", () => {
+            Livewire.hook('message.sent', (message, component) => {
+                $('.selectpicker2').selectpicker('destroy')
+            })
+            Livewire.hook('message.processed', (message, component) => {
+                intializeSelectPicker();
+
+            })
+        });
+
+        function intializeSelectPicker() {
+            $('.selectpicker2').selectpicker().on('hide.bs.select', function() {
+                // fix dropup arrow icon on hide
+                $(this).closest('.bootstrap-select').removeClass('dropup');
+            });
+        }
+
+    </script>
 @endsection

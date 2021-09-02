@@ -3,12 +3,11 @@
 <div class="form-group row">
     <label class="col-md-3 col-form-label">
         Attachment
-        <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
         <input type="file" class="form-control @error($name.'[new_deal_email_attachment]') is-invalid @enderror"
-            name="{{ $name }}[new_deal_email_attachment]" required />
+            name="{{ $name }}[new_deal_email_attachment]" />
 
         @error($name.'[new_deal_email_attachment]')
             <div class="invalid-feedback">{{ $message }}</div>
@@ -16,33 +15,17 @@
     </div>
 </div>
 
-<p class="text-muted">Email attachment for POA</p>
-<div class="form-group row">
-    <label class="col-md-3 col-form-label">
-    Attachment
-        <span class="text-danger">*</span>
-    </label>
 
-    <div class="col-md-8">
-        <input type="file" class="form-control @error($name.'[poa_email_attachment]') is-invalid @enderror"
-            name="{{ $name }}[poa_email_attachment]" required />
-
-        @error($name.'[poa_email_attachment]')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-    </div>
-</div>
 
 <p class="text-muted">PAI Leasing Contract Document</p>
 <div class="form-group row">
     <label class="col-md-3 col-form-label">
         Issue Date:
-        <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[pai_issue_date]') is-invalid @enderror"
-                value="{{ old($name.'[pai_issue_date]') }}" name="{{ $name }}[pai_issue_date]" required />
+                value="{{ old($name.'[pai_issue_date]') }}" name="{{ $name }}[pai_issue_date]" />
         @error($name.'[pai_issue_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -51,12 +34,11 @@
 <div class="form-group row">
     <label class="col-md-3 col-form-label">
         Expiry Date:
-        <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[pai_expiry_Date]') is-invalid @enderror"
-            value="{{ old($name.'[pai_expiry_Date]') }}" name="{{ $name }}[pai_expiry_Date]" required />
+            value="{{ old($name.'[pai_expiry_Date]') }}" name="{{ $name }}[pai_expiry_Date]" />
         @error($name.'[pai_expiry_Date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -66,11 +48,10 @@
 <div class="form-group row">
     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
         Attachment
-        <span class="text-danger">*</span>
     </label>
     <div class="col-md-8">
         <input type="file" class="form-control @error($name.'[pai_leasing_contract]') is-invalid @enderror"
-            name="{{ $name }}[pai_leasing_contract]" required />
+            name="{{ $name }}[pai_leasing_contract]" />
         @error($name.'[pai_leasing_contract]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -81,12 +62,11 @@
 <div class="form-group row">
     <label class="col-md-3 col-form-label">
         Issue Date:
-        <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[fire_insurance_issue_date]') is-invalid @enderror"
-                value="{{ old($name.'[fire_insurance_issue_date]') }}" name="{{ $name }}[fire_insurance_issue_date]" required />
+                value="{{ old($name.'[fire_insurance_issue_date]') }}" name="{{ $name }}[fire_insurance_issue_date]" />
         @error($name.'[fire_insurance_issue_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -95,12 +75,11 @@
 <div class="form-group row">
     <label class="col-md-3 col-form-label">
         Expiry Date:
-        <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[fire_insurance_expiry_Date]') is-invalid @enderror"
-            value="{{ old($name.'[fire_insurance_expiry_Date]') }}" name="{{ $name }}[fire_insurance_expiry_Date]" required />
+            value="{{ old($name.'[fire_insurance_expiry_Date]') }}" name="{{ $name }}[fire_insurance_expiry_Date]" />
         @error($name.'[fire_insurance_expiry_Date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -110,11 +89,10 @@
 <div class="form-group row">
     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
         Attachment
-        <span class="text-danger">*</span>
     </label>
     <div class="col-md-8">
         <input type="file" class="form-control @error($name.'[fire_insurance_copy]') is-invalid @enderror"
-            name="{{ $name }}[fire_insurance_copy]" required />
+            name="{{ $name }}[fire_insurance_copy]" />
         @error($name.'[fire_insurance_copy]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -125,12 +103,11 @@
 <div class="form-group row">
     <label class="col-md-3 col-form-label">
         Issue Date:
-        <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[power_of_attorney_issue_date]') is-invalid @enderror"
-                value="{{ old($name.'[power_of_attorney_issue_date]') }}" name="{{ $name }}[power_of_attorney_issue_date]" required />
+                value="{{ old($name.'[power_of_attorney_issue_date]') }}" name="{{ $name }}[power_of_attorney_issue_date]" />
         @error($name.'[power_of_attorney_issue_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -139,12 +116,11 @@
 <div class="form-group row">
     <label class="col-md-3 col-form-label">
         Expiry Date:
-        <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[power_of_attorney_expiry_Date]') is-invalid @enderror"
-            value="{{ old($name.'[power_of_attorney_expiry_Date]') }}" name="{{ $name }}[power_of_attorney_expiry_Date]" required />
+            value="{{ old($name.'[power_of_attorney_expiry_Date]') }}" name="{{ $name }}[power_of_attorney_expiry_Date]" />
         @error($name.'[power_of_attorney_expiry_Date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -153,12 +129,11 @@
 <div class="form-group row">
     <label class="col-md-3 col-form-label">
         Issued To:
-        <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[power_of_attorney_issue_to]') is-invalid @enderror"
-            value="{{ old($name.'[power_of_attorney_issue_to]') }}" name="{{ $name }}[power_of_attorney_issue_to]" required />
+            value="{{ old($name.'[power_of_attorney_issue_to]') }}" name="{{ $name }}[power_of_attorney_issue_to]" />
         @error($name.'[power_of_attorney_issue_to]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -168,14 +143,28 @@
 <div class="form-group row">
     <label class="col-md-3 col-form-label">
         Attachment
-        <span class="text-danger">*</span>
     </label>
 
     <div class="col-md-8">
         <input type="file" class="form-control @error($name.'[power_of_attorney_copy]') is-invalid @enderror"
-            name="{{ $name }}[power_of_attorney_copy]" required />
+            name="{{ $name }}[power_of_attorney_copy]" />
 
         @error($name.'[power_of_attorney_copy]')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-md-3 col-form-label">
+    Email Attachment
+    </label>
+
+    <div class="col-md-8">
+        <input type="file" class="form-control @error($name.'[poa_email_attachment]') is-invalid @enderror"
+            name="{{ $name }}[poa_email_attachment]" />
+
+        @error($name.'[poa_email_attachment]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>

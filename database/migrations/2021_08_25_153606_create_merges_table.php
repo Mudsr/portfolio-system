@@ -20,6 +20,9 @@ class CreateMergesTable extends Migration
             $table->foreignId('new_deal_id')->constrained('deals')->onDelete('cascade');
             $table->json('old_deal_ids');
 
+            $table->date('entry_date');
+
+
             $table->timestamps();
         });
     }

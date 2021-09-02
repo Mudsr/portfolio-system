@@ -42,6 +42,7 @@ class SplitController extends Controller
             'portfolio_id' => $deal->portfolio_id,
             'plot_id' => $oldDeal->plot->id,
             'new_plots_ids' => [$plot1->id, $plot2->id],
+            'entry_date' => $request->entry_date,
         ]);
 
         $this->closeOldDeal($oldDeal);
@@ -76,32 +77,41 @@ class SplitController extends Controller
 
     private function saveNewPlotDocument($plot, $data)
     {
-        $plot->addMedia($data['pai_leasing_contract'])
-        ->withCustomProperties(
-            [
-                'pai_issue_date' => $data['pai_issue_date'],
-                'pai_expiry_Date' => $data['pai_expiry_Date'],
-            ]
-        )->toMediaCollection('pai');
+        if( isset($data['pai_leasing_contract']) ) {
+            $plot->addMedia($data['pai_leasing_contract'])
+            ->withCustomProperties(
+                [
+                    'pai_issue_date' => $data['pai_issue_date'],
+                    'pai_expiry_Date' => $data['pai_expiry_Date'],
+                ]
+            )->toMediaCollection('pai');
+        }
+        if( isset($data['fire_insurance_copy']) ) {
+            $plot->addMedia($data['fire_insurance_copy'])
+            ->withCustomProperties(
+                [
+                    'fire_insurance_issue_date' => $data['fire_insurance_issue_date'],
+                    'fire_insurance_expiry_Date' => $data['fire_insurance_expiry_Date'],
+                ]
+            )->toMediaCollection('fire_insurance');
+        }
 
-        $plot->addMedia($data['fire_insurance_copy'])
-        ->withCustomProperties(
-            [
-                'fire_insurance_issue_date' => $data['fire_insurance_issue_date'],
-                'fire_insurance_expiry_Date' => $data['fire_insurance_expiry_Date'],
-            ]
-        )->toMediaCollection('fire_insurance');
+        if( isset($data['power_of_attorney_copy']) ) {
+            $plot->addMedia($data['power_of_attorney_copy'])
+            ->withCustomProperties(
+                [
+                    'power_of_attorney_issue_date' => $data['power_of_attorney_issue_date'],
+                    'power_of_attorney_expiry_Date' => $data['power_of_attorney_expiry_Date'],
+                    'power_of_attorney_issue_to' => $data['power_of_attorney_issue_to'],
+                ]
+            )->toMediaCollection('power_of_attorney');
+        }
 
-        $plot->addMedia($data['power_of_attorney_copy'])
-        ->withCustomProperties(
-            [
-                'power_of_attorney_issue_date' => $data['power_of_attorney_issue_date'],
-                'power_of_attorney_expiry_Date' => $data['power_of_attorney_expiry_Date'],
-                'power_of_attorney_issue_to' => $data['power_of_attorney_issue_to'],
-            ]
-        )->toMediaCollection('power_of_attorney');
-
-        $plot->addMedia($data['new_deal_email_attachment'])->toMediaCollection('new_deal_email');
-        $plot->addMedia($data['poa_email_attachment'])->toMediaCollection('poa_email_attachment');
+        if( isset($data['new_deal_email_attachment']) ) {
+            $plot->addMedia($data['new_deal_email_attachment'])->toMediaCollection('new_deal_email');
+        }
+        if( isset($data['poa_email_attachment']) ) {
+            $plot->addMedia($data['poa_email_attachment'])->toMediaCollection('poa_email_attachment');
+        }
     }
 }

@@ -13,6 +13,7 @@ class Split extends Model
         'portfolio_id',
         'plot_id',
         'new_plots_ids',
+        'entry_date',
      ];
 
      protected $casts=[

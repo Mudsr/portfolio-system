@@ -74,7 +74,14 @@ var KTWizard3 = function () {
 								message: 'Deal is required.'
 							}
 						}
-					}
+					},
+                    entry_date: {
+						validators: {
+							notEmpty: {
+								message: 'Entry Date is required'
+							}
+						}
+					},
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),

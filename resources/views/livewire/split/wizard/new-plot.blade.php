@@ -71,11 +71,10 @@
     <div class="form-group row">
         <label class="col-md-3 col-form-label">
             PAI Rent
-            <span class="text-danger">*</span>
         </label>
         <div class="col-md-8">
             <input type="text" class="form-control @error($name.'[pai_rent]') is-invalid @enderror" placeholder="PAI Rent"
-                value="{{ old($name.'[pai_rent]') }}" name="{{ $name }}[pai_rent]" required />
+                value="{{ old($name.'[pai_rent]') }}" name="{{ $name }}[pai_rent]" />
             @error($name.'[pai_rent]')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -84,12 +83,11 @@
     <div class="form-group row">
         <label class="col-md-3 col-form-label">
             Licensed Purpose
-            <span class="text-danger">*</span>
         </label>
         <div class="col-md-8">
             <input type="text" class="form-control @error($name.'[licensed_purpose]') is-invalid @enderror"
                 placeholder="Licensed Purpose" value="{{ old($name.'[licensed_purpose]') }}" name="{{ $name }}[licensed_purpose]"
-                required />
+             />
             @error($name.'[licensed_purpose]')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -99,11 +97,10 @@
     <div class="form-group row">
         <label class="col-md-3 col-form-label">
             Application No
-            <span class="text-danger">*</span>
         </label>
         <div class="col-md-8">
             <input type="text" class="form-control @error($name.'[application_no]') is-invalid @enderror"
-                placeholder="Application No" value="{{ old($name.'[application_no]') }}" name="{{ $name }}[application_no]" required />
+                placeholder="Application No" value="{{ old($name.'[application_no]') }}" name="{{ $name }}[application_no]" />
             @error($name.'[application_no]')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -112,11 +109,10 @@
     <div class="form-group row">
         <label class="col-md-3 col-form-label">
             Plot Area Size
-            <span class="text-danger">*</span>
         </label>
         <div class="col-md-8">
             <input type="text" class="form-control @error($name.'[plot_area_size]') is-invalid @enderror"
-                placeholder="Application No" value="{{ old($name.'[plot_area_size]') }}" name="{{ $name }}[plot_area_size]" required />
+                placeholder="Application No" value="{{ old($name.'[plot_area_size]') }}" name="{{ $name }}[plot_area_size]" />
             @error($name.'[plot_area_size]')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror

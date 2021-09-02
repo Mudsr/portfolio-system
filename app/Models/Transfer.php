@@ -14,6 +14,7 @@ class Transfer extends Model
         'old_client_id',
         'new_client_id',
         'plot_id',
+        'entry_date'
     ];
 
     public function portfolio()

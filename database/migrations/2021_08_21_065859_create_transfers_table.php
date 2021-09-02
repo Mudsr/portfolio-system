@@ -21,6 +21,8 @@ class CreateTransfersTable extends Migration
             $table->foreignId('old_client_id')->constrained('clients')->onDelete('cascade');
             $table->foreignId('new_client_id')->constrained('clients')->onDelete('cascade');
 
+            $table->date('entry_date');
+
             $table->timestamps();
         });
     }

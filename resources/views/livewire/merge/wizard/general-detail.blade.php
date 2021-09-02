@@ -75,3 +75,17 @@
         @enderror
     </div>
 </div>
+
+<div class="form-group row">
+    <label class="col-md-3 col-form-label">
+        Entry Date
+        <span class="text-danger">*</span>
+    </label>
+    <div class="col-md-8">
+        <input type="date" class="form-control  @error('entry_date') is-invalid @enderror"
+            value="{{ old('entry_date') }}" name="entry_date" required />
+        @error('entry_date')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+</div>
