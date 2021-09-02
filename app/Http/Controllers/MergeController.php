@@ -62,32 +62,43 @@ class MergeController extends Controller
 
     private function saveNewPlotDocument($plot, $request)
     {
-        $plot->addMediaFromRequest('pai_leasing_contract')
-        ->withCustomProperties(
-            [
-                'pai_issue_date' => $request->pai_issue_date,
-                'pai_expiry_Date' => $request->pai_expiry_Date,
-            ]
-        )->toMediaCollection('pai');
+        if($request->hasFile('pai_leasing_contract')) {
+            $plot->addMediaFromRequest('pai_leasing_contract')
+            ->withCustomProperties(
+                [
+                    'pai_issue_date' => $request->pai_issue_date,
+                    'pai_expiry_Date' => $request->pai_expiry_Date,
+                ]
+            )->toMediaCollection('pai');
+        }
 
-        $plot->addMediaFromRequest('fire_insurance_copy')
-        ->withCustomProperties(
-            [
-                'fire_insurance_issue_date' => $request->fire_insurance_issue_date,
-                'fire_insurance_expiry_Date' => $request->fire_insurance_expiry_Date,
-            ]
-        )->toMediaCollection('fire_insurance');
+        if($request->hasFile('fire_insurance_copy')){
+            $plot->addMediaFromRequest('fire_insurance_copy')
+            ->withCustomProperties(
+                [
+                    'fire_insurance_issue_date' => $request->fire_insurance_issue_date,
+                    'fire_insurance_expiry_Date' => $request->fire_insurance_expiry_Date,
+                ]
+            )->toMediaCollection('fire_insurance');
+        }
 
-        $plot->addMediaFromRequest('power_of_attorney_copy')
-        ->withCustomProperties(
-            [
-                'power_of_attorney_issue_date' => $request->power_of_attorney_issue_date,
-                'power_of_attorney_expiry_Date' => $request->power_of_attorney_expiry_Date,
-                'power_of_attorney_issue_to' => $request->power_of_attorney_issue_to,
-            ]
-        )->toMediaCollection('power_of_attorney');
+        if ($request->hasFile('power_of_attorney_copy')) {
+            $plot->addMediaFromRequest('power_of_attorney_copy')
+            ->withCustomProperties(
+                [
+                    'power_of_attorney_issue_date' => $request->power_of_attorney_issue_date,
+                    'power_of_attorney_expiry_Date' => $request->power_of_attorney_expiry_Date,
+                    'power_of_attorney_issue_to' => $request->power_of_attorney_issue_to,
+                ]
+            )->toMediaCollection('power_of_attorney');
+        }
 
-        $plot->addMediaFromRequest('new_deal_email_attachment')->toMediaCollection('new_deal_email');
-        $plot->addMediaFromRequest('poa_email_attachment')->toMediaCollection('poa_email_attachment');
+        if($request->hasFile('new_deal_email_attachment')) {
+            $plot->addMediaFromRequest('new_deal_email_attachment')->toMediaCollection('new_deal_email');
+        }
+
+        if($request->hasFile('poa_email_attachment')) {
+            $plot->addMediaFromRequest('poa_email_attachment')->toMediaCollection('poa_email_attachment');
+        }
     }
 }

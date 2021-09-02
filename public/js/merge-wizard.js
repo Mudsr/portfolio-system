@@ -1,5 +1,7 @@
 "use strict";
 
+initializeWizard();
+
 // Class definition
 var KTWizard3 = function () {
 	// Base elements
@@ -17,16 +19,16 @@ var KTWizard3 = function () {
 		});
 
 		// Validation before going to next page
-		_wizard.on('beforeChange', function (wizard) {
+		_wizard.on('beforeNext', function (wizard) {
 			// Don't go to the next step yet
-			_wizard.stop();
+            wizard.stop();
 
 			// Validate form
-			var validator = _validations[wizard.getStep() - 1]; // get validator for currnt step
+			var validator = _validations[wizard.getStep() - 1]; // get validator for current step
 			if (validator) {
 				validator.validate().then(function (status) {
 					if (status == 'Valid') {
-						_wizard.goNext();
+						wizard.goNext();
 						KTUtil.scrollTop();
 					} else {
 						Swal.fire({
@@ -40,6 +42,7 @@ var KTWizard3 = function () {
 						}).then(function () {
 							KTUtil.scrollTop();
 						});
+
 					}
 				});
 			}
@@ -58,41 +61,27 @@ var KTWizard3 = function () {
 			_formEl,
 			{
 				fields: {
-					address1: {
+					portfolio_id: {
 						validators: {
 							notEmpty: {
-								message: 'Address is required'
+								message: 'Please Select Portfolio'
 							}
 						}
 					},
-					postcode: {
+					deal1: {
 						validators: {
 							notEmpty: {
-								message: 'Postcode is required'
+								message: 'Please select first deal.'
 							}
 						}
 					},
-					city: {
+					deal2: {
 						validators: {
 							notEmpty: {
-								message: 'City is required'
+								message: 'Please select second deal.'
 							}
 						}
 					},
-					state: {
-						validators: {
-							notEmpty: {
-								message: 'State is required'
-							}
-						}
-					},
-					country: {
-						validators: {
-							notEmpty: {
-								message: 'Country is required'
-							}
-						}
-					}
 				},
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
@@ -106,51 +95,40 @@ var KTWizard3 = function () {
 			_formEl,
 			{
 				fields: {
-					package: {
+					plot_no: {
 						validators: {
 							notEmpty: {
-								message: 'Package details is required'
+								message: 'Plot No is required'
 							}
 						}
 					},
-					weight: {
+					area_name: {
 						validators: {
 							notEmpty: {
-								message: 'Package weight is required'
+								message: 'Area Name is required'
 							},
-							digits: {
-								message: 'The value added is not valid'
-							}
 						}
 					},
-					width: {
+					block: {
 						validators: {
 							notEmpty: {
-								message: 'Package width is required'
+								message: 'Block is required'
 							},
-							digits: {
-								message: 'The value added is not valid'
-							}
 						}
 					},
+
 					height: {
-						validators: {
+						property_value: {
 							notEmpty: {
-								message: 'Package height is required'
+								message: 'Property Value is required'
 							},
-							digits: {
-								message: 'The value added is not valid'
-							}
 						}
 					},
-					packagelength: {
+					finance_amount: {
 						validators: {
 							notEmpty: {
-								message: 'Package length is required'
+								message: 'Finance Amount is required'
 							},
-							digits: {
-								message: 'The value added is not valid'
-							}
 						}
 					}
 				},
@@ -161,39 +139,39 @@ var KTWizard3 = function () {
 			}
 		));
 
-		// Step 3
-		_validations.push(FormValidation.formValidation(
-			_formEl,
-			{
-				fields: {
-					delivery: {
-						validators: {
-							notEmpty: {
-								message: 'Delivery type is required'
-							}
-						}
-					},
-					packaging: {
-						validators: {
-							notEmpty: {
-								message: 'Packaging type is required'
-							}
-						}
-					},
-					preferreddelivery: {
-						validators: {
-							notEmpty: {
-								message: 'Preferred delivery window is required'
-							}
-						}
-					}
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					bootstrap: new FormValidation.plugins.Bootstrap()
-				}
-			}
-		));
+		// // Step 3
+		// _validations.push(FormValidation.formValidation(
+		// 	_formEl,
+		// 	{
+		// 		fields: {
+		// 			delivery: {
+		// 				validators: {
+		// 					notEmpty: {
+		// 						message: 'Delivery type is required'
+		// 					}
+		// 				}
+		// 			},
+		// 			packaging: {
+		// 				validators: {
+		// 					notEmpty: {
+		// 						message: 'Packaging type is required'
+		// 					}
+		// 				}
+		// 			},
+		// 			preferreddelivery: {
+		// 				validators: {
+		// 					notEmpty: {
+		// 						message: 'Preferred delivery window is required'
+		// 					}
+		// 				}
+		// 			}
+		// 		},
+		// 		plugins: {
+		// 			trigger: new FormValidation.plugins.Trigger(),
+		// 			bootstrap: new FormValidation.plugins.Bootstrap()
+		// 		}
+		// 	}
+		// ));
 
 
 	}
@@ -210,6 +188,9 @@ var KTWizard3 = function () {
 	};
 }();
 
-jQuery(document).ready(function () {
-	KTWizard3.init();
-});
+function initializeWizard(){
+    jQuery(document).ready(function () {
+        KTWizard3.init();
+    });
+}
+
