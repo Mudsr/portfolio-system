@@ -1,4 +1,3 @@
-<div class="col-md-6 mt-4">
 
     <div class="card card-custom gutter-b example example-compact">
         <div class="card-header">
@@ -143,4 +142,3 @@
 
         </div>
     </div>
-</div>

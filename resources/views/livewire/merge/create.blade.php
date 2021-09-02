@@ -98,11 +98,15 @@
 
     <div class="row">
         @if (!empty($plot1))
-            @include('livewire.merge.partials.plot', ['plot' => $plot1, 'name' => 'Plot 1'])
+            <div class="col-md-6 mt-4">
+                @include('livewire.merge.partials.plot', ['plot' => $plot1, 'name' => 'Plot 1'])
+            </div>
         @endif
 
         @if (!empty($plot2))
-            @include('livewire.merge.partials.plot', ['plot' => $plot2, 'name' => 'Plot 2'])
+            <div class="col-md-6 mt-4">
+                @include('livewire.merge.partials.plot', ['plot' => $plot2, 'name' => 'Plot 2'])
+            </div>
         @endif
     </div>
 </div>
