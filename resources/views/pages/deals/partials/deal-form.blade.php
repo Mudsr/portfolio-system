@@ -41,11 +41,18 @@
                         data-size="7" data-live-search="true"
                         name="client_id">
                         <option value="" class="text-muted">---Select---</option>
+                        <option class="font-weight-bold" disabled>
+                            ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            ID No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Telephone:
+                        </option>
                         @foreach ($clients as $client)
                             <option value="{{ $client->id }}" {{ old('portfolio_id') == $client->id ? 'selected' : '' }}>
-
-                                ID: {{ $client->id }}&nbsp;&nbsp;&nbsp; Name: {{ $client->name }} &nbsp;&nbsp;&nbsp;
-                                ID No: {{ $client->id_no }} &nbsp;&nbsp;&nbsp; Telephone: {{ $client->telephone }}
+                                {{ $client->id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {{ $client->name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {{ $client->id_no }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {{ $client->telephone }}
                             </option>
                         @endforeach
 
