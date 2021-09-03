@@ -28,7 +28,7 @@
         </div>
         <div class="card-body">
 
-            @forelse ($clients as $client)
+            @if ($clients->count() > 0)
                 <table class="table table-responsive w-100 d-block d-md-table">
                     <thead>
                         <tr>
@@ -42,6 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach ($clients as $client)
                         <tr>
                             <th scope="row">{{ $client->address }}</th>
                             <td>{{ $client->telephone }}</td>
@@ -57,11 +58,12 @@
                                 </a>
                             </td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>
-            @empty
+            @else
                 <h3 class="text-muted text-center">No Client Exists</h3>
-            @endforelse
+            @endif
 
             {{ $clients->render() }}
         </div>
