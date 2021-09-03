@@ -29,5 +29,14 @@ class AppServiceProvider extends ServiceProvider
         // $portfolios = Portfolio::all();
         // View::share('currentPortfolio',$portfolio);
         // View::share('portfolios',$portfolios);
+
+        $this->loadHelpers();
+    }
+
+    protected function loadHelpers()
+    {
+        foreach (glob(__DIR__.'/../Helpers/*.php') as $filename) {
+            require_once $filename;
+        }
     }
 }

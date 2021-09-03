@@ -32,24 +32,28 @@
                 <table class="table table-responsive w-100 d-block d-md-table">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-muted">Addres</th>
+                            <th scope="col" class="text-muted">ID</th>
+                            <th scope="col" class="text-muted">Name</th>
                             <th scope="col" class="text-muted">Telephone</th>
                             <th scope="col" class="text-muted">Email</th>
                             <th scope="col" class="text-muted">ID Type</th>
                             <th scope="col" class="text-muted">ID No</th>
                             <th scope="col" class="text-muted">ID Expiry</th>
+                            <th scope="col" class="text-muted">Address</th>
                             <th scope="col" class="text-muted">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($clients as $client)
                         <tr>
-                            <th scope="row">{{ $client->address }}</th>
+                            <th scope="row">{{ $client->id }}</th>
+                            <th scope="row">{{ $client->name }}</th>
                             <td>{{ $client->telephone }}</td>
                             <td>{{ $client->email }}</td>
                             <td>{{ $client->id_type }}</td>
                             <td>{{ $client->id_no }}</td>
                             <td>{{ $client->id_expiry }}</td>
+                            <th scope="row">{{ $client->address }}</th>
                             <td>
                                 <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-sm btn-clean btn-icon mr-2"
                                     title="Edit details">

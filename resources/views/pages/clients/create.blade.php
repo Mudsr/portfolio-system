@@ -11,6 +11,15 @@
 
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
+                        Id
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-8">
+                        <input type="number" class="form-control" value="{{ getClientIdForForm() }}" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">
                         Name
                         <span class="text-danger">*</span>
                     </label>
