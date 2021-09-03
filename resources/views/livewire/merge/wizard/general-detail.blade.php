@@ -31,13 +31,20 @@
             data-size="7" data-live-search="true"
             wire:model="deal1" name="deal1">
             <option value="" class="text-muted">---Select---</option>
+            <option class="font-weight-bold" disabled>
+                DEAL ID: &emsp;&emsp;
+                CLIENT NAME:&emsp;&emsp;
+                CLIENT ID: &emsp;&emsp;
+                AREA: &emsp;&emsp;
+                PLOT ID: &emsp;&emsp;
+            </option>
             @foreach ($deals as $deal)
                 <option value="{{ $deal->id }}">
-                    DEAL ID: {{ $deal->id }} &nbsp;&nbsp;&nbsp;&nbsp;
-                    CLIENT NAME: {{ $deal->client->name }} &nbsp;&nbsp;&nbsp;&nbsp;
-                    CLIENT ID: {{ $deal->client->id }} &nbsp;&nbsp;&nbsp;&nbsp;
-                    AREA: {{ $deal->plot->area_name }} &nbsp;&nbsp;&nbsp;&nbsp;
-                    PLOT ID: {{ $deal->plot->id }}
+                    {{ $deal->id }} &emsp;&emsp;&emsp;&emsp;&emsp;
+                    {{ $deal->client->name }} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    {{ $deal->client->id }} &emsp;&emsp;&emsp;&emsp;
+                    {{ $deal->plot->area_name }} &emsp;&emsp;&emsp;&emsp;
+                    {{ $deal->plot->id }}
                 </option>
             @endforeach
         </select>
@@ -59,15 +66,23 @@
             data-size="7" data-live-search="true"
             wire:model="deal2" name="deal2">
             <option value="" class="text-muted">---Select---</option>
+            <option class="font-weight-bold" disabled>
+                DEAL ID: &emsp;&emsp;
+                CLIENT NAME:&emsp;&emsp;
+                CLIENT ID: &emsp;&emsp;
+                AREA: &emsp;&emsp;
+                PLOT ID: &emsp;&emsp;
+            </option>
             @foreach ($dealsFiltered as $deal)
                 <option value="{{ $deal->id }}">
-                    DEAL ID: {{ $deal->id }} &nbsp;&nbsp;&nbsp;&nbsp;
-                    CLIENT NAME: {{ $deal->client->name }} &nbsp;&nbsp;&nbsp;&nbsp;
-                    CLIENT ID: {{ $deal->client->id }} &nbsp;&nbsp;&nbsp;&nbsp;
-                    AREA: {{ $deal->plot->area_name }} &nbsp;&nbsp;&nbsp;&nbsp;
-                    PLOT ID: {{ $deal->plot->id }}
+                    {{ $deal->id }} &emsp;&emsp;&emsp;&emsp;&emsp;
+                    {{ $deal->client->name }} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    {{ $deal->client->id }} &emsp;&emsp;&emsp;&emsp;
+                    {{ $deal->plot->area_name }} &emsp;&emsp;&emsp;&emsp;
+                    {{ $deal->plot->id }}
                 </option>
             @endforeach
+
         </select>
 
         @error("deal2")

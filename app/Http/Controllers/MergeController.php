@@ -23,6 +23,7 @@ class MergeController extends Controller
             'portfolio_id' => $deal1->portfolio_id,
             'client_id' => $deal1->client_id,
             'plot_no' => $request->plot_no,
+            'type' => 'merge',
         ]);
 
         $merge = Merge::create([

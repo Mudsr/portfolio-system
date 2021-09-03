@@ -24,15 +24,17 @@ class SplitController extends Controller
             'portfolio_id' => $oldDeal->portfolio_id,
             'client_id' => $oldDeal->client_id,
             'plot_no' =>$request->plot1['plot_no'],
+            'type' => 'split',
         ]);
 
         $plot1Data = $request->plot1;
         $plot1 = $this->createNewPlot($deal, $plot1Data);
-
+        
         $deal = Deal::create([
             'portfolio_id' => $oldDeal->portfolio_id,
             'client_id' => $oldDeal->client_id,
             'plot_no' =>$request->plot2['plot_no'],
+            'type' => 'split',
         ]);
 
         $plot2Data = $request->plot2;
