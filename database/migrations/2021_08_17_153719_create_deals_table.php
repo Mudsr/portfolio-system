@@ -21,6 +21,7 @@ class CreateDealsTable extends Migration
 
             $table->string('plot_no');
             $table->string('type')->nullable();
+            $table->date('entry_date')->nullable();
             $table->date('renewed_at')->nullable();
             $table->date('closed_at')->nullable();
 

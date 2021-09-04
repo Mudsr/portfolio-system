@@ -37,8 +37,8 @@ class DealRequest extends FormRequest
             'plot_no' => ['required','string'],
             'area_name' => ['required', 'string'],
             'block' => ['required', 'string'],
-            'property_value' => ['required', 'string'],
-            'finance_amount' => ['required', 'string'],
+            'property_value' => ['required', 'numeric'],
+            'finance_amount' => ['required', 'numeric'],
             'pai_rent' => ['nullable', 'string'],
             'licensed_purpose' => ['nullable', 'string'],
             'application_no' => ['nullable', 'string'],
@@ -56,6 +56,7 @@ class DealRequest extends FormRequest
             'new_deal_email_attachment' => ['nullable', 'file', 'mimes:pdf,docx'],
             'poa_email_attachment' => ['nullable', 'file', 'mimes:pdf,docx'],
             'extra_attachments' => ['nullable', 'file', 'mimes:pdf,docx'],
+            'entry_Date' => ['required', 'date'],
         ];
     }
 

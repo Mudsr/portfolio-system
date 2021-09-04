@@ -105,6 +105,20 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">
+                    Entry Date
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-8">
+                    <input type="date" class="form-control  @error('entry_date') is-invalid @enderror"
+                        value="{{ old('entry_date') }}" name="entry_date" required />
+                    @error('entry_date')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+
             <p class="text-muted">Plot Details</p>
 
             <div class="form-group row">
@@ -142,8 +156,8 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control @error('property_value') is-invalid @enderror"
-                        placeholder="Propert Value" value="{{ old('property_value') }}"
+                    <input type="number" class="form-control @error('property_value') is-invalid @enderror"
+                        placeholder="Propert Value" value="{{ old('property_value') }}" min="0"
                         name="property_value" required />
                     @error('property_value')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -157,8 +171,8 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control @error('finance_amount') is-invalid @enderror"
-                        placeholder="Finance Amount" value="{{ old('finance_amount') }}"
+                    <input type="number" class="form-control @error('finance_amount') is-invalid @enderror"
+                        placeholder="Finance Amount" value="{{ old('finance_amount') }}" min="0"
                         name="finance_amount" required />
                     @error('finance_amount')
                         <div class="invalid-feedback">{{ $message }}</div>

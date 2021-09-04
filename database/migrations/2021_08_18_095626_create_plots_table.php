@@ -20,8 +20,8 @@ class CreatePlotsTable extends Migration
 
             $table->string('area_name');
             $table->string('block');
-            $table->string('property_value');
-            $table->string('finance_amount');
+            $table->double('property_value');
+            $table->double('finance_amount');
             $table->string('pai_rent')->nullable();
             $table->string('licensed_purpose')->nullable();
             $table->string('application_no')->nullable();
