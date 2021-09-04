@@ -10,10 +10,11 @@
                 <label class="col-md-3 col-form-label">
                     Attachment
                 </label>
+                {{-- {{ dd($deal->plot->getMedia('new_deal_email')) }} --}}
 
                 <div class="col-md-8">
                     @if ($deal->plot->getMedia('new_deal_email')->count() > 0)
-                        <a href="{{ route('media.download', $deal->plot->getMedia('new_deal_email')->first()->id)}}" target="_blank">
+                        <a href="{{ route('media.download', $deal->plot->getMedia('new_deal_email')->last()->id)}}" target="_blank">
                             View Old Attachment
                         </a>
                     @endif
@@ -35,7 +36,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('pai_issue_date') is-invalid @enderror"
-                            value="{{ old('pai_issue_date', $deal->plot->getMedia('pai')->isNotEmpty() ? $deal->plot->getMedia('pai')->first()->getCustomProperty('pai_issue_date'):'') }}" name="pai_issue_date"  />
+                            value="{{ old('pai_issue_date', $deal->plot->getMedia('pai')->isNotEmpty() ? $deal->plot->getMedia('pai')->last()->getCustomProperty('pai_issue_date'):'') }}" name="pai_issue_date"  />
                     @error('pai_issue_date')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -48,7 +49,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('pai_expiry_Date') is-invalid @enderror"
-                        value="{{ old('pai_expiry_Date', $deal->plot->getMedia('pai')->isNotEmpty() ? $deal->plot->getMedia('pai')->first()->getCustomProperty('pai_expiry_Date'): '') }}"
+                        value="{{ old('pai_expiry_Date', $deal->plot->getMedia('pai')->isNotEmpty() ? $deal->plot->getMedia('pai')->last()->getCustomProperty('pai_expiry_Date'): '') }}"
                         name="pai_expiry_Date"  />
                     @error('pai_expiry_Date')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -62,7 +63,7 @@
                 </label>
                 <div class="col-md-8">
                     @if ( $deal->plot->getMedia('pai')->isNotEmpty())
-                        <a href="{{ route('media.download', $deal->plot->getMedia('pai')->first()->id)}}" target="_blank">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('pai')->last()->id)}}" target="_blank">View Old Attachment</a>
                     @endif
 
                     <input type="file" class="form-control @error('pai_leasing_contract') is-invalid @enderror"
@@ -81,7 +82,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('fire_insurance_issue_date') is-invalid @enderror"
-                            value="{{ old('fire_insurance_issue_date',  $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->first()->getCustomProperty('fire_insurance_issue_date'): '') }}"
+                            value="{{ old('fire_insurance_issue_date',  $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->last()->getCustomProperty('fire_insurance_issue_date'): '') }}"
                             name="fire_insurance_issue_date"  />
                     @error('fire_insurance_issue_date')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -95,7 +96,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('fire_insurance_expiry_Date') is-invalid @enderror"
-                        value="{{ old('fire_insurance_expiry_Date', $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->first()->getCustomProperty('fire_insurance_expiry_Date'): '') }}"
+                        value="{{ old('fire_insurance_expiry_Date', $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->last()->getCustomProperty('fire_insurance_expiry_Date'): '') }}"
                         name="fire_insurance_expiry_Date"  />
                     @error('fire_insurance_expiry_Date')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -109,7 +110,7 @@
                 </label>
                 <div class="col-md-8">
                     @if ($deal->plot->getMedia('fire_insurance')->isNotEmpty())
-                        <a href="{{ route('media.download', $deal->plot->getMedia('fire_insurance')->first()->id)}}" target="_blank">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('fire_insurance')->last()->id)}}" target="_blank">View Old Attachment</a>
                     @endif
                     <input type="file" class="form-control @error('fire_insurance_copy') is-invalid @enderror"
                         name="fire_insurance_copy"  />
@@ -127,7 +128,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('power_of_attorney_issue_date') is-invalid @enderror"
-                            value="{{ old('power_of_attorney_issue_date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ?$deal->plot->getMedia('power_of_attorney')->first()->getCustomProperty('power_of_attorney_issue_date'): '') }}"
+                            value="{{ old('power_of_attorney_issue_date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ?$deal->plot->getMedia('power_of_attorney')->last()->getCustomProperty('power_of_attorney_issue_date'): '') }}"
                             name="power_of_attorney_issue_date"  />
                     @error('power_of_attorney_issue_date')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -141,7 +142,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('power_of_attorney_expiry_Date') is-invalid @enderror"
-                        value="{{ old('power_of_attorney_expiry_Date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->first()->getCustomProperty('power_of_attorney_expiry_Date'): '') }}) }}"
+                        value="{{ old('power_of_attorney_expiry_Date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->last()->getCustomProperty('power_of_attorney_expiry_Date'): '') }}) }}"
                         name="power_of_attorney_expiry_Date"  />
                     @error('power_of_attorney_expiry_Date')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -155,7 +156,7 @@
 
                 <div class="col-md-8">
                     <input type="text" class="form-control @error('power_of_attorney_issue_to') is-invalid @enderror"
-                        value="{{ old('power_of_attorney_issue_to', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->first()->getCustomProperty('power_of_attorney_issue_to'): '') }}"
+                        value="{{ old('power_of_attorney_issue_to', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->last()->getCustomProperty('power_of_attorney_issue_to'): '') }}"
                         name="power_of_attorney_issue_to"  />
                     @error('power_of_attorney_issue_to')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -170,7 +171,7 @@
 
                 <div class="col-md-8">
                     @if ($deal->plot->getMedia('power_of_attorney')->isNotEmpty())
-                        <a href="{{ route('media.download', $deal->plot->getMedia('power_of_attorney')->first()->id)}}" target="_blank">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('power_of_attorney')->last()->id)}}" target="_blank">View Old Attachment</a>
                     @endif
 
                     <input type="file" class="form-control @error('power_of_attorney_copy') is-invalid @enderror"
@@ -189,7 +190,7 @@
 
                 <div class="col-md-8">
                     @if ($deal->plot->getMedia('poa_email_attachment')->isNotEmpty())
-                        <a href="{{ route('media.download', $deal->plot->getMedia('poa_email_attachment')->first()->id)}}" target="_blank">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('poa_email_attachment')->last()->id)}}" target="_blank">View Old Attachment</a>
                     @endif
 
                     <input type="file" class="form-control @error('poa_email_attachment') is-invalid @enderror"
