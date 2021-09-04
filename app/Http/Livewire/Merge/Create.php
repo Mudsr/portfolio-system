@@ -43,7 +43,7 @@ class Create extends Component
     {
         $this->portfolio = Portfolio::find($id);
         if( isset($this->portfolio) && $this->portfolio->deals->count() > 0) {
-            $this->deals = $this->portfolio->deals()->with('plot', 'client')->get();
+            $this->deals = $this->portfolio->deals()->active()->with('plot', 'client')->get();
         }
     }
 
@@ -52,7 +52,7 @@ class Create extends Component
         $deal = Deal::find($id);
         if($deal) {
             $this->plot1 = $deal->plot;
-            $this->dealsFiltered = $this->portfolio->deals()->where('id', '!=', $id)->get();
+            $this->dealsFiltered = $this->portfolio->deals()->active()->where('id', '!=', $id)->get();
         }
     }
 

@@ -33,27 +33,34 @@
 
                 <div class="form-group row">
                     <label for="exampleSelect1" class="col-md-3 col-form-label">
-                        Plot
+                        Deal
                         <span class="text-danger">*</span>
                     </label>
 
                     <div class="col-md-8">
-                            <select class="form-control selectpicker2 @error('plot_id') is-invalid @enderror"
+                            <select class="form-control selectpicker2 @error('deal_id') is-invalid @enderror"
                                 data-size="7" data-live-search="true"
-                                wire:model="plot_id" >
+                                wire:model="deal_id" >
                                 <option value="" class="text-muted">---Select---</option>
+                                <option class="font-weight-bold" disabled>
+                                    DEAL ID: &nbsp;&nbsp;&nbsp;
+                                    Client Name: &nbsp;&nbsp;&nbsp;
+                                    Client Id: &nbsp;&nbsp;&nbsp;
+                                    AREA: &nbsp;&nbsp;&nbsp;&nbsp;
+                                    PLOT ID:
+                                </option>
                                 @foreach ($plots as $deal)
                                     <option value="{{ $deal->id }}">
-                                        DEAL ID: {{ $deal->id }} &nbsp;&nbsp;&nbsp;&nbsp;
-                                        CLIENT NAME: {{ $deal->client->name }} &nbsp;&nbsp;&nbsp;&nbsp;
-                                        CLIENT ID: {{ $deal->client->id }} &nbsp;&nbsp;&nbsp;&nbsp;
-                                        AREA: {{ $deal->plot->area_name }} &nbsp;&nbsp;&nbsp;&nbsp;
-                                        PLOT ID: {{ $deal->plot->id }}
+                                        {{ $deal->id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        {{ $deal->client->name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        {{ $deal->client->id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        {{ $deal->plot->area_name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        {{ $deal->plot->id }}
                                     </option>
                                 @endforeach
                             </select>
 
-                            @error("plot_id")
+                            @error("deal_id")
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                     </div>
