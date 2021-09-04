@@ -69,9 +69,9 @@
                                     <i class="flaticon-refresh text-success"></i>
                                 </a>
 
-                                <a href="{{ route('clients.edit', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
+                                <a href="{{ route('deals.show', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
                                     title="View details">
-                                    <i class="fas fa-edit text-primary"></i>
+                                    <i class="fas fa-eye text-primary"></i>
 
                                 </a>
 

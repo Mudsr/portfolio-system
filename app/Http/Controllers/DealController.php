@@ -74,7 +74,7 @@ class DealController extends Controller
     public function create()
     {
         $clients = Client::get();
-        $portfolios = Portfolio::all();
+        $portfolios = Portfolio::active()->get();
 
         return view('pages.deals.create', compact('clients', 'portfolios'));
     }
@@ -156,9 +156,12 @@ class DealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Deal $deal)
     {
-        //
+        $clients =Client::get();
+        $portfolios = Portfolio::active()->get();
+
+        return View('pages.deals.show', compact('deal', 'portfolios', 'clients'));
     }
 
     /**
@@ -260,7 +263,7 @@ class DealController extends Controller
     public function renewForm(Deal $deal)
     {
         $clients =Client::get();
-        $portfolios = Portfolio::all();
+        $portfolios = Portfolio::active()->get();
 
         return View('pages.deals.renewal', compact('deal', 'portfolios', 'clients'));
     }
@@ -274,7 +277,7 @@ class DealController extends Controller
     public function renew(Deal $deal)
     {
         $clients =Client::get();
-        $portfolios = Portfolio::all();
+        $portfolios = Portfolio::active()->get();
 
         return View('pages.renewal', compact('deal', 'portfolios', 'clients'));
     }

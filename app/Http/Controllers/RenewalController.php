@@ -30,7 +30,7 @@ class RenewalController extends Controller
      */
     public function create()
     {
-        $portfolios = Portfolio::all();
+        $portfolios = Portfolio::active()->get();
         $clients = Client::with('deals', 'deals.plots')->get();
         // $deals = $clients->deals()->with('plots')->get();
 

@@ -34,7 +34,7 @@ class Create extends Component
 
     public function mount()
     {
-        $this->portfolios = Portfolio::all();
+        $this->portfolios = Portfolio::active()->get();
         $this->clients = Client::get();
         $this->newClients = Client::where('id', '!=', $this->old_client_id)->get();
         $this->plots = collect();

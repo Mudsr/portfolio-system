@@ -42,8 +42,8 @@
                         name="client_id">
                         <option value="" class="text-muted">---Select---</option>
                         <option class="font-weight-bold" disabled>
-                            ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Client Id: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Client Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             ID No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             Telephone:
                         </option>
@@ -63,6 +63,32 @@
                     @enderror
                 </div>
 
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">
+                    Client Name
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control @error('plot_no') is-invalid @enderror"
+                        placeholder="Plot No" value="{{ old('plot_no') }}" name="plot_no" required />
+                    @error('plot_no')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">
+                    Client id
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control @error('plot_no') is-invalid @enderror"
+                        placeholder="Plot No" value="{{ old('plot_no') }}" name="plot_no" required />
+                    @error('plot_no')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
 
             <div class="form-group row">
