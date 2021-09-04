@@ -9,3 +9,17 @@
         </div>
     </form>
 @endsection
+
+@section('scripts')
+    <script>
+        $(function(){
+            $('#client_select').change(function(){
+                var selected = $(this).find('option:selected');
+                var clientId = selected.val();
+                var clientName = selected.attr('data-name');
+                $('#client_name').val(clientName);
+                $('#clientId').val(clientId);
+            });
+        });
+    </script>
+@endsection

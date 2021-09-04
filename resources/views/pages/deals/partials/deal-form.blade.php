@@ -39,7 +39,7 @@
                 <div class="col-md-8">
                     <select class="form-control selectpicker @error('client_id') is-invalid @enderror"
                         data-size="7" data-live-search="true"
-                        name="client_id">
+                        name="client_id" id="client_select">
                         <option value="" class="text-muted">---Select---</option>
                         <option class="font-weight-bold" disabled>
                             Client Id: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -48,7 +48,9 @@
                             Telephone:
                         </option>
                         @foreach ($clients as $client)
-                            <option value="{{ $client->id }}" {{ old('portfolio_id') == $client->id ? 'selected' : '' }}>
+                            <option value="{{ $client->id }}" data-name= "{{ $client->name }}"
+                                 {{ old('portfolio_id') == $client->id ? 'selected' : '' }}
+                            >
                                 {{ $client->id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 {{ $client->name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 {{ $client->id_no }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -66,30 +68,24 @@
             </div>
             <div class="form-group row">
                 <label class="col-md-3 col-form-label">
-                    Client Name
-                    <span class="text-danger">*</span>
-                </label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control @error('plot_no') is-invalid @enderror"
-                        placeholder="Plot No" value="{{ old('plot_no') }}" name="plot_no" required />
-                    @error('plot_no')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-md-3 col-form-label">
                     Client id
                     <span class="text-danger">*</span>
                 </label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control @error('plot_no') is-invalid @enderror"
-                        placeholder="Plot No" value="{{ old('plot_no') }}" name="plot_no" required />
-                    @error('plot_no')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    <input type="text" class="form-control" value="{{ old('clientId') }}" name="clientId" id="clientId" disabled />
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">
+                    Client Name
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control @error('client_name') is-invalid @enderror" value="{{ old('client_name') }}" name="client_name" id="client_name" disabled />
+                </div>
+            </div>
+
 
             <div class="form-group row">
                 <label class="col-md-3 col-form-label">
