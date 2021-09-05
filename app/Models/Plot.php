@@ -42,7 +42,7 @@ class Plot extends Model implements HasMedia
             if(!empty($media->custom_properties) && isset( $media->custom_properties['expiry_date'])) {
                 $expiryDate = $media->custom_properties['expiry_date'];
 
-                if( $expiryDate >= Carbon::now() || $expiryDate <=Carbon::now()->addDay($days)){
+                if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
                     array_push($types,'pai');
                 }
             }
