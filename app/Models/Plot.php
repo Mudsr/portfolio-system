@@ -41,7 +41,7 @@ class Plot extends Model implements HasMedia
             $media = $this->getMedia('pai')->last();
             $expiryDate = $media->custom_properties['expiry_date'];
 
-            if( $expiryDate >= Carbon::now() || $expiryDate <=Carbon::now()->addDay($this->days)){
+            if( $expiryDate >= Carbon::now() || $expiryDate <=Carbon::now()->addDay($days)){
                 array_push($types,'pai');
             }
        }
@@ -50,7 +50,7 @@ class Plot extends Model implements HasMedia
             $media = $this->getMedia('fire_insurance')->last();
             $expiryDate = $media->custom_properties['expiry_date'];
 
-            if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($this->days)){
+            if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
                 array_push($types,'fire_insurance');
             }
        }
@@ -59,7 +59,7 @@ class Plot extends Model implements HasMedia
             $media = $this->getMedia('power_of_attorney')->last();
             $expiryDate = $media->custom_properties['expiry_date'];
 
-            if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($this->days)){
+            if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
                 array_push($types,'power_of_attorney');
             }
        }

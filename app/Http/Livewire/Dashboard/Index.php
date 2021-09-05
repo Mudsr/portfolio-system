@@ -33,17 +33,28 @@ class Index extends Component
         return view('livewire.dashboard.index')->extends('layouts.main');
     }
 
+    public function updatedDays()
+    {
+        $this->portfolios = Portfolio::active()->get();
+        $this->currentPortfolio = Portfolio::getCurrentPortfolio();
+        $this->pendingTasks = $this->getPendingTasks();
+        // $this->upcomingRenewals = $this->getUpcomingRenewals();
+        $this->plots = $this->getUpcomingRenewals();
+    }
+
     public function getPendingTasks()
     {
-        $pendingTasks = $this->currentPortfolio->tasks()->where('completed_at', null)
-            ->orWhere(function($query){
-                $query->where('due_date', '<' , now())
-                    ->where('completed_at', null);
-            })
-            ->with('client', 'portfolio')
-            ->get();
+        if($this->currentPortfolio) {
+            $pendingTasks = $this->currentPortfolio->tasks()->where('completed_at', null)
+                ->orWhere(function($query){
+                    $query->where('due_date', '<' , now())
+                        ->where('completed_at', null);
+                })
+                ->with('client', 'portfolio')
+                ->get();
 
-        return $pendingTasks;
+            return $pendingTasks;
+        }
     }
 
     public function getUpcomingRenewals()
@@ -58,16 +69,19 @@ class Index extends Component
         //     });
         // })->get();
 
-        $deals = $this->currentPortfolio->deals()->with('plot')->get();
+        if($this->currentPortfolio) {
+            $deals = $this->currentPortfolio->deals()->with('plot')->get();
 
-        $plots = $deals->pluck('plot');
+            $plots = $deals->pluck('plot');
 
-        // $upcomingRenewals = $upcomingRenewals->plot()->whereHas('media');
+            // $upcomingRenewals = $upcomingRenewals->plot()->whereHas('media');
 
-        // $upcomingRenewals = $this->currentPortfolio->deals()->plot();
-        // dd($plots);
+            // $upcomingRenewals = $this->currentPortfolio->deals()->plot();
+            // dd($plots);
 
-        return $plots;
+            return $plots;
+        }
+
     }
 
 }

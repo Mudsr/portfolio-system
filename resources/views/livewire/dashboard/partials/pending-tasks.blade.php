@@ -6,7 +6,7 @@
     </div>
 
     <div class="card-body">
-        @if ($pendingTasks->count() > 0)
+        @if ( isset($pendingTasks) && $pendingTasks->count() > 0)
             <table class="table table-responsive w-100 d-block d-md-table">
                 <thead>
                     <tr>
