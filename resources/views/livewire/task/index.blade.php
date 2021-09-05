@@ -44,22 +44,28 @@
                             <td>{{ $task->plot->area_name }}</td>
                             <td>
                                 @if (isset($task->completed_at))
-                                    <span class="label label-lg font-weight-bold label-light-success label-inline">Active</span>
-                                @elseif($task->due_date > now())
+                                    <span class="label label-lg font-weight-bold label-light-success label-inline">Done</span>
+                                @elseif($task->due_date < now())
                                     <span class="label label-lg font-weight-bold label-light-danger label-inline">Overdue</span>
                                 @else
                                     <span class="label label-lg font-weight-bold label-light-warning label-inline">Pending</span>
                                 @endif
                             </td>
-                            
+
                             <td>
                                 <span style="overflow: visible; position: relative">
 
                                     <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-sm btn-clean btn-icon"
                                         title="View details">
                                         <i class="fas fa-eye text-primary"></i>
-
                                     </a>
+
+                                    @if (!isset($task->completed_at))
+                                        <a href="{{ route('tasks.complete', $task->id) }}" class="btn btn-sm btn-clean btn-icon"
+                                            title="Mark Completed">
+                                            <i class="fas fa-check text-success"></i>
+                                        </a>
+                                    @endif
 
                                 </span>
                             </td>

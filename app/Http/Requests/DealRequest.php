@@ -56,7 +56,7 @@ class DealRequest extends FormRequest
             'new_deal_email_attachment' => ['nullable', 'file', 'mimes:pdf,docx'],
             'poa_email_attachment' => ['nullable', 'file', 'mimes:pdf,docx'],
             'extra_attachments' => ['nullable', 'file', 'mimes:pdf,docx'],
-            'entry_Date' => ['required', 'date'],
+            'entry_date' => ['required', 'date'],
         ];
     }
 

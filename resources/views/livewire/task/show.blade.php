@@ -71,8 +71,8 @@
 
                 <div class="col-md-8">
                     @if (isset($task->completed_at))
-                        <span class="label label-lg font-weight-bold label-light-success label-inline">Active</span>
-                    @elseif($task->due_date > now())
+                        <span class="label label-lg font-weight-bold label-light-success label-inline">Done</span>
+                    @elseif($task->due_date < now())
                         <span class="label label-lg font-weight-bold label-light-danger label-inline">Overdue</span>
                     @else
                         <span class="label label-lg font-weight-bold label-light-warning label-inline">Pending</span>

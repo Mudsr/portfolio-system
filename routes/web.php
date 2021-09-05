@@ -14,6 +14,8 @@ use App\Http\Controllers\RenewalController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Livewire\Task\Complete;
+use App\Models\Task;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /*
@@ -53,6 +55,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('tasks', Index::class)->name('tasks.index');
     Route::get('tasks/create', Create::class)->name('tasks.create');
     Route::get('tasks/{task}/show', Show::class)->name('tasks.show');
+
+    Route::get('tasks/{task}/complete', function(Request $request, Task $task){
+        $task->completed_at = now();
+        $task->save();
+
+        return redirect()->route('tasks.index');
+    })->name('tasks.complete');
 
     //Transfers
     Route::get('transfers', App\Http\Livewire\Transfer\Index::class)->name('transfers.index');
