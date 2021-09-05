@@ -60,6 +60,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         $task->completed_at = now();
         $task->save();
 
+        if($request->rdr == 'd') {
+            return redirect()->route('dashboard');
+        }
         return redirect()->route('tasks.index');
     })->name('tasks.complete');
 

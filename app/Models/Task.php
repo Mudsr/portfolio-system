@@ -22,7 +22,6 @@ class Task extends Model
     protected $dates = [
         'created_at',
         'updated_at',
-        'due_date',
     ];
 
     public function portfolio()

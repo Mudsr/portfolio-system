@@ -13,13 +13,34 @@
                         <th scope="col" class="text-muted">Task</th>
                         <th scope="col" class="text-muted">Client Name</th>
                         <th scope="col" class="text-muted">Due Date</th>
+                        <th scope="col" class="text-muted">Status</th>
                         <th scope="col" class="text-muted">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     @foreach ($pendingTasks as $task)
+                        <tr>
+                            <td>{{ $task->id }}</td>
+                            <td>{{ $task->client->name }}</td>
+                            <td>{{ $task->due_date }}</td>
 
+                            <td>
+                                @if (isset($task->completed_at))
+                                    <span class="label label-lg font-weight-bold label-light-success label-inline">Done</span>
+                                @elseif($task->due_date < now())
+                                    <span class="label label-lg font-weight-bold label-light-danger label-inline">Overdue</span>
+                                @else
+                                    <span class="label label-lg font-weight-bold label-light-warning label-inline">Pending</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('tasks.complete',[ $task->id, 'rdr' => 'd']) }}" class="btn btn-sm btn-clean btn-icon"
+                                    title="Mark Completed">
+                                    <i class="fas fa-check text-success"></i>
+                                </a>
+                            </td>
+                        </tr>
                     @endforeach
 
                 </tbody>
