@@ -84,7 +84,7 @@ class SplitController extends Controller
             ->withCustomProperties(
                 [
                     'issue_date' => $data['pai_issue_date'],
-                    'expiry_Date' => $data['pai_expiry_Date'],
+                    'expiry_date' => $data['pai_expiry_Date'],
                     'type' => 'pai'
                 ]
             )->toMediaCollection('pai');
@@ -94,7 +94,7 @@ class SplitController extends Controller
             ->withCustomProperties(
                 [
                     'issue_date' => $data['fire_insurance_issue_date'],
-                    'expiry_Date' => $data['fire_insurance_expiry_Date'],
+                    'expiry_date' => $data['fire_insurance_expiry_Date'],
                     'type' => 'fire_insurance'
                 ]
             )->toMediaCollection('fire_insurance');
@@ -105,7 +105,7 @@ class SplitController extends Controller
             ->withCustomProperties(
                 [
                     'issue_date' => $data['power_of_attorney_issue_date'],
-                    'expiry_Date' => $data['power_of_attorney_expiry_Date'],
+                    'expiry_date' => $data['power_of_attorney_expiry_Date'],
                     'issue_to' => $data['power_of_attorney_issue_to'],
                     'type' => 'power_of_attorney'
                 ]
