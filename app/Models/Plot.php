@@ -39,28 +39,36 @@ class Plot extends Model implements HasMedia
        if( $this->getMedia('pai')->isNotEmpty()) {
 
             $media = $this->getMedia('pai')->last();
-            $expiryDate = $media->custom_properties['expiry_date'];
+            if(!empty($media->custom_properties) && isset( $media->custom_properties['expiry_date'])) {
+                $expiryDate = $media->custom_properties['expiry_date'];
 
-            if( $expiryDate >= Carbon::now() || $expiryDate <=Carbon::now()->addDay($days)){
-                array_push($types,'pai');
+                if( $expiryDate >= Carbon::now() || $expiryDate <=Carbon::now()->addDay($days)){
+                    array_push($types,'pai');
+                }
             }
        }
 
        if( $this->getMedia('fire_insurance')->isNotEmpty()) {
             $media = $this->getMedia('fire_insurance')->last();
-            $expiryDate = $media->custom_properties['expiry_date'];
+            if(!empty($media->custom_properties) && isset( $media->custom_properties['expiry_date'])) {
 
-            if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
-                array_push($types,'fire_insurance');
+                $expiryDate = $media->custom_properties['expiry_date'];
+
+                if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
+                    array_push($types,'fire_insurance');
+                }
             }
        }
 
        if( $this->getMedia('power_of_attorney')->isNotEmpty()) {
             $media = $this->getMedia('power_of_attorney')->last();
-            $expiryDate = $media->custom_properties['expiry_date'];
+            if(!empty($media->custom_properties) && isset( $media->custom_properties['expiry_date'])) {
 
-            if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
-                array_push($types,'power_of_attorney');
+                $expiryDate = $media->custom_properties['expiry_date'];
+
+                if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
+                    array_push($types,'power_of_attorney');
+                }
             }
        }
        return $types;
