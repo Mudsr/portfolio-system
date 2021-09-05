@@ -28,7 +28,7 @@ class Portfolio extends Model implements HasMedia
         'closing_reason',
         'closing_remarks',
         'management_fee_last_calculated_at',
-        // 'is_current'
+        'is_current',
     ];
 
     protected $dates = [
@@ -62,5 +62,10 @@ class Portfolio extends Model implements HasMedia
     public function deals()
     {
         return $this->hasMany(Deal::class);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
     }
 }

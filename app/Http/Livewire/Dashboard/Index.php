@@ -4,19 +4,23 @@ namespace App\Http\Livewire\Dashboard;
 
 use App\Models\Task;
 use Livewire\Component;
+use App\Models\Portfolio;
 
 class Index extends Component
 {
     public $pendingTasks;
     public $upcomingRenewals;
     public $alerts;
+    public $currentPortfolio;
+    public $portfolios;
 
 
     public function mount()
     {
+        $this->portfolios = Portfolio::active()->get();
+        $this->currentPortfolio = Portfolio::getCurrentPortfolio();
         $this->pendingTasks = $this->getPendingTasks();
         $this->upcomingRenewals = collect();
-        $this->alerts = collect();
     }
 
     public function render()
@@ -26,7 +30,7 @@ class Index extends Component
 
     public function getPendingTasks()
     {
-        $pendingTasks = Task::where('completed_at', null)
+        $pendingTasks = $this->currentPortfolio->tasks()->where('completed_at', null)
             ->orWhere(function($query){
                 $query->where('due_date', '<' , now())
                     ->where('completed_at', null);
@@ -36,5 +40,10 @@ class Index extends Component
 
         return $pendingTasks;
     }
+
+    // public function getUpcomingRenewals()
+    // {
+    //     $upcomingRenewals = $this->portfolio->deals()->where()
+    // }
 
 }
