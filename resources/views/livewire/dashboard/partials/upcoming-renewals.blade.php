@@ -6,22 +6,30 @@
     </div>
 
     <div class="card-body">
-        {{-- @if ($tasks->count() > 0) --}}
         <table class="table table-responsive w-100 d-block d-md-table">
             <thead>
                 <tr>
                     <th scope="col" class="text-muted">Client No</th>
                     <th scope="col" class="text-muted">Contract No</th>
                     <th scope="col" class="text-muted">Document Type</th>
-                    <th scope="col" class="text-muted">Due Date</th>
+                    <th scope="col" class="text-muted">Expiry Date</th>
                 </tr>
             </thead>
             <tbody>
-
+                @foreach ($plots as $plot)
+                    @if ($types = $plot->checkDocumentExpiry($days))
+                        @foreach ($types as $type)
+                            <tr>
+                                <td>{{ $plot->deal->client->id }}</td>
+                                <td>{{ $plot->deal->id }}</td>
+                                <td>{{ ucwords(str_replace("_", " ", $type)) }}</td>
+                                <td>{{ $plot->getMedia($type)->last()->custom_properties['expiry_date']; }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
+                @endforeach
             </tbody>
         </table>
-        {{-- @else
-            <h3 class="text-muted text-center">No Renewal Exists</h3>
-        @endif --}}
+
     </div>
 </div>

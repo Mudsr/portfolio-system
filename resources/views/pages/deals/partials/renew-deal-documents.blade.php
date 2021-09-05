@@ -36,7 +36,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('pai_issue_date') is-invalid @enderror"
-                            value="{{ old('pai_issue_date', $deal->plot->getMedia('pai')->isNotEmpty() ? $deal->plot->getMedia('pai')->last()->getCustomProperty('pai_issue_date'):'') }}" name="pai_issue_date"  />
+                            value="{{ old('pai_issue_date', $deal->plot->getMedia('pai')->isNotEmpty() ? $deal->plot->getMedia('pai')->last()->getCustomProperty('issue_date'):'') }}" name="pai_issue_date"  />
                     @error('pai_issue_date')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -49,7 +49,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('pai_expiry_Date') is-invalid @enderror"
-                        value="{{ old('pai_expiry_Date', $deal->plot->getMedia('pai')->isNotEmpty() ? $deal->plot->getMedia('pai')->last()->getCustomProperty('pai_expiry_Date'): '') }}"
+                        value="{{ old('pai_expiry_Date', $deal->plot->getMedia('pai')->isNotEmpty() ? $deal->plot->getMedia('pai')->last()->getCustomProperty('expiry_Date'): '') }}"
                         name="pai_expiry_Date"  />
                     @error('pai_expiry_Date')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -82,7 +82,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('fire_insurance_issue_date') is-invalid @enderror"
-                            value="{{ old('fire_insurance_issue_date',  $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->last()->getCustomProperty('fire_insurance_issue_date'): '') }}"
+                            value="{{ old('fire_insurance_issue_date',  $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->last()->getCustomProperty('issue_date'): '') }}"
                             name="fire_insurance_issue_date"  />
                     @error('fire_insurance_issue_date')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -96,7 +96,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('fire_insurance_expiry_Date') is-invalid @enderror"
-                        value="{{ old('fire_insurance_expiry_Date', $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->last()->getCustomProperty('fire_insurance_expiry_Date'): '') }}"
+                        value="{{ old('fire_insurance_expiry_Date', $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->last()->getCustomProperty('expiry_Date'): '') }}"
                         name="fire_insurance_expiry_Date"  />
                     @error('fire_insurance_expiry_Date')
                         <div class="invalid-feedback">{{ $message }}</div>

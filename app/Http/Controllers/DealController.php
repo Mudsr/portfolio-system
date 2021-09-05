@@ -109,8 +109,9 @@ class DealController extends Controller
             $plot->addMediaFromRequest('pai_leasing_contract')
             ->withCustomProperties(
                 [
-                    'pai_issue_date' => $request->pai_issue_date,
-                    'pai_expiry_Date' => $request->pai_expiry_Date,
+                    'issue_date' => $request->pai_issue_date,
+                    'expiry_date' => $request->pai_expiry_Date,
+                    'type' => 'pai'
                 ]
             )->toMediaCollection('pai');
         }
@@ -119,8 +120,9 @@ class DealController extends Controller
             $plot->addMediaFromRequest('fire_insurance_copy')
             ->withCustomProperties(
                 [
-                    'fire_insurance_issue_date' => $request->fire_insurance_issue_date,
-                    'fire_insurance_expiry_Date' => $request->fire_insurance_expiry_Date,
+                    'issue_date' => $request->fire_insurance_issue_date,
+                    'expiry_date' => $request->fire_insurance_expiry_Date,
+                    'type' => 'fire_insurance'
                 ]
             )->toMediaCollection('fire_insurance');
         }
@@ -129,9 +131,10 @@ class DealController extends Controller
             $plot->addMediaFromRequest('power_of_attorney_copy')
             ->withCustomProperties(
                 [
-                    'power_of_attorney_issue_date' => $request->power_of_attorney_issue_date,
-                    'power_of_attorney_expiry_Date' => $request->power_of_attorney_expiry_Date,
-                    'power_of_attorney_issue_to' => $request->power_of_attorney_issue_to,
+                    'issue_date' => $request->power_of_attorney_issue_date,
+                    'expiry_date' => $request->power_of_attorney_expiry_Date,
+                    'issue_to' => $request->power_of_attorney_issue_to,
+                    'type' => 'power_of_attorney'
                 ]
             )->toMediaCollection('power_of_attorney');
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard;
 
+use Carbon\Carbon;
 use App\Models\Task;
 use Livewire\Component;
 use App\Models\Portfolio;
@@ -13,6 +14,9 @@ class Index extends Component
     public $alerts;
     public $currentPortfolio;
     public $portfolios;
+    public $plots;
+
+    public $days = 3;
 
 
     public function mount()
@@ -20,7 +24,8 @@ class Index extends Component
         $this->portfolios = Portfolio::active()->get();
         $this->currentPortfolio = Portfolio::getCurrentPortfolio();
         $this->pendingTasks = $this->getPendingTasks();
-        $this->upcomingRenewals = collect();
+        // $this->upcomingRenewals = $this->getUpcomingRenewals();
+        $this->plots = $this->getUpcomingRenewals();
     }
 
     public function render()
@@ -41,9 +46,28 @@ class Index extends Component
         return $pendingTasks;
     }
 
-    // public function getUpcomingRenewals()
-    // {
-    //     $upcomingRenewals = $this->portfolio->deals()->where()
-    // }
+    public function getUpcomingRenewals()
+    {
+        // dd(Carbon::now()->addDay($this->days));
+        // $upcomingRenewals = $this->currentPortfolio->deals()->whereHas('plot', function($query){
+        //     $query->whereHas('media', function($q){
+        //         $q->where(function($q2){
+        //                 $q2->where('custom_properties', '!=' , '[]')
+        //                     ->where('custom_properties', '!=' , null);
+        //             })->where('custom_properties->expiry_date' , '<' , Carbon::now()->addDay($this->days));
+        //     });
+        // })->get();
+
+        $deals = $this->currentPortfolio->deals()->with('plot')->get();
+
+        $plots = $deals->pluck('plot');
+
+        // $upcomingRenewals = $upcomingRenewals->plot()->whereHas('media');
+
+        // $upcomingRenewals = $this->currentPortfolio->deals()->plot();
+        // dd($plots);
+
+        return $plots;
+    }
 
 }
