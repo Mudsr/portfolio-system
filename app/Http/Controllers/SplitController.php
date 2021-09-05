@@ -29,7 +29,7 @@ class SplitController extends Controller
 
         $plot1Data = $request->plot1;
         $plot1 = $this->createNewPlot($deal, $plot1Data);
-        
+
         $deal = Deal::create([
             'portfolio_id' => $oldDeal->portfolio_id,
             'client_id' => $oldDeal->client_id,
@@ -83,8 +83,9 @@ class SplitController extends Controller
             $plot->addMedia($data['pai_leasing_contract'])
             ->withCustomProperties(
                 [
-                    'pai_issue_date' => $data['pai_issue_date'],
-                    'pai_expiry_Date' => $data['pai_expiry_Date'],
+                    'issue_date' => $data['pai_issue_date'],
+                    'expiry_Date' => $data['pai_expiry_Date'],
+                    'type' => 'pai'
                 ]
             )->toMediaCollection('pai');
         }
@@ -92,8 +93,9 @@ class SplitController extends Controller
             $plot->addMedia($data['fire_insurance_copy'])
             ->withCustomProperties(
                 [
-                    'fire_insurance_issue_date' => $data['fire_insurance_issue_date'],
-                    'fire_insurance_expiry_Date' => $data['fire_insurance_expiry_Date'],
+                    'issue_date' => $data['fire_insurance_issue_date'],
+                    'expiry_Date' => $data['fire_insurance_expiry_Date'],
+                    'type' => 'fire_insurance'
                 ]
             )->toMediaCollection('fire_insurance');
         }
@@ -102,9 +104,10 @@ class SplitController extends Controller
             $plot->addMedia($data['power_of_attorney_copy'])
             ->withCustomProperties(
                 [
-                    'power_of_attorney_issue_date' => $data['power_of_attorney_issue_date'],
-                    'power_of_attorney_expiry_Date' => $data['power_of_attorney_expiry_Date'],
-                    'power_of_attorney_issue_to' => $data['power_of_attorney_issue_to'],
+                    'issue_date' => $data['power_of_attorney_issue_date'],
+                    'expiry_Date' => $data['power_of_attorney_expiry_Date'],
+                    'issue_to' => $data['power_of_attorney_issue_to'],
+                    'type' => 'power_of_attorney'
                 ]
             )->toMediaCollection('power_of_attorney');
         }
