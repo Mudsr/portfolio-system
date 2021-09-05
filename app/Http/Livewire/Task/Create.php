@@ -45,7 +45,7 @@ class Create extends Component
     public function updatedClientId($id)
     {
         if (!is_null($id)) {
-            $user =  User::with('deals', 'deals.plot')->find($this->client_id);
+            $user =  Client::with('deals', 'deals.plot')->find($this->client_id);
             if($user) {
                 $this->plots = $user->deals->pluck('plot');
             }

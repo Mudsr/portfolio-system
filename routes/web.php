@@ -1,19 +1,19 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Livewire\Task\Show;
+use App\Http\Livewire\Task\Index;
+use App\Http\Livewire\Task\Create;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\PlotController;
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\MergeController;
+use App\Http\Controllers\SplitController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RenewalController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MergeController;
 use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\SplitController;
-use App\Http\Livewire\Task\Create;
-use App\Http\Livewire\Task\Index;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /*
@@ -52,6 +52,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('tasks', Index::class)->name('tasks.index');
     Route::get('tasks/create', Create::class)->name('tasks.create');
+    Route::get('tasks/{task}/show', Show::class)->name('tasks.show');
+
     //Transfers
     Route::get('transfers', App\Http\Livewire\Transfer\Index::class)->name('transfers.index');
     Route::get('transfers/create', App\Http\Livewire\Transfer\Create::class)->name('transfers.create');

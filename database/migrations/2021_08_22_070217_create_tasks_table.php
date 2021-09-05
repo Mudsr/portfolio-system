@@ -23,6 +23,7 @@ class CreateTasksTable extends Migration
             $table->text('description');
             $table->string('document_type');
             $table->date('due_date');
+            $table->date('completed_at')->nullable();
 
             $table->timestamps();
         });
