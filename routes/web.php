@@ -80,6 +80,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('report', App\Http\Livewire\Report\Index::class)->name('report.index');
 
+    Route::get('fee-calculation', App\Http\Livewire\FeeCalculation\Index::class)->name('fee-calculation.index');
+
     Route::get('media/{media}', function (Media $media) {
         return response()->file($media->getPath());
     })->name('media.download');
