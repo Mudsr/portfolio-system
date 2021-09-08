@@ -68,4 +68,9 @@ class Portfolio extends Model implements HasMedia
     {
         return $this->hasMany(Task::class);
     }
+
+    public function feeCalculation()
+    {
+        return $this->hasMany(FeeCalculation::class);
+    }
 }

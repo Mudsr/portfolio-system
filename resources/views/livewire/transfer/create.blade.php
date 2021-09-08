@@ -152,12 +152,5 @@
             })
         });
 
-        function intializeSelectPicker() {
-            $('.selectpicker2').selectpicker().on('hide.bs.select', function() {
-                // fix dropup arrow icon on hide
-                $(this).closest('.bootstrap-select').removeClass('dropup');
-            });
-        }
-
     </script>
 @endsection

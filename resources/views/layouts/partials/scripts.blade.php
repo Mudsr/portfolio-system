@@ -10,4 +10,13 @@
 <script src="{{ asset('metronic/assets/js/scripts.bundle.js') }}"></script>
 <!--end::Global Theme Bundle-->
 
+<script>
+    function intializeSelectPicker() {
+        $('.selectpicker2').selectpicker().on('hide.bs.select', function() {
+            // fix dropup arrow icon on hide
+            $(this).closest('.bootstrap-select').removeClass('dropup');
+        });
+    }
+</script>
+
 
