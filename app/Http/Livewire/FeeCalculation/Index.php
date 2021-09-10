@@ -47,42 +47,43 @@ class Index extends Component
     {
         $this->validate();
 
-
-
         $this->portfolio = Portfolio::find($this->portfolio_id);
 
         if(!empty($this->portfolio)) {
             $date = $this->getDate();
             if(isset($date)) {
                 $this->deals = $this->portfolio->deals()->active()
-                    ->whereBetween('entry_date', [$date['from'], $date['to']])
-                    ->with('plot')
-                    ->get();
-                if(!empty($this->deals->count() > 0)) {
-                    $financeTotal = $this->deals->sum('plot.finance_amount');
-                    $this->fee = $this->calculate($financeTotal);
-                    // dd($this->year);
-                }
+                    ->whereBetween('entry_date', [$date['from'], $date['to']]);
+
+                    if($this->portfolio->fee_calculation_method == 'flat') {
+                        $this->deals->with('plot') ->get();
+
+                        if(!empty($this->deals->count() > 0)) {
+                            $financeTotal = $this->deals->sum('plot.finance_amount');
+                            $this->fee = $this->calculateManagementType($financeTotal);
+                        }
+                    } else {
+                        $this->calculateProportionateType($date);
+                    }
             }
         }
     }
 
-    private function calculate($financeTotal)
+    private function calculateManagementType($financeTotal)
     {
-        switch ($this->portfolio->fee_calculation_method) {
-            case 'proportionate':
-                # code...
-                break;
+        $x = $financeTotal * $this->portfolio->management_fee;
+        $fee = $x/4;
 
-            default:
-                $x = $financeTotal * $this->portfolio->management_fee;
-                $fee = $x/4;
+        return $fee;
+    }
 
-                // $this->storeFee($fee);
-
-                return $fee;
+    private function calculateProportionateType($date)
+    {
+        $feeArray = [];
+        foreach($this->deals as $deal)
+        {
+            $deal->entry_date;
         }
-
     }
 
     private function storeFee($fee)
