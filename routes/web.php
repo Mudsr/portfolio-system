@@ -82,6 +82,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('fee-calculation', App\Http\Livewire\FeeCalculation\Index::class)->name('fee-calculation.index');
 
+    Route::get('view-detail', App\Http\Livewire\ViewDetail\Index::class)->name('view.detail');
+
     Route::get('media/{media}', function (Media $media) {
         return response()->file($media->getPath());
     })->name('media.download');
