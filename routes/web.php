@@ -78,7 +78,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('split/create', App\Http\Livewire\Split\Create::class)->name('split.create');
     Route::post('split/save', [SplitController::class, 'save'])->name('split.save');
 
-    Route::get('report', App\Http\Livewire\Report\Index::class)->name('report.index');
+    Route::get('report/plot', App\Http\Livewire\Report\Index::class)->name('report.index');
 
     Route::get('fee-calculation', App\Http\Livewire\FeeCalculation\Index::class)->name('fee-calculation.index');
 

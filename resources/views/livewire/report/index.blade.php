@@ -7,7 +7,7 @@
                     <h3 class="card-title">Report</h3>
                 </div>
 
-                <form wire:submit.prevent="GenerateReport" method="POST" enctype="multipart/form-data">
+                <form wire:submit.prevent="generateReport" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row">
@@ -42,16 +42,16 @@
                                     </label>
 
                                     <div class="col-md-8">
-                                        <select class="form-control selectpicker2 @error('portfolio_id') is-invalid @enderror"
-                                            wire:model="portfolio_id" name="portfolio_id">
-                                            <option value="" class="text-muted">---Select---</option>
-                                            @foreach ($portfolios as $_portfolio)
-                                                <option value="{{ $_portfolio->id }}">{{ $_portfolio->name }}</option>
-                                            @endforeach
-
+                                        <select class="form-control selectpicker2 @error('type') is-invalid @enderror"
+                                            wire:model="type" name="type">
+                                            <option class="text-muted">---Select---</option>
+                                            <option value="plot_addition"> Plot Addition Report</option>
+                                            <option value="plot_closure"> Plot Closure Report</option>
+                                            <option value="merge"> Merge Report</option>
+                                            <option value="split"> Split Report</option>
+                                            <option value="transfer"> Transfer Report</option>
                                         </select>
-
-                                        @error('portfolio_id')
+                                        @error('type')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -67,7 +67,7 @@
                                     </label>
                                     <div class="col-md-8">
                                         <input type="date" class="form-control @error('from_date') is-invalid @enderror"
-                                                value="{{ old('from_date') }}" name="from_date" />
+                                                value="{{ old('from_date') }}" name="from_date" wire:model = "from_date" />
                                         @error('from_date')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -82,19 +82,18 @@
                                     </label>
                                     <div class="col-md-8">
                                         <input type="date" class="form-control @error('to_date') is-invalid @enderror"
-                                                value="{{ old('to_date') }}" name="to_date" />
+                                                value="{{ old('to_date') }}" name="to_date" wire:model = "to_date" />
                                         @error('to_date')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
+                            </div>
                         </div>
                         <div class="ml-4">
                             <button type="submit" class="btn btn-primary mr-2">Generate Report</button>
 
                         </div>
-
-
                     </div>
                     {{-- <div class="card-footer">
                         <button type="submit" class="btn btn-primary mr-2">Generate Report</button>
@@ -105,38 +104,49 @@
         </div>
     </div>
 
-    @if (!empty($report))
+    @if ($show)
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-custom gutter-b example example-compact">
+                <div class="card card-custom gutter-b example example-compact w-100">
                     <div class="card-header">
-                        <h3 class="card-title">{{ $type }} Report</h3>
+                        <div class="card-title">
+                            <h3 class="card-title">{{ ucwords(str_replace("_", " ", $type)) }} Report</h3>
+                        </div>
+                        <div class="card-toolbar">
+                            <ul class="nav nav-bold nav-pills">
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Export
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                        <a class="dropdown-item" data-toggle="tab" href="#kt_tab_pane_7_3">Export As Excel</a>
+                                        <a class="dropdown-item" data-toggle="tab" href="#kt_tab_pane_7_3">Export As PDF</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+
                     <div class="card-body">
                         @if ($deals->count() > 0)
-                            <table class="table table-responsive w-100 d-block d-md-table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" class="text-muted">Portfolio</th>
-                                        <th scope="col" class="text-muted">Deal Start Date</th>
-                                        <th scope="col" class="text-muted">Finance Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($deals as $deal)
-                                        <tr>
-                                            <td>{{ $deal->portfolio->name }}</td>
-                                            <td>{{ $deal->entry_date }}</td>
-                                            <td>{{ $deal->plot->finance_amount }}</td>
-                                        </tr>
-                                    @endforeach
-                                    <tr>
-                                        <td class="font-weight-bold">Total</td>
-                                        <td> </td>
-                                        <td class="font-weight-bold" >{{ $deals->sum('plot.finance_amount') }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            @switch($type)
+                                @case('plot_closure')
+                                    @include('livewire.report.partials.plot-addition')
+                                    @break
+                                @case('merge')
+                                    @include('livewire.report.partials.plot-closure')
+                                    @break
+                                @case('split')
+                                    @include('livewire.report.partials.plot-addition')
+                                    @break
+                                @case('transfer')
+                                    @include('livewire.report.partials.plot-addition')
+                                    @break
+                                @default
+                                    @include('livewire.report.partials.plot-addition')
+                                    @break
+                            @endswitch
                         @else
                             <h3 class="text-muted text-center">No Data Available</h3>
                         @endif
