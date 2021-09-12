@@ -24,6 +24,7 @@ class CreateDealsTable extends Migration
             $table->date('entry_date')->nullable();
             $table->date('renewed_at')->nullable();
             $table->date('closed_at')->nullable();
+            $table->string('sold_to')->nullable();
 
             $table->timestamps();
         });

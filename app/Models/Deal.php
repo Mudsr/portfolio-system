@@ -17,6 +17,7 @@ class Deal extends Model
         'renewed_at',
         'type',
         'entry_date',
+        'sold_to'
     ];
 
     protected $dates = [
@@ -50,8 +51,21 @@ class Deal extends Model
         $query->where('closed_at',null);
     }
 
-    public function scopeInActive($query)
+    public function scopeClosed($query)
     {
         $query->where('closed_at', '!=',null);
+    }
+
+    public function scopeMerged($query)
+    {
+        $query->where('type', 'merged');
+    }
+    public function scopeSplit($query)
+    {
+        $query->where('type', 'split');
+    }
+    public function transfer($query)
+    {
+        $query->where('type', 'transfer');
     }
 }

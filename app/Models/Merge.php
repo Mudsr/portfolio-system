@@ -30,4 +30,8 @@ class Merge extends Model
          return $this->belongsTo(Deal::class, 'new_deal_id');
      }
 
+     public function oldDeals()
+     {
+        return Deal::whereIn('id',$this->old_deal_ids)->get();
+     }
 }

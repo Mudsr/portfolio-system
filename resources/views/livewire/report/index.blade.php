@@ -129,27 +129,27 @@
                     </div>
 
                     <div class="card-body">
-                        @if ($deals->count() > 0)
+                        {{-- @if ($deals->count() > 0) --}}
                             @switch($type)
                                 @case('plot_closure')
-                                    @include('livewire.report.partials.plot-addition')
-                                    @break
-                                @case('merge')
                                     @include('livewire.report.partials.plot-closure')
                                     @break
+                                @case('merge')
+                                    @include('livewire.report.partials.plot-merge')
+                                    @break
                                 @case('split')
-                                    @include('livewire.report.partials.plot-addition')
+                                    @include('livewire.report.partials.plot-split')
                                     @break
                                 @case('transfer')
-                                    @include('livewire.report.partials.plot-addition')
+                                    @include('livewire.report.partials.plot-transfer')
                                     @break
                                 @default
                                     @include('livewire.report.partials.plot-addition')
                                     @break
                             @endswitch
-                        @else
+                        {{-- @else
                             <h3 class="text-muted text-center">No Data Available</h3>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
             </div>

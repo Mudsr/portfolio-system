@@ -21,7 +21,7 @@ class DealController extends Controller
         $tab = 'active';
 
         $activeDeals = Deal::active()->get();
-        $inActiveDeals = Deal::inActive()->get();
+        $inActiveDeals = Deal::closed()->get();
 
         if($request->filled('q') && $request->filled('t')) {
             if($request->t == 'a'){
@@ -310,6 +310,7 @@ class DealController extends Controller
     {
         $deal->update([
             'closed_at' => $request->closing_date,
+            'sold_to' => $request->sold_to,
         ]);
 
         return redirect()->route('deals.index')->with('success', 'Deal closed successfully');

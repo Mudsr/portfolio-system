@@ -81,6 +81,7 @@ class DealRequest extends FormRequest
     {
         return [
             'closing_date' => ['required', 'date'],
+            'sold_to' => ['required', 'string'],
         ];
     }
 }

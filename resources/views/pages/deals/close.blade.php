@@ -23,6 +23,22 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="exampleInputPassword1" class="col-md-3 col-form-label">
+                        Sold To
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control @error('sold_to') is-invalid @enderror"
+                            value="{{ old('sold_to', $deal->sold_to) }}"
+                            name="sold_to"
+                            required />
+                        @error('sold_to')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
                 </div>
 

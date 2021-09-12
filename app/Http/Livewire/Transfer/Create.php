@@ -15,6 +15,7 @@ class Create extends Component
 
     public $portfolio_id;
     public $old_client_id;
+    public $old_client_name;
     public $new_client_id;
     public $deal_id;
     public $entry_date;
@@ -53,7 +54,7 @@ class Create extends Component
         }
     }
 
-    public function updatedPlotId($id)
+    public function updatedDealID($id)
     {
         $deal = Deal::find($id);
         if($deal) {

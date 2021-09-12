@@ -73,21 +73,28 @@
                         <span class="text-danger">*</span>
                     </label>
 
-                    <div class="col-md-8">
-                        {{-- <div wire:ignore id="old_client_id"> --}}
-                            <select class="form-control  @error("old_client_id") is-invalid @enderror"
-                                data-size="7" data-live-search="true"
-                                wire:model="old_client_id" disabled>
-                                <option value="" class="text-muted">---Select---</option>
-                                @foreach ($clients as $client)
-                                    <option value="{{ $client->id }}" {{ $old_client_id == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
-                                @endforeach
-                            </select>
 
-                            @error("old_client_id")
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        {{-- </div> --}}
+                    {{-- <div class="col-md-8">
+                        <input type="text" class="form-control  @error('entry_date') is-invalid @enderror"
+                            value="{{ old('entry_date') }}" name="entry_date" wire:model="old_client_name" required />
+                        @error('entry_date')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div> --}}
+
+                    <div class="col-md-8">
+                        <select class="form-control @error("old_client_id") is-invalid @enderror"
+                            data-size="7" data-live-search="true"
+                            wire:model="old_client_id" disabled>
+                            <option value="" class="text-muted">---Select---</option>
+                            @foreach ($clients as $client)
+                                <option value="{{ $client->id }}" {{ $old_client_id == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @error("old_client_id")
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 

@@ -14,25 +14,25 @@ class Split extends Model
         'plot_id',
         'new_plots_ids',
         'entry_date',
-     ];
+    ];
 
-     protected $casts=[
-         'new_plots_ids' => 'array'
-     ];
+    protected $casts=[
+        'new_plots_ids' => 'array'
+    ];
 
-     public function portfolio()
-     {
-         return $this->belongsTo(Portfolio::class);
-     }
+    public function portfolio()
+    {
+        return $this->belongsTo(Portfolio::class);
+    }
 
-     public function oldPlot()
-     {
-         return $this->belongsTo(Plot::class, 'plot_id');
-     }
+    public function oldPlot()
+    {
+        return $this->belongsTo(Plot::class, 'plot_id');
+    }
 
-     public function newPlots()
-     {
-         return Plot::whereIn('id', $this->new_plots_ids)->get();
-     }
+    public function newPlots()
+    {
+        return Plot::whereIn('id', $this->new_plots_ids)->get();
+    }
 
 }

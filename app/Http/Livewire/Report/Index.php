@@ -16,6 +16,9 @@ class Index extends Component
 
     public $deals;
     public $show = false;
+    public $merges;
+    public $splits;
+    public $transfers;
 
     protected $rules = [
         'portfolio_id' => 'required|integer',
@@ -28,6 +31,9 @@ class Index extends Component
     {
         $this->portfolios = Portfolio::active()->get();
         $this->deals = collect();
+        $this->merges = collect();
+        $this->splits = collect();
+        $this->transfers = collect();
     }
 
     public function render()
@@ -40,6 +46,10 @@ class Index extends Component
     {
         $this->deals = collect();
         $this->portfolio = null;
+        $this->show = false;
+        $this->merges = collect();
+        $this->splits = collect();
+        $this->transfers = collect();
     }
 
     public function generateReport()
@@ -53,20 +63,18 @@ class Index extends Component
                 $this->plotClosureReport();
                 break;
             case 'merge':
-                # code...
+                $this->plotMergeReport();
                 break;
             case 'split':
-                # code...
+                $this->plotSplitReport();
                 break;
             case 'transfer':
-                # code...
+                $this->plotTransferReport();
                 break;
-
             default:
                $this->plotAdditionReport();
-                break;
+               break;
         }
-
     }
 
     private function plotAdditionReport()
@@ -74,14 +82,45 @@ class Index extends Component
         $this->deals = $this->portfolio->deals()->whereBetween('entry_date', [$this->from_date, $this->to_date])
             ->with('plot', 'client')
             ->get();
-        $this->show = true;
+            $this->show = true;
     }
 
     private function plotClosureReport()
     {
-        $this->deals = $this->portfolio->deals()->whereBetween('entry_date', [$this->from_date, $this->to_date])
+        $this->deals = $this->portfolio->deals()->closed()
+            ->whereBetween('closed_at', [$this->from_date, $this->to_date])
             ->with('plot', 'client')
+            ->get();
+            $this->show = true;
+    }
+
+    private function plotMergeReport()
+    {
+        $this->merges = $this->portfolio->merges()
+            ->whereBetween('entry_date', [$this->from_date, $this->to_date])
+            ->with('mergedDeal')
+            ->get();
+            $this->show = true;
+
+    }
+
+    private function plotSplitReport()
+    {
+        $this->splits = $this->portfolio->splits()
+            ->whereBetween('entry_date', [$this->from_date, $this->to_date])
+            ->with('oldPlot')
+            ->get();
+
+        $this->show = true;
+    }
+
+    private function plotTransferReport()
+    {
+        $this->transfers = $this->portfolio->transfers()
+            ->whereBetween('entry_date', [$this->from_date, $this->to_date])
+            ->with('oldClient', 'newClient')
             ->get();
         $this->show = true;
     }
+
 }
