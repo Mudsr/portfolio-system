@@ -70,7 +70,7 @@
                                 </a>
 
                                 <a href="{{ route('deals.edit', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
-                                    title="View details">
+                                    title="View &  Edit">
                                     <i class="fas fa-edit text-primary"></i>
 
                                 </a>
