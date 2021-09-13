@@ -29,12 +29,9 @@ class ClientRequest extends FormRequest
 
         return [
             'name'=> ['required'],
-            'address'=> ['required'],
-            'telephone' => ['required'],
+            'address'=> ['nullable','string'],
             'email' => ['nullable', 'email'],
-            'id_type' => ['required'],
-            'id_no' => ['required'],
-            'id_expiry' => ['required', 'date'],
+            'id_expiry' => ['nullable', 'date'],
             'id_attachment' => ['nullable', 'file', 'mimes:pdf,docx']
         ];
     }
@@ -43,11 +40,8 @@ class ClientRequest extends FormRequest
     {
         return [
             'name'=> ['required'],
-            'telephone' => ['required'],
             'email' => ['nullable', 'email'],
-            'id_type' => ['required'],
-            'id_no' => ['required'],
-            'id_expiry' => ['required', 'date'],
+            'id_expiry' => ['nullable', 'date'],
             'id_attachment' => ['nullable','file', 'mimes:pdf,docx']
         ];
     }

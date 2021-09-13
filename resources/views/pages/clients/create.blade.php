@@ -45,10 +45,9 @@
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
                         Address:
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Address" value="{{ old('address') }}" name="address" required/>
+                        <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Address" value="{{ old('address') }}" name="address"/>
                         @error('address')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -58,10 +57,9 @@
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
                         Telephone
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
-                        <input type="tel" class="form-control @error('telephone') is-invalid @enderror" placeholder="Telephone" value="{{ old('telephone') }}" name="telephone" required/>
+                        <input type="tel" class="form-control @error('telephone') is-invalid @enderror" placeholder="Telephone" value="{{ old('telephone') }}" name="telephone"/>
                         @error('telephone')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -71,10 +69,9 @@
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
                         ID Type
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control @error('id_type') is-invalid @enderror" placeholder="ID Type" value="{{ old('id_type') }}" name="id_type" min="0" required/>
+                        <input type="text" class="form-control @error('id_type') is-invalid @enderror" placeholder="ID Type" value="{{ old('id_type') }}" name="id_type" min="0"/>
                         @error('id_type')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -84,10 +81,9 @@
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
                         ID No
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control @error('id_no') is-invalid @enderror" placeholder="ID No" value="{{ old('id_no') }}" name="id_no" min="0" required/>
+                        <input type="text" class="form-control @error('id_no') is-invalid @enderror" placeholder="ID No" value="{{ old('id_no') }}" name="id_no" min="0"/>
                         @error('id_no')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -97,10 +93,9 @@
                 <div class="form-group row">
                     <label for="exampleInputPassword1" class="col-md-3 col-form-label">
                         ID Expiry Date
-                        <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
-                        <input type="date" class="form-control @error('id_expiry') is-invalid @enderror" value="{{ old('id_expiry') }}" name="id_expiry" required/>
+                        <input type="date" class="form-control @error('id_expiry') is-invalid @enderror" value="{{ old('id_expiry') }}" name="id_expiry"/>
                         @error('id_expiry')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
