@@ -79,6 +79,7 @@ class Create extends Component
 
         $deal->client_id = $this->new_client_id;
         $deal->type = 'transfer';
+        $deal->entry_date = $this->entry_date;
         $deal->save();
 
         return redirect()->route('transfers.index');

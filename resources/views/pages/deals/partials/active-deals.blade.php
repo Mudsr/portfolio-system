@@ -64,14 +64,14 @@
                         <td>
                             <span style="overflow: visible; position: relative">
 
-                                <a href="{{ route('deal.renew', $deal->id) }}"
+                                <a href="{{ route('deal.renew.form', $deal->id) }}"
                                     class="btn btn-sm btn-clean btn-icon" title="Renew">
                                     <i class="flaticon-refresh text-success"></i>
                                 </a>
 
-                                <a href="{{ route('deals.show', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
+                                <a href="{{ route('deals.edit', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
                                     title="View details">
-                                    <i class="fas fa-eye text-primary"></i>
+                                    <i class="fas fa-edit text-primary"></i>
 
                                 </a>
 

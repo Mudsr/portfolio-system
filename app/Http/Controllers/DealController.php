@@ -94,62 +94,8 @@ class DealController extends Controller
             'entry_date' => $request->entry_date,
         ]);
 
-        $plot = $deal->plot()->create([
-            'area_name' => $request->area_name,
-            'block' => $request->block,
-            'property_value' => $request->property_value,
-            'finance_amount' => $request->finance_amount,
-            'pai_rent' => $request->pai_rent,
-            'licensed_purpose' => $request->licensed_purpose,
-            'application_no' => $request->application_no,
-            'plot_area_size' => $request->plot_area_size,
-        ]);
-
-        if($request->hasFile('pai_leasing_contract')) {
-            $plot->addMediaFromRequest('pai_leasing_contract')
-            ->withCustomProperties(
-                [
-                    'issue_date' => $request->pai_issue_date,
-                    'expiry_date' => $request->pai_expiry_Date,
-                    'type' => 'pai'
-                ]
-            )->toMediaCollection('pai');
-        }
-
-        if ($request->hasFile('fire_insurance_copy')) {
-            $plot->addMediaFromRequest('fire_insurance_copy')
-            ->withCustomProperties(
-                [
-                    'issue_date' => $request->fire_insurance_issue_date,
-                    'expiry_date' => $request->fire_insurance_expiry_Date,
-                    'type' => 'fire_insurance'
-                ]
-            )->toMediaCollection('fire_insurance');
-        }
-
-        if ($request->hasFile('power_of_attorney_copy')) {
-            $plot->addMediaFromRequest('power_of_attorney_copy')
-            ->withCustomProperties(
-                [
-                    'issue_date' => $request->power_of_attorney_issue_date,
-                    'expiry_date' => $request->power_of_attorney_expiry_Date,
-                    'issue_to' => $request->power_of_attorney_issue_to,
-                    'type' => 'power_of_attorney'
-                ]
-            )->toMediaCollection('power_of_attorney');
-        }
-
-        if($request->hasFile('new_deal_email_attachment')) {
-            $plot->addMediaFromRequest('new_deal_email_attachment')->toMediaCollection('new_deal_email');
-        }
-
-        if($request->hasFile('poa_email_attachment')) {
-            $plot->addMediaFromRequest('poa_email_attachment')->toMediaCollection('poa_email_attachment');
-        }
-
-        if($request->hasFile('extra_attachments')) {
-            $plot->addMediaFromRequest('extra_attachments')->toMediaCollection('extras');
-        }
+        $plot = $this->createPlot($deal, $request);
+        $this->saveMedia($plot, $request);
 
         return redirect()->route('deals.index')->with('success','Deal created successfully');
     }
@@ -174,9 +120,12 @@ class DealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Deal $deal)
     {
-        //
+        $clients =Client::get();
+        $portfolios = Portfolio::active()->get();
+
+        return View('pages.deals.edit', compact('deal', 'portfolios', 'clients'));
     }
 
     /**
@@ -186,17 +135,127 @@ class DealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Deal $deal)
+    public function update(DealRequest $request, Deal $deal)
     {
         $deal->update([
             'portfolio_id' => $request->portfolio_id,
             'client_id' => $request->client_id,
             'plot_no' => $request->plot_no,
+        ]);
+
+        $plot = $deal->plot;
+        $plot->update([
+            'area_name' => $request->area_name??null,
+            'block' => $request->block??null,
+            'property_value' => $request->property_value??null,
+            'finance_amount' => $request->finance_amount??null,
+            'pai_rent' => $request->pai_rent??null,
+            'licensed_purpose' => $request->licensed_purpose??null,
+            'application_no' => $request->application_no??null,
+            'plot_area_size' => $request->plot_area_size??null,
+        ]);
+
+        $this->saveMedia($plot, $request);
+
+        return redirect()->route('deals.index')->with('success','Deal Renewed Successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Deal $deal)
+    {
+        $deal->delete();
+
+        return redirect()->route('deals.index')->with('success', 'Deal deleted successfully');
+    }
+
+    /**
+     * get renew form
+     *
+     * @param Deal $deal
+     * @return void
+     */
+    public function renewForm(Deal $deal)
+    {
+        $clients =Client::get();
+        $portfolios = Portfolio::active()->get();
+
+        return View('pages.deals.renewal', compact('deal', 'portfolios', 'clients'));
+    }
+
+    /**
+     * Save Deal renewed data
+     *
+     * @param Request $request
+     * @param Deal $deal
+     * @return void
+     */
+    public function renew(DealRequest $request, Deal $deal)
+    {
+        $deal->update([
+            'portfolio_id' => $request->portfolio_id,
+            'client_id' => $request->client_id,
+            'plot_no' => $request->plot_no,
+            'renewed_at' => $request->renewed_at,
             'type' => 'renewal',
         ]);
 
         $plot = $deal->plot;
 
+        $this->saveMedia($plot, $request);
+
+        return redirect()->route('deals.index')->with('success','Deal Renewed Successfully');
+    }
+
+    /**
+     * get closing form
+     *
+     * @param Deal $deal
+     * @return void
+     */
+    public function closeForm(Deal $deal)
+    {
+        return view('pages.deals.close',compact('deal'));
+    }
+
+    /**
+     * process closing of deal
+     *
+     * @param Deal $deal
+     * @return void
+     */
+    public function closeDeal(DealRequest $request,Deal $deal)
+    {
+        $deal->update([
+            'closed_at' => $request->closing_date,
+            'sold_to' => $request->sold_to,
+        ]);
+
+        return redirect()->route('deals.index')->with('success', 'Deal closed successfully');
+    }
+
+    private function createPlot($deal, $request)
+    {
+        $plot = $deal->plot()->create([
+            'area_name' => $request->area_name,
+            'block' => $request->block,
+            'property_value' => $request->property_value,
+            'finance_amount' => $request->finance_amount,
+            'pai_rent' => $request->pai_rent,
+            'licensed_purpose' => $request->licensed_purpose,
+            'application_no' => $request->application_no,
+            'plot_area_size' => $request->plot_area_size,
+        ]);
+
+        return $plot;
+    }
+
+    private function saveMedia($plot, $request)
+    {
         if($request->file('pai_leasing_contract')) {
             // $plot->clearMediaCollection('pai');
             $plot->addMediaFromRequest('pai_leasing_contract')
@@ -244,76 +303,6 @@ class DealController extends Controller
             $plot->addMediaFromRequest('poa_email_attachment')->toMediaCollection('poa_email_attachment');
         }
 
-
-        return redirect()->route('deals.index')->with('success','Deal Renewed Successfully');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Deal $deal)
-    {
-        $deal->delete();
-
-        return redirect()->route('deals.index')->with('success', 'Deal deleted successfully');
-    }
-
-    /**
-     * get renew form
-     *
-     * @param Deal $deal
-     * @return void
-     */
-    public function renewForm(Deal $deal)
-    {
-        $clients =Client::get();
-        $portfolios = Portfolio::active()->get();
-
-        return View('pages.deals.renewal', compact('deal', 'portfolios', 'clients'));
-    }
-
-    /**
-     * process renewal of deal
-     *
-     * @param Deal $deal
-     * @return void
-     */
-    public function renew(Deal $deal)
-    {
-        $clients =Client::get();
-        $portfolios = Portfolio::active()->get();
-
-        return View('pages.renewal', compact('deal', 'portfolios', 'clients'));
-    }
-
-    /**
-     * get closing form
-     *
-     * @param Deal $deal
-     * @return void
-     */
-    public function closeForm(Deal $deal)
-    {
-        return view('pages.deals.close',compact('deal'));
-    }
-
-    /**
-     * process closing of deal
-     *
-     * @param Deal $deal
-     * @return void
-     */
-    public function closeDeal(DealRequest $request,Deal $deal)
-    {
-        $deal->update([
-            'closed_at' => $request->closing_date,
-            'sold_to' => $request->sold_to,
-        ]);
-
-        return redirect()->route('deals.index')->with('success', 'Deal closed successfully');
     }
 
     // public function activeDeals(Request $request)
@@ -328,8 +317,4 @@ class DealController extends Controller
     //     }
     // }
 
-    public function searchDeals(Request $request)
-    {
-
-    }
 }

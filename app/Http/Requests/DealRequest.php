@@ -62,11 +62,10 @@ class DealRequest extends FormRequest
 
     public function validatePutRequest()
     {
-        return [
+        $rules =  [
             'portfolio_id' => ['required','integer'],
             'client_id' => ['required','integer'],
             'plot_no' => ['required','string'],
-            'renewed_at' => ['required','date'],
             'pai_issue_date' => ['nullable', 'date'],
             'pai_expiry_Date' => ['nullable', 'date', 'after:pai_issue_date'],
             'fire_insurance_issue_date' => ['nullable', 'date'],
@@ -75,6 +74,12 @@ class DealRequest extends FormRequest
             'power_of_attorney_expiry_Date' => ['nullable', 'date', 'after:power_of_attorney_issue_date'],
             'power_of_attorney_issue_to' => ['nullable', 'string'],
         ];
+
+        if ($this->routeIs('deal.renew')) {
+            $rules['renewed_at'] = ['required','date'];
+        }
+
+        return $rules;
     }
 
     public function validateCloseRequest()

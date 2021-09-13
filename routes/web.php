@@ -46,8 +46,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // //documents routes
     // Route::resource('documents', DocumentController::class)->except('show','edit','update');
     //plots routes
-    Route::resource('deals', DealController::class)->except('edit');
-    Route::get('deals/{deal}/renew', [DealController::class, 'renewForm'])->name('deal.renew');
+    Route::resource('deals', DealController::class);
+    Route::get('deals/{deal}/renew', [DealController::class, 'renewForm'])->name('deal.renew.form');
+    Route::put('deals/{deal}/renew', [DealController::class, 'renew'])->name('deal.renew');
     Route::get('deals/{deal}/close', [DealController::class, 'closeForm'])->name('deal.close.form');
     Route::post('deals/{deal}/close', [DealController::class, 'closeDeal'])->name('deal.close');
     Route::post('deals/search', [DealController::class, 'searchDeals'])->name('deals.search');

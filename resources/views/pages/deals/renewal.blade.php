@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <form action="{{ route('deals.update', $deal->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('deal.renew', $deal->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')
         <div class="row">
@@ -48,7 +48,7 @@
                                     name="client_id">
                                     <option value="" class="text-muted">---Select---</option>
                                     @foreach ($clients as $client)
-                                        <option value="{{ $client->id }}" {{ old('portfolio_id') == $client->id || $deal->client_id == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
+                                        <option value="{{ $client->id }}" {{ old('client_id') == $client->id || $deal->client_id == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
                                     @endforeach
 
                                 </select>

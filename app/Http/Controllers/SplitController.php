@@ -24,6 +24,7 @@ class SplitController extends Controller
             'portfolio_id' => $oldDeal->portfolio_id,
             'client_id' => $oldDeal->client_id,
             'plot_no' =>$request->plot1['plot_no'],
+            'entry_Date' => $request->entry_date,
             'type' => 'split',
         ]);
 
@@ -34,6 +35,7 @@ class SplitController extends Controller
             'portfolio_id' => $oldDeal->portfolio_id,
             'client_id' => $oldDeal->client_id,
             'plot_no' =>$request->plot2['plot_no'],
+            'entry_Date' => $request->entry_date,
             'type' => 'split',
         ]);
 
