@@ -16,7 +16,7 @@
                     <th scope="col" class="text-muted">Plot No</th>
                     <th scope="col" class="text-muted">Status</th>
                     <th scope="col" class="text-muted">Type</th>
-                    <th scope="col" class="text-muted">Actions</th>
+                    <th scope="col" class="text-muted">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +28,11 @@
                         <td>{{ $deal->client->id }}</td>
                         <td>{{ $deal->plot_no }}</td>
                         <td >
-                            <span class="label label-lg font-weight-bold label-light-success label-inline">Active</span>
+                            @if (!empty($deal->closed_at))
+                                <span class="label label-lg font-weight-bold label-light-danger label-inline">Closed</span>
+                            @else
+                                <span class="label label-lg font-weight-bold label-light-success label-inline">Active</span>
+                            @endif
                         </td>
 
                         <td >
@@ -42,22 +46,11 @@
                         <td>
                             <span style="overflow: visible; position: relative">
 
-                                <a href="{{ route('deal.renew', $deal->id) }}"
-                                    class="btn btn-sm btn-clean btn-icon" title="Renew">
-                                    <i class="flaticon-refresh text-success"></i>
-                                </a>
-
                                 <a href="{{ route('deals.show', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
                                     title="View details">
                                     <i class="fas fa-eye text-primary"></i>
 
                                 </a>
-
-                                <a href="{{ route('deal.close.form', $deal->id) }}" class="btn btn-sm btn-clean btn-icon"
-                                    title="Close Deal">
-                                    <i class="fas fa-times text-warning"></i>
-                                </a>
-
 
                             </span>
                         </td>
