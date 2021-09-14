@@ -71,7 +71,19 @@ class Index extends Component
 
     private function calculateManagementType($financeTotal)
     {
-        $x = $financeTotal * $this->portfolio->management_fee;
+        if($financeTotal <= 1000000) {
+            $management_fee = 0.25;
+        }
+
+        if($financeTotal > 1000000 && $financeTotal <= 10000000) {
+            $management_fee = 1.5;
+        }
+
+        if( $financeTotal > 10000000 && $financeTotal <= 100000000000 ) {
+            $management_fee = 1;
+        }
+
+        $x = $financeTotal * $management_fee;
         $fee = $x/4;
 
         return $fee;

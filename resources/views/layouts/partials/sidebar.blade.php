@@ -204,6 +204,14 @@
                                     <span class="menu-text">Transfers</span>
                                 </a>
                             </li>
+                            <li class="menu-item {{ (request()->is('pai-rent-payment*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                <a href="{{ route('pai.rent.payment') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Pai Rent APyment</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

@@ -85,6 +85,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('view-detail', App\Http\Livewire\ViewDetail\Index::class)->name('view.detail');
 
+    Route::get('pai-rent-payment', App\Http\Livewire\PaiRentPayment\Index::class)->name('pai.rent.payment');
+    Route::get('pai-rent-payment/create', App\Http\Livewire\PaiRentPayment\Create::class)->name('pai.rent.create');
+
     Route::get('media/{media}', function (Media $media) {
         return response()->file($media->getPath());
     })->name('media.download');
