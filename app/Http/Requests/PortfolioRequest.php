@@ -33,7 +33,9 @@ class PortfolioRequest extends FormRequest
 
         return [
             'name' => ['required','string'],
-            'management_fee' => ['required', 'numeric'],
+            'to' => ['required', 'array'],
+            'from' => ['required', 'array'],
+            'percentage' => ['required', 'array'],
             'minimum_fee_per_quarter' => ['required', 'numeric'],
             'fee_calculation_method' => ['required', 'string'],
             'contact_person' => ['nullable', 'string'],

@@ -38,7 +38,14 @@ class PortfolioController extends Controller
     public function store(PortfolioRequest $request)
     {
         // dd($request->all());
-        $portfolio = Portfolio::create($request->except('_token'));
+        $data = $request->except('_token', 'to', 'from', 'percentage');
+        $data['management_fee']['from']= $request->from;
+        $data['management_fee']['to']= $request->to;
+        $data['management_fee']['percentage']= $request->percentage;
+
+        // array_push($data['management_fee'] , $request->from, $request->to, $request->percentage);
+        
+        $portfolio = Portfolio::create($data);
         if($request->hasFile('agreement_document')) {
             $portfolio->addMediaFromRequest('agreement_document')->toMediaCollection('portfolios');
         }

@@ -31,6 +31,10 @@ class Portfolio extends Model implements HasMedia
         'is_current',
     ];
 
+    protected $casts = [
+        'management_fee' => 'array'
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at'
@@ -83,7 +87,7 @@ class Portfolio extends Model implements HasMedia
     {
         return $this->hasMany(Split::class);
     }
-    
+
     public function transfers()
     {
         return $this->hasMany(Transfer::class);

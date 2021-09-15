@@ -17,7 +17,7 @@ class CreatePortfoliosTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->double('management_fee');
+            $table->json('management_fee');
             $table->float('minimum_fee_per_quarter');
             $table->string('fee_calculation_method');
             $table->string('contact_person')->nullable();

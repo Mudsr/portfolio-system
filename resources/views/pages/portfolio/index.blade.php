@@ -33,7 +33,7 @@
                     <thead>
                         <tr>
                             <th scope="col" class="text-muted">Name</th>
-                            <th scope="col" class="text-muted">Management Fee</th>
+                            {{-- <th scope="col" class="text-muted">Management Fee</th> --}}
                             <th scope="col" class="text-muted">Fee Per Quarter</th>
                             <th scope="col" class="text-muted">Fee Calculation method</th>
                             <th scope="col" class="text-muted">Contact Person</th>
@@ -48,7 +48,7 @@
                         @foreach ($portfolios as $portfolio)
                             <tr>
                                 <th scope="row">{{ $portfolio->name }}</th>
-                                <td>{{ $portfolio->management_fee }}</td>
+                                {{-- <td>{{ $portfolio->management_fee }}</td> --}}
                                 <td>{{ $portfolio->minimum_fee_per_quarter }}</td>
                                 <td>{{ $portfolio->fee_calculation_method }}</td>
                                 <td>{{ $portfolio->contact_person }}</td>

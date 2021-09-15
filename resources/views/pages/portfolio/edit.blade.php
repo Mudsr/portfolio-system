@@ -27,7 +27,7 @@
 
                 </div>
 
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                     <label class="col-md-3 col-form-label">
                         Management Fee
                         <span class="text-danger">*</span>
@@ -40,7 +40,8 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                </div>
+                </div> --}}
+                @livewire('portfolio.management-fee', ['portfolio' => $portfolio])
 
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">

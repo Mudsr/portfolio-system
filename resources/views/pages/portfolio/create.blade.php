@@ -23,20 +23,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label">
-                        Management Fee
-                        <span class="text-danger">*</span>
-                    </label>
-                    <div class="col-md-8">
-                        <input type="number" class="form-control @error('management_fee') is-invalid @enderror"
-                            placeholder="Management Fee" value="{{ old('management_fee') }}" name="management_fee" min="0"
-                            step="0.0001" required />
-                        @error('management_fee')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
+                @livewire('portfolio.management-fee')
 
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
