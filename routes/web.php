@@ -13,6 +13,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RenewalController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PaiRentPaymentController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Livewire\Task\Complete;
 use App\Models\Task;
@@ -85,8 +86,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('view-detail', App\Http\Livewire\ViewDetail\Index::class)->name('view.detail');
 
-    Route::get('pai-rent-payment', App\Http\Livewire\PaiRentPayment\Index::class)->name('pai.rent.payment');
-    Route::get('pai-rent-payment/create', App\Http\Livewire\PaiRentPayment\Create::class)->name('pai.rent.create');
+    Route::get('pai-rent-payment', [PaiRentPaymentController::class, 'index'])->name('pai.rent.payment');
+    Route::get('pai-rent-payment/create',  [PaiRentPaymentController::class, 'create'])->name('pai.rent.create');
+    Route::post('pai-rent-payment/save',  [PaiRentPaymentController::class, 'save'])->name('pai.rent.save');
 
     Route::get('media/{media}', function (Media $media) {
         return response()->file($media->getPath());

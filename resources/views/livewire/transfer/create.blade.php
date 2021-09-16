@@ -3,7 +3,7 @@
         <div class="card-header">
             <h3 class="card-title">Transfer Owner Ship</h3>
         </div>
-        <form wire:submit.prevent="submit" method="POST" enctype="multipart/form-data">
+        <form action="submit{{ route('pai.rent.save') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
 

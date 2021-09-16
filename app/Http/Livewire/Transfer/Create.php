@@ -12,7 +12,6 @@ use App\Models\Portfolio;
 
 class Create extends Component
 {
-
     public $portfolio_id;
     public $old_client_id;
     public $old_client_name;

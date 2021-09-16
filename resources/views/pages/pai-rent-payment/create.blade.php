@@ -1,9 +1,13 @@
-<div>
+@extends('layouts.main')
+
+@section('content')
+    {{-- @livewire('pai-rent-payment.create') --}}
+
     <div class="card card-custom gutter-b example example-compact">
         <div class="card-header">
             <h3 class="card-title">PAI Rent</h3>
         </div>
-        <form wire:submit.prevent="submit" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('pai.rent.save') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
 
@@ -48,11 +52,9 @@
                         <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control  @error('client_id') is-invalid @enderror"
-                            value="{{ old('client_id') }}" name="client_id" wire:model="client_id" disabled />
-                        @error('client_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <input type="text" class="form-control  @error('client_id_value') is-invalid @enderror"
+                            value="{{ old('client_id_value') }}" name="client_id_value" id="client_id_value"  disabled />
+
                     </div>
                 </div>
 
@@ -63,16 +65,16 @@
                     </label>
 
                     <div class="col-md-8">
-                        <select class="form-control selectpicker2 @error('client_name') is-invalid @enderror"
+                        <select class="form-control selectpicker2 @error('client_id') is-invalid @enderror"
                             data-size="7" data-live-search="true"
-                            wire:model="client_name" wire:bind="client_id" >
+                            name="client_id" id="client_select" >
                             <option value="" class="text-muted">---Select Client---</option>
                             @foreach ($clients as $client)
-                                <option value="{{ $client->id }}"> {{ $client->name }} </option>
+                                <option value="{{ $client->id }}"  {{ old('client_id') == $client->id ? 'selected' :'' }}> {{ $client->name }} </option>
                             @endforeach
                         </select>
 
-                        @error("client_name")
+                        @error("client_id")
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -87,7 +89,7 @@
                     <div class="col-md-8">
                         <select class="form-control selectpicker2 @error('deal_id') is-invalid @enderror"
                             data-size="7" data-live-search="true"
-                            wire:model="deal_id" >
+                            name="deal_id" >
                             <option value="" class="text-muted">---Select---</option>
                             <option class="font-weight-bold" disabled>
                                 DEAL ID: &nbsp;&nbsp;&nbsp;
@@ -95,7 +97,7 @@
                                 PLOT No:
                             </option>
                             @foreach ($deals as $deal)
-                                <option value="{{ $deal->id }}">
+                                <option value="{{ $deal->id }}" {{ old('deal_id') == $deal->id ? 'selected': '' }}>
                                     {{ $deal->id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     {{ $deal->plot->id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     {{ $deal->plot_no }}
@@ -173,7 +175,7 @@
 
                     <div class="col-md-8">
                         <textarea name="comments" wire:model="comments" class="form-control" id="" cols="30" rows="10">
-                            {{ $comments }}
+                            {{ old('comments') }}
                         </textarea>
                         @error('comments')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -189,7 +191,7 @@
                     </label>
 
                     <div class="col-md-8">
-                        <input type="date" class="form-control  @error('receipt_voucher') is-invalid @enderror"
+                        <input type="file" class="form-control  @error('receipt_voucher') is-invalid @enderror"
                             value="{{ old('receipt_voucher') }}" name="receipt_voucher" wire:model="receipt_voucher" required />
                         @error('receipt_voucher')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -206,20 +208,15 @@
 
         </form>
     </div>
-</div>
+@endsection
 @section('scripts')
     <script>
-        intializeSelectPicker()
-
-        document.addEventListener("DOMContentLoaded", () => {
-            Livewire.hook('message.sent', (message, component) => {
-                $('.selectpicker2').selectpicker('destroy')
-            })
-            Livewire.hook('message.processed', (message, component) => {
-                intializeSelectPicker();
-
-            })
+        $(function(){
+            $('#client_select').change(function(){
+                var selected = $(this).find('option:selected');
+                var clientId = selected.val();
+                $('#client_id_value').val(clientId);
+            });
         });
-
     </script>
 @endsection

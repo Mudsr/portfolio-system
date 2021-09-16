@@ -294,12 +294,12 @@ class DealController extends Controller
         }
 
         if($request->file('new_deal_email_attachment')) {
-            $plot->clearMediaCollection('new_deal_email');
+            // $plot->clearMediaCollection('new_deal_email');
             $plot->addMediaFromRequest('new_deal_email_attachment')->toMediaCollection('new_deal_email');
         }
 
         if($request->file('poa_email_attachment')) {
-            $plot->clearMediaCollection('poa_email_attachment');
+            // $plot->clearMediaCollection('poa_email_attachment');
             $plot->addMediaFromRequest('poa_email_attachment')->toMediaCollection('poa_email_attachment');
         }
 

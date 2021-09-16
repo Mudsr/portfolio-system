@@ -50,7 +50,9 @@ class PortfolioRequest extends FormRequest
     public function validatePutRequest()
     {
         return [
-            'management_fee' => ['required', 'numeric'],
+            'to' => ['required', 'array'],
+            'from' => ['required', 'array'],
+            'percentage' => ['required', 'array'],
             'minimum_fee_per_quarter' => ['required', 'numeric'],
             'contact_person' => ['nullable', 'string'],
             'contact_number' => ['nullable', 'string'],

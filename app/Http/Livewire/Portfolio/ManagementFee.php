@@ -17,8 +17,20 @@ class ManagementFee extends Component
 
     public function mount($portfolio = null)
     {
-        $this->count = 1;
-        array_push($this->ranges, $this->count);
+        $this->count = 0;
+
+        if(isset($portfolio)){
+            $this->from = $portfolio->management_fee['from'];
+            $this->to = $portfolio->management_fee['to'];
+            $this->percentage = $portfolio->management_fee['percentage'];
+
+            for ($i = 0; $i < sizeof($portfolio->management_fee['from']); $i++) {
+                array_push($this->ranges, $i);
+            }
+        } else {
+            array_push($this->ranges, $this->count);
+
+        }
     }
 
     public function render()

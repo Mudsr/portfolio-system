@@ -15,6 +15,16 @@ class CreatePaiRentPaymentsTable extends Migration
     {
         Schema::create('pai_rent_payments', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
+            $table->foreignId('deal_id')->constrained()->onDelete('cascade');
+
+            $table->date('entry_date');
+            $table->integer('rent_amount');
+            $table->date('from_date');
+            $table->date('to_date');
+            $table->text('comments');
+
             $table->timestamps();
         });
     }

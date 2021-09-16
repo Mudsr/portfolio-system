@@ -52,50 +52,96 @@ class Index extends Component
         if(!empty($this->portfolio)) {
             $date = $this->getDate();
             if(isset($date)) {
-                $this->deals = $this->portfolio->deals()->active()
+                $this->deals = $this->portfolio->deals()
                     ->whereBetween('entry_date', [$date['from'], $date['to']]);
 
                     if($this->portfolio->fee_calculation_method == 'flat') {
-                        $this->deals->with('plot') ->get();
+                        $this->deals = $this->deals->with('plot')->get();
 
-                        if(!empty($this->deals->count() > 0)) {
+                        if($this->deals->count() > 0) {
                             $financeTotal = $this->deals->sum('plot.finance_amount');
-                            $this->fee = $this->calculateManagementType($financeTotal);
+                            $this->fee = $this->calculateFlatType($financeTotal);
+
+                            $this->storeFee($this->fee);
+
                         }
-                    } else {
-                        $this->calculateProportionateType($date);
+                    } else if($this->portfolio->fee_calculation_method == 'proportionate') {
+                        $this->deals = $this->deals->with('plot')->get();
+                        if($this->deals->count() > 0) {
+                            $financeTotal = $this->deals->sum('plot.finance_amount');
+                            $plots = $this->deals->sum('plot.finance_amount');
+                            $this->fee = $this->calculateProportionateType($financeTotal, $date);
+
+                            $this->storeFee($this->fee);
+                        }
+
                     }
             }
         }
     }
 
-    private function calculateManagementType($financeTotal)
+    private function calculateFlatType($financeTotal)
     {
-        if($financeTotal <= 1000000) {
-            $management_fee = 0.25;
+        $toRange = $this->portfolio->management_fee['to'];
+        $index = null;
+        foreach ($toRange as $key => $range) {
+            if($financeTotal < $range) {
+                $index = $key;
+                continue;
+            }
         }
-
-        if($financeTotal > 1000000 && $financeTotal <= 10000000) {
-            $management_fee = 1.5;
+        if(isset($index)) {
+            $percentageValue = $this->portfolio->management_fee['percentage'][$index];
+        } else {
+            $percentageValue = $this->portfolio->management_fee['percentage'][sizeof( $this->portfolio->management_fee['percentage']) - 1];
         }
-
-        if( $financeTotal > 10000000 && $financeTotal <= 100000000000 ) {
-            $management_fee = 1;
-        }
-
-        $x = $financeTotal * $management_fee;
+        $percentage = $percentageValue/100;
+        $x = $financeTotal * $percentage;
         $fee = $x/4;
 
         return $fee;
     }
 
-    private function calculateProportionateType($date)
+    private function calculateProportionateType($financeTotal, $date)
     {
-        $feeArray = [];
-        foreach($this->deals as $deal)
-        {
-            $deal->entry_date;
+        $toRange = $this->portfolio->management_fee['to'];
+        $index = null;
+
+        foreach ($toRange as $key => $range) {
+            if($financeTotal < $range) {
+                $index = $key;
+                continue;
+            }
         }
+        if(isset($index)) {
+            $percentageValue = $this->portfolio->management_fee['percentage'][$index];
+        } else {
+            $percentageValue = $this->portfolio->management_fee['percentage'][sizeof( $this->portfolio->management_fee['percentage']) - 1];
+        }
+
+        $percentage = $percentageValue/100;
+        $feeArray=[];
+
+        foreach ($this->deals as $key => $deal) {
+            $x = $deal->plot->finance_amount * $percentage;
+            $fee = $x/360;
+
+            $startDate = Carbon::parse($deal->entry_date);
+            if(isset($deal->closed_at)) {
+                $endDate = Carbon::parse($deal->closed_at);
+            } else {
+                $endDate = Carbon::parse($date['to']);
+            }
+
+            $daysCount = $startDate->diffInDays($endDate);
+            $fee = $fee * $daysCount;
+            array_push($feeArray, $fee);
+        }
+
+        $fee = array_sum($feeArray);
+
+        return $fee;
+
     }
 
     private function storeFee($fee)
