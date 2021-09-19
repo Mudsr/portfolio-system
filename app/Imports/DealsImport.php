@@ -12,6 +12,11 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class DealsImport implements ToModel, WithHeadingRow
 {
+    public $portfolio;
+
+    public function __construct($portfolio) {
+        $this->portfolio = $portfolio;
+    }
     /**
      * @param array $row
      *
@@ -27,13 +32,12 @@ class DealsImport implements ToModel, WithHeadingRow
             return null;
         }
 
-        $portfolio = $this->getPortfolio();
         $client = Client::create([
             'name' => $row['client_name'],
         ]);
 
         $deal = $client->deals()->create([
-            'portfolio_id' => $portfolio->id,
+            'portfolio_id' => $this->portfolio->id,
             'plot_no' => $row['plot_no'],
             'entry_date' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['date_of_contract']),
         ]);
