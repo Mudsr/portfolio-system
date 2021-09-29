@@ -262,7 +262,7 @@ class DealController extends Controller
             ->withCustomProperties(
                 [
                     'issue_date' => $request->pai_issue_date,
-                    'expiry_date' => $request->pai_expiry_Date,
+                    'expiry_date' => $request->pai_expiry_date,
                     'type' => 'pai'
                 ]
             )->toMediaCollection('pai');
@@ -274,7 +274,7 @@ class DealController extends Controller
             ->withCustomProperties(
             [
                 'issue_date' => $request->fire_insurance_issue_date,
-                'expiry_date' => $request->fire_insurance_expiry_Date,
+                'expiry_date' => $request->fire_insurance_expiry_date,
                 'type' => 'fire_insurance'
             ]
             )->toMediaCollection('fire_insurance');
@@ -286,7 +286,7 @@ class DealController extends Controller
             ->withCustomProperties(
                 [
                     'issue_date' => $request->power_of_attorney_issue_date,
-                    'expiry_date' => $request->power_of_attorney_expiry_Date,
+                    'expiry_date' => $request->power_of_attorney_expiry_date,
                     'issue_to' => $request->power_of_attorney_issue_to,
                     'type' => 'power_of_attorney'
                 ]

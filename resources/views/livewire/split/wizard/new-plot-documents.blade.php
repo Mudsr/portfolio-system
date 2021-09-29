@@ -37,9 +37,9 @@
     </label>
 
     <div class="col-md-8">
-        <input type="date" class="form-control @error($name.'[pai_expiry_Date]') is-invalid @enderror"
-            value="{{ old($name.'[pai_expiry_Date]') }}" name="{{ $name }}[pai_expiry_Date]" />
-        @error($name.'[pai_expiry_Date]')
+        <input type="date" class="form-control @error($name.'[pai_expiry_date]') is-invalid @enderror"
+            value="{{ old($name.'[pai_expiry_date]') }}" name="{{ $name }}[pai_expiry_date]" />
+        @error($name.'[pai_expiry_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
@@ -78,9 +78,9 @@
     </label>
 
     <div class="col-md-8">
-        <input type="date" class="form-control @error($name.'[fire_insurance_expiry_Date]') is-invalid @enderror"
-            value="{{ old($name.'[fire_insurance_expiry_Date]') }}" name="{{ $name }}[fire_insurance_expiry_Date]" />
-        @error($name.'[fire_insurance_expiry_Date]')
+        <input type="date" class="form-control @error($name.'[fire_insurance_expiry_date]') is-invalid @enderror"
+            value="{{ old($name.'[fire_insurance_expiry_date]') }}" name="{{ $name }}[fire_insurance_expiry_date]" />
+        @error($name.'[fire_insurance_expiry_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
@@ -119,9 +119,9 @@
     </label>
 
     <div class="col-md-8">
-        <input type="date" class="form-control @error($name.'[power_of_attorney_expiry_Date]') is-invalid @enderror"
-            value="{{ old($name.'[power_of_attorney_expiry_Date]') }}" name="{{ $name }}[power_of_attorney_expiry_Date]" />
-        @error($name.'[power_of_attorney_expiry_Date]')
+        <input type="date" class="form-control @error($name.'[power_of_attorney_expiry_date]') is-invalid @enderror"
+            value="{{ old($name.'[power_of_attorney_expiry_date]') }}" name="{{ $name }}[power_of_attorney_expiry_date]" />
+        @error($name.'[power_of_attorney_expiry_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>

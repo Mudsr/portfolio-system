@@ -31,9 +31,9 @@
                     </label>
 
                     <div class="col-md-8">
-                        <input type="date" class="form-control @error('pai_expiry_Date') is-invalid @enderror"
-                            value="{{ old('pai_expiry_Date') }}" name="pai_expiry_Date" required />
-                        @error('pai_expiry_Date')
+                        <input type="date" class="form-control @error('pai_expiry_date') is-invalid @enderror"
+                            value="{{ old('pai_expiry_date') }}" name="pai_expiry_date" required />
+                        @error('pai_expiry_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -75,9 +75,9 @@
                     </label>
 
                     <div class="col-md-8">
-                        <input type="date" class="form-control @error('fire_insurance_expiry_Date') is-invalid @enderror"
-                            value="{{ old('fire_insurance_expiry_Date') }}" name="fire_insurance_expiry_Date" required />
-                        @error('fire_insurance_expiry_Date')
+                        <input type="date" class="form-control @error('fire_insurance_expiry_date') is-invalid @enderror"
+                            value="{{ old('fire_insurance_expiry_date') }}" name="fire_insurance_expiry_date" required />
+                        @error('fire_insurance_expiry_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -119,9 +119,9 @@
                     </label>
 
                     <div class="col-md-8">
-                        <input type="date" class="form-control @error('power_of_attorney_expiry_Date') is-invalid @enderror"
-                            value="{{ old('power_of_attorney_expiry_Date') }}" name="power_of_attorney_expiry_Date" required />
-                        @error('power_of_attorney_expiry_Date')
+                        <input type="date" class="form-control @error('power_of_attorney_expiry_date') is-invalid @enderror"
+                            value="{{ old('power_of_attorney_expiry_date') }}" name="power_of_attorney_expiry_date" required />
+                        @error('power_of_attorney_expiry_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -157,7 +157,7 @@
                     </div>
                 </div>
 
-               
+
             </div>
 
 
