@@ -198,6 +198,34 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label">
+                                PAI Client ID
+                            </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control @error('pai_client_id') is-invalid @enderror"
+                                    placeholder="PAI Client ID" value="{{ old('pai_client_id', $deal->plot->pai_client_id) }}"
+                                    name="pai_client_id" />
+                                @error('pai_client_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label">
+                                Client Civil ID
+                            </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control @error('client_civil_id') is-invalid @enderror"
+                                    placeholder="Client Civil ID" value="{{ old('client_civil_id', $deal->plot->client_civil_id) }}"
+                                    name="client_civil_id" />
+                                @error('client_civil_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label">
                                 Licensed Purpose
@@ -270,6 +298,7 @@
             var clientName = selected.attr('data-name');
             $('#client_name').val(clientName);
             $('#clientId').val(clientId);
+            $('#issued_to').val(clientName);
         }
     </script>
 @endsection

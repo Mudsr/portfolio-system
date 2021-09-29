@@ -123,7 +123,7 @@
 
                     <div class="col-md-8">
                         <input type="text" class="form-control @error('power_of_attorney_issue_to') is-invalid @enderror"
-                            value="{{ old('power_of_attorney_issue_to') }}" name="power_of_attorney_issue_to" />
+                            value="{{ old('power_of_attorney_issue_to') }}" name="power_of_attorney_issue_to" id="issued_to" />
                         @error('power_of_attorney_issue_to')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

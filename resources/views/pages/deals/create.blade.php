@@ -18,6 +18,7 @@
                 var clientId = selected.val();
                 var clientName = selected.attr('data-name');
                 $('#client_name').val(clientName);
+                $('#issued_to').val(clientName);
                 $('#clientId').val(clientId);
             });
         });
