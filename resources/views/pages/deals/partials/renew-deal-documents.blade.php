@@ -128,7 +128,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('power_of_attorney_issue_date') is-invalid @enderror"
-                            value="{{ old('power_of_attorney_issue_date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ?$deal->plot->getMedia('power_of_attorney')->last()->getCustomProperty('power_of_attorney_issue_date'): '') }}"
+                            value="{{ old('power_of_attorney_issue_date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ?$deal->plot->getMedia('power_of_attorney')->last()->getCustomProperty('issue_date'): '') }}"
                             name="power_of_attorney_issue_date"  />
                     @error('power_of_attorney_issue_date')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -142,7 +142,7 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('power_of_attorney_expiry_date') is-invalid @enderror"
-                        value="{{ old('power_of_attorney_expiry_date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->last()->getCustomProperty('power_of_attorney_expiry_date'): '') }}) }}"
+                        value="{{ old('power_of_attorney_expiry_date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->last()->getCustomProperty('expiry_date'): '') }}) }}"
                         name="power_of_attorney_expiry_date"  />
                     @error('power_of_attorney_expiry_date')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -156,7 +156,7 @@
 
                 <div class="col-md-8">
                     <input type="text" class="form-control @error('power_of_attorney_issue_to') is-invalid @enderror"
-                        value="{{ old('power_of_attorney_issue_to', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->last()->getCustomProperty('power_of_attorney_issue_to'): '') }}"
+                        value="{{ old('power_of_attorney_issue_to', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->last()->getCustomProperty('issue_to'): '') }}"
                         name="power_of_attorney_issue_to" id="issued_to"  />
                     @error('power_of_attorney_issue_to')
                         <div class="invalid-feedback">{{ $message }}</div>
