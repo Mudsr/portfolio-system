@@ -190,10 +190,8 @@
                         <div class="col-md-8">
                             @if ($deal->plot->getMedia('new_deal_email')->count() > 0)
                                 <a href="{{ route('media.download', $deal->plot->getMedia('new_deal_email')->first()->id)}}" target="_blank">
-                                    View Attachment
+                                    {{ $deal->plot->getMedia('new_deal_email')->first()->file_name }}
                                 </a>
-                            @else
-                                N/A
                             @endif
 
                         </div>
@@ -225,13 +223,13 @@
 
                     <div class="form-group row">
                         <label for="exampleInputPassword1" class="col-md-3 col-form-label">
-                            Attachment
+                            Attachment:
                         </label>
                         <div class="col-md-8">
                             @if ( $deal->plot->getMedia('pai')->isNotEmpty())
-                                <a href="{{ route('media.download', $deal->plot->getMedia('pai')->first()->id)}}" target="_blank">View Old Attachment</a>
-                            @else
-                                N/A
+                                <a href="{{ route('media.download', $deal->plot->getMedia('pai')->first()->id)}}" target="_blank">
+                                    {{ $deal->plot->getMedia('pai')->first()->file_name }}
+                                </a>
                             @endif
                         </div>
                     </div>
@@ -268,9 +266,9 @@
                         </label>
                         <div class="col-md-8">
                             @if ($deal->plot->getMedia('fire_insurance')->isNotEmpty())
-                                <a href="{{ route('media.download', $deal->plot->getMedia('fire_insurance')->first()->id)}}" target="_blank">View Attachment</a>
-                            @else
-                                N/A
+                                <a href="{{ route('media.download', $deal->plot->getMedia('fire_insurance')->first()->id)}}" target="_blank">
+                                    {{ $deal->plot->getMedia('fire_insurance')->first()->file_name }}
+                                </a>
                             @endif
 
                         </div>
@@ -327,9 +325,9 @@
 
                         <div class="col-md-8">
                             @if ($deal->plot->getMedia('power_of_attorney')->isNotEmpty())
-                                <a href="{{ route('media.download', $deal->plot->getMedia('power_of_attorney')->first()->id)}}" target="_blank">View Old Attachment</a>
-                            @else
-                                N/A
+                                <a href="{{ route('media.download', $deal->plot->getMedia('power_of_attorney')->first()->id)}}" target="_blank">
+                                    {{ $deal->plot->getMedia('power_of_attorney')->first()->file_name }}
+                                </a>
                             @endif
 
 
@@ -343,9 +341,9 @@
 
                         <div class="col-md-8">
                             @if ($deal->plot->getMedia('poa_email_attachment')->isNotEmpty())
-                                <a href="{{ route('media.download', $deal->plot->getMedia('poa_email_attachment')->first()->id)}}" target="_blank">View Old Attachment</a>
-                            @else
-                                N/A
+                                <a href="{{ route('media.download', $deal->plot->getMedia('poa_email_attachment')->first()->id)}}" target="_blank">
+                                    {{ $deal->plot->getMedia('poa_email_attachment')->first()->file_name }}
+                                </a>
                             @endif
                         </div>
                     </div>

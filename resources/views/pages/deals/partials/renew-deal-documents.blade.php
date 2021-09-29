@@ -15,7 +15,7 @@
                 <div class="col-md-8">
                     @if ($deal->plot->getMedia('new_deal_email')->count() > 0)
                         <a href="{{ route('media.download', $deal->plot->getMedia('new_deal_email')->last()->id)}}" target="_blank">
-                            View Old Attachment
+                            {{ $deal->plot->getMedia('new_deal_email')->last()->file_name }}
                         </a>
                     @endif
 
@@ -63,7 +63,9 @@
                 </label>
                 <div class="col-md-8">
                     @if ( $deal->plot->getMedia('pai')->isNotEmpty())
-                        <a href="{{ route('media.download', $deal->plot->getMedia('pai')->last()->id)}}" target="_blank">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('pai')->last()->id)}}" target="_blank">
+                           {{$deal->plot->getMedia('pai')->last()->file_name}}
+                        </a>
                     @endif
 
                     <input type="file" class="form-control @error('pai_leasing_contract') is-invalid @enderror"
@@ -82,8 +84,8 @@
 
                 <div class="col-md-8">
                     <input type="date" class="form-control @error('fire_insurance_issue_date') is-invalid @enderror"
-                            value="{{ old('fire_insurance_issue_date',  $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->last()->getCustomProperty('issue_date'): '') }}"
-                            name="fire_insurance_issue_date"  />
+                        value="{{ old('fire_insurance_issue_date',  $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->last()->getCustomProperty('issue_date'): '') }}"
+                        name="fire_insurance_issue_date"  />
                     @error('fire_insurance_issue_date')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -110,7 +112,9 @@
                 </label>
                 <div class="col-md-8">
                     @if ($deal->plot->getMedia('fire_insurance')->isNotEmpty())
-                        <a href="{{ route('media.download', $deal->plot->getMedia('fire_insurance')->last()->id)}}" target="_blank">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('fire_insurance')->last()->id)}}" target="_blank">
+                            {{ $deal->plot->getMedia('fire_insurance')->last()->file_name }}
+                        </a>
                     @endif
                     <input type="file" class="form-control @error('fire_insurance_copy') is-invalid @enderror"
                         name="fire_insurance_copy"  />
@@ -171,7 +175,9 @@
 
                 <div class="col-md-8">
                     @if ($deal->plot->getMedia('power_of_attorney')->isNotEmpty())
-                        <a href="{{ route('media.download', $deal->plot->getMedia('power_of_attorney')->last()->id)}}" target="_blank">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('power_of_attorney')->last()->id)}}" target="_blank">
+                            {{ $deal->plot->getMedia('power_of_attorney')->last()->file_name }}
+                        </a>
                     @endif
 
                     <input type="file" class="form-control @error('power_of_attorney_copy') is-invalid @enderror"
@@ -190,7 +196,9 @@
 
                 <div class="col-md-8">
                     @if ($deal->plot->getMedia('poa_email_attachment')->isNotEmpty())
-                        <a href="{{ route('media.download', $deal->plot->getMedia('poa_email_attachment')->last()->id)}}" target="_blank">View Old Attachment</a>
+                        <a href="{{ route('media.download', $deal->plot->getMedia('poa_email_attachment')->last()->id)}}" target="_blank">
+                           {{ $deal->plot->getMedia('poa_email_attachment')->last()->file_name }}
+                        </a>
                     @endif
 
                     <input type="file" class="form-control @error('poa_email_attachment') is-invalid @enderror"
