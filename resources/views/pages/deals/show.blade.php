@@ -110,7 +110,7 @@
                             Block
                         </label>
                         <div class="col-md-8">
-                            <input type="number" class="form-control" value="{{ $deal->plot_block }}" disabled />
+                            <input type="text" class="form-control" value="{{ $deal->plot_block }}" disabled />
                             @error('block')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

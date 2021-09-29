@@ -26,7 +26,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div class="col-md-8">
-                    <input type="number" class="form-control @error('block') is-invalid @enderror"
+                    <input type="text" class="form-control @error('block') is-invalid @enderror"
                         placeholder="Block" value="{{ old('block', $plot->block) }}" name="block"
                         required />
                     @error('block')
