@@ -45,8 +45,8 @@ class DealsImport implements ToModel, WithHeadingRow
         return new Plot([
             'area_name'     => $row['area'],
             'block'    => $row['block'],
-            'property_value' => $row['finance_amount'],
-            'finance_amount' => $row['finance_amount'],
+            'property_value' => str_replace(',', '', $row['finance_amount']),
+            'finance_amount' => str_replace(',', '', $row['finance_amount']),
             'deal_id' => $deal->id,
         ]);
     }

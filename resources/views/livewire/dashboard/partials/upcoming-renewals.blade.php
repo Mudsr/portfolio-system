@@ -6,10 +6,10 @@
 
         <div class="card-toolbar">
 
-            <select class="form-control" wire:model="days" >
-                    <option value="3"> 3 Days </option>
-                    <option value="7"> 7 Days </option>
-                    <option value="15"> 15 Days </option>
+            <select class="form-control" wire:model="renewals_filter">
+                <option value="7"> 7 Days </option>
+                <option value="15"> 15 Days </option>
+                <option value="30"> 1 Month </option>
             </select>
 
         </div>
@@ -29,13 +29,13 @@
                 </thead>
                 <tbody>
                     @foreach ($plots as $plot)
-                        @if ($types = $plot->checkDocumentExpiry($days))
+                        @if ($types = $plot->checkDocumentExpiry($renewals_filter))
                             @foreach ($types as $type)
                                 <tr>
                                     <td>{{ $plot->deal->client->id }}</td>
                                     <td>{{ $plot->deal->id }}</td>
-                                    <td>{{ ucwords(str_replace("_", " ", $type)) }}</td>
-                                    <td>{{ $plot->getMedia($type)->last()->custom_properties['expiry_date']; }}</td>
+                                    <td>{{ ucwords(str_replace('_', ' ', $type)) }}</td>
+                                    <td>{{ $plot->getMedia($type)->last()->custom_properties['expiry_date'] }}</td>
                                 </tr>
                             @endforeach
                         @endif

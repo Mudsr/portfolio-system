@@ -3,6 +3,17 @@
         <div class="card-title text-center">
             <h3 class="card-label text-muted">Pending Tasks</h3>
         </div>
+
+        <div class="card-toolbar">
+
+            <select class="form-control" wire:model="tasks_filter" >
+                <option value="7"> 7 Days </option>
+                <option value="15"> 15 Days </option>
+                <option value="30"> 1 Month </option>
+            </select>
+
+        </div>
+
     </div>
 
     <div class="card-body">

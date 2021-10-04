@@ -21,6 +21,11 @@ class PaiRentPayment extends Model implements HasMedia
         'comments',
     ];
 
+    public function getRentAmountAttribute($value)
+    {
+        return number_format($value);
+    }
+
     public function client()
     {
         return $this->belongsTo(Client::class);

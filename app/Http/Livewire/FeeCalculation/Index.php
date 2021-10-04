@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\FeeCalculation;
 
-use App\Models\FeeCalculation;
-use App\Models\Portfolio;
 use Carbon\Carbon;
 use Livewire\Component;
+use App\Models\Portfolio;
+use App\Models\FeeCalculation;
+use Illuminate\Support\Facades\DB;
 
 class Index extends Component
 {
@@ -52,51 +53,40 @@ class Index extends Component
         if(!empty($this->portfolio)) {
             $date = $this->getDate();
             if(isset($date)) {
-                $this->deals = $this->portfolio->deals()
+                $query = $this->portfolio->deals()
                     ->whereBetween('entry_date', [$date['from'], $date['to']]);
 
+                $this->deals = $query->withCount([
+                    'plot AS plot_finance_amount' => function ($query) {
+                            $query->select(DB::raw("SUM(finance_amount) as financeAmountTotal"));
+                        }
+                    ])->with('plot')->get();
+
+                if($this->deals->count() > 0 ) {
+
+                    $financeTotal = $this->deals->sum('plot_finance_amount');
+
                     if($this->portfolio->fee_calculation_method == 'flat') {
-                        $this->deals = $this->deals->with('plot')->get();
-
-                        if($this->deals->count() > 0) {
-                            $financeTotal = $this->deals->sum('plot.finance_amount');
-                            $this->fee = $this->calculateFlatType($financeTotal);
-
-                            $this->storeFee($this->fee);
-
-                        }
-                    } else if($this->portfolio->fee_calculation_method == 'proportionate') {
-                        $this->deals = $this->deals->with('plot')->get();
-                        if($this->deals->count() > 0) {
-                            $financeTotal = $this->deals->sum('plot.finance_amount');
-                            $plots = $this->deals->sum('plot.finance_amount');
-                            $this->fee = $this->calculateProportionateType($financeTotal, $date);
-
-                            $this->storeFee($this->fee);
-                        }
-
+                        $this->fee = $this->calculateFlatType($financeTotal);
                     }
+
+                    if($this->portfolio->fee_calculation_method == 'proportionate') {
+                        $this->fee = $this->calculateProportionateType($financeTotal, $date);
+                    }
+
+                    $this->storeFee($this->fee);
+
+                }
             }
         }
     }
 
     private function calculateFlatType($financeTotal)
     {
-        $toRange = $this->portfolio->management_fee['to'];
-        $index = null;
-        foreach ($toRange as $key => $range) {
-            if($financeTotal < $range) {
-                $index = $key;
-                continue;
-            }
-        }
-        if(isset($index)) {
-            $percentageValue = $this->portfolio->management_fee['percentage'][$index];
-        } else {
-            $percentageValue = $this->portfolio->management_fee['percentage'][sizeof( $this->portfolio->management_fee['percentage']) - 1];
-        }
-        $percentage = $percentageValue/100;
-        $x = $financeTotal * $percentage;
+
+        $percentageValue = $this->getPercentage($financeTotal);
+        // $percentage = $percentageValue/100;
+        $x = $financeTotal * $percentageValue;
         $fee = $x/4;
 
         return $fee;
@@ -104,26 +94,13 @@ class Index extends Component
 
     private function calculateProportionateType($financeTotal, $date)
     {
-        $toRange = $this->portfolio->management_fee['to'];
-        $index = null;
-
-        foreach ($toRange as $key => $range) {
-            if($financeTotal < $range) {
-                $index = $key;
-                continue;
-            }
-        }
-        if(isset($index)) {
-            $percentageValue = $this->portfolio->management_fee['percentage'][$index];
-        } else {
-            $percentageValue = $this->portfolio->management_fee['percentage'][sizeof( $this->portfolio->management_fee['percentage']) - 1];
-        }
-
-        $percentage = $percentageValue/100;
+        $percentageValue = $this->getPercentage($financeTotal);
+        // $percentage = $percentageValue/100;
+        $percentage = $percentageValue;
         $feeArray=[];
 
         foreach ($this->deals as $key => $deal) {
-            $x = $deal->plot->finance_amount * $percentage;
+            $x = str_replace(',', '',$deal->plot->finance_amount) * $percentage;
             $fee = $x/360;
 
             $startDate = Carbon::parse($deal->entry_date);
@@ -142,6 +119,25 @@ class Index extends Component
 
         return $fee;
 
+    }
+
+    private function getPercentage($financeTotal)
+    {
+        $toRange = $this->portfolio->management_fee['to'];
+        $index = null;
+        foreach ($toRange as $key => $range) {
+            if($financeTotal < $range) {
+                $index = $key;
+                continue;
+            }
+        }
+        if(isset($index)) {
+            $percentageValue = $this->portfolio->management_fee['percentage'][$index];
+        } else {
+            $percentageValue = $this->portfolio->management_fee['percentage'][sizeof( $this->portfolio->management_fee['percentage']) - 1];
+        }
+
+        return $percentageValue;
     }
 
     private function storeFee($fee)

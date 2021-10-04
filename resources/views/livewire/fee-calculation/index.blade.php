@@ -164,7 +164,7 @@
                                     <tr>
                                         <td class="font-weight-bold">Total</td>
                                         <td> </td>
-                                        <td class="font-weight-bold" >{{ $deals->sum('plot.finance_amount') }}</td>
+                                        <td class="font-weight-bold" >{{ $deals->sum('plot_finance_amount') }}</td>
                                     </tr>
                                 </tbody>
                             </table>
