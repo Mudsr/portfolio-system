@@ -29,18 +29,18 @@ class Plot extends Model implements HasMedia
     ];
 
     //accessors
-    public function getPropertyValueAttribute($value)
-    {
-        return number_format($value);
-    }
-    public function getFinanceAmountAttribute($value)
-    {
-        return number_format($value);
-    }
-    public function getPlotAreaSizeAttribute($value)
-    {
-        return number_format($value);
-    }
+    // public function getPropertyValueAttribute($value)
+    // {
+    //     return number_format($value);
+    // }
+    // public function getFinanceAmountAttribute($value)
+    // {
+    //     return number_format($value);
+    // }
+    // public function getPlotAreaSizeAttribute($value)
+    // {
+    //     return number_format($value);
+    // }
 
     //relations
     public function deal()

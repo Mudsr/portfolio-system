@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire\Report;
 
+use App\Exports\PlotReport;
+use PDF;
 use Livewire\Component;
 use App\Models\Portfolio;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Index extends Component
 {
@@ -19,6 +22,7 @@ class Index extends Component
     public $merges;
     public $splits;
     public $transfers;
+    public $pdfView;
 
     protected $rules = [
         'portfolio_id' => 'required|integer',
@@ -61,19 +65,24 @@ class Index extends Component
         switch ($this->type) {
             case 'plot_closure':
                 $this->plotClosureReport();
+                $this->pdfView = 'plot-closure';
                 break;
             case 'merge':
                 $this->plotMergeReport();
+                $this->pdfView = 'plot-merge';
                 break;
             case 'split':
                 $this->plotSplitReport();
+                $this->pdfView = 'plot-split';
                 break;
             case 'transfer':
                 $this->plotTransferReport();
+                $this->pdfView = 'plot-transfer';
                 break;
             default:
                $this->plotAdditionReport();
-               break;
+                $this->pdfView = 'plot-addition';
+                break;
         }
     }
 
@@ -90,6 +99,10 @@ class Index extends Component
         $this->deals = $this->portfolio->deals()->closed()
             ->whereBetween('closed_at', [$this->from_date, $this->to_date])
             ->with('plot', 'client')
+            ->withCount([
+                'plot AS plot_finance_amount' => fn ($query) =>
+                        $query->select(DB::raw("SUM(finance_amount) as financeAmountTotal"))
+            ])
             ->get();
             $this->show = true;
     }
@@ -125,12 +138,17 @@ class Index extends Component
 
     public function exportPdf()
     {
-        //
+        $view = 'livewire.report.partials.'.$this->pdfView;
+        // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+        return Excel::download(new PlotReport($this->deals, $view), 'report.pdf');
+
     }
 
     public function exportExcel()
     {
-        //
+        $view = 'livewire.report.partials.'.$this->pdfView;
+
+        return Excel::download(new PlotReport($this->deals, $view), 'report.xlsx');
     }
 
 }
