@@ -123,4 +123,14 @@ class Index extends Component
         $this->show = true;
     }
 
+    public function exportPdf()
+    {
+        //
+    }
+
+    public function exportExcel()
+    {
+        //
+    }
+
 }

@@ -42,8 +42,6 @@
 			</div>
 		</div>
 
-        @include('layouts.partials.user-panel')
-
         @include('layouts.partials.scripts')
 
         @livewireScripts

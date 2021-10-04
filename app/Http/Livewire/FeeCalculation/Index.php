@@ -53,8 +53,13 @@ class Index extends Component
         if(!empty($this->portfolio)) {
             $date = $this->getDate();
             if(isset($date)) {
+                
                 $query = $this->portfolio->deals()
-                    ->whereBetween('entry_date', [$date['from'], $date['to']]);
+                    ->where('entry_date', '<=', $date['to'])
+                    ->where(fn ($query) =>
+                        $query->where('closed_at', 'null')
+                            ->orWhere(fn ($q) => $q->whereBetween('entry_date', [$date['from'], $date['to'] ]))
+                    );
 
                 $this->deals = $query->withCount([
                     'plot AS plot_finance_amount' => function ($query) {

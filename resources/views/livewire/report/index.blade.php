@@ -120,8 +120,8 @@
                                         Export
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                        <a class="dropdown-item" data-toggle="tab" href="#kt_tab_pane_7_3">Export As Excel</a>
-                                        <a class="dropdown-item" data-toggle="tab" href="#kt_tab_pane_7_3">Export As PDF</a>
+                                        <a class="dropdown-item" data-toggle="tab" wire:click="exportExcel" >Export As Excel</a>
+                                        <a class="dropdown-item" data-toggle="tab" wire:click="exportPdf">Export As PDF</a>
                                     </div>
                                 </li>
                             </ul>
