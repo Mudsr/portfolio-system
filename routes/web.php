@@ -81,6 +81,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('split/save', [SplitController::class, 'save'])->name('split.save');
 
     Route::get('report/plot', App\Http\Livewire\Report\Index::class)->name('report.index');
+    Route::get('report/expiry', App\Http\Livewire\Report\ExpiryReport::class)->name('report.expiry');
 
     Route::get('fee-calculation', App\Http\Livewire\FeeCalculation\Index::class)->name('fee-calculation.index');
 

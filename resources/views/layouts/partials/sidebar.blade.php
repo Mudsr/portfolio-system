@@ -95,6 +95,14 @@
                                     <span class="menu-text">Plot</span>
                                 </a>
                             </li>
+                            <li class="menu-item {{ (request()->is('report/expiry*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                <a href="{{ route('report.expiry') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Expiry</span>
+                                </a>
+                            </li>
 
 
                         </ul>
