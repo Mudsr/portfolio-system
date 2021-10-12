@@ -4,29 +4,22 @@ namespace App\Http\Livewire\Report;
 
 use Livewire\Component;
 use App\Models\Portfolio;
-use App\Exports\PlotReport;
-use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
 
-class ExpiryReport extends Component
+class RentReport extends Component
 {
-
     public $portfolios;
 
     public $portfolio_id;
     public $from_date;
     public $to_date;
+    public $type;
 
     public $deals;
     public $show = false;
+    public $merges;
+    public $splits;
     public $transfers;
     public $pdfView;
-
-    protected $rules = [
-        'portfolio_id' => 'required|integer',
-        'from_date' => 'required_with:to_date',
-        'to_date' => 'required_with:from_date',
-    ];
 
     public function mount()
     {
@@ -39,7 +32,7 @@ class ExpiryReport extends Component
 
     public function render()
     {
-        return view('livewire.report.expiry-report')->extends('layouts.main');
+        return view('livewire.report.rent-report')->extends('layouts.main');
     }
 
     public function updating()
@@ -56,7 +49,7 @@ class ExpiryReport extends Component
         $this->plotExpiryReport();
     }
 
-    private function plotExpiryReport()
+    private function rentReport()
     {
         if( $this->type == 'by_date_range' ) {
             $this->deals = $this->portfolio->deals()->whereHas('plot', fn ($query) =>
@@ -64,7 +57,6 @@ class ExpiryReport extends Component
                     $q->whereBetween('custom_properties->expiry_date', [$this->from_date, $this->to_date])
                 )
             )->with('plot', 'client')->get();
-
 
             $this->show = true;
 

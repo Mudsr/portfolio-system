@@ -82,6 +82,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('report/plot', App\Http\Livewire\Report\Index::class)->name('report.index');
     Route::get('report/expiry', App\Http\Livewire\Report\ExpiryReport::class)->name('report.expiry');
+    Route::get('report/rent', App\Http\Livewire\Report\RentReport::class)->name('report.rent');
 
     Route::get('fee-calculation', App\Http\Livewire\FeeCalculation\Index::class)->name('fee-calculation.index');
 

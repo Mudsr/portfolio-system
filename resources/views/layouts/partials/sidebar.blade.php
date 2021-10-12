@@ -103,6 +103,14 @@
                                     <span class="menu-text">Expiry</span>
                                 </a>
                             </li>
+                            <li class="menu-item {{ (request()->is('report/rent*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                <a href="{{ route('report.rent') }}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Rent</span>
+                                </a>
+                            </li>
 
 
                         </ul>
