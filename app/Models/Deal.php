@@ -40,6 +40,11 @@ class Deal extends Model
     {
         return $this->belongsTo(Client::class);
     }
+    
+    public function paiRentPayments()
+    {
+        return $this->hasMany(PaiRentPayment::class);
+    }
 
     public function scopeRenewals($query)
     {

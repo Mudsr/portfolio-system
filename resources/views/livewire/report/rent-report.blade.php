@@ -36,7 +36,7 @@
                             </div>
 
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">
@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="ml-4">
                             <button type="submit" class="btn btn-primary mr-2">Generate Report</button>
 
@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="card-body">
-                        @include('livewire.report.partials.expiry')
+                        @include('livewire.report.partials.rent')
                     </div>
                 </div>
             </div>

@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Report;
 
 use Livewire\Component;
 use App\Models\Portfolio;
+use App\Exports\PlotReport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RentReport extends Component
 {
@@ -20,6 +22,12 @@ class RentReport extends Component
     public $splits;
     public $transfers;
     public $pdfView;
+
+    protected $rules = [
+        'portfolio_id' => 'required|integer',
+        'from_date' => 'required_with:to_date',
+        'to_date' => 'required_with:from_date',
+    ];
 
     public function mount()
     {
@@ -46,28 +54,29 @@ class RentReport extends Component
     {
         $this->validate();
         $this->portfolio = Portfolio::find($this->portfolio_id);
-        $this->plotExpiryReport();
+        $this->rentReport();
     }
 
     private function rentReport()
     {
-        if( $this->type == 'by_date_range' ) {
-            $this->deals = $this->portfolio->deals()->whereHas('plot', fn ($query) =>
-                $query->whereHas('media', fn($q) =>
-                    $q->whereBetween('custom_properties->expiry_date', [$this->from_date, $this->to_date])
-                )
-            )->with('plot', 'client')->get();
+        $this->deals = $this->portfolio->deals()->whereDoesntHave('paiRentPayments')->get();
+        // if( $this->type == 'by_date_range' ) {
+        //     $this->deals = $this->portfolio->deals()->whereHas('plot', fn ($query) =>
+        //         $query->whereHas('media', fn($q) =>
+        //             $q->whereBetween('custom_properties->expiry_date', [$this->from_date, $this->to_date])
+        //         )
+        //     )->with('plot', 'client')->get();
 
-            $this->show = true;
+        //     $this->show = true;
 
-            return;
-        }
+        //     return;
+        // }
 
-        $this->deals = $this->portfolio->deals()->whereHas('plot', fn ($query) =>
-            $query->whereHas('media', fn ($q) =>
-                $q->where('custom_properties->expiry_date', '<', now())
-            )
-        )->with('plot', 'client')->get();
+        // $this->deals = $this->portfolio->deals()->whereHas('plot', fn ($query) =>
+        //     $query->whereHas('media', fn ($q) =>
+        //         $q->where('custom_properties->expiry_date', '<', now())
+        //     )
+        // )->with('plot', 'client')->get();
 
         $this->show = true;
 
@@ -78,7 +87,7 @@ class RentReport extends Component
     {
         $view = 'livewire.report.partials.expiry';
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-        return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
+        return Excel::download(new PlotReport($this->deals, $view), 'rent-report.pdf');
 
     }
 
@@ -86,6 +95,6 @@ class RentReport extends Component
     {
         $view = 'livewire.report.partials.expiry';
 
-        return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.xlsx');
+        return Excel::download(new PlotReport($this->deals, $view), 'rent-report.xlsx');
     }
 }
