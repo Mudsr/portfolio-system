@@ -60,6 +60,11 @@ class RentReport extends Component
     private function rentReport()
     {
         $this->deals = $this->portfolio->deals()->whereDoesntHave('paiRentPayments')->get();
+
+        // $this->deals = $this->portfolio->deals()->whereHave('paiRentPayments',
+        //     fn($query) =>
+        //         $query->where('to_date' , '<', Carbon::now())
+        // )->with('paiRentPayments')->get();
         // if( $this->type == 'by_date_range' ) {
         //     $this->deals = $this->portfolio->deals()->whereHas('plot', fn ($query) =>
         //         $query->whereHas('media', fn($q) =>
