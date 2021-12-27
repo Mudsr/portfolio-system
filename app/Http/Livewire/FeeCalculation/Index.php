@@ -5,8 +5,10 @@ namespace App\Http\Livewire\FeeCalculation;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Portfolio;
+use App\Exports\PlotReport;
 use App\Models\FeeCalculation;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Index extends Component
 {
@@ -53,11 +55,11 @@ class Index extends Component
         if(!empty($this->portfolio)) {
             $date = $this->getDate();
             if(isset($date)) {
-                
+
                 $query = $this->portfolio->deals()
                     ->where('entry_date', '<=', $date['to'])
                     ->where(fn ($query) =>
-                        $query->where('closed_at', 'null')
+                        $query->where('closed_at', null)
                             ->orWhere(fn ($q) => $q->whereBetween('entry_date', [$date['from'], $date['to'] ]))
                     );
 
@@ -170,6 +172,20 @@ class Index extends Component
             'to' => $dt->endOfQuarter()->toDateString()
         ];
 
+    }
+
+    public function exportPdf()
+    {
+        $view = 'livewire.fee-calculation.listing';
+        return Excel::download(new PlotReport($this->deals, $view), 'fee-calculation-report.pdf');
+
+    }
+
+    public function exportExcel()
+    {
+        $view = 'livewire.fee-calculation.listing';
+
+        return Excel::download(new PlotReport($this->deals, $view), 'fee-calculation-report.xlsx');
     }
 
 }

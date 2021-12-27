@@ -21,6 +21,7 @@ class ExpiryReport extends Component
     public $show = false;
     public $transfers;
     public $pdfView;
+    public $type;
 
     protected $rules = [
         'portfolio_id' => 'required|integer',

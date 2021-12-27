@@ -141,33 +141,28 @@
             <div class="col-md-12">
                 <div class="card card-custom gutter-b example example-compact">
                     <div class="card-header">
-                        <h3 class="card-title">Plots</h3>
+                        <div class="card-title">
+                            <h3 class="card-title">Plots</h3>
+                        </div>
+
+                        <div class="card-toolbar">
+                            <ul class="nav nav-bold nav-pills">
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Export
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                        <a class="dropdown-item" data-toggle="tab" wire:click="exportExcel" >Export As Excel</a>
+                                        <a class="dropdown-item" data-toggle="tab" wire:click="exportPdf">Export As PDF</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body">
                         @if ($deals->count() > 0)
-                            <table class="table table-responsive w-100 d-block d-md-table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" class="text-muted">Portfolio</th>
-                                        <th scope="col" class="text-muted">Deal Start Date</th>
-                                        <th scope="col" class="text-muted">Finance Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($deals as $deal)
-                                        <tr>
-                                            <td>{{ $deal->portfolio->name }}</td>
-                                            <td>{{ $deal->entry_date }}</td>
-                                            <td>{{ $deal->plot->finance_amount }}</td>
-                                        </tr>
-                                    @endforeach
-                                    <tr>
-                                        <td class="font-weight-bold">Total</td>
-                                        <td> </td>
-                                        <td class="font-weight-bold" >{{ $deals->sum('plot_finance_amount') }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            @include('livewire.fee-calculation.listing')
                         @else
                             <h3 class="text-muted text-center">No Plots Exists</h3>
                         @endif
