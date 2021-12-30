@@ -142,7 +142,7 @@
                 <div class="card card-custom gutter-b example example-compact">
                     <div class="card-header">
                         <div class="card-title">
-                            <h3 class="card-title">Plots</h3>
+                            <h3 class="card-title">Management Fee</h3>
                         </div>
 
                         <div class="card-toolbar">

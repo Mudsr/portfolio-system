@@ -177,7 +177,7 @@ class Index extends Component
     public function exportPdf()
     {
         $view = 'livewire.fee-calculation.listing';
-        return Excel::download(new PlotReport($this->deals, $view), 'fee-calculation-report.pdf');
+        return Excel::download(new PlotReport($this->deals, $view), "management-fee-{$this->year}-quarter{$this->quarter}.pdf");
 
     }
 
@@ -185,7 +185,6 @@ class Index extends Component
     {
         $view = 'livewire.fee-calculation.listing';
 
-        return Excel::download(new PlotReport($this->deals, $view), 'fee-calculation-report.xlsx');
+        return Excel::download(new PlotReport($this->deals, $view), "management-fee-{$this->year}-quarter{$this->quarter}.xlsx");
     }
-
 }

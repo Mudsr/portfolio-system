@@ -25,8 +25,8 @@
                 <td>{{ $deal->plot_no }}</td>
                 <td>{{ $deal->plot->area_name }}</td>
                 <td>{{ $deal->plot->block }}</td>
-                <td>{{ $deal->plot->property_value }}</td>
-                <td>{{ $deal->plot->finance_amount }}</td>
+                <td>{{ number_format($deal->plot->property_value)}}</td>
+                <td>{{ number_format($deal->plot->finance_amount )}}</td>
             </tr>
         @endforeach
         <tr>
