@@ -29,6 +29,7 @@
                 </thead>
                 <tbody>
                     @foreach ($plots as $plot)
+                    @if (isset($plot))
                         {{-- @if ($types = $plot->checkDocumentExpiry($renewals_filter)) --}}
                             @foreach ($plot->media as $media)
                                 <tr>
@@ -39,6 +40,7 @@
                                 </tr>
                             @endforeach
                         {{-- @endif --}}
+                    @endif
                     @endforeach
                 </tbody>
             </table>

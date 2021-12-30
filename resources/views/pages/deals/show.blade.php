@@ -1,6 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
+
+<div class="row">
+    <div class="col-md-12 justify-content-end mb-5">
+        <a href="{{ route('view.detail') }}" class="btn btn-primary float-right"> <- Go back to listing </a>
+    </div>
+</div>
     <div class="row">
         <div class="col-md-6">
 

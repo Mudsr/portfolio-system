@@ -29,15 +29,17 @@
                 </thead>
                 <tbody>
                     @foreach ($plots as $plot)
-                        @if ($types = $plot->checkDocumentExpiry($renewals_filter))
-                            @foreach ($types as $type)
-                                <tr>
-                                    <td>{{ $plot->deal->client->id }}</td>
-                                    <td>{{ $plot->deal->id }}</td>
-                                    <td>{{ ucwords(str_replace('_', ' ', $type)) }}</td>
-                                    <td>{{ $plot->getMedia($type)->last()->custom_properties['expiry_date'] }}</td>
-                                </tr>
-                            @endforeach
+                        @if (isset($plot))
+                            @if ($types = $plot->checkDocumentExpiry($renewals_filter))
+                                @foreach ($types as $type)
+                                    <tr>
+                                        <td>{{ $plot->deal->client->id }}</td>
+                                        <td>{{ $plot->deal->id }}</td>
+                                        <td>{{ ucwords(str_replace('_', ' ', $type)) }}</td>
+                                        <td>{{ $plot->getMedia($type)->last()->custom_properties['expiry_date'] }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         @endif
                     @endforeach
                 </tbody>
