@@ -13,9 +13,6 @@
         </tr>
     </thead>
     <tbody>
-        @php
-            $sum = $deals->sum('plot_finance_amount');
-        @endphp
         @foreach ($deals as $deal)
             <tr>
                 <td>{{ $deal->portfolio->name }}</td>
@@ -38,7 +35,7 @@
             <td> </td>
             <td> </td>
             <td> </td>
-            <td>Total= {{ $sum }}</td>
+            <td>Total= {{ $deals->sum('plot_finance_amount') }}</td>
         </tr>
     </tbody>
 </table>

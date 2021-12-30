@@ -25,8 +25,8 @@ class ExpiryReport extends Component
 
     protected $rules = [
         'portfolio_id' => 'required|integer',
-        'from_date' => 'required_with:to_date',
-        'to_date' => 'required_with:from_date',
+        'from_date' => 'required',
+        'to_date' => 'required',
     ];
 
     public function mount()
@@ -59,10 +59,11 @@ class ExpiryReport extends Component
 
     private function plotExpiryReport()
     {
-        if( $this->type == 'by_date_range' ) {
+        if( isset($this->type) ) {
             $this->deals = $this->portfolio->deals()->whereHas('plot', fn ($query) =>
                 $query->whereHas('media', fn($q) =>
-                    $q->whereBetween('custom_properties->expiry_date', [$this->from_date, $this->to_date])
+                    $q->where('custom_properties->type', $this->type)
+                        ->whereBetween('custom_properties->expiry_date', [$this->from_date, $this->to_date])
                 )
             )->with('plot', 'client')->get();
 

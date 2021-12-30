@@ -45,7 +45,9 @@
                                         <select class="form-control selectpicker2 @error('type') is-invalid @enderror"
                                             wire:model="type" name="type">
                                             <option class="text-muted" value="default">---Select---</option>
-                                            <option value="by_date_range">Expiry Report by date range</option>
+                                            <option value="pai">PAI</option>
+                                            <option value="fire_insurance">Fire Insurance</option>
+                                            <option value="power_of_attorney">Power of Attorney</option>
                                         </select>
                                         @error('type')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -54,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if ($type == 'by_date_range')
+                        {{-- @if ($type == 'by_date_range') --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group row">
@@ -87,7 +89,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        {{-- @endif --}}
                         <div class="ml-4">
                             <button type="submit" class="btn btn-primary mr-2">Generate Report</button>
 
