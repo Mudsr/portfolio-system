@@ -35,7 +35,7 @@
                                 <tr>
                                     <td>{{ $plot->deal->client->id }}</td>
                                     <td>{{ $plot->deal->id }}</td>
-                                    <td>{{ ucwords(str_replace('_', ' ', $type)) }}</td>
+                                    {{-- <td>{{ ucwords(str_replace('_', ' ', $type)) }}</td> --}}
                                     <td>{{ $plot->getMedia($media->collection_name)->last()->custom_properties['expiry_date'] }}</td>
                                 </tr>
                             @endforeach
