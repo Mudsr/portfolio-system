@@ -57,7 +57,7 @@ class Plot extends Model implements HasMedia
             if(!empty($media->custom_properties) && isset( $media->custom_properties['expiry_date'])) {
                 $expiryDate = $media->custom_properties['expiry_date'];
 
-                if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
+                if( $expiryDate >= Carbon::now()->format('Y-m-d') && $expiryDate <=Carbon::now()->addDay($days)->format('Y-m-d')){
                     array_push($types,'pai');
                 }
             }
@@ -69,7 +69,7 @@ class Plot extends Model implements HasMedia
 
                 $expiryDate = $media->custom_properties['expiry_date'];
 
-                if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
+                if( $expiryDate >= Carbon::now()->format('Y-m-d') && $expiryDate <=Carbon::now()->addDay($days)->format('Y-m-d')){
                     array_push($types,'fire_insurance');
                 }
             }
@@ -81,7 +81,7 @@ class Plot extends Model implements HasMedia
 
                 $expiryDate = $media->custom_properties['expiry_date'];
 
-                if( $expiryDate >= Carbon::now() && $expiryDate <=Carbon::now()->addDay($days)){
+                if( $expiryDate >= Carbon::now()->format('Y-m-d') && $expiryDate <=Carbon::now()->addDay($days)->format('Y-m-d')){
                     array_push($types,'power_of_attorney');
                 }
             }

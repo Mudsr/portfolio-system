@@ -17,7 +17,7 @@
     </div>
 
     <div class="card-body">
-        @if (isset($plots))
+        @if (isset($contractRenewals))
             <table class="table table-responsive w-100 d-block d-md-table">
                 <thead>
                     <tr>
@@ -28,19 +28,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($plots as $plot)
-                    @if (isset($plot))
-                        {{-- @if ($types = $plot->checkDocumentExpiry($renewals_filter)) --}}
-                            @foreach ($plot->media as $media)
-                                <tr>
-                                    <td>{{ $plot->deal->client->id }}</td>
-                                    <td>{{ $plot->deal->id }}</td>
-                                    {{-- <td>{{ ucwords(str_replace('_', ' ', $type)) }}</td> --}}
-                                    <td>{{ $plot->getMedia($media->collection_name)->last()->custom_properties['expiry_date'] }}</td>
-                                </tr>
-                            @endforeach
-                        {{-- @endif --}}
-                    @endif
+                    @foreach ($contractRenewals as $plot)
+                        @foreach ($plot->media as $media)
+                            <tr>
+                                <td>{{ $plot->deal->client->id }}</td>
+                                <td>{{ $plot->deal->id }}</td>
+                                <td>{{ ucwords(str_replace('_', ' ', $media->collection_name)) }}</td>
+                                <td>{{ $plot->getMedia($media->collection_name)->last()->custom_properties['expiry_date'] }}</td>
+                            </tr>
+                        @endforeach
                     @endforeach
                 </tbody>
             </table>

@@ -36,11 +36,11 @@
 
         </div>
 
-        <div class="col-md-5">
+        {{-- <div class="col-md-5">
             @include('livewire.dashboard.partials.upcoming-rents')
-        </div>
+        </div> --}}
 
-        <div class="col-md-7">
+        <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
                     @include('livewire.dashboard.partials.contracts-renewals')
