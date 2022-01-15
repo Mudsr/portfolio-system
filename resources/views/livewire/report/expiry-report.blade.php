@@ -45,7 +45,7 @@
                                         <select class="form-control selectpicker2 @error('type') is-invalid @enderror"
                                             wire:model="type" name="type">
                                             <option class="text-muted" value="default">---Select---</option>
-                                            <option value="all">All</option>
+                                            {{-- <option value="all">All</option> --}}
                                             <option value="pai">PAI</option>
                                             <option value="fire_insurance">Fire Insurance</option>
                                             <option value="power_of_attorney">Power of Attorney</option>

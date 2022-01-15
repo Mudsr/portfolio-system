@@ -45,15 +45,14 @@
             @endphp
         @endforeach
         <tr>
+            <td>Total</td>
             <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
-            <td> </td>
-            <td> </td>
-            <td class="font-weight-bold" > Total = {{ number_format($deals->sum('plot.property_value')) }}</td>
-            <td class="font-weight-bold" >Total = {{ number_format($deals->sum('plot.finance_amount')) }}</td>
+            <td class="font-weight-bold" > {{ number_format($deals->sum('plot.property_value')) }}</td>
+            <td class="font-weight-bold" > {{ number_format($deals->sum('plot.finance_amount')) }}</td>
         </tr>
     </tbody>
 </table>

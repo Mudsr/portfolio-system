@@ -1,5 +1,5 @@
 
-<table class="table table-hover" style="white-space: nowrap;" >
+<table class="table table-responsive w-100 d-block d-md-table" style="white-space: nowrap; ">
     <thead >
         <tr  >
             <th scope="col" class="text-muted">Sr No</th>
@@ -20,7 +20,7 @@
             {{-- @else --}}
             {{-- <th scope="col" class="text-muted"  style="width: 93px;"> Expiry</th> --}}
             {{-- @endif --}}
-
+  
             <th scope="col" class="text-muted">Property Value</th>
             <th scope="col" class="text-muted">Finance Amount</th>
         </tr>
