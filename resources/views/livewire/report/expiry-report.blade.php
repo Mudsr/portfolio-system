@@ -4,7 +4,7 @@
 
             <div class="card card-custom gutter-b example example-compact">
                 <div class="card-header">
-                    <h3 class="card-title">Report</h3>
+                    <h3 class="card-title">Expiry Report</h3>
                 </div>
 
                 <form wire:submit.prevent="generateReport" method="POST" enctype="multipart/form-data">
@@ -45,6 +45,7 @@
                                         <select class="form-control selectpicker2 @error('type') is-invalid @enderror"
                                             wire:model="type" name="type">
                                             <option class="text-muted" value="default">---Select---</option>
+                                            <option value="all">All</option>
                                             <option value="pai">PAI</option>
                                             <option value="fire_insurance">Fire Insurance</option>
                                             <option value="power_of_attorney">Power of Attorney</option>
@@ -104,6 +105,8 @@
         </div>
     </div>
 
+    @switch($this->type)
+    @case("fire_insurance")
     @if ($show)
         <div class="row">
             <div class="col-md-12">
@@ -120,8 +123,8 @@
                                         Export
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                        <a class="dropdown-item" data-toggle="tab" wire:click="exportExcel" >Export As Excel</a>
-                                        <a class="dropdown-item" data-toggle="tab" wire:click="exportPdf">Export As PDF</a>
+                                        <a class="dropdown-item" data-toggle="tab" wire:click="fiexportExcel" >Export As Excel</a>
+                                        <a class="dropdown-item" data-toggle="tab" wire:click="fiexportPdf">Export As PDF</a>
                                     </div>
                                 </li>
                             </ul>
@@ -129,11 +132,120 @@
                     </div>
 
                     <div class="card-body">
-                        @include('livewire.report.partials.expiry')
+                        @include('livewire.report.partials.fiexpiry')
+                        
                     </div>
                 </div>
             </div>
         </div>
     @endif
+    @break
 
+    @case("pai")
+
+
+    @if ($show)
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-custom gutter-b example example-compact w-100">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3 class="card-title">{{ ucwords(str_replace("_", " ", $type)) }} Report</h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <ul class="nav nav-bold nav-pills">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Export
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                    <a class="dropdown-item" data-toggle="tab" wire:click="paiexportExcel" >Export As Excel</a>
+                                    <a class="dropdown-item" data-toggle="tab" wire:click="paiexportPdf">Export As PDF</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    @include('livewire.report.partials.paiexpiry')
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+     @break
+
+     @case("power_of_attorney")
+
+     @if ($show)
+     <div class="row">
+         <div class="col-md-12">
+             <div class="card card-custom gutter-b example example-compact w-100">
+                 <div class="card-header">
+                     <div class="card-title">
+                         <h3 class="card-title">{{ ucwords(str_replace("_", " ", $type)) }} Report</h3>
+                     </div>
+                     <div class="card-toolbar">
+                         <ul class="nav nav-bold nav-pills">
+ 
+                             <li class="nav-item dropdown">
+                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                     Export
+                                 </a>
+                                 <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                     <a class="dropdown-item" data-toggle="tab" wire:click="poaexportExcel" >Export As Excel</a>
+                                     <a class="dropdown-item" data-toggle="tab" wire:click="poaexportPdf">Export As PDF</a>
+                                 </div>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+ 
+                 <div class="card-body">
+                     @include('livewire.report.partials.poaexpiry')
+                     
+                 </div>
+             </div>
+         </div>
+     </div>
+ @endif
+
+
+     @break
+
+     @default
+     <div class="row">
+        <div class="col-md-12">
+            <div class="card card-custom gutter-b example example-compact w-100">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3 class="card-title">{{ ucwords(str_replace("_", " ", $type)) }} Report</h3>
+                    </div>
+                    <div class="card-toolbar">
+                        <ul class="nav nav-bold nav-pills">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Export
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                    <a class="dropdown-item" data-toggle="tab" wire:click="exportExcel" >Export As Excel</a>
+                                    <a class="dropdown-item" data-toggle="tab" wire:click="exportPdf">Export As PDF</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    @include('livewire.report.partials.expiry')
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+@endswitch
 </div>

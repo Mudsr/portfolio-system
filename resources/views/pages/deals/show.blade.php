@@ -302,7 +302,7 @@
 
                         <div class="col-md-8">
                             <input type="date" class="form-control @error('power_of_attorney_expiry_date') is-invalid @enderror"
-                                value="{{ old('power_of_attorney_expiry_date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->first()->getCustomProperty('expiry_date'): '') }}) }}"
+                                value="{{ old('power_of_attorney_expiry_date', $deal->plot->getMedia('power_of_attorney')->isNotEmpty() ? $deal->plot->getMedia('power_of_attorney')->first()->getCustomProperty('expiry_date'): '') }}"
                                 name="power_of_attorney_expiry_date"  disabled />
                             @error('power_of_attorney_expiry_date')
                                 <div class="invalid-feedback">{{ $message }}</div>

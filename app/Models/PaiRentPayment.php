@@ -35,4 +35,6 @@ class PaiRentPayment extends Model implements HasMedia
     {
         return $this->belongsTo(Deal::class);
     }
+
+    
 }

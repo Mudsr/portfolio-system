@@ -67,6 +67,7 @@ class Index extends Component
                     'plot AS plot_finance_amount' => function ($query) {
                             $query->select(DB::raw("SUM(finance_amount) as financeAmountTotal"));
                         }
+                        
                     ])->with('plot')->get();
 
                 if($this->deals->count() > 0 ) {

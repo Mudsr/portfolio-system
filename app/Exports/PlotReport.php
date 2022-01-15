@@ -12,6 +12,7 @@ class PlotReport implements FromView
     {
         $this->deals = $deals;
         $this->view = $view;
+     
     }
 
 
@@ -19,6 +20,7 @@ class PlotReport implements FromView
     {
         return view($this->view, [
             'deals' => $this->deals
+            
         ]);
     }
 }

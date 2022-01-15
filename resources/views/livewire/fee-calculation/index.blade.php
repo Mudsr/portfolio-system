@@ -128,7 +128,7 @@
                             </label>
                             <div class="col-md-8">
                                 <p>
-                                    {{ $fee }}
+                                    {{number_format( $fee ) }}
                                 </p>
                             </div>
                         </div>

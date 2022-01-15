@@ -72,7 +72,7 @@ class Plot extends Model implements HasMedia
                 if( $expiryDate >= Carbon::now()->format('Y-m-d') && $expiryDate <=Carbon::now()->addDay($days)->format('Y-m-d')){
                     array_push($types,'fire_insurance');
                 }
-            }
+            } 
        }
 
        if( $this->getMedia('power_of_attorney')->isNotEmpty()) {

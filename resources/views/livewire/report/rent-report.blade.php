@@ -4,9 +4,11 @@
 
             <div class="card card-custom gutter-b example example-compact">
                 <div class="card-header">
-                    <h3 class="card-title">Report</h3>
-                </div>
+                    <h3 class="card-title">Rent Report</h3>
+                
 
+        
+            </div>
                 <form wire:submit.prevent="generateReport" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
@@ -18,7 +20,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
 
-                                    <div class="col-md-8">
+                                    <div class="col-md-4">
                                         <select class="form-control selectpicker2 @error('portfolio_id') is-invalid @enderror"
                                             wire:model="portfolio_id" name="portfolio_id">
                                             <option value="" class="text-muted">---Select---</option>
@@ -32,11 +34,60 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+
+                                    <div class="col-md-4">
+                                        <select class="form-control selectpicker2 "
+                                            wire:model="status" name="status">
+                                            <option value="pending" class="text-muted">Pending</option>
+                                            <option value="paid" class="text-muted">Paid</option>
+                                            <option value="expiry" class="text-muted">Expiry</option>
+
+                                        </select>
+
+                                    </div>
+
                                 </div>
                             </div>
 
                         </div>
-                        {{-- <div class="row">
+                        @if($status == "paid")
+                        <div class="row">
+                            {{-- <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">
+                                        From Date
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="date" class="form-control @error('from_date') is-invalid @enderror"
+                                                value="{{ old('from_date') }}" name="from_date" wire:model = "from_date" />
+                                        @error('from_date')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div> --}}
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">
+                                        To Date
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="date" class="form-control @error('to_date') is-invalid @enderror"
+                                                value="{{ old('to_date') }}" name="to_date" wire:model = "to_date" />
+                                        @error('to_date')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
+                        @if($status == "expiry")
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">
@@ -67,7 +118,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
+                        @endif
                         <div class="ml-4">
                             <button type="submit" class="btn btn-primary mr-2">Generate Report</button>
 

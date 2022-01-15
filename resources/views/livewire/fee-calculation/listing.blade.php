@@ -27,15 +27,15 @@
             </tr>
         @endforeach
         <tr>
+            <td>Total </td>
             <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
-            <td> </td>
-            <td> </td>
-            <td>Total= {{ $deals->sum('plot_finance_amount') }}</td>
+            <td>{{ number_format( $deals->sum('plot.property_value') ) }} </td>
+            <td>{{ number_format( $deals->sum('plot_finance_amount') ) }}</td>
         </tr>
     </tbody>
 </table>

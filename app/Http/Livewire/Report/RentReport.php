@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Report;
 use Livewire\Component;
 use App\Models\Portfolio;
 use App\Exports\PlotReport;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 
 class RentReport extends Component
@@ -23,10 +24,12 @@ class RentReport extends Component
     public $transfers;
     public $pdfView;
 
+    public $status;
+
     protected $rules = [
         'portfolio_id' => 'required|integer',
-        'from_date' => 'required_with:to_date',
-        'to_date' => 'required_with:from_date',
+        // 'from_date' => 'required_with:to_date',
+        // 'to_date' => 'required_with:from_date',
     ];
 
     public function mount()
@@ -40,7 +43,8 @@ class RentReport extends Component
 
     public function render()
     {
-        return view('livewire.report.rent-report')->extends('layouts.main');
+        $status = $this->status;
+        return view('livewire.report.rent-report',['status'=>$status])->extends('layouts.main');
     }
 
     public function updating()
@@ -54,17 +58,41 @@ class RentReport extends Component
     {
         $this->validate();
         $this->portfolio = Portfolio::find($this->portfolio_id);
+      if( $this->status == "paid")
+      {
+        $this->paidrentreport();
+      } 
+      elseif($this->status == "expiry")
+      {
+
+          $this->expiryRentReport();
+      } 
+      else
+      {
+      
         $this->rentReport();
+      }
+        
     }
 
     private function rentReport()
     {
-        $this->deals = $this->portfolio->deals()->whereDoesntHave('paiRentPayments')->get();
+       
 
-        // $this->deals = $this->portfolio->deals()->whereHave('paiRentPayments',
+       $this->deals = $this->portfolio->deals()->whereDoesntHave('paiRentPayments')->get();
+
+        //  $this->deals = $this->portfolio->deals()->whereHave('paiRentPayments',
         //     fn($query) =>
-        //         $query->where('to_date' , '<', Carbon::now())
+        //         $query->where('to_date' , '>', $this->to_date)
         // )->with('paiRentPayments')->get();
+
+
+        // $this->deals = $this->portfolio->deals()->whereHas('paiRentPayments',
+        //     fn($query) =>
+        //         $query->where('to_date' , '<', $this->to_date)
+        // )->with('paiRentPayments')->get();
+
+
         // if( $this->type == 'by_date_range' ) {
         //     $this->deals = $this->portfolio->deals()->whereHas('plot', fn ($query) =>
         //         $query->whereHas('media', fn($q) =>
@@ -86,6 +114,30 @@ class RentReport extends Component
         $this->show = true;
 
         return;
+    }
+
+    private function paidrentreport(){
+
+        $this->deals = $this->portfolio->deals()->whereHas('paiRentPayments',
+            fn($query) =>
+                $query->where('to_date' , '<=', $this->to_date)
+        )->with('paiRentPayments')->get();
+
+        $this->show = true;
+
+        return;
+    }
+
+    public function expiryRentReport(){
+
+        $this->deals = $this->portfolio->deals()->whereHas('paiRentPayments',
+        fn($query) =>
+            $query->whereBetween('to_date' , [$this->from_date, $this->to_date])
+    )->with('paiRentPayments')->get();
+
+    $this->show = true;
+
+    return;
     }
 
     public function exportPdf()
