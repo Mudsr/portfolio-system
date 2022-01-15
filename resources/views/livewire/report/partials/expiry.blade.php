@@ -1,6 +1,6 @@
 
-<table class="table table-hover"  >
-    <thead style="width:150%;">
+<table class="table table-hover" style="white-space: nowrap;" >
+    <thead >
         <tr  >
             <th scope="col" class="text-muted">Sr No</th>
             <th scope="col" class="text-muted">Deal No</th>
