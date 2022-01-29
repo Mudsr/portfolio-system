@@ -23,7 +23,7 @@ class CreatePaiRentPaymentsTable extends Migration
             $table->integer('rent_amount');
             $table->date('from_date');
             $table->date('to_date');
-            $table->text('comments');
+            $table->text('comments')->nullable();
 
             $table->timestamps();
         });

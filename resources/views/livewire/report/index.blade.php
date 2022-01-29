@@ -67,7 +67,7 @@
                                     </label>
                                     <div class="col-md-8">
                                         <input type="date" class="form-control @error('from_date') is-invalid @enderror"
-                                                value="{{ old('from_date') }}" name="from_date" wire:model = "from_date" />
+                                                value="{{ old('from_date') }}" name="from_date" wire:model = "from_date" max="9999-12-31" />
                                         @error('from_date')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -82,7 +82,7 @@
                                     </label>
                                     <div class="col-md-8">
                                         <input type="date" class="form-control @error('to_date') is-invalid @enderror"
-                                                value="{{ old('to_date') }}" name="to_date" wire:model = "to_date" />
+                                                value="{{ old('to_date') }}" name="to_date" wire:model = "to_date" max="9999-12-31"/>
                                         @error('to_date')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

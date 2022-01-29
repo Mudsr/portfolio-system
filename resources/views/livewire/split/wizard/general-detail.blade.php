@@ -21,7 +21,7 @@
         </div>
     </div>
 </div>
-
+{{-- hhhh --}}
 <div class="form-group row">
     <label for="exampleSelect1" class="col-md-3 col-form-label">
         Deal
@@ -64,7 +64,7 @@
     </label>
     <div class="col-md-8">
         <input type="date" class="form-control  @error('entry_date') is-invalid @enderror"
-            value="{{ old('entry_date') }}" name="entry_date" required />
+            value="{{ old('entry_date') }}" name="entry_date" required max="9999-12-31"/>
         @error('entry_date')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror

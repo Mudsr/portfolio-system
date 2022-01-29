@@ -95,7 +95,7 @@
                         ID Expiry Date
                     </label>
                     <div class="col-md-8">
-                        <input type="date" class="form-control @error('id_expiry') is-invalid @enderror" value="{{ old('id_expiry') }}" name="id_expiry"/>
+                        <input type="date" class="form-control @error('id_expiry') is-invalid @enderror" value="{{ old('id_expiry') }}" name="id_expiry" max="9999-12-31"/>
                         @error('id_expiry')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

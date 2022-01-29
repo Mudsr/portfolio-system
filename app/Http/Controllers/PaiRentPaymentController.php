@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class PaiRentPaymentController extends Controller
 {
+    public $client_id;
     public function index()
     {
         return view('pages.pai-rent-payment.index');
@@ -18,7 +19,7 @@ class PaiRentPaymentController extends Controller
     {
         $clients = Client::all();
         $deals = Deal::all();
-
+        
         return view('pages.pai-rent-payment.create', compact('clients', 'deals'));
     }
 

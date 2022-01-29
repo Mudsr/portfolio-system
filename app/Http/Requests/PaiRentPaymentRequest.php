@@ -29,8 +29,8 @@ class PaiRentPaymentRequest extends FormRequest
             'entry_date' => ['required','date' ],
             'from_date' => ['required','date'],
             'to_date' => ['required', 'date', 'after:from_date'],
-            'comments' => ['required','string'],
-            'receipt_voucher' => ['required','file'],
+            // 'comments' => ['required','string'],
+            // 'receipt_voucher' => ['required','file'],
         ];
     }
 }

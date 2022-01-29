@@ -108,7 +108,7 @@
                     </label>
                     <div class="col-md-8">
                         <input type="date" class="form-control @error('agreement_date') is-invalid @enderror"
-                            value="{{ old('agreement_date') }}" name="agreement_date" />
+                            value="{{ old('agreement_date') }}" name="agreement_date" max="9999-12-31"/>
                         @error('agreement_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -120,7 +120,7 @@
                     </label>
                     <div class="col-md-8">
                         <input type="date" class="form-control @error('agreement_expiry') is-invalid @enderror"
-                            value="{{ old('agreement_expiry') }}" name="agreement_expiry" />
+                            value="{{ old('agreement_expiry') }}" name="agreement_expiry" max="9999-12-31"/>
                         @error('agreement_expiry')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

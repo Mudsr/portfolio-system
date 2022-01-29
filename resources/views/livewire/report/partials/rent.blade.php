@@ -5,7 +5,7 @@
             <th scope="col" class="text-muted">Area</th>
             <th scope="col" class="text-muted">Block</th>
             <th scope="col" class="text-muted">Plot</th>
-           
+            <th scope="col" class="text-muted">Client Id</th>
             <th scope="col" class="text-muted">Client Name</th>
             <th scope="col" class="text-muted">Deal Date</th>
             <th scope="col" class="text-muted">Property Value</th>
@@ -29,7 +29,7 @@
                 <td>{{ $deal->plot->block }}</td>
                 <td>{{ $deal->plot_no }}</td>
                  
-               
+                <td>{{ $deal->client->id }}</td>
                 <td>{{ $deal->client->name }}</td>
                 <td>{{ $deal->entry_date }}</td>
                 <td>{{number_format( $deal->plot->property_value )}}</td>

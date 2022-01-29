@@ -18,7 +18,7 @@
                         <input type="date" class="form-control @error('closing_date') is-invalid @enderror"
                             value="{{ old('closing_date', $deal->closing_date) }}"
                             name="closing_date"
-                            required />
+                            required max="9999-12-31"/>
                         @error('closing_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

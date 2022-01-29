@@ -28,6 +28,7 @@ class RentReport extends Component
 
     protected $rules = [
         'portfolio_id' => 'required|integer',
+        'status' => 'required'
         // 'from_date' => 'required_with:to_date',
         // 'to_date' => 'required_with:from_date',
     ];

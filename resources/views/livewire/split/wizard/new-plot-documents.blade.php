@@ -25,7 +25,7 @@
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[pai_issue_date]') is-invalid @enderror"
-                value="{{ old($name.'[pai_issue_date]') }}" name="{{ $name }}[pai_issue_date]" />
+                value="{{ old($name.'[pai_issue_date]') }}" name="{{ $name }}[pai_issue_date]" max="9999-12-31"/>
         @error($name.'[pai_issue_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -38,7 +38,7 @@
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[pai_expiry_date]') is-invalid @enderror"
-            value="{{ old($name.'[pai_expiry_date]') }}" name="{{ $name }}[pai_expiry_date]" />
+            value="{{ old($name.'[pai_expiry_date]') }}" name="{{ $name }}[pai_expiry_date]" max="9999-12-31"/>
         @error($name.'[pai_expiry_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -66,7 +66,7 @@
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[fire_insurance_issue_date]') is-invalid @enderror"
-                value="{{ old($name.'[fire_insurance_issue_date]') }}" name="{{ $name }}[fire_insurance_issue_date]" />
+                value="{{ old($name.'[fire_insurance_issue_date]') }}" name="{{ $name }}[fire_insurance_issue_date]" max="9999-12-31"/>
         @error($name.'[fire_insurance_issue_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -79,7 +79,7 @@
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[fire_insurance_expiry_date]') is-invalid @enderror"
-            value="{{ old($name.'[fire_insurance_expiry_date]') }}" name="{{ $name }}[fire_insurance_expiry_date]" />
+            value="{{ old($name.'[fire_insurance_expiry_date]') }}" name="{{ $name }}[fire_insurance_expiry_date]" max="9999-12-31"/>
         @error($name.'[fire_insurance_expiry_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -107,7 +107,7 @@
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[power_of_attorney_issue_date]') is-invalid @enderror"
-                value="{{ old($name.'[power_of_attorney_issue_date]') }}" name="{{ $name }}[power_of_attorney_issue_date]" />
+                value="{{ old($name.'[power_of_attorney_issue_date]') }}" name="{{ $name }}[power_of_attorney_issue_date]" max="9999-12-31"/>
         @error($name.'[power_of_attorney_issue_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -120,7 +120,7 @@
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[power_of_attorney_expiry_date]') is-invalid @enderror"
-            value="{{ old($name.'[power_of_attorney_expiry_date]') }}" name="{{ $name }}[power_of_attorney_expiry_date]" />
+            value="{{ old($name.'[power_of_attorney_expiry_date]') }}" name="{{ $name }}[power_of_attorney_expiry_date]" max="9999-12-31"/>
         @error($name.'[power_of_attorney_expiry_date]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -133,7 +133,7 @@
 
     <div class="col-md-8">
         <input type="date" class="form-control @error($name.'[power_of_attorney_issue_to]') is-invalid @enderror"
-            value="{{ old($name.'[power_of_attorney_issue_to]') }}" name="{{ $name }}[power_of_attorney_issue_to]" />
+            value="{{ old($name.'[power_of_attorney_issue_to]') }}" name="{{ $name }}[power_of_attorney_issue_to]" max="9999-12-31"/>
         @error($name.'[power_of_attorney_issue_to]')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror

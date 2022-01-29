@@ -28,7 +28,7 @@ class Create extends Component
         'entry_date' => ['required','date' ],
         'from_date' => ['required','date'],
         'to_date' => ['required', 'date', 'after:from_date'],
-        'comments' => ['required','string'],
+        // 'comments' => ['required','string'],
     ];
 
     public function mount()
@@ -39,6 +39,7 @@ class Create extends Component
 
     public function render()
     {
+        
         return view('livewire.pai-rent-payment.create')->extends('layouts.main');
     }
 

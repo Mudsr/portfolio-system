@@ -111,7 +111,7 @@
                         <input type="date"
                             class="form-control @error('agreement_date') is-invalid @enderror"
                             value="{{ old('agreement_date', $portfolio->agreement_date) }}"
-                            name="agreement_date" placeholder="Password" />
+                            name="agreement_date" placeholder="Password" max="9999-12-31"/>
                         @error('agreement_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -126,7 +126,7 @@
                         <input type="date"
                             class="form-control @error('agreement_expiry') is-invalid @enderror"
                             value="{{ old('agreement_expiry', $portfolio->agreement_expiry) }}"
-                            name="agreement_expiry" />
+                            name="agreement_expiry" max="9999-12-31"/>
                         @error('agreement_expiry')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

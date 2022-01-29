@@ -102,7 +102,7 @@
                         <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
-                        <input type="date"wire:model="due_date" class="form-control @error('due_date') is-invalid @enderror" id="">
+                        <input type="date"wire:model="due_date" class="form-control @error('due_date') is-invalid @enderror" id="" max="9999-12-31">
                         @error('due_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

@@ -18,7 +18,7 @@
                         <input type="date" class="form-control @error('closing_date') is-invalid @enderror"
                             value="{{ old('closing_date', $portfolio->closing_date) }}"
                             name="closing_date"
-                            required />
+                            required max="9999-12-31"/>
                         @error('closing_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -73,7 +73,7 @@
                         <input type="date"
                             class="form-control @error('management_fee_last_calculated_at') is-invalid @enderror"
                             value="{{ old('management_fee_last_calculated_at', $portfolio->management_fee_last_calculated_at) }}"
-                            name="management_fee_last_calculated_at" placeholder="Password" required />
+                            name="management_fee_last_calculated_at" placeholder="Password" required  max="9999-12-31"/>
                         @error('management_fee_last_calculated_at')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

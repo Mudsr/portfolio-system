@@ -81,7 +81,7 @@
                             <div class="col-md-8">
                                 <input type="date" class="form-control @error('renewed_at') is-invalid @enderror"
                                    value="{{ old('renewed_at', $deal->renewed_at) }}"
-                                    name="renewed_at" />
+                                    name="renewed_at" max="9999-12-31"/>
                                 @error('renewed_at')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
