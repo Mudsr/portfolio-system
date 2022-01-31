@@ -32,6 +32,8 @@ class Index extends Component
         $this->pendingTasks = $this->getPendingTasks();
         $this->plots = $this->getUpcomingRenewals();
         $this->contractRenewals = $this->getUpcomingContractRenewals();
+
+        $this->upcomingRents = $this->getUpcomingRent();
     }
 
     public function render()
@@ -45,6 +47,8 @@ class Index extends Component
         $this->currentPortfolio = Portfolio::getCurrentPortfolio();
         $this->plots = $this->getUpcomingRenewals();
         $this->contractRenewals = $this->getUpcomingContractRenewals();
+
+        $this->upcomingRents = $this->getUpcomingRent();
     }
 
     public function updatedTasksFilter()
@@ -53,6 +57,8 @@ class Index extends Component
         $this->currentPortfolio = Portfolio::getCurrentPortfolio();
         $this->pendingTasks = $this->getPendingTasks();
         $this->contractRenewals = $this->getUpcomingContractRenewals();
+
+        $this->upcomingRents = $this->getUpcomingRent();
     }
 
     public function updatedRentsFilter()
@@ -61,6 +67,8 @@ class Index extends Component
         $this->currentPortfolio = Portfolio::getCurrentPortfolio();
         $this->pendingTasks = $this->getPendingTasks();
         $this->contractRenewals = $this->getUpcomingContractRenewals();
+
+        $this->upcomingRents = $this->getUpcomingRent();
     }
 
     public function updatedContractsRenewalFilter()
@@ -69,6 +77,8 @@ class Index extends Component
         $this->currentPortfolio = Portfolio::getCurrentPortfolio();
         $this->pendingTasks = $this->getPendingTasks();
         $this->contractRenewals = $this->getUpcomingContractRenewals();
+
+        $this->upcomingRents = $this->getUpcomingRent();
     }
 
     public function getPendingTasks($startDate = null, $endDate = null)
@@ -144,4 +154,24 @@ class Index extends Component
 
         return null;
     }
+
+
+    public function getUpcomingRent(){
+
+        $datefrom = Carbon::now()->format('Y-m-d');
+        $dateto = Carbon::now()->addDays($this->rents_filter)->format('Y-m-d');
+
+          if ($this->currentPortfolio) {
+            $deals = $this->currentPortfolio
+                ->deals()->whereHas('paiRentPayments',
+        fn($query) =>
+            $query->whereBetween('to_date' , [$datefrom,$dateto])
+    )->with('paiRentPayments')->get();
+
+    // $this->show = true;
+
+    return $deals;
+    }
+    return null;
+}
 }

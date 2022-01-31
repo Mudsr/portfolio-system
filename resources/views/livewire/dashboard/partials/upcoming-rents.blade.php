@@ -17,26 +17,35 @@
     </div>
 
     <div class="card-body">
-        @if ( isset($pendingTasks) && $pendingTasks->count() > 0)
+        @if ( isset($upcomingRents) )
             <table class="table table-responsive w-100 d-block d-md-table">
                 <thead>
                     <tr>
-                        <th scope="col" class="text-muted">Task</th>
+                        <th scope="col" class="text-muted">Area</th>
+                        <th scope="col" class="text-muted">Block</th>
+                        <th scope="col" class="text-muted">Plot</th>
+                        <th scope="col" class="text-muted">Client Id</th>
                         <th scope="col" class="text-muted">Client Name</th>
-                        <th scope="col" class="text-muted">Due Date</th>
-                        <th scope="col" class="text-muted">Status</th>
-                        <th scope="col" class="text-muted">Actions</th>
+                        <th scope="col" class="text-muted">Deal Date</th>
+                        <th scope="col" class="text-muted">Property Value</th>
+                        <th scope="col" class="text-muted">Finance Amount</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    @foreach ($pendingTasks as $task)
+                    @foreach ($upcomingRents as $deal)
                         <tr>
-                            <td>{{ $task->id }}</td>
-                            <td>{{ $task->client->name }}</td>
-                            <td>{{ $task->due_date }}</td>
+                            <td>{{ $deal->plot->area_name }}</td>
+                            <td>{{ $deal->plot->block }}</td>
+                <td>{{ $deal->plot_no }}</td>
+                 
+                <td>{{ $deal->client->id }}</td>
+                <td>{{ $deal->client->name }}</td>
+                <td>{{ $deal->entry_date }}</td>
+                <td>{{number_format( $deal->plot->property_value )}}</td>
+                <td>{{ number_format($deal->plot->finance_amount) }}</td>
 
-                            <td>
+                            {{-- <td>
                                 @if (isset($task->completed_at))
                                     <span class="label label-lg font-weight-bold label-light-success label-inline">Done</span>
                                 @elseif($task->due_date < now())
@@ -50,7 +59,7 @@
                                     title="Mark Completed">
                                     <i class="fas fa-check text-success"></i>
                                 </a>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
 

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Report;
 use Livewire\Component;
 use App\Models\Portfolio;
 use App\Exports\PlotReport;
+use App\Models\Client;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -26,6 +27,11 @@ class RentReport extends Component
 
     public $status;
 
+    public $client_id;
+    public $plots;
+    public $plot_id;
+    public $clients;
+
     protected $rules = [
         'portfolio_id' => 'required|integer',
         'status' => 'required'
@@ -40,6 +46,10 @@ class RentReport extends Component
         $this->merges = collect();
         $this->splits = collect();
         $this->transfers = collect();
+
+        $this->clients = Client::get();
+        $this->plots = collect();
+    
     }
 
     public function render()
@@ -55,6 +65,18 @@ class RentReport extends Component
         $this->show = false;
     }
 
+
+    public function updatedClientId($id)
+    {
+        if (!is_null($id)) {
+            $user =  Client::with('deals', 'deals.plot')->find($this->client_id);
+            if($user) {
+                $this->plots = $user->deals->pluck('plot');
+            }
+
+        }
+    }
+
     public function generateReport()
     {
         $this->validate();
@@ -67,6 +89,12 @@ class RentReport extends Component
       {
 
           $this->expiryRentReport();
+      } 
+
+      elseif($this->status == "client")
+      {
+
+          $this->clientRentReport();
       } 
       else
       {
@@ -134,6 +162,19 @@ class RentReport extends Component
         $this->deals = $this->portfolio->deals()->whereHas('paiRentPayments',
         fn($query) =>
             $query->whereBetween('to_date' , [$this->from_date, $this->to_date])
+    )->with('paiRentPayments')->get();
+
+    $this->show = true;
+
+    return;
+    }
+
+
+    public function clientRentReport(){
+
+        $this->deals = $this->portfolio->deals()->whereHas('paiRentPayments',
+        fn($query) =>
+            $query->whereBetween('to_date' , [$this->from_date, $this->to_date])->where('client_id',$this->client_id)->where('deal_id',$this->plot_id)
     )->with('paiRentPayments')->get();
 
     $this->show = true;

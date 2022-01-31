@@ -43,6 +43,7 @@
                                             <option value="pending" class="text-muted">Pending</option>
                                             <option value="paid" class="text-muted">Paid</option>
                                             <option value="expiry" class="text-muted">Expiry</option>
+                                            <option value="client" class="text-muted">By Client</option>
 
                                         </select>
 
@@ -124,6 +125,93 @@
                             </div>
                         </div>
                         @endif
+
+                        
+                        @if($status == "client")
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">
+                                        Client Name
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <div wire:ignore id="client_id">
+                                            <select class="form-control selectpicker2 @error("client_id") is-invalid @enderror"
+                                                data-size="7" data-live-search="true" data-container="#client_id"
+                                                wire:model="client_id">
+                                                <option value="" class="text-muted">---Select---</option>
+                                                @foreach ($clients as $client)
+                                                    <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                                @endforeach
+                                            </select>
+                
+                                            @error("client_id")
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">
+                                        Plot
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <select class="form-control @error('plot_id') is-invalid @enderror"
+                                        data-size="7" data-live-search="true"
+                                        wire:model="plot_id">
+                                        <option value="" class="text-muted">---Select---</option>
+                                        @foreach ($plots as $plot)
+                                            <option value="{{ $plot['id'] }}">{{ $plot['area_name'] }}</option>
+                                        @endforeach
+                                    </select>
+    
+                                    @error("plot_id")
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">
+                                        From Date
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="date" class="form-control @error('from_date') is-invalid @enderror"
+                                                value="{{ old('from_date') }}" name="from_date" wire:model = "from_date" max="9999-12-31"/>
+                                        @error('from_date')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">
+                                        To Date
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="date" class="form-control @error('to_date') is-invalid @enderror"
+                                                value="{{ old('to_date') }}" name="to_date" wire:model = "to_date" max="9999-12-31"/>
+                                        @error('to_date')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
                         <div class="ml-4">
                             <button type="submit" class="btn btn-primary mr-2">Generate Report</button>
 

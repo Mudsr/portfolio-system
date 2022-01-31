@@ -50,7 +50,8 @@
 
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">
-                        Client ID
+                        Client ID 
+                        {{-- <p>£ <span id="selectedValue"></span></p> --}}
                         <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-8">
@@ -73,7 +74,7 @@
                     <div class="col-md-8">
                         <select class="form-control selectpicker2 @error('client_id') is-invalid @enderror"
                             data-size="7" data-live-search="true"
-                            name="client_id" id="client_select"  >
+                            name="client_id" id="client_select"  onChange="document.getElementById('selectedValue').innerHTML = this.value;">
                             <option value="" class="text-muted">---Select Client---</option>
                             @foreach ($clients as $client)
                                 <option value="{{ $client->id }}"  {{ old('client_id') == $client->id ? 'selected' :'' }}> {{ $client->name }} </option>
@@ -91,11 +92,11 @@
 
 
     
-          @php
+          {{-- @php
                     
  
-          $cdeals = Deal::where('client_id',4)->get();
-         @endphp
+          $cdeals = Deal::where('client_id',$client_id)->get();
+         @endphp --}}
 
 
 
@@ -115,7 +116,7 @@
                                 Plot Id: &nbsp;&nbsp;&nbsp;&nbsp;
                                 PLOT No:
                             </option>
-                            @foreach ($cdeals as $deal)
+                            @foreach ($deals as $deal)
                                 <option value="{{ $deal->id }}" {{ old('deal_id') == $deal->id ? 'selected': '' }}>
                                     {{ $deal->id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     {{ $deal->plot->id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
