@@ -225,7 +225,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">Pai Rent APyment</span>
+                                    <span class="menu-text">Pai Rent Payment</span>
                                 </a>
                             </li>
                         </ul>

@@ -6,8 +6,12 @@ use Livewire\Component;
 use App\Models\Portfolio;
 use App\Exports\PlotReport;
 use App\Models\Client;
+use App\Models\Plot;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
 use Maatwebsite\Excel\Facades\Excel;
+// use Barryvdh\DomPDF\Facade as PDF;
+use PDF;
 
 class RentReport extends Component
 {
@@ -184,15 +188,24 @@ class RentReport extends Component
 
     public function exportPdf()
     {
-        $view = 'livewire.report.partials.expiry';
+        $view = 'livewire.report.partials.rent';
+        // $pdf = App::make('dompdf.wrapper');
+        // $pdf->loadHTML($view);
+        // return $pdf->stream('invoice.pdf',array('Attachment'=>0));
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-        return Excel::download(new PlotReport($this->deals, $view), 'rent-report.pdf');
+      return Excel::download(new PlotReport($this->deals, $view), 'rent-report.pdf');
+    // $data = new PlotReport($this->deals, $view);
+    
+    //   $pdf = PDF::loadHTML($view);
+    //   return  PDF::loadView(new PlotReport($this->deals, $view), 'rent-report.pdf');
+
 
     }
 
     public function exportExcel()
     {
-        $view = 'livewire.report.partials.expiry';
+        $view = 'livewire.report.partials.rent';
+        
 
         return Excel::download(new PlotReport($this->deals, $view), 'rent-report.xlsx');
     }

@@ -1,6 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-<table class="table table-responsive w-100 d-block d-md-table">
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #5d7cd3;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<table  id="customers" class="table table-responsive w-100 d-block d-md-table">
+ 
+    
     <thead>
         <tr>
             <th scope="col" class="text-muted">Sr No</th>
@@ -12,11 +42,9 @@
             <th scope="col" class="text-muted">Deal Date</th>
             <th scope="col" class="text-muted">Property Value</th>
             <th scope="col" class="text-muted">Finance Amount</th>
-            @if($status == "pending")
-
-            @else
             <th scope="col" class="text-muted">Paid Upto</th>
-            @endif
+
+         
 
         </tr>
     </thead>
@@ -36,10 +64,10 @@
                 <td>{{ $deal->entry_date }}</td>
                 <td>{{number_format( $deal->plot->property_value )}}</td>
                 <td>{{ number_format($deal->plot->finance_amount) }}</td>
-                @if($status == "pending")
+                @if(isset($deal->paiRentPayments->last()->to_date))
+                <td>{{$deal->paiRentPayments->last()->to_date}}</td>
 
                 @else
-                <td>{{$deal->paiRentPayments->last()->to_date}}</td>
                 @endif
             </tr>
             @php
@@ -47,14 +75,17 @@
             @endphp
         @endforeach
         <tr>
-            <td>Total</td>
+            <td colspan="7">Total</td>
+            {{-- <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
-            <td> </td>
-            <td> </td>
+            <td> </td> --}}
             <td class="font-weight-bold" > {{ number_format($deals->sum('plot.property_value')) }}</td>
             <td class="font-weight-bold" > {{ number_format($deals->sum('plot.finance_amount')) }}</td>
         </tr>
     </tbody>
 </table>
+
+</body>
+</html>
