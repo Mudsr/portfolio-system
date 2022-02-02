@@ -140,7 +140,8 @@ class Index extends Component
     {
         $view = 'livewire.report.partials.'.$this->pdfView;
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-        return Excel::download(new PlotReport($this->deals, $view), 'report.pdf');
+        //return Excel::download(new PlotReport($this->deals, $view), 'report.pdf');
+        return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
 
     }
 

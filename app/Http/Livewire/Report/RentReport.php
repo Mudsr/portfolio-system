@@ -10,6 +10,7 @@ use App\Models\Plot;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Maatwebsite\Excel\Facades\Excel;
+use Mpdf\Mpdf;
 // use Barryvdh\DomPDF\Facade as PDF;
 use PDF;
 
@@ -189,15 +190,16 @@ class RentReport extends Component
     public function exportPdf()
     {
         $view = 'livewire.report.partials.rent';
-        // $pdf = App::make('dompdf.wrapper');
-        // $pdf->loadHTML($view);
-        // return $pdf->stream('invoice.pdf',array('Attachment'=>0));
-        // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-      return Excel::download(new PlotReport($this->deals, $view), 'rent-report.pdf');
-    // $data = new PlotReport($this->deals, $view);
-    
-    //   $pdf = PDF::loadHTML($view);
-    //   return  PDF::loadView(new PlotReport($this->deals, $view), 'rent-report.pdf');
+//       $mpdf = new Mpdf();
+// $stylesheet = file_get_contents('css/app.css');
+
+// $mpdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
+// $mpdf->WriteHTML($view,\Mpdf\HTMLParserMode::HTML_BODY);
+
+        return  (new PlotReport($this->deals, $view))->download('rent-report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+    //   return Excel::download(new PlotReport($this->deals, $view), 'rent-report.pdf');
+
+   
 
 
     }

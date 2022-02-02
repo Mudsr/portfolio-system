@@ -113,8 +113,8 @@ class ExpiryReport extends Component
     public function exportPdf()
     {
         $view = 'livewire.report.partials.expiry';
-        // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-        return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
+         return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+       // return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
 
     }
 
@@ -128,8 +128,10 @@ class ExpiryReport extends Component
     public function paiexportPdf()
     {
         $view = 'livewire.report.partials.paiexpiry';
+        return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-        return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
+        //return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
 
     }
 
@@ -144,7 +146,10 @@ class ExpiryReport extends Component
     {
         $view = 'livewire.report.partials.fiexpiry';
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-        return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
+       // return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
+
+        return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+
 
     }
 
@@ -159,7 +164,9 @@ class ExpiryReport extends Component
     {
         $view = 'livewire.report.partials.poaexpiry';
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-        return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
+        //return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
+        return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+
 
     }
 

@@ -28,9 +28,12 @@
 </head>
 <body>
 
-<table  id="customers" class="table table-responsive w-100 d-block d-md-table">
+
+
+
+<table  id="customers">
  
-    
+ 
     <thead>
         <tr>
             <th scope="col" class="text-muted">Sr No</th>
@@ -40,8 +43,8 @@
             <th scope="col" class="text-muted">Client Id</th>
             <th scope="col" class="text-muted">Client Name</th>
             <th scope="col" class="text-muted">Deal Date</th>
-            <th scope="col" class="text-muted">Property Value</th>
-            <th scope="col" class="text-muted">Finance Amount</th>
+            <th scope="col" class="text-muted">Paid Date</th>
+            <th scope="col" class="text-muted">Rent Amount</th>
             <th scope="col" class="text-muted">Paid Upto</th>
 
          
@@ -62,12 +65,17 @@
                 <td>{{ $deal->client->id }}</td>
                 <td>{{ $deal->client->name }}</td>
                 <td>{{ $deal->entry_date }}</td>
-                <td>{{number_format( $deal->plot->property_value )}}</td>
-                <td>{{ number_format($deal->plot->finance_amount) }}</td>
+                {{-- <td>{{number_format( $deal->plot->property_value )}}</td>
+                <td>{{ number_format($deal->plot->finance_amount) }}</td> --}}
                 @if(isset($deal->paiRentPayments->last()->to_date))
+                <td>{{$deal->paiRentPayments->last()->entry_date}}</td>
+                <td>{{$deal->paiRentPayments->last()->rent_amount}}</td>
                 <td>{{$deal->paiRentPayments->last()->to_date}}</td>
 
                 @else
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
                 @endif
             </tr>
             @php
@@ -75,14 +83,14 @@
             @endphp
         @endforeach
         <tr>
-            <td colspan="7">Total</td>
+            {{-- <td colspan="7">Total</td> --}}
             {{-- <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
             <td> </td> --}}
-            <td class="font-weight-bold" > {{ number_format($deals->sum('plot.property_value')) }}</td>
-            <td class="font-weight-bold" > {{ number_format($deals->sum('plot.finance_amount')) }}</td>
+            {{-- <td class="font-weight-bold" > {{ number_format($deals->sum('plot.property_value')) }}</td>
+            <td class="font-weight-bold" > {{ number_format($deals->sum('plot.finance_amount')) }}</td> --}}
         </tr>
     </tbody>
 </table>

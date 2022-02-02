@@ -143,7 +143,7 @@
                                                 wire:model="client_id">
                                                 <option value="" class="text-muted">---Select---</option>
                                                 @foreach ($clients as $client)
-                                                    <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                                    <option value="{{ $client->id }}">{{ $client->id }},{{ $client->name }}</option>
                                                 @endforeach
                                             </select>
                 

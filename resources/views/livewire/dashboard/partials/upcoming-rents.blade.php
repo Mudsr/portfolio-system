@@ -27,8 +27,10 @@
                         <th scope="col" class="text-muted">Client Id</th>
                         <th scope="col" class="text-muted">Client Name</th>
                         <th scope="col" class="text-muted">Deal Date</th>
-                        <th scope="col" class="text-muted">Property Value</th>
-                        <th scope="col" class="text-muted">Finance Amount</th>
+                        <th scope="col" class="text-muted">Paid Date</th>
+                        <th scope="col" class="text-muted">Rent Amount</th>
+                        <th scope="col" class="text-muted">Paid Upto</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -42,8 +44,11 @@
                 <td>{{ $deal->client->id }}</td>
                 <td>{{ $deal->client->name }}</td>
                 <td>{{ $deal->entry_date }}</td>
-                <td>{{number_format( $deal->plot->property_value )}}</td>
-                <td>{{ number_format($deal->plot->finance_amount) }}</td>
+                {{-- <td>{{number_format( $deal->plot->property_value )}}</td>
+                <td>{{ number_format($deal->plot->finance_amount) }}</td> --}}
+                <td>{{$deal->paiRentPayments->last()->entry_date}}</td>
+                <td>{{$deal->paiRentPayments->last()->rent_amount}}</td>
+                <td>{{$deal->paiRentPayments->last()->to_date}}</td>
 
                             {{-- <td>
                                 @if (isset($task->completed_at))

@@ -80,7 +80,7 @@
                             name="client_id" id="client_select"  onChange="document.getElementById('selectedValue').innerHTML = this.value;">
                             <option value="" class="text-muted">---Select Client---</option>
                             @foreach ($clients as $client)
-                                <option value="{{ $client->id }}"  {{ old('client_id') == $client->id ? 'selected' :'' }}> {{ $client->name }} </option>
+                                <option value="{{ $client->id }}"  {{ old('client_id') == $client->id ? 'selected' :'' }}>{{ $client->id }}, {{ $client->name }} </option>
                  
                             @endforeach
                         </select>
