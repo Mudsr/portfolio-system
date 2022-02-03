@@ -1,5 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-<table class="table table-responsive w-100 d-block d-md-table" >
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #5d7cd3;
+  color: white;
+}
+</style>
+</head>
+<body>
+<table  id="customers" class="table table-responsive w-100 d-block d-md-table" >
     <thead>
         <tr>
             <th scope="col" class="text-muted">Sr No</th>
@@ -31,25 +59,25 @@
         @endphp
         @foreach ($deals as $deal)
             <tr>
-                <td>{{ $i }}</td>
-                <td>{{ $deal->id }}</td>
-                <td>{{ $deal->entry_date }}</td>
-                <td>{{ $deal->client_id }}</td>
-                <td>{{ $deal->client->name }}</td>
-                <td>{{ $deal->plot_no }}</td>
-                <td>{{ $deal->plot->pai_client_id }}</td>
-                <td>{{ $deal->plot->area_name }}</td>
-                <td>{{ $deal->plot->block }}</td>
+                <td style="text-align: center">{{ $i }}</td>
+                <td style="text-align: center">{{ $deal->id }}</td>
+                <td style="text-align: center">{{ $deal->entry_date }}</td>
+                <td style="text-align: center">{{ $deal->client_id }}</td>
+                <td style="text-align: center">{{ $deal->client->name }}</td>
+                <td style="text-align: center">{{ $deal->plot_no }}</td>
+                <td style="text-align: center">{{ $deal->plot->pai_client_id }}</td>
+                <td style="text-align: center">{{ $deal->plot->area_name }}</td>
+                <td style="text-align: center">{{ $deal->plot->block }}</td>
                 
                 {{-- @if ($this->type == "all") --}}
 
-                 <td>{{  old('fire_insurance_expiry_date', $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->first()->getCustomProperty('expiry_date'): '') }}</td>
+                 <td style="text-align: center">{{  old('fire_insurance_expiry_date', $deal->plot->getMedia('fire_insurance')->isNotEmpty() ? $deal->plot->getMedia('fire_insurance')->first()->getCustomProperty('expiry_date'): '') }}</td>
      
                 {{-- @else --}}
-                {{-- <td>{{ $deal->plot->getMedia($type)->first()->getCustomProperty('expiry_date') }}</td>   --}}
+                {{-- <td style="text-align: center">{{ $deal->plot->getMedia($type)->first()->getCustomProperty('expiry_date') }}</td>   --}}
                 {{-- @endif --}}
-                <td>{{ number_format($deal->plot->property_value) }}</td>
-                <td>{{ number_format( $deal->plot->finance_amount ) }}</td>
+                <td style="text-align: center">{{ number_format($deal->plot->property_value) }}</td>
+                <td style="text-align: center">{{ number_format( $deal->plot->finance_amount ) }}</td>
             </tr>
             @php
                 $i++;
@@ -72,3 +100,5 @@
         </tr>
     </tbody>
 </table>
+</body>
+</html>

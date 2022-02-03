@@ -20,7 +20,7 @@
 #customers th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color: #5d7cd3;
   color: white;
 }
@@ -35,7 +35,7 @@
  
  
     <thead>
-        <tr>
+        <tr >
             <th scope="col" class="text-muted">Sr No</th>
             <th scope="col" class="text-muted">Area</th>
             <th scope="col" class="text-muted">Block</th>
@@ -57,20 +57,20 @@
         @endphp
         @foreach ($deals as $deal)
             <tr>
-                <td>{{ $i }}</td>
-                <td>{{ $deal->plot->area_name }}</td>
-                <td>{{ $deal->plot->block }}</td>
-                <td>{{ $deal->plot_no }}</td>
+                <td style="text-align: center">{{ $i }}</td>
+                <td style="text-align: center">{{ $deal->plot->area_name }}</td>
+                <td style="text-align: center">{{ $deal->plot->block }}</td>
+                <td style="text-align: center">{{ $deal->plot_no }}</td>
                  
-                <td>{{ $deal->client->id }}</td>
-                <td>{{ $deal->client->name }}</td>
-                <td>{{ $deal->entry_date }}</td>
+                <td style="text-align: center">{{ $deal->client->id }}</td>
+                <td style="text-align: center">{{ $deal->client->name }}</td>
+                <td style="text-align: center">{{ $deal->entry_date }}</td>
                 {{-- <td>{{number_format( $deal->plot->property_value )}}</td>
                 <td>{{ number_format($deal->plot->finance_amount) }}</td> --}}
                 @if(isset($deal->paiRentPayments->last()->to_date))
-                <td>{{$deal->paiRentPayments->last()->entry_date}}</td>
-                <td>{{$deal->paiRentPayments->last()->rent_amount}}</td>
-                <td>{{$deal->paiRentPayments->last()->to_date}}</td>
+                <td style="text-align: center">{{$deal->paiRentPayments->last()->entry_date}}</td>
+                <td style="text-align: center">{{$deal->paiRentPayments->last()->rent_amount}}</td>
+                <td style="text-align: center">{{$deal->paiRentPayments->last()->to_date}}</td>
 
                 @else
                 <td>-</td>

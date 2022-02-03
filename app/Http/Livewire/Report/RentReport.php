@@ -190,11 +190,16 @@ class RentReport extends Component
     public function exportPdf()
     {
         $view = 'livewire.report.partials.rent';
-//       $mpdf = new Mpdf();
+    //   $mpdf = new Mpdf();
 // $stylesheet = file_get_contents('css/app.css');
 
 // $mpdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
 // $mpdf->WriteHTML($view,\Mpdf\HTMLParserMode::HTML_BODY);
+
+// $stylesheet = file_get_contents('css/app.css');
+// $mpdf->WriteHTML($stylesheet, 1); // CSS Script goes here.
+// $mpdf->WriteHTML($view, 2); //HTML Content goes here.
+// $mpdf->Output();
 
         return  (new PlotReport($this->deals, $view))->download('rent-report.pdf', \Maatwebsite\Excel\Excel::MPDF);
     //   return Excel::download(new PlotReport($this->deals, $view), 'rent-report.pdf');

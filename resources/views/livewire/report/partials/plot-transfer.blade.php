@@ -1,4 +1,33 @@
-<table class="table table-responsive w-100 d-block d-md-table">
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #5d7cd3;
+  color: white;
+}
+</style>
+</head>
+<body>
+<table id="customers" class="table table-responsive w-100 d-block d-md-table">
     <thead>
         <tr>
             <th scope="col" class="text-muted">Sr No</th>
@@ -21,18 +50,18 @@
         @endphp
         @foreach ($transfers as $transfer)
             <tr>
-                <td>{{ $i }}</td>
-                <td>{{ $transfer->plot->deal->id }}</td>
-                <td>{{ $transfer->entry_date }}</td>
-                <td>{{ $transfer->old_client_id }}</td>
-                <td>{{ $transfer->oldClient->name }}</td>
-                <td>{{ $transfer->new_client_id }}</td>
-                <td>{{ $transfer->newClient->name }}</td>
-                <td>{{ $transfer->plot->deal->plot_no }}</td>
-                <td>{{ $transfer->plot->area_name }}</td>
-                <td>{{ $transfer->plot->block }}</td>
-                <td>{{ $transfer->plot->property_value }}</td>
-                <td>{{ $transfer->plot->finance_amount }}</td>
+                <td style="text-align: center">{{ $i }}</td>
+                <td style="text-align: center">{{ $transfer->plot->deal->id }}</td>
+                <td style="text-align: center">{{ $transfer->entry_date }}</td>
+                <td style="text-align: center">{{ $transfer->old_client_id }}</td>
+                <td style="text-align: center">{{ $transfer->oldClient->name }}</td>
+                <td style="text-align: center">{{ $transfer->new_client_id }}</td>
+                <td style="text-align: center">{{ $transfer->newClient->name }}</td>
+                <td style="text-align: center">{{ $transfer->plot->deal->plot_no }}</td>
+                <td style="text-align: center">{{ $transfer->plot->area_name }}</td>
+                <td style="text-align: center">{{ $transfer->plot->block }}</td>
+                <td style="text-align: center">{{ $transfer->plot->property_value }}</td>
+                <td style="text-align: center">{{ $transfer->plot->finance_amount }}</td>
             </tr>
             @php
                 $i++;
@@ -52,3 +81,5 @@
         </tr> --}}
     </tbody>
 </table>
+</body>
+</html>
