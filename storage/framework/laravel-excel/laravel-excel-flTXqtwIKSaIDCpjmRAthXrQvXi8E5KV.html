@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #5d7cd3;
+  color: white;
+}
+</style>
+</head>
+<body>
+<table id="customers" class="table table-responsive w-100 d-block d-md-table">
+    <thead>
+        <tr>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Sr No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Deal No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Trx Date</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Client Id</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Client Name</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Plot No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Area</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Block</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Property Value</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Finance Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+                            <tr>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">2018-10-31</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">باتل محمد باتل الرشيدي</td>
+                <td style="text-align: center; border:1px solid black">150/149</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية  2</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">2560000</td>
+                <td style="text-align: center; border:1px solid black">2560000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">2</td>
+                <td style="text-align: center; border:1px solid black">2</td>
+                <td style="text-align: center; border:1px solid black">2018-12-25</td>
+                <td style="text-align: center; border:1px solid black">2</td>
+                <td style="text-align: center; border:1px solid black">شركة التجارة و الاستثمار العقاري</td>
+                <td style="text-align: center; border:1px solid black">99/101</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية </td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">1560000</td>
+                <td style="text-align: center; border:1px solid black">1560000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">3</td>
+                <td style="text-align: center; border:1px solid black">3</td>
+                <td style="text-align: center; border:1px solid black">2018-12-25</td>
+                <td style="text-align: center; border:1px solid black">3</td>
+                <td style="text-align: center; border:1px solid black">شركة التجارة و الاستثمار العقاري</td>
+                <td style="text-align: center; border:1px solid black">102/100</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">1550000</td>
+                <td style="text-align: center; border:1px solid black">1550000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">4</td>
+                <td style="text-align: center; border:1px solid black">4</td>
+                <td style="text-align: center; border:1px solid black">2019-01-09</td>
+                <td style="text-align: center; border:1px solid black">4</td>
+                <td style="text-align: center; border:1px solid black">شركة القرين الدولية العقارية </td>
+                <td style="text-align: center; border:1px solid black">1901</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">675000</td>
+                <td style="text-align: center; border:1px solid black">675000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">5</td>
+                <td style="text-align: center; border:1px solid black">5</td>
+                <td style="text-align: center; border:1px solid black">2019-01-09</td>
+                <td style="text-align: center; border:1px solid black">5</td>
+                <td style="text-align: center; border:1px solid black">شركة القرين الدولية العقارية</td>
+                <td style="text-align: center; border:1px solid black">1902</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">675000</td>
+                <td style="text-align: center; border:1px solid black">675000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">6</td>
+                <td style="text-align: center; border:1px solid black">6</td>
+                <td style="text-align: center; border:1px solid black">2019-01-30</td>
+                <td style="text-align: center; border:1px solid black">6</td>
+                <td style="text-align: center; border:1px solid black">فهد سعد فالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">1641</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">642000</td>
+                <td style="text-align: center; border:1px solid black">642000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">7</td>
+                <td style="text-align: center; border:1px solid black">7</td>
+                <td style="text-align: center; border:1px solid black">2019-01-31</td>
+                <td style="text-align: center; border:1px solid black">7</td>
+                <td style="text-align: center; border:1px solid black">شركة مجموعة إبراهيم محمد الجريوي العقارية </td>
+                <td style="text-align: center; border:1px solid black">287</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">890000</td>
+                <td style="text-align: center; border:1px solid black">890000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">8</td>
+                <td style="text-align: center; border:1px solid black">8</td>
+                <td style="text-align: center; border:1px solid black">2019-01-31</td>
+                <td style="text-align: center; border:1px solid black">8</td>
+                <td style="text-align: center; border:1px solid black">شركة مجموعة إبراهيم محمد الجريوي العقارية </td>
+                <td style="text-align: center; border:1px solid black">286</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">890000</td>
+                <td style="text-align: center; border:1px solid black">890000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">9</td>
+                <td style="text-align: center; border:1px solid black">9</td>
+                <td style="text-align: center; border:1px solid black">2019-02-10</td>
+                <td style="text-align: center; border:1px solid black">9</td>
+                <td style="text-align: center; border:1px solid black">فهد سعد فالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">132</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">932500</td>
+                <td style="text-align: center; border:1px solid black">932500</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">10</td>
+                <td style="text-align: center; border:1px solid black">10</td>
+                <td style="text-align: center; border:1px solid black">2019-02-10</td>
+                <td style="text-align: center; border:1px solid black">10</td>
+                <td style="text-align: center; border:1px solid black">فهد سعد فالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">131</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">932500</td>
+                <td style="text-align: center; border:1px solid black">932500</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">11</td>
+                <td style="text-align: center; border:1px solid black">11</td>
+                <td style="text-align: center; border:1px solid black">2019-03-14</td>
+                <td style="text-align: center; border:1px solid black">11</td>
+                <td style="text-align: center; border:1px solid black">شركة كنان العقارية / جمال محمد الفضالة</td>
+                <td style="text-align: center; border:1px solid black">154-153</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية -2</td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">1590000</td>
+                <td style="text-align: center; border:1px solid black">1590000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">12</td>
+                <td style="text-align: center; border:1px solid black">12</td>
+                <td style="text-align: center; border:1px solid black">2019-04-24</td>
+                <td style="text-align: center; border:1px solid black">12</td>
+                <td style="text-align: center; border:1px solid black">فهد سعد فالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">120-119</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية </td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">480000</td>
+                <td style="text-align: center; border:1px solid black">480000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">13</td>
+                <td style="text-align: center; border:1px solid black">13</td>
+                <td style="text-align: center; border:1px solid black">2019-05-01</td>
+                <td style="text-align: center; border:1px solid black">13</td>
+                <td style="text-align: center; border:1px solid black">ماجدة خليل سليمان </td>
+                <td style="text-align: center; border:1px solid black">163</td>
+                <td style="text-align: center; border:1px solid black">الفحيحيل الصناعية </td>
+                <td style="text-align: center; border:1px solid black">5</td>
+                <td style="text-align: center; border:1px solid black">3000000</td>
+                <td style="text-align: center; border:1px solid black">3000000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">14</td>
+                <td style="text-align: center; border:1px solid black">14</td>
+                <td style="text-align: center; border:1px solid black">2019-05-30</td>
+                <td style="text-align: center; border:1px solid black">14</td>
+                <td style="text-align: center; border:1px solid black">ماجدة خليل سليمان </td>
+                <td style="text-align: center; border:1px solid black">53</td>
+                <td style="text-align: center; border:1px solid black">شرق الاحمدي </td>
+                <td style="text-align: center; border:1px solid black">8</td>
+                <td style="text-align: center; border:1px solid black">1560000</td>
+                <td style="text-align: center; border:1px solid black">1560000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">15</td>
+                <td style="text-align: center; border:1px solid black">15</td>
+                <td style="text-align: center; border:1px solid black">2019-07-08</td>
+                <td style="text-align: center; border:1px solid black">15</td>
+                <td style="text-align: center; border:1px solid black">شركة مجموعة المركز الدولي للمواد الغذائية </td>
+                <td style="text-align: center; border:1px solid black">239</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية -3</td>
+                <td style="text-align: center; border:1px solid black">ج</td>
+                <td style="text-align: center; border:1px solid black">1197000</td>
+                <td style="text-align: center; border:1px solid black">1197000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">16</td>
+                <td style="text-align: center; border:1px solid black">16</td>
+                <td style="text-align: center; border:1px solid black">2019-07-11</td>
+                <td style="text-align: center; border:1px solid black">16</td>
+                <td style="text-align: center; border:1px solid black">الشركة العربية للكهرباء </td>
+                <td style="text-align: center; border:1px solid black">69</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية -2</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الجديدة </td>
+                <td style="text-align: center; border:1px solid black">3600000</td>
+                <td style="text-align: center; border:1px solid black">3600000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">17</td>
+                <td style="text-align: center; border:1px solid black">17</td>
+                <td style="text-align: center; border:1px solid black">2019-07-16</td>
+                <td style="text-align: center; border:1px solid black">17</td>
+                <td style="text-align: center; border:1px solid black">حمد محمد حسن العمر </td>
+                <td style="text-align: center; border:1px solid black">219</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية -3</td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">1185000</td>
+                <td style="text-align: center; border:1px solid black">1185000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">18</td>
+                <td style="text-align: center; border:1px solid black">18</td>
+                <td style="text-align: center; border:1px solid black">2019-07-16</td>
+                <td style="text-align: center; border:1px solid black">18</td>
+                <td style="text-align: center; border:1px solid black">شركة ميريلاند العالمية للتجهيزات الغذائية </td>
+                <td style="text-align: center; border:1px solid black">216</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية -3</td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">630000</td>
+                <td style="text-align: center; border:1px solid black">630000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">19</td>
+                <td style="text-align: center; border:1px solid black">19</td>
+                <td style="text-align: center; border:1px solid black">2019-07-22</td>
+                <td style="text-align: center; border:1px solid black">19</td>
+                <td style="text-align: center; border:1px solid black">باتل محمد باتل الرشيدي</td>
+                <td style="text-align: center; border:1px solid black">231</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية </td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">1325000</td>
+                <td style="text-align: center; border:1px solid black">1325000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">20</td>
+                <td style="text-align: center; border:1px solid black">20</td>
+                <td style="text-align: center; border:1px solid black">2019-07-23</td>
+                <td style="text-align: center; border:1px solid black">20</td>
+                <td style="text-align: center; border:1px solid black">سارة حسن الوزان </td>
+                <td style="text-align: center; border:1px solid black">1380</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">420000</td>
+                <td style="text-align: center; border:1px solid black">420000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">21</td>
+                <td style="text-align: center; border:1px solid black">21</td>
+                <td style="text-align: center; border:1px solid black">2019-09-15</td>
+                <td style="text-align: center; border:1px solid black">21</td>
+                <td style="text-align: center; border:1px solid black">العربية للكهرباء </td>
+                <td style="text-align: center; border:1px solid black">157</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية2</td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">470000</td>
+                <td style="text-align: center; border:1px solid black">470000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">22</td>
+                <td style="text-align: center; border:1px solid black">22</td>
+                <td style="text-align: center; border:1px solid black">2019-09-24</td>
+                <td style="text-align: center; border:1px solid black">22</td>
+                <td style="text-align: center; border:1px solid black">نامي النامي </td>
+                <td style="text-align: center; border:1px solid black">63</td>
+                <td style="text-align: center; border:1px solid black">الري الصناعية </td>
+                <td style="text-align: center; border:1px solid black">-</td>
+                <td style="text-align: center; border:1px solid black">681000</td>
+                <td style="text-align: center; border:1px solid black">681000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">23</td>
+                <td style="text-align: center; border:1px solid black">23</td>
+                <td style="text-align: center; border:1px solid black">2019-10-02</td>
+                <td style="text-align: center; border:1px solid black">23</td>
+                <td style="text-align: center; border:1px solid black">عبدالله سرحان الذايدي</td>
+                <td style="text-align: center; border:1px solid black">5-4</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية -3</td>
+                <td style="text-align: center; border:1px solid black">هـ</td>
+                <td style="text-align: center; border:1px solid black">1300000</td>
+                <td style="text-align: center; border:1px solid black">1300000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">24</td>
+                <td style="text-align: center; border:1px solid black">24</td>
+                <td style="text-align: center; border:1px solid black">2019-10-09</td>
+                <td style="text-align: center; border:1px solid black">24</td>
+                <td style="text-align: center; border:1px solid black">الشركة العربية للكهرباء </td>
+                <td style="text-align: center; border:1px solid black">241</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية -3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">1266000</td>
+                <td style="text-align: center; border:1px solid black">1266000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">25</td>
+                <td style="text-align: center; border:1px solid black">25</td>
+                <td style="text-align: center; border:1px solid black">2019-10-24</td>
+                <td style="text-align: center; border:1px solid black">25</td>
+                <td style="text-align: center; border:1px solid black">فهد سعد فالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">111</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-3</td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">690000</td>
+                <td style="text-align: center; border:1px solid black">690000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">26</td>
+                <td style="text-align: center; border:1px solid black">26</td>
+                <td style="text-align: center; border:1px solid black">2019-10-30</td>
+                <td style="text-align: center; border:1px solid black">26</td>
+                <td style="text-align: center; border:1px solid black">حمد محمد العمر</td>
+                <td style="text-align: center; border:1px solid black">1366-1364</td>
+                <td style="text-align: center; border:1px solid black">الري</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">870000</td>
+                <td style="text-align: center; border:1px solid black">870000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">27</td>
+                <td style="text-align: center; border:1px solid black">27</td>
+                <td style="text-align: center; border:1px solid black">2019-11-12</td>
+                <td style="text-align: center; border:1px solid black">27</td>
+                <td style="text-align: center; border:1px solid black">مؤسسة فيصل ناصر القطامي للتجارة العامة </td>
+                <td style="text-align: center; border:1px solid black">48</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-3</td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">1013000</td>
+                <td style="text-align: center; border:1px solid black">1013000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">28</td>
+                <td style="text-align: center; border:1px solid black">28</td>
+                <td style="text-align: center; border:1px solid black">2019-11-19</td>
+                <td style="text-align: center; border:1px solid black">28</td>
+                <td style="text-align: center; border:1px solid black">فايز  ادليهيس المطيري</td>
+                <td style="text-align: center; border:1px solid black">65-70</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-2</td>
+                <td style="text-align: center; border:1px solid black">ج</td>
+                <td style="text-align: center; border:1px solid black">440000</td>
+                <td style="text-align: center; border:1px solid black">440000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">29</td>
+                <td style="text-align: center; border:1px solid black">29</td>
+                <td style="text-align: center; border:1px solid black">2019-12-03</td>
+                <td style="text-align: center; border:1px solid black">29</td>
+                <td style="text-align: center; border:1px solid black">محمد صالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">19</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">870000</td>
+                <td style="text-align: center; border:1px solid black">870000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">30</td>
+                <td style="text-align: center; border:1px solid black">30</td>
+                <td style="text-align: center; border:1px solid black">2019-12-04</td>
+                <td style="text-align: center; border:1px solid black">30</td>
+                <td style="text-align: center; border:1px solid black">مؤسسة فيصل ناصر القطامي للتجارة العامة </td>
+                <td style="text-align: center; border:1px solid black">24-25</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-3</td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">1088000</td>
+                <td style="text-align: center; border:1px solid black">1088000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">31</td>
+                <td style="text-align: center; border:1px solid black">31</td>
+                <td style="text-align: center; border:1px solid black">2019-12-10</td>
+                <td style="text-align: center; border:1px solid black">31</td>
+                <td style="text-align: center; border:1px solid black">خالد عبد العزيز إبراهيم الحسون</td>
+                <td style="text-align: center; border:1px solid black">1452</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">770000</td>
+                <td style="text-align: center; border:1px solid black">770000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">32</td>
+                <td style="text-align: center; border:1px solid black">32</td>
+                <td style="text-align: center; border:1px solid black">2019-12-10</td>
+                <td style="text-align: center; border:1px solid black">32</td>
+                <td style="text-align: center; border:1px solid black">مشعل غصاب الزمانان</td>
+                <td style="text-align: center; border:1px solid black">1454</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">770000</td>
+                <td style="text-align: center; border:1px solid black">770000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">33</td>
+                <td style="text-align: center; border:1px solid black">33</td>
+                <td style="text-align: center; border:1px solid black">2019-12-17</td>
+                <td style="text-align: center; border:1px solid black">33</td>
+                <td style="text-align: center; border:1px solid black">شركة دار فارس </td>
+                <td style="text-align: center; border:1px solid black">128</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">809500</td>
+                <td style="text-align: center; border:1px solid black">809500</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">34</td>
+                <td style="text-align: center; border:1px solid black">34</td>
+                <td style="text-align: center; border:1px solid black">2019-12-25</td>
+                <td style="text-align: center; border:1px solid black">34</td>
+                <td style="text-align: center; border:1px solid black">صلاح الخميس </td>
+                <td style="text-align: center; border:1px solid black">124</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-2</td>
+                <td style="text-align: center; border:1px solid black">ج</td>
+                <td style="text-align: center; border:1px solid black">288000</td>
+                <td style="text-align: center; border:1px solid black">288000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">35</td>
+                <td style="text-align: center; border:1px solid black">35</td>
+                <td style="text-align: center; border:1px solid black">2019-12-26</td>
+                <td style="text-align: center; border:1px solid black">35</td>
+                <td style="text-align: center; border:1px solid black">فهد سعد فالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">129</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-3</td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">600000</td>
+                <td style="text-align: center; border:1px solid black">600000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">36</td>
+                <td style="text-align: center; border:1px solid black">36</td>
+                <td style="text-align: center; border:1px solid black">2019-12-29</td>
+                <td style="text-align: center; border:1px solid black">36</td>
+                <td style="text-align: center; border:1px solid black">سليمان خالد عبدالله الوزان </td>
+                <td style="text-align: center; border:1px solid black">1513</td>
+                <td style="text-align: center; border:1px solid black">الري</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">420000</td>
+                <td style="text-align: center; border:1px solid black">420000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">37</td>
+                <td style="text-align: center; border:1px solid black">37</td>
+                <td style="text-align: center; border:1px solid black">2019-12-29</td>
+                <td style="text-align: center; border:1px solid black">37</td>
+                <td style="text-align: center; border:1px solid black">شركة دار فارس </td>
+                <td style="text-align: center; border:1px solid black">126</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-2</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">238750</td>
+                <td style="text-align: center; border:1px solid black">238750</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">38</td>
+                <td style="text-align: center; border:1px solid black">38</td>
+                <td style="text-align: center; border:1px solid black">2019-12-30</td>
+                <td style="text-align: center; border:1px solid black">38</td>
+                <td style="text-align: center; border:1px solid black">محمد صالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">197</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية-3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">695000</td>
+                <td style="text-align: center; border:1px solid black">695000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">39</td>
+                <td style="text-align: center; border:1px solid black">39</td>
+                <td style="text-align: center; border:1px solid black">2020-01-16</td>
+                <td style="text-align: center; border:1px solid black">39</td>
+                <td style="text-align: center; border:1px solid black">مشعل سامي المشري</td>
+                <td style="text-align: center; border:1px solid black">159</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية -2</td>
+                <td style="text-align: center; border:1px solid black">ج</td>
+                <td style="text-align: center; border:1px solid black">261000</td>
+                <td style="text-align: center; border:1px solid black">261000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">40</td>
+                <td style="text-align: center; border:1px solid black">40</td>
+                <td style="text-align: center; border:1px solid black">2020-01-26</td>
+                <td style="text-align: center; border:1px solid black">40</td>
+                <td style="text-align: center; border:1px solid black">حمد محمد حسن العمر </td>
+                <td style="text-align: center; border:1px solid black">1365-1363</td>
+                <td style="text-align: center; border:1px solid black">الري</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">1650000</td>
+                <td style="text-align: center; border:1px solid black">1650000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">41</td>
+                <td style="text-align: center; border:1px solid black">41</td>
+                <td style="text-align: center; border:1px solid black">2020-02-19</td>
+                <td style="text-align: center; border:1px solid black">41</td>
+                <td style="text-align: center; border:1px solid black">علي عبدالرحمن فارس المطيري</td>
+                <td style="text-align: center; border:1px solid black">1609-1610-1611-1612</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">4170000</td>
+                <td style="text-align: center; border:1px solid black">4170000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">42</td>
+                <td style="text-align: center; border:1px solid black">42</td>
+                <td style="text-align: center; border:1px solid black">2020-03-02</td>
+                <td style="text-align: center; border:1px solid black">42</td>
+                <td style="text-align: center; border:1px solid black">ماجدة خليل سليمان </td>
+                <td style="text-align: center; border:1px solid black">63</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية -2</td>
+                <td style="text-align: center; border:1px solid black">ز</td>
+                <td style="text-align: center; border:1px solid black">6720000</td>
+                <td style="text-align: center; border:1px solid black">6720000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">43</td>
+                <td style="text-align: center; border:1px solid black">43</td>
+                <td style="text-align: center; border:1px solid black">2020-03-10</td>
+                <td style="text-align: center; border:1px solid black">43</td>
+                <td style="text-align: center; border:1px solid black">عبداللطيف الدايل</td>
+                <td style="text-align: center; border:1px solid black">1562</td>
+                <td style="text-align: center; border:1px solid black">الري</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">500000</td>
+                <td style="text-align: center; border:1px solid black">500000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">44</td>
+                <td style="text-align: center; border:1px solid black">44</td>
+                <td style="text-align: center; border:1px solid black">2020-03-11</td>
+                <td style="text-align: center; border:1px solid black">44</td>
+                <td style="text-align: center; border:1px solid black">شركة ساتكو التجارية الغذائية </td>
+                <td style="text-align: center; border:1px solid black">282</td>
+                <td style="text-align: center; border:1px solid black">صبحان الصناعية </td>
+                <td style="text-align: center; border:1px solid black">11</td>
+                <td style="text-align: center; border:1px solid black">383500</td>
+                <td style="text-align: center; border:1px solid black">383500</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">45</td>
+                <td style="text-align: center; border:1px solid black">45</td>
+                <td style="text-align: center; border:1px solid black">2020-08-05</td>
+                <td style="text-align: center; border:1px solid black">45</td>
+                <td style="text-align: center; border:1px solid black">بدر مسفر المطيري </td>
+                <td style="text-align: center; border:1px solid black">130</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 2</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">720000</td>
+                <td style="text-align: center; border:1px solid black">720000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">46</td>
+                <td style="text-align: center; border:1px solid black">46</td>
+                <td style="text-align: center; border:1px solid black">2020-09-02</td>
+                <td style="text-align: center; border:1px solid black">46</td>
+                <td style="text-align: center; border:1px solid black">موسى حمود علي الجيران </td>
+                <td style="text-align: center; border:1px solid black">29-28-27</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 2</td>
+                <td style="text-align: center; border:1px solid black">ج</td>
+                <td style="text-align: center; border:1px solid black">4400000</td>
+                <td style="text-align: center; border:1px solid black">4400000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">47</td>
+                <td style="text-align: center; border:1px solid black">47</td>
+                <td style="text-align: center; border:1px solid black">2020-12-01</td>
+                <td style="text-align: center; border:1px solid black">47</td>
+                <td style="text-align: center; border:1px solid black">موسى حمود علي الجيران </td>
+                <td style="text-align: center; border:1px solid black">1176</td>
+                <td style="text-align: center; border:1px solid black">الري </td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">4400000</td>
+                <td style="text-align: center; border:1px solid black">4400000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">48</td>
+                <td style="text-align: center; border:1px solid black">48</td>
+                <td style="text-align: center; border:1px solid black">2020-09-10</td>
+                <td style="text-align: center; border:1px solid black">48</td>
+                <td style="text-align: center; border:1px solid black">شركة الريادة للتمويل و الاستثمار </td>
+                <td style="text-align: center; border:1px solid black">134</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">1200000</td>
+                <td style="text-align: center; border:1px solid black">1200000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">49</td>
+                <td style="text-align: center; border:1px solid black">49</td>
+                <td style="text-align: center; border:1px solid black">2020-10-13</td>
+                <td style="text-align: center; border:1px solid black">49</td>
+                <td style="text-align: center; border:1px solid black">شركة الريادة المتحدة العقارية </td>
+                <td style="text-align: center; border:1px solid black">7</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ج</td>
+                <td style="text-align: center; border:1px solid black">1250000</td>
+                <td style="text-align: center; border:1px solid black">1250000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">50</td>
+                <td style="text-align: center; border:1px solid black">50</td>
+                <td style="text-align: center; border:1px solid black">2020-10-21</td>
+                <td style="text-align: center; border:1px solid black">50</td>
+                <td style="text-align: center; border:1px solid black">مشعل غصاب الزمنان </td>
+                <td style="text-align: center; border:1px solid black">1420</td>
+                <td style="text-align: center; border:1px solid black">الري</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">400000</td>
+                <td style="text-align: center; border:1px solid black">400000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">51</td>
+                <td style="text-align: center; border:1px solid black">51</td>
+                <td style="text-align: center; border:1px solid black">2020-10-23</td>
+                <td style="text-align: center; border:1px solid black">51</td>
+                <td style="text-align: center; border:1px solid black">مشعل عبدالعزيز الجري </td>
+                <td style="text-align: center; border:1px solid black">53</td>
+                <td style="text-align: center; border:1px solid black">الفحيحيل </td>
+                <td style="text-align: center; border:1px solid black">5</td>
+                <td style="text-align: center; border:1px solid black">350000</td>
+                <td style="text-align: center; border:1px solid black">350000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">52</td>
+                <td style="text-align: center; border:1px solid black">52</td>
+                <td style="text-align: center; border:1px solid black">2020-11-08</td>
+                <td style="text-align: center; border:1px solid black">52</td>
+                <td style="text-align: center; border:1px solid black">شركة فهد الجزيرة للتجارة العامة و المقاولات </td>
+                <td style="text-align: center; border:1px solid black">206</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">2465000</td>
+                <td style="text-align: center; border:1px solid black">2465000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">53</td>
+                <td style="text-align: center; border:1px solid black">53</td>
+                <td style="text-align: center; border:1px solid black">2020-11-11</td>
+                <td style="text-align: center; border:1px solid black">53</td>
+                <td style="text-align: center; border:1px solid black">هند سليمان الجارالله الجارالله </td>
+                <td style="text-align: center; border:1px solid black">176</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 2</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">1334500</td>
+                <td style="text-align: center; border:1px solid black">1334500</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">54</td>
+                <td style="text-align: center; border:1px solid black">54</td>
+                <td style="text-align: center; border:1px solid black">2020-12-14</td>
+                <td style="text-align: center; border:1px solid black">54</td>
+                <td style="text-align: center; border:1px solid black">نايف احمد الدبوس </td>
+                <td style="text-align: center; border:1px solid black">27</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 2</td>
+                <td style="text-align: center; border:1px solid black">و</td>
+                <td style="text-align: center; border:1px solid black">400000</td>
+                <td style="text-align: center; border:1px solid black">400000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">55</td>
+                <td style="text-align: center; border:1px solid black">55</td>
+                <td style="text-align: center; border:1px solid black">2021-01-18</td>
+                <td style="text-align: center; border:1px solid black">55</td>
+                <td style="text-align: center; border:1px solid black">محمد صالح رجا الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">17</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">488000</td>
+                <td style="text-align: center; border:1px solid black">488000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">56</td>
+                <td style="text-align: center; border:1px solid black">56</td>
+                <td style="text-align: center; border:1px solid black">2021-01-20</td>
+                <td style="text-align: center; border:1px solid black">56</td>
+                <td style="text-align: center; border:1px solid black">شركة جنا انترناشيونال التجارية </td>
+                <td style="text-align: center; border:1px solid black">278</td>
+                <td style="text-align: center; border:1px solid black">صبحان الصناعية </td>
+                <td style="text-align: center; border:1px solid black">11</td>
+                <td style="text-align: center; border:1px solid black">500000</td>
+                <td style="text-align: center; border:1px solid black">500000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">57</td>
+                <td style="text-align: center; border:1px solid black">57</td>
+                <td style="text-align: center; border:1px solid black">2021-01-28</td>
+                <td style="text-align: center; border:1px solid black">57</td>
+                <td style="text-align: center; border:1px solid black">عبدالله عادل المسافر </td>
+                <td style="text-align: center; border:1px solid black">1721</td>
+                <td style="text-align: center; border:1px solid black">الري</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">550000</td>
+                <td style="text-align: center; border:1px solid black">550000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">58</td>
+                <td style="text-align: center; border:1px solid black">58</td>
+                <td style="text-align: center; border:1px solid black">2021-04-12</td>
+                <td style="text-align: center; border:1px solid black">58</td>
+                <td style="text-align: center; border:1px solid black">فهد سعد فالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">33</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">د</td>
+                <td style="text-align: center; border:1px solid black">1320000</td>
+                <td style="text-align: center; border:1px solid black">1320000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">59</td>
+                <td style="text-align: center; border:1px solid black">59</td>
+                <td style="text-align: center; border:1px solid black">2021-04-12</td>
+                <td style="text-align: center; border:1px solid black">59</td>
+                <td style="text-align: center; border:1px solid black">فهد سعد فالح الرشيدي </td>
+                <td style="text-align: center; border:1px solid black">34</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">د</td>
+                <td style="text-align: center; border:1px solid black">1320000</td>
+                <td style="text-align: center; border:1px solid black">1320000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">60</td>
+                <td style="text-align: center; border:1px solid black">60</td>
+                <td style="text-align: center; border:1px solid black">2021-04-26</td>
+                <td style="text-align: center; border:1px solid black">60</td>
+                <td style="text-align: center; border:1px solid black">حمد محمد العمر </td>
+                <td style="text-align: center; border:1px solid black">5&amp;4</td>
+                <td style="text-align: center; border:1px solid black">الري</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">1463000</td>
+                <td style="text-align: center; border:1px solid black">1463000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">61</td>
+                <td style="text-align: center; border:1px solid black">61</td>
+                <td style="text-align: center; border:1px solid black">2021-06-07</td>
+                <td style="text-align: center; border:1px solid black">61</td>
+                <td style="text-align: center; border:1px solid black">عبداللطيف الدايل </td>
+                <td style="text-align: center; border:1px solid black">181</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">أ</td>
+                <td style="text-align: center; border:1px solid black">650000</td>
+                <td style="text-align: center; border:1px solid black">650000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">62</td>
+                <td style="text-align: center; border:1px solid black">62</td>
+                <td style="text-align: center; border:1px solid black">2021-06-07</td>
+                <td style="text-align: center; border:1px solid black">62</td>
+                <td style="text-align: center; border:1px solid black">مشعل داود الخالدي </td>
+                <td style="text-align: center; border:1px solid black">47</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 2</td>
+                <td style="text-align: center; border:1px solid black">هـ</td>
+                <td style="text-align: center; border:1px solid black">485400</td>
+                <td style="text-align: center; border:1px solid black">485400</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">63</td>
+                <td style="text-align: center; border:1px solid black">63</td>
+                <td style="text-align: center; border:1px solid black">2021-06-10</td>
+                <td style="text-align: center; border:1px solid black">63</td>
+                <td style="text-align: center; border:1px solid black">شركة العز للتجارة العامة </td>
+                <td style="text-align: center; border:1px solid black">141</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">800000</td>
+                <td style="text-align: center; border:1px solid black">800000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">64</td>
+                <td style="text-align: center; border:1px solid black">64</td>
+                <td style="text-align: center; border:1px solid black">2021-06-22</td>
+                <td style="text-align: center; border:1px solid black">64</td>
+                <td style="text-align: center; border:1px solid black">جمال ناصر الصنهات العصيمي </td>
+                <td style="text-align: center; border:1px solid black">27</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 2</td>
+                <td style="text-align: center; border:1px solid black">د</td>
+                <td style="text-align: center; border:1px solid black">670000</td>
+                <td style="text-align: center; border:1px solid black">670000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">65</td>
+                <td style="text-align: center; border:1px solid black">65</td>
+                <td style="text-align: center; border:1px solid black">2021-07-25</td>
+                <td style="text-align: center; border:1px solid black">65</td>
+                <td style="text-align: center; border:1px solid black">شركة تسكين العقارية </td>
+                <td style="text-align: center; border:1px solid black">30</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 2</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الجديدة </td>
+                <td style="text-align: center; border:1px solid black">4680000</td>
+                <td style="text-align: center; border:1px solid black">4680000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">66</td>
+                <td style="text-align: center; border:1px solid black">66</td>
+                <td style="text-align: center; border:1px solid black">2021-08-25</td>
+                <td style="text-align: center; border:1px solid black">66</td>
+                <td style="text-align: center; border:1px solid black">فيصل صالح العجمي </td>
+                <td style="text-align: center; border:1px solid black">44</td>
+                <td style="text-align: center; border:1px solid black">شرق الاحمدي </td>
+                <td style="text-align: center; border:1px solid black">8</td>
+                <td style="text-align: center; border:1px solid black">2000000</td>
+                <td style="text-align: center; border:1px solid black">2000000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">67</td>
+                <td style="text-align: center; border:1px solid black">67</td>
+                <td style="text-align: center; border:1px solid black">2021-09-01</td>
+                <td style="text-align: center; border:1px solid black">67</td>
+                <td style="text-align: center; border:1px solid black">شركة كنان العقارية / جمال محمد الفضالة</td>
+                <td style="text-align: center; border:1px solid black">47-46</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">1140000</td>
+                <td style="text-align: center; border:1px solid black">1140000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">68</td>
+                <td style="text-align: center; border:1px solid black">68</td>
+                <td style="text-align: center; border:1px solid black">2021-09-02</td>
+                <td style="text-align: center; border:1px solid black">68</td>
+                <td style="text-align: center; border:1px solid black">حمد محمد حسن العمر </td>
+                <td style="text-align: center; border:1px solid black">257</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ج</td>
+                <td style="text-align: center; border:1px solid black">1010000</td>
+                <td style="text-align: center; border:1px solid black">1010000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">69</td>
+                <td style="text-align: center; border:1px solid black">69</td>
+                <td style="text-align: center; border:1px solid black">2021-09-09</td>
+                <td style="text-align: center; border:1px solid black">69</td>
+                <td style="text-align: center; border:1px solid black">مشعل غصاب الزمانان</td>
+                <td style="text-align: center; border:1px solid black">165-164-163</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ج</td>
+                <td style="text-align: center; border:1px solid black">1800000</td>
+                <td style="text-align: center; border:1px solid black">1800000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">70</td>
+                <td style="text-align: center; border:1px solid black">70</td>
+                <td style="text-align: center; border:1px solid black">2021-09-12</td>
+                <td style="text-align: center; border:1px solid black">70</td>
+                <td style="text-align: center; border:1px solid black">مشعل فهاد محمد الفراج </td>
+                <td style="text-align: center; border:1px solid black">140</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 3</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">850000</td>
+                <td style="text-align: center; border:1px solid black">850000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">71</td>
+                <td style="text-align: center; border:1px solid black">71</td>
+                <td style="text-align: center; border:1px solid black">2021-09-13</td>
+                <td style="text-align: center; border:1px solid black">71</td>
+                <td style="text-align: center; border:1px solid black">شركة بوابة كيفان للتجارة العامة </td>
+                <td style="text-align: center; border:1px solid black">98-97-96-95</td>
+                <td style="text-align: center; border:1px solid black">الشويخ الصناعية 2</td>
+                <td style="text-align: center; border:1px solid black">ب</td>
+                <td style="text-align: center; border:1px solid black">1375000</td>
+                <td style="text-align: center; border:1px solid black">1375000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">72</td>
+                <td style="text-align: center; border:1px solid black">72</td>
+                <td style="text-align: center; border:1px solid black">2021-12-22</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">باتل محمد باتل الرشيدي</td>
+                <td style="text-align: center; border:1px solid black">339Test</td>
+                <td style="text-align: center; border:1px solid black">Salmiya</td>
+                <td style="text-align: center; border:1px solid black">12</td>
+                <td style="text-align: center; border:1px solid black">1500000</td>
+                <td style="text-align: center; border:1px solid black">1000000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">73</td>
+                <td style="text-align: center; border:1px solid black">73</td>
+                <td style="text-align: center; border:1px solid black">2021-12-22</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">باتل محمد باتل الرشيدي</td>
+                <td style="text-align: center; border:1px solid black">339Test</td>
+                <td style="text-align: center; border:1px solid black">Salmiya</td>
+                <td style="text-align: center; border:1px solid black">12</td>
+                <td style="text-align: center; border:1px solid black">1500000</td>
+                <td style="text-align: center; border:1px solid black">1000000</td>
+            </tr>
+                                <tr>
+                <td style="text-align: center; border:1px solid black">74</td>
+                <td style="text-align: center; border:1px solid black">74</td>
+                <td style="text-align: center; border:1px solid black">2022-01-05</td>
+                <td style="text-align: center; border:1px solid black">1</td>
+                <td style="text-align: center; border:1px solid black">باتل محمد باتل الرشيدي</td>
+                <td style="text-align: center; border:1px solid black">74754</td>
+                <td style="text-align: center; border:1px solid black">Kollam</td>
+                <td style="text-align: center; border:1px solid black">دkll1</td>
+                <td style="text-align: center; border:1px solid black">4000000</td>
+                <td style="text-align: center; border:1px solid black">3500000</td>
+            </tr>
+                            <tr>
+            <td style="text-align: center; border:1px solid black">Total </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black" class="font-weight-bold" style="text-align: center">98278650</td>
+            <td style="text-align: center; border:1px solid black" class="font-weight-bold" style="text-align: center">96778650</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -30,17 +30,17 @@
 <table id="customers" class="table table-responsive w-100 d-block d-md-table">
     <thead>
         <tr>
-            <th scope="col" class="text-muted">Sr No</th>
-            <th scope="col" class="text-muted">Deal No</th>
-            <th scope="col" class="text-muted">Trx Date</th>
-            <th scope="col" class="text-muted">Client Id</th>
-            <th scope="col" class="text-muted">Client Name</th>
-            <th scope="col" class="text-muted">Plot No</th>
-            <th scope="col" class="text-muted">Area</th>
-            <th scope="col" class="text-muted">Block</th>
-            <th scope="col" class="text-muted">Property Value</th>
-            <th scope="col" class="text-muted">Finance Amount</th>
-            <th scope="col" class="text-muted">Sold To</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Sr No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Deal No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Trx Date</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Client Id</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Client Name</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Plot No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Area</th>
+            <th  style="text-align: center; border:1px solid black"scope="col" class="text-muted">Block</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Property Value</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Finance Amount</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Sold To</th>
         </tr>
     </thead>
     <tbody>
@@ -49,34 +49,34 @@
         @endphp
         @foreach ($deals as $deal)
             <tr>
-                <td style="text-align: center">{{ $i }}</td>
-                <td style="text-align: center">{{ $deal->id }}</td>
-                <td style="text-align: center">{{ $deal->entry_date }}</td>
-                <td style="text-align: center">{{ $deal->client_id }}</td>
-                <td style="text-align: center">{{ $deal->client->name }}</td>
-                <td style="text-align: center">{{ $deal->plot_no }}</td>
-                <td style="text-align: center">{{ $deal->plot->area_name }}</td>
-                <td style="text-align: center">{{ $deal->plot->block }}</td>
-                <td style="text-align: center">{{ $deal->plot->property_value }}</td>
-                <td style="text-align: center">{{ $deal->plot->finance_amount }}</td>
-                <td style="text-align: center">{{ $deal->sold_to }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $i }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->id }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->entry_date }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->client_id }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->client->name }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->plot_no }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->plot->area_name }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->plot->block }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->plot->property_value }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->plot->finance_amount }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $deal->sold_to }}</td>
             </tr>
             @php
                 $i++;
             @endphp
         @endforeach
         <tr>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td class="font-weight-bold" style="text-align: center"> Total = {{ $deals->sum('plot.property_value') }}</td>
-            <td class="font-weight-bold" style="text-align: center">Total = {{ $deals->sum('plot.finance_amount') }}</td>
-            <td> </td>
+            <td style="text-align: center; border:1px solid black">Total </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black"> </td>
+            <td style="text-align: center; border:1px solid black" class="font-weight-bold" >{{ $deals->sum('plot.property_value') }}</td>
+            <td style="text-align: center; border:1px solid black" class="font-weight-bold">{{ $deals->sum('plot.finance_amount') }}</td>
+            <td style="text-align: center; border:1px solid black"> </td>
             </tr>
     </tbody>
 </table>

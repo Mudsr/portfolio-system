@@ -30,26 +30,26 @@
 <table id="customers" class="table table-responsive d-block d-md-table">
     <thead>
         <tr>
-            <th scope="col" class="text-muted">Sr No</th>
-            <th scope="col" class="text-muted">New Deal1 No</th>
-            <th scope="col" class="text-muted">Trx Date</th>
-            <th scope="col" class="text-muted">Client Id</th>
-            <th scope="col" class="text-muted">Client Name</th>
-            <th scope="col" class="text-muted">New Plot No</th>
-            <th scope="col" class="text-muted">Area</th>
-            <th scope="col" class="text-muted">Property Value</th>
-            <th scope="col" class="text-muted">Finance Amount</th>
-            <th scope="col" class="text-muted">New Deal2 No</th>
-            <th scope="col" class="text-muted">Trx Date</th>
-            <th scope="col" class="text-muted">Client Id</th>
-            <th scope="col" class="text-muted">Client Name</th>
-            <th scope="col" class="text-muted">New Plot No</th>
-            <th scope="col" class="text-muted">Area</th>
-            <th scope="col" class="text-muted">Property Value</th>
-            <th scope="col" class="text-muted">Finance Amount</th>
-            <th scope="col" class="text-muted">Old Plot No</th>
-            <th scope="col" class="text-muted">Property Value</th>
-            <th scope="col" class="text-muted">Finance Amount</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Sr No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">New Deal1 No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Trx Date</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Client Id</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Client Name</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">New Plot No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Area</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Property Value</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Finance Amount</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">New Deal2 No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Trx Date</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Client Id</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Client Name</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">New Plot No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Area</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Property Value</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Finance Amount</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Old Plot No</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Property Value</th>
+            <th style="text-align: center; border:1px solid black" scope="col" class="text-muted">Finance Amount</th>
     </thead>
     <tbody>
         @php
@@ -57,26 +57,26 @@
         @endphp
         @foreach ($splits as $split)
             <tr>
-                <td style="text-align: center">{{ $i }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[0]->id }}</td>
-                <td style="text-align: center">{{ $split->entry_date }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[0]->deal->client_id }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[0]->deal->client->name }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[0]->deal->plot_no }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[0]->area_name }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[0]->property_value }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[0]->finance_amount }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[1]->id }}</td>
-                <td style="text-align: center">{{ $split->entry_date }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[1]->deal->client_id }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[1]->deal->client->name }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[1]->deal->plot_no }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[1]->area_name }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[1]->property_value }}</td>
-                <td style="text-align: center">{{ $split->newPlots()[1]->finance_amount }}</td>
-                <td style="text-align: center">{{ $split->oldPlot->deal->plot_no }}</td>
-                <td style="text-align: center">{{ $split->oldPlot->property_value }}</td>
-                <td style="text-align: center">{{ $split->oldPlot->finance_amount }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $i }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[0]->id }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->entry_date }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[0]->deal->client_id }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[0]->deal->client->name }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[0]->deal->plot_no }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[0]->area_name }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[0]->property_value }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[0]->finance_amount }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[1]->id }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->entry_date }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[1]->deal->client_id }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[1]->deal->client->name }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[1]->deal->plot_no }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[1]->area_name }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[1]->property_value }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->newPlots()[1]->finance_amount }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->oldPlot->deal->plot_no }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->oldPlot->property_value }}</td>
+                <td style="text-align: center; border:1px solid black">{{ $split->oldPlot->finance_amount }}</td>
             </tr>
             @php
                 $i++;

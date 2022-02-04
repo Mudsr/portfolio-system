@@ -6,6 +6,7 @@ use App\Exports\PlotReport;
 use PDF;
 use Livewire\Component;
 use App\Models\Portfolio;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Index extends Component
@@ -141,7 +142,7 @@ class Index extends Component
         $view = 'livewire.report.partials.'.$this->pdfView;
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
         //return Excel::download(new PlotReport($this->deals, $view), 'report.pdf');
-        return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+       return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
 
     }
 

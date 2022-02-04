@@ -113,8 +113,8 @@ class ExpiryReport extends Component
     public function exportPdf()
     {
         $view = 'livewire.report.partials.expiry';
-         return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
-       // return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
+         //return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+        return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
 
     }
 
@@ -148,7 +148,7 @@ class ExpiryReport extends Component
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
        // return Excel::download(new PlotReport($this->deals, $view), 'expiry-report.pdf');
 
-        return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+        return (new PlotReport($this->deals, $view))->download('expiry-report.pdf', \Maatwebsite\Excel\Excel::MPDF);
 
 
     }
