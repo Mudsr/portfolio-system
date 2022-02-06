@@ -20,40 +20,44 @@ class DealsImport implements ToModel, WithHeadingRow
     /**
      * @param array $row
      *
+     * array:10 [
+        "m" => 1
+        "almntk" => "الشويخ الصناعية  2" area
+        "alktaa" => "ب" block
+        "tarykh_alaakd" => 43404
+        "tarykh_nhay_alaakd" => 45229 contract_date
+        "rkm_alksym" => "150/149" plot num
+        "asm_alaamyl" => "احمد نوري سليمان القناعي" client name
+        "mblgh_altmoyl" => 2560000 finance amount
+        "kym_alaakarat" => 4612500 property value
+        "" => null
+        ]
+     *
      * @return User|null
      */
     public function model(array $row)
     {
-        if($row['sr_no'] == "م" && $row['area'] == "المنطقة " ) {
-            return null;
-        }
-
-        if(!isset($row['sr_no'])) {
+        if(!isset($row['m'])) {
             return null;
         }
 
         $client = Client::create([
-            'name' => $row['client_name'],
+            'name' => $row['asm_alaamyl'],
         ]);
 
         $deal = $client->deals()->create([
             'portfolio_id' => $this->portfolio->id,
-            'plot_no' => $row['plot_no'],
-            'entry_date' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['date_of_contract']),
+            'plot_no' => $row['rkm_alksym'],
+            'entry_date' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tarykh_nhay_alaakd']),
         ]);
 
         return new Plot([
-            'area_name'     => $row['area'],
-            'block'    => $row['block'],
-            'property_value' => str_replace(',', '', $row['finance_amount']),
-            'finance_amount' => str_replace(',', '', $row['finance_amount']),
+            'area_name'     => $row['almntk'],
+            'block'    => $row['alktaa'],
+            'property_value' => str_replace(',', '', $row['mblgh_altmoyl']),
+            'finance_amount' => str_replace(',', '', $row['mblgh_altmoyl']),
             'deal_id' => $deal->id,
         ]);
-    }
-
-    public function getPortfolio()
-    {
-        return Portfolio::where('name', 'portfolio2')->first();
     }
 
 }

@@ -2,10 +2,21 @@
 
 namespace Database\Seeders;
 
+use App\Models\Deal;
+use App\Models\Plot;
+use App\Models\Task;
+use App\Models\Merge;
+use App\Models\Split;
+use App\Models\Client;
+use App\Models\Transfer;
 use App\Models\Portfolio;
 use App\Imports\DealsImport;
+use App\Models\FeeCalculation;
+use App\Models\PaiRentPayment;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class DealSeeder extends Seeder
 {
@@ -18,7 +29,21 @@ class DealSeeder extends Seeder
     {
         $portfolio = $this->getPortfolio();
         if($portfolio) {
-            Excel::import(new DealsImport($portfolio), public_path('Portfolio Deals.xlsx'));
+            // Excel::import(new DealsImport($portfolio), public_path('Portfolio Deals.xlsx'));
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            Client::truncate();
+            Deal::truncate();
+            FeeCalculation::truncate();
+            Media::truncate();
+            Merge::truncate();
+            PaiRentPayment::truncate();
+            Plot::truncate();
+            Split::truncate();
+            Transfer::truncate();
+            Task::truncate();
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+            Excel::import(new DealsImport($portfolio), public_path('pf-data-new.xlsx'));
         }
     }
 
