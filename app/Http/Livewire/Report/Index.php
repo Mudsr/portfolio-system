@@ -142,15 +142,43 @@ class Index extends Component
         $view = 'livewire.report.partials.'.$this->pdfView;
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
         //return Excel::download(new PlotReport($this->deals, $view), 'report.pdf');
-       return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
 
+        switch ($this->type) {
+            case 'merge':
+                return (new PlotReport($this->merges, $view, $this->type))
+                    ->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+                break;
+            case 'split':
+                return (new PlotReport($this->splits, $view, $this->type))
+                    ->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+                break;
+            case 'transfer':
+                return (new PlotReport($this->transfers, $view, $this->type))
+                    ->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+                break;
+            default:
+                return (new PlotReport($this->deals, $view, $this->type))
+                    ->download('report.pdf', \Maatwebsite\Excel\Excel::MPDF);
+                break;
+        }
     }
 
     public function exportExcel()
     {
         $view = 'livewire.report.partials.'.$this->pdfView;
-
-        return Excel::download(new PlotReport($this->deals, $view), 'report.xlsx');
+        switch ($this->type) {
+            case 'merge':
+                return Excel::download(new PlotReport($this->merges, $view, $this->type), 'report.xlsx');
+                break;
+            case 'split':
+                return Excel::download(new PlotReport($this->splits, $view, $this->type), 'report.xlsx');
+                break;
+            case 'transfer':
+                return Excel::download(new PlotReport($this->transfers, $view, $this->type), 'report.xlsx');
+                break;
+            default:
+                return Excel::download(new PlotReport($this->deals, $view, $this->type), 'report.xlsx');
+        }
     }
 
 }

@@ -48,6 +48,7 @@
         </tr>
     </thead>
     <tbody>
+
         @php
             $i = 1;
         @endphp
