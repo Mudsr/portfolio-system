@@ -142,7 +142,7 @@ class Index extends Component
         $view = 'livewire.report.partials.'.$this->pdfView;
         // return (new PlotReport($this->deals, $view))->download('report.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
         //return Excel::download(new PlotReport($this->deals, $view), 'report.pdf');
-
+        $mpdf = New \Mpdf\Mpdf(['tempDir'=>storage_path('app/public')]);
         switch ($this->type) {
             case 'merge':
                 return (new PlotReport($this->merges, $view, $this->type))
