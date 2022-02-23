@@ -30,6 +30,10 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 |
 */
 
+Route::get('/phpinfo', function() {
+    return phpinfo();
+ });
+
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/', function(Request $request){
